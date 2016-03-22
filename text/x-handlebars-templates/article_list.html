@@ -1,0 +1,18 @@
+<style>
+    ul.blog {
+        list-style: none;
+        padding: 0;
+    }
+</style>
+
+<ul class="blog">
+    {{#each this}}
+    <li>
+        <h1>
+            <a class="anchor" href="{{url}}" aria-hidden="true">
+                <span aria-hidden="true" class="octicon octicon-link">{{name}}</span>
+            </a>
+        </h1>
+    </li>
+    {{/each}}
+</ul>
