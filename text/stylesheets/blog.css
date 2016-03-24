@@ -9,7 +9,14 @@
     color: #eaffea;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
-    border-radius: 10px;
+}
+
+#tongji a:first-child {
+    border-top-left-radius: 10px;
+}
+
+#tongji a:last-child {
+    border-top-right-radius: 10px;
 }
 
 pre {
