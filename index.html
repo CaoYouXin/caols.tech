@@ -8,7 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="text/stylesheets/blog.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="toonly/stylesheets/blog.css" media="screen">
 </head>
 <body>
 <section class="page-header">
@@ -41,14 +41,14 @@
 
 </section>
 
-<script type="text/javascript" src="text/javascripts/jquery.min.js"></script>
-<script type="text/javascript" src="text/javascripts/handlebars.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="javascripts/handlebars.min.js"></script>
 
 <script>
     $.getJSON('articles.json', function (data) {
         console.log(data);
 
-        $.get('text/x-handlebars-templates/article_list.html', function (tpl) {
+        $.get('toonly/x-handlebars-templates/article_list.html', function (tpl) {
             var tpl_fn = Handlebars.compile(tpl);
 
             var html = tpl_fn(data);
