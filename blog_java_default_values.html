@@ -75,10 +75,16 @@ Process finished with exit code 0
 
 <script type="text/javascript" src="javascripts/jquery.min.js"></script>
 <script>
-    $('section.blog-header span').click(function (event) {
-        event.preventDefault();
-        history.back();
-    });
+    window.onload = function () {
+        window.parent.require(['toonly/javascripts/only-pageslide'], function (pageSlide) {
+
+            $('section.blog-header span').click(function (event) {
+                event.preventDefault();
+
+                pageSlide.go('index_.html');
+            });
+        });
+    };
 </script>
 </body>
 </html>
