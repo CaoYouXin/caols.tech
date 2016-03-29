@@ -8,7 +8,11 @@ define([], function () {
 
     window.onpopstate = function (event) {
 
-        if (event.state.skip) {
+        historyStack.reverse();
+        historyStack.shift();
+        historyStack.reverse();
+
+        if (event.state && event.state.skip) {
             skip = event.state.skip;
         }
 
@@ -17,24 +21,30 @@ define([], function () {
             return false;
         }
 
+        console.log('after: ', historyStack);
+
         console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
-        $('#data').html(location.href);
     };
 
     return {
         go: function (url) {
 
-            if (url.indexOf(location.href.match(/.*?:\/\/(.*?)\//)[1]) === -1) {
-                open(url);
+            console.log(url);
+            console.log('before: ', historyStack);
+
+            if (url.match(/.*?:\/\/(.*?)\/.*/)) {
+                location.href = url;
 
                 return;
             }
 
             var index = historyStack.indexOf(url);
             if (index !== -1) {
+
                 var skip = historyStack.length - index;
 
-                historyStack.splice(index + 1, skip - 1);
+                historyStack.push(null);
+                historyStack.push(null);
 
                 history.pushState({
                     skip: skip
@@ -49,6 +59,8 @@ define([], function () {
             }
 
             historyStack.push(url);
+            historyStack.push(null);
+
             history.pushState(null, '', url);
             history.pushState(null, '', location.href);
             history.back();

@@ -41,10 +41,15 @@
 
 </section>
 
-<script type="text/javascript" src="javascripts/jquery.min.js"></script>
-<script type="text/javascript" src="javascripts/handlebars.min.js"></script>
-
 <script>
+    require.config({
+        baseUrl: '.',
+        paths: {
+            'jquery': 'javascripts/jquery.min.js',
+            'handlebars': 'javascripts/handlebars.min.js'
+        }
+    });
+
     $.getJSON('articles.json', function (data) {
         console.log(data);
 
@@ -53,14 +58,15 @@
 
             var html = tpl_fn(data);
             console.log(html);
-            
+
             $('#article_list').html(html);
         });
     });
 </script>
 
 <div id="tongji">
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
 </div>
 </body>
 </html>
