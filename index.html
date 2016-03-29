@@ -41,27 +41,32 @@
 
 </section>
 
+<script type="text/javascript" src="javascripts/require.min.js"></script>
 <script>
     require.config({
         baseUrl: '.',
         paths: {
-            'jquery': 'javascripts/jquery.min.js',
-            'handlebars': 'javascripts/handlebars.min.js'
+            'jquery': 'javascripts/jquery.min',
+            'handlebars': 'javascripts/handlebars.min'
         }
     });
 
-    $.getJSON('articles.json', function (data) {
-        console.log(data);
+    window.onload = function () {
+        require(['jquery', 'handlebars'], function ($, Handlebars) {
+            $.getJSON('articles.json', function (data) {
+                console.log(data);
 
-        $.get('toonly/x-handlebars-templates/article_list.html', function (tpl) {
-            var tpl_fn = Handlebars.compile(tpl);
+                $.get('toonly/x-handlebars-templates/article_list.html', function (tpl) {
+                    var tplFn = Handlebars.compile(tpl);
 
-            var html = tpl_fn(data);
-            console.log(html);
+                    var html = tplFn(data);
+                    console.log(html);
 
-            $('#article_list').html(html);
-        });
-    });
+                    $('#article_list').html(html);
+                });
+            });
+        })
+    };
 </script>
 
 <div id="tongji">
