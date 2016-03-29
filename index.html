@@ -74,7 +74,10 @@
             }
         });
 
+        var _onload = window.onload || function() {};
         window.onload = function () {
+            _onload();
+
             require(['jquery'], function ($) {
                 var windowWidth = $(window).width();
 

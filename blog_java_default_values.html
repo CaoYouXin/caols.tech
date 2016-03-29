@@ -75,7 +75,9 @@ Process finished with exit code 0
 
 <script type="text/javascript" src="javascripts/jquery.min.js"></script>
 <script>
+    var _onload = window.onload || function() {};
     window.onload = function () {
+        _onload();
         window.parent.require(['toonly/javascripts/only-pageslide'], function (pageSlide) {
 
             $('section.blog-header span').click(function (event) {
