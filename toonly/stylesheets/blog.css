@@ -37,6 +37,10 @@ section.blog-header {
     overflow: hidden;
 }
 
+section.blog-header span {
+    cursor: pointer;
+}
+
 section.blog-content {
     color: #256;
     width: 800px;
