@@ -1,7 +1,7 @@
 /**
  * Created by caoyouxin on 3/29/16.
  */
-define(['jquery', 'handlebars'], function ($, handlebars) {
+define(['jquery', 'handlebars', 'polyfill'], function ($, handlebars) {
 
     var urlStack = [];
     var pageslideTplFn = handlebars.compile('{{#each this}}<li class="pageslide"><iframe src="{{this}}" frameborder="0"></iframe></li>{{/each}}');
@@ -23,14 +23,38 @@ define(['jquery', 'handlebars'], function ($, handlebars) {
             if (indexOf === -1) {
                 indexOf = urlStack.length;
                 urlStack.push(url);
+                this.init();
+            }
+            
+            var $ul = $('ul.pageslides');
+            var $pageslides = $ul.children('li.pageslide');
+            $pageslides.removeClass('active');
+            $pageslides.eq(indexOf).addClass('active');
+            $ul.css('transform', 'translateX(' + (0 - (indexOf * $(window).width())) + 'px)');
+        },
+        left: function () {
+            var $pageslides = $('ul.pageslides > li.pageslide');
+            var indexOf = Array.from($pageslides).reduce(function (previousValue, currentValue, currentIndex, array) {
+                return previousValue + ($(currentValue).hasClass('active') ? currentIndex : 0);
+            }, 0);
+
+            if (indexOf <= 0) {
+                return false;
             }
 
-            this.init();
-            var $ul = $('ul.pageslides');
-            var children = $ul.children('li.pageslide');
-            children.removeClass('active');
-            children.eq(indexOf).addClass('active');
-            $ul.css('transform', 'translateX(' + (0 - (indexOf * $(window).width())) + 'px)');
+            this.go($pageslides.eq(indexOf - 1).find('iframe').attr('src'));
+        },
+        right: function () {
+            var $pageslides = $('ul.pageslides > li.pageslide');
+            var indexOf = Array.from($pageslides).reduce(function (previousValue, currentValue, currentIndex, array) {
+                return previousValue + ($(currentValue).hasClass('active') ? currentIndex : 0);
+            }, 0);
+
+            if (indexOf >= $pageslides.length - 1) {
+                return false;
+            }
+
+            this.go($pageslides.eq(indexOf + 1).find('iframe').attr('src'));
         }
     };
 });

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Page Slides</title>
+    <title>CaoYouXin&#39;s blog by CaoYouXin</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.min.css">
     <style>
         *, *:before, *:after {
@@ -70,7 +70,8 @@
             baseUrl: '.',
             paths: {
                 'jquery': 'javascripts/jquery.min',
-                'handlebars': 'javascripts/handlebars.min'
+                'handlebars': 'javascripts/handlebars.min',
+                'polyfill': 'javascripts/polyfill'
             }
         });
 
@@ -78,53 +79,19 @@
         window.onload = function () {
             _onload();
 
-            require(['jquery'], function ($) {
-                var windowWidth = $(window).width();
-
+            require(['jquery', 'toonly/javascripts/only-pageslide'], function ($, pageSlide) {
                 $('#left').click(function (event) {
                     event.preventDefault();
 
-                    var $ul = $('ul.pageslides');
-                    var attr = $ul.attr('style');
-                    var transform = attr.match(/.*translateX\((-?\d*)px\);$/);
-                    if (!transform) {
-                        return false;
-                    }
-
-                    var curX = parseInt(transform[1]);
-                    if (curX >= 0) {
-                        return false;
-                    }
-
-                    $ul.css('transform', 'translateX(' + (curX += windowWidth) + 'px)');
-                    var children = $ul.children('li.pageslide');
-                    children.removeClass('active');
-                    children.eq(Math.abs(curX) / windowWidth).addClass('active');
+                    pageSlide.left();
                 });
 
                 $('#right').click(function (event) {
                     event.preventDefault();
 
-                    var $ul = $('ul.pageslides');
-                    var attr = $ul.attr('style');
-                    var transform = attr.match(/.*translateX\((-?\d*)px\);$/);
-                    if (!transform) {
-                        return false;
-                    }
-
-                    var curX = parseInt(transform[1]);
-                    if (curX <= (0 - $ul.width() + windowWidth)) {
-                        return false;
-                    }
-
-                    $ul.css('transform', 'translateX(' + (curX -= windowWidth) + 'px)');
-                    var children = $ul.children('li.pageslide');
-                    children.removeClass('active');
-                    children.eq(Math.abs(curX) / windowWidth).addClass('active');
+                    pageSlide.right();
                 });
-            });
 
-            require(['toonly/javascripts/only-pageslide'], function (pageSlide) {
                 pageSlide.init();
                 pageSlide.go('index_.html');
             });
