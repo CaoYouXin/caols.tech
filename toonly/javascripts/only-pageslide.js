@@ -4,8 +4,14 @@
 define(['jquery', 'handlebars', 'polyfill'], function ($, handlebars) {
 
     var urlStack = [];
-    var pageslideTplFn = handlebars.compile('{{#each this}}<li class="pageslide"><iframe src="{{this}}" frameborder="0"></iframe></li>{{/each}}');
+    
+    var pageslideTplFn = handlebars.compile('{{#each this}}<li class="pageslide"><iframe ' +
+        'src="{{this}}" frameborder="0"></iframe></li>{{/each}}');
 
+    $('body').html('<ul class="pageslides animation"></ul><div id="left" class="pager" ' +
+        'style="left: 0;"><svg><path style="fill:#ffff00;" d="M10 0 L70 50 L70 0"></path></svg></div><div id="right" class="pager" ' +
+        'style="right: 0;"><svg><path style="fill:#ffff00;" d="M10 0 L10 50 L70 0"></path></svg></div>');
+    
     return {
         init: function () {
             var $ul = $('ul.pageslides');
@@ -25,7 +31,7 @@ define(['jquery', 'handlebars', 'polyfill'], function ($, handlebars) {
                 urlStack.push(url);
                 this.init();
             }
-            
+
             var $ul = $('ul.pageslides');
             var $pageslides = $ul.children('li.pageslide');
             $pageslides.removeClass('active');
