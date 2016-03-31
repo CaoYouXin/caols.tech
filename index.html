@@ -80,18 +80,6 @@
             _onload();
 
             require(['jquery', 'toonly/javascripts/only-pageslide'], function ($, pageSlide) {
-                $('#left').click(function (event) {
-                    event.preventDefault();
-
-                    pageSlide.left();
-                });
-
-                $('#right').click(function (event) {
-                    event.preventDefault();
-
-                    pageSlide.right();
-                });
-
                 pageSlide.init();
                 pageSlide.go('index_.html');
             });
