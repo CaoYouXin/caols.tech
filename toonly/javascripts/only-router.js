@@ -3,7 +3,7 @@
  */
 define(['require'], function (require) {
 
-    var locationPrefix = '/blog/';
+    var locationPrefix = '/myblog/';
     var historyStack = [];
     var skip = null;
     var _pageSlide = null;
