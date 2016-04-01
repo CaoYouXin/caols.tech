@@ -9,33 +9,49 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="toonly/stylesheets/blog.css" media="screen">
-    <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/require.min.js"></script>
     <script>
-        var _onload = window.onload || function() {};
-        window.onload = function () {
-            _onload();
-            window.parent.require(['handlebars', 'toonly/javascripts/only-pageslide'], function (Handlebars, pageSlide) {
+        require.config({
+            baseUrl: '.',
+            paths: {
+                'jquery': 'javascripts/jquery.min',
+                'handlebars': 'javascripts/handlebars.min',
+                'polyfill': 'javascripts/polyfill'
+            }
+        });
 
-                $.getJSON('articles.json', function (data) {
+        if (window === window.top) {
+            require(['toonly/javascripts/only-router'], function (router) {
+                router.restore();
+            });
+        } else {
 
-                    $.get('toonly/x-handlebars-templates/article_list.html', function (tpl) {
-                        var tplFn = Handlebars.compile(tpl);
-                        var html = tplFn(data);
+            require(['jquery'], function ($) {
+                $(function () {
+                    window.top.require(['handlebars', 'toonly/javascripts/only-router'], function (Handlebars, router) {
 
-                        var $articleList = $('#article_list');
+                        $.getJSON('articles.json', function (data) {
 
-                        $articleList.html(html);
+                            $.get('toonly/x-handlebars-templates/article_list.html', function (tpl) {
+                                var tplFn = Handlebars.compile(tpl);
+                                var html = tplFn(data);
 
-                        $articleList.on('click', 'a', function (event) {
-                            event.preventDefault();
+                                var $articleList = $('#article_list');
 
-                            var url = $(this).attr('data-rel');
-                            pageSlide.go(url);
+                                $articleList.html(html);
+
+                                $articleList.on('click', 'a', function (event) {
+                                    event.preventDefault();
+
+                                    var url = $(this).attr('data-rel');
+                                    router.go(url);
+                                });
+                            });
                         });
                     });
                 });
             });
-        };
+        }
     </script>
 </head>
 <body>

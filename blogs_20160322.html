@@ -73,6 +73,37 @@
             margin: 5px 0 0 0;
         }
     </style>
+    <script type="text/javascript" src="javascripts/require.min.js"></script>
+    <script>
+        require.config({
+            baseUrl: '.',
+            paths: {
+                'jquery': 'javascripts/jquery.min',
+                'handlebars': 'javascripts/handlebars.min',
+                'polyfill': 'javascripts/polyfill'
+            }
+        });
+
+        if (window === window.top) {
+            require(['toonly/javascripts/only-router'], function (router) {
+                router.restore();
+            });
+        } else {
+
+            require(['jquery'], function ($) {
+                $(function () {
+                    window.top.require(['toonly/javascripts/only-router'], function (router) {
+
+                        $('section.blog-header span').click(function (event) {
+                            event.preventDefault();
+
+                            router.go('index_.html');
+                        });
+                    });
+                });
+            });
+        }
+    </script>
 </head>
 <body>
 <section class="blog-header">
@@ -2519,22 +2550,6 @@ Process finished with exit code 0</pre>
 <div id="tongji">
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
 </div>
-
-<script type="text/javascript" src="javascripts/jquery.min.js"></script>
-<script>
-    var _onload = window.onload || function() {};
-    window.onload = function () {
-        _onload();
-        window.parent.require(['toonly/javascripts/only-pageslide'], function (pageSlide) {
-
-            $('section.blog-header span').click(function (event) {
-                event.preventDefault();
-
-                pageSlide.go('index_.html');
-            });
-        });
-    };
-</script>
 </body>
 </html>
     

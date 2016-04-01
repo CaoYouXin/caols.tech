@@ -75,15 +75,14 @@
             }
         });
 
-        var _onload = window.onload || function() {};
-        window.onload = function () {
-            _onload();
-
-            require(['jquery', 'toonly/javascripts/only-pageslide'], function ($, pageSlide) {
-                pageSlide.init();
-                pageSlide.go('index_.html');
+        require(['jquery'], function ($) {
+            $(function () {
+                require(['toonly/javascripts/only-pageslide', 'toonly/javascripts/only-router'], function (pageSlide, router) {
+                    var urlSnapshot = pageSlide.init();
+                    router.go(urlSnapshot ? urlSnapshot : 'index_.html');
+                });
             });
-        };
+        });
     </script>
 </head>
 <body>

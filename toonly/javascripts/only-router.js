@@ -1,12 +1,22 @@
 /**
  * Created by caoyouxin on 3/25/16.
  */
-define([], function () {
+define(['require'], function (require) {
 
+    var locationPrefix = '/blog/';
     var historyStack = [];
     var skip = null;
+    var _pageSlide = null;
+    function pageSlide() {
+        return _pageSlide = _pageSlide || require('toonly/javascripts/only-pageslide');
+    }
 
     window.onpopstate = function (event) {
+
+        if (event.state && event.state.home) {
+            location.reload();
+            return false;
+        }
 
         historyStack.reverse();
         historyStack.shift();
@@ -24,6 +34,8 @@ define([], function () {
         console.log('after: ', historyStack);
 
         console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+
+        pageSlide().go(event.state.url);
     };
 
     return {
@@ -48,8 +60,8 @@ define([], function () {
 
                 history.pushState({
                     skip: skip
-                }, '', url);
-                history.pushState(null, '', location.href);
+                }, url, url);
+                history.pushState(null, url, location.href);
 
                 for (var i = 0; i <= skip; i++) {
                     history.back();
@@ -61,8 +73,20 @@ define([], function () {
             historyStack.push(url);
             historyStack.push(null);
 
-            history.pushState(null, '', url);
-            history.pushState(null, '', location.href);
+            history.pushState({
+                url: url
+            }, url, url);
+            history.pushState(null, url, location.href);
+            history.back();
+        },
+        restore: function () {
+            var location = document.location.toString();
+            localStorage.setItem('urlSnapshot', location.replace(new RegExp('^.*?' + locationPrefix + '(.*?)$'), '$1'));
+            localStorage.removeItem('lastTimeData');
+            history.replaceState({
+                home: true
+            }, '', 'index.html');
+            history.pushState(null, '', '');
             history.back();
         }
     };

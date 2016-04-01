@@ -1,7 +1,7 @@
 /**
  * Created by caoyouxin on 3/29/16.
  */
-define(['jquery', 'handlebars', 'polyfill'], function ($, handlebars) {
+define(['jquery', 'handlebars', 'toonly/javascripts/only-router', 'polyfill'], function ($, handlebars, router) {
 
     var urlStack = [], regular = /data-rel=".*?"/g;
 
@@ -28,19 +28,32 @@ define(['jquery', 'handlebars', 'polyfill'], function ($, handlebars) {
                 self.right();
             });
 
+            var urlSnapshot = localStorage.getItem('urlSnapshot');
+            if (urlSnapshot) {
+                urlStack = JSON.parse(localStorage.getItem('urlStackSnapshot'));
+                localStorage.removeItem('urlSnapshot');
+            }
+
             self.refresh();
+
+            return urlSnapshot;
         },
         refresh: function () {
+            console.log(urlStack);
+
             var windowWidth = $(window).width();
             var $ul = $('ul.pageslides');
             $ul.css('width', (windowWidth * urlStack.length) + 'px');
 
             var html = pageslideTplFn(urlStack);
-            var lastTimeData = localStorage.getItem('lastTimeData');
+            var lastTimeData = localStorage.getItem('lastTimeData') || '';
             localStorage.setItem('lastTimeData', html);
 
             var oldItems = lastTimeData.match(regular);
             var newItems = html.match(regular);
+
+            console.log(oldItems);
+            console.log(newItems);
 
             if (oldItems !== null && newItems !== null) {
                 if (oldItems.length < newItems.length) {
@@ -68,6 +81,7 @@ define(['jquery', 'handlebars', 'polyfill'], function ($, handlebars) {
             var $pageslides = $('ul.pageslides > li.pageslide');
             $pageslides.css('width', windowWidth + 'px');
 
+            localStorage.setItem('urlStackSnapshot', JSON.stringify(urlStack));
             return $pageslides;
         },
         go: function (url) {
@@ -106,7 +120,7 @@ define(['jquery', 'handlebars', 'polyfill'], function ($, handlebars) {
                 return false;
             }
 
-            this.go($pageslides.eq(indexOf - 1).find('iframe').attr('src'));
+            router.go($pageslides.eq(indexOf - 1).find('iframe').attr('src'));
         },
         right: function () {
             var $pageslides = $('ul.pageslides > li.pageslide');
@@ -118,7 +132,7 @@ define(['jquery', 'handlebars', 'polyfill'], function ($, handlebars) {
                 return false;
             }
 
-            this.go($pageslides.eq(indexOf + 1).find('iframe').attr('src'));
+            router.go($pageslides.eq(indexOf + 1).find('iframe').attr('src'));
         }
     };
 });
