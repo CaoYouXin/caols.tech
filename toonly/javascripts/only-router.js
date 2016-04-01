@@ -13,6 +13,8 @@ define(['require'], function (require) {
 
     window.onpopstate = function (event) {
 
+        console.log('event: ', event);
+
         if (event.state && event.state.home) {
             location.reload();
             return false;
@@ -28,12 +30,11 @@ define(['require'], function (require) {
 
         if (skip > 0) {
             skip--;
+            history.back();
             return false;
         }
 
         console.log('after: ', historyStack);
-
-        console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
 
         pageSlide().go(event.state.url);
     };
@@ -41,7 +42,7 @@ define(['require'], function (require) {
     return {
         go: function (url) {
 
-            console.log(url);
+            console.log('go: ', url);
             console.log('before: ', historyStack);
 
             if (url.match(/.*?:\/\/(.*?)\/.*/)) {
@@ -60,13 +61,10 @@ define(['require'], function (require) {
 
                 history.pushState({
                     skip: skip
-                }, url, url);
-                history.pushState(null, url, location.href);
+                }, '', url);
+                history.pushState(null, '', location.href);
 
-                for (var i = 0; i <= skip; i++) {
-                    history.back();
-                }
-
+                history.back();
                 return;
             }
 
@@ -75,8 +73,8 @@ define(['require'], function (require) {
 
             history.pushState({
                 url: url
-            }, url, url);
-            history.pushState(null, url, location.href);
+            }, '', url);
+            history.pushState(null, '', location.href);
             history.back();
         },
         restore: function () {

@@ -39,7 +39,7 @@ define(['jquery', 'handlebars', 'toonly/javascripts/only-router', 'polyfill'], f
             return urlSnapshot;
         },
         refresh: function () {
-            console.log(urlStack);
+            console.log('urlStack: ', urlStack);
 
             var windowWidth = $(window).width();
             var $ul = $('ul.pageslides');
@@ -52,8 +52,8 @@ define(['jquery', 'handlebars', 'toonly/javascripts/only-router', 'polyfill'], f
             var oldItems = lastTimeData.match(regular);
             var newItems = html.match(regular);
 
-            console.log(oldItems);
-            console.log(newItems);
+            console.log('oldItems: ', oldItems);
+            console.log('newItems: ', newItems);
 
             if (oldItems !== null && newItems !== null) {
                 if (oldItems.length < newItems.length) {
