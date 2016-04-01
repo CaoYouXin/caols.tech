@@ -65,25 +65,8 @@
         }
     </style>
     <script type="text/javascript" src="javascripts/require.min.js"></script>
-    <script>
-        require.config({
-            baseUrl: '.',
-            paths: {
-                'jquery': 'javascripts/jquery.min',
-                'handlebars': 'javascripts/handlebars.min',
-                'polyfill': 'javascripts/polyfill'
-            }
-        });
-
-        require(['jquery'], function ($) {
-            $(function () {
-                require(['toonly/javascripts/only-pageslide', 'toonly/javascripts/only-router'], function (pageSlide, router) {
-                    var urlSnapshot = pageSlide.init();
-                    router.go(urlSnapshot ? urlSnapshot : 'index_.html');
-                });
-            });
-        });
-    </script>
+    <script type="text/javascript" src="toonly/javascripts/require-config.js"></script>
+    <script type="text/javascript" src="toonly/javascripts/init/index.js"></script>
 </head>
 <body>
 </body>

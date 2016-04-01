@@ -74,36 +74,8 @@
         }
     </style>
     <script type="text/javascript" src="javascripts/require.min.js"></script>
-    <script>
-        require.config({
-            baseUrl: '.',
-            paths: {
-                'jquery': 'javascripts/jquery.min',
-                'handlebars': 'javascripts/handlebars.min',
-                'polyfill': 'javascripts/polyfill'
-            }
-        });
-
-        if (window === window.top) {
-            require(['toonly/javascripts/only-router'], function (router) {
-                router.restore();
-            });
-        } else {
-
-            require(['jquery'], function ($) {
-                $(function () {
-                    window.top.require(['toonly/javascripts/only-router'], function (router) {
-
-                        $('section.blog-header span').click(function (event) {
-                            event.preventDefault();
-
-                            router.go('index_.html');
-                        });
-                    });
-                });
-            });
-        }
-    </script>
+    <script type="text/javascript" src="toonly/javascripts/require-config.js"></script>
+    <script type="text/javascript" src="toonly/javascripts/init/blogs_20160322.js"></script>
 </head>
 <body>
 <section class="blog-header">

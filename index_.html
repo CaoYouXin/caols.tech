@@ -5,54 +5,12 @@
     <title>CaoYouXin&#39;s blog by CaoYouXin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.min.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="toonly/stylesheets/blog.css" media="screen">
     <script type="text/javascript" src="javascripts/require.min.js"></script>
-    <script>
-        require.config({
-            baseUrl: '.',
-            paths: {
-                'jquery': 'javascripts/jquery.min',
-                'handlebars': 'javascripts/handlebars.min',
-                'polyfill': 'javascripts/polyfill'
-            }
-        });
-
-        if (window === window.top) {
-            require(['toonly/javascripts/only-router'], function (router) {
-                router.restore();
-            });
-        } else {
-
-            require(['jquery'], function ($) {
-                $(function () {
-                    window.top.require(['handlebars', 'toonly/javascripts/only-router'], function (Handlebars, router) {
-
-                        $.getJSON('articles.json', function (data) {
-
-                            $.get('toonly/x-handlebars-templates/article_list.html', function (tpl) {
-                                var tplFn = Handlebars.compile(tpl);
-                                var html = tplFn(data);
-
-                                var $articleList = $('#article_list');
-
-                                $articleList.html(html);
-
-                                $articleList.on('click', 'a', function (event) {
-                                    event.preventDefault();
-
-                                    var url = $(this).attr('data-rel');
-                                    router.go(url);
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        }
-    </script>
+    <script type="text/javascript" src="toonly/javascripts/require-config.js"></script>
+    <script type="text/javascript" src="toonly/javascripts/init/index_.js"></script>
 </head>
 <body>
 <section class="page-header">
