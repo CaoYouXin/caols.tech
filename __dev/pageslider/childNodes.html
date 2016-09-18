@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ChildNodes测试</title>
+
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/normalize/normalize.min.css" media="screen">
+</head>
+<body>
+
+<ul id="theUL">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+</ul>
+
+<script>
+    var ulElem = document.getElementById('theUL');
+    console.log(ulElem.childElementCount);
+
+    var it = ulElem.firstElementChild, count = 0;
+    do {
+        count++;
+        console.log(it);
+    } while (it = it.nextElementSibling);
+
+    console.log(count === ulElem.childElementCount);
+</script>
+</body>
+</html>

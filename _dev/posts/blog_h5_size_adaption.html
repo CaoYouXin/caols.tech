@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>H5屏幕适配</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../toonly/stylesheets/blog.css" media="screen">
+    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
+    <script type="text/javascript" src="../require-config.js"></script>
+    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+</head>
+<body>
+<section class="blog-header">
+    <span>CaoYouXin's blog</span>
+</section>
+
+<section class="blog-content">
+    <p>项目背景: 适应各种手机屏幕尺寸的H5页面.</p>
+    <p>1. 解析&lt;meta name="viewport" content="width=750, user-scalable=no"&gt;</p>
+    <p>2. 针对不同平台做不同的处理</p>
+<pre>
+if (isAndroid) {
+    var medium_dpi = data.width / win.screen.availWidth * window.devicePixelRatio * 160;
+
+    medium_dpi = medium_dpi.toFixed(2);
+
+    data['target-densitydpi'] = medium_dpi;
+} else {
+    var scale = win.screen.availWidth / data.width;
+
+    scale = scale.toFixed(2);
+
+    data['initial-scale'] = data['maximum-scale'] = data['minimum-scale'] = scale;
+}
+</pre>
+    <p>3. PageSlide中的问题, iframe设置方式采用body上加zoom属性</p>
+<pre>
+if (data.width !== pData.width) {
+    document.body.style.zoom = pData.width / data.width;
+}
+</pre>
+</section>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>恍恍惚惚；杳杳冥冥！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="3rdLib/normalize/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="build/pageslider/pageslider.min.css">
+
+    <script type="text/javascript" src="3rdLib/md5/md5.min.js"></script>
+    <script type="text/javascript" src="3rdLib/js.cookie/js.cookie.js"></script>
+    <script type="text/javascript" src="3rdLib/handlebars/handlebars.min.js"></script>
+    <script type="text/javascript" src="build/pageslider/router.min.js"></script>
+    <script type="text/javascript" src="build/pageslider/pageslider.min.js"></script>
+</head>
+<body>
+<script>
+    var psPages = Cookies.getJSON('ps-pages');
+    PageSlider.init(psPages);
+    var urlSnapshot = Cookies.get('url-snapshot');
+    Router.go((null !== urlSnapshot && undefined !== urlSnapshot) ? urlSnapshot : '_dev/index_.html', PageSlider.go);
+</script>
+</body>
+</html>

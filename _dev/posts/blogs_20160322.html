@@ -1,0 +1,2527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Language" content="zh-CN"/>
+    <title>CaoYouxin的博客</title>
+    <link rel="stylesheet" type="text/css" href="../toonly/stylesheets/blog.css">
+    <style>
+        body {
+            font: 12px/21px Tahoma, "Microsoft Yahei", Geneva, sans-serif;
+        }
+
+        h1 a {
+            color: #40AA53;
+        }
+
+        h1 a, h2 a {
+            text-decoration: none;
+        }
+
+        .backupDesc em {
+            font-style: normal;
+        }
+
+        .blog {
+            margin: 0 0 20px 0;
+            border: 1px solid #ccc;
+            background: #ffc;
+            padding: 10px;
+        }
+
+        .blog h2 {
+            border-bottom: 1px solid #ccc;
+            padding: 0 0 10px 0;
+        }
+
+        .blog h2 a.top {
+            float: right;
+            font-weight: normal;
+            font-size: 9pt;
+        }
+
+        .blog .outline {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 10px;
+            color: #666;
+        }
+
+        .commentList {
+            margin: 20px 0 0 0;
+        }
+
+        .comment {
+            margin: 0 0 10px 0;
+            border: 1px solid #ddd;
+            background: #ffe;
+            padding: 5px;
+        }
+
+        .comment .author {
+            float: left;
+            font-weight: bold;
+        }
+
+        .comment .date {
+            float: left;
+            margin: 0 0 0 10px;
+        }
+
+        .comment .content {
+            clear: left;
+            margin: 5px 0 0 0;
+        }
+    </style>
+    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
+    <script type="text/javascript" src="../require-config.js"></script>
+    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+</head>
+<body>
+<section class="blog-header">
+    <span>CaoYouXin's blog</span>
+</section>
+<h1><a name='top' href="http://my.oschina.net/cshadow/blog">CaoYouxin的博客@OSCHINA</a></h1>
+<p class='backupDesc'>共有<em>32</em>篇文章，备份时间：2016-03-22 17:36:31</p>
+<ol>
+    <li><a href="#blog_645363">寻路——连线</a></li>
+    <li><a href="#blog_645362">类之间的关系</a></li>
+    <li><a href="#blog_645361">神奇的paint方法</a></li>
+    <li><a href="#blog_645360">对云存储的一点认识</a></li>
+    <li><a href="#blog_645359">Java集合框架</a></li>
+    <li><a href="#blog_645358">Java数组</a></li>
+    <li><a href="#blog_645357">Java内存回收</a></li>
+    <li><a href="#blog_645356">泛型的类型擦除</a></li>
+    <li><a href="#blog_645355">从Excel导入到MySQL</a></li>
+    <li><a href="#blog_645354">文件存取</a></li>
+    <li><a href="#blog_645353">端口扫描器</a></li>
+    <li><a href="#blog_645352">Switch和for表达式细节</a></li>
+    <li><a href="#blog_645351">重回压缩</a></li>
+    <li><a href="#blog_645350">条件语句精简代码</a></li>
+    <li><a href="#blog_645349">继承的例子</a></li>
+    <li><a href="#blog_645348">Java异常处理</a></li>
+    <li><a href="#blog_645347">用Java实现信号量机制</a></li>
+    <li><a href="#blog_645346">String对正则表达式的支持</a></li>
+    <li><a href="#blog_645345">邻接矩阵表示图的深度优先算法-堆栈实现</a></li>
+    <li><a href="#blog_645344">24位真彩BMP格式</a></li>
+    <li><a href="#blog_645343">访问一个类的静态field</a></li>
+    <li><a href="#blog_645342">System.identityHashCode(Object obj)</a></li>
+    <li><a href="#blog_645341">JSP+Servlet的一些些编写方式</a></li>
+    <li><a href="#blog_645340">Java内存分配</a></li>
+    <li><a href="#blog_645339">java中错误与异常的总结</a></li>
+    <li><a href="#blog_645338">标准模板库STL</a></li>
+    <li><a href="#blog_645337">差分法求数据压缩</a></li>
+    <li><a href="#blog_645336">二分搜索递归实现代码中return的去留问题</a></li>
+    <li><a href="#blog_645335">给Java类填入默认值</a></li>
+    <li><a href="#blog_645334">ACM赛后感想</a></li>
+    <li><a href="#blog_645333">Log4j学习</a></li>
+    <li><a href="#blog_645332">多线程与同步</a></li>
+</ol>
+<div class='blogList'>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645363" href="http://my.oschina.net/cshadow/blog/645363">寻路——连线</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:35</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：算法,数据结构,工作,J#</div>
+        </div>
+        <div class='content'><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            本人初学Java，这个算法（呵呵，这个小东西也叫算法的话：我们数据结构老师讲的哦“你们现在学的算法其实都不是算法”）是在做连连看时用到的。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                连连中如果把连线规则定义为无限拐点，那么连通这两个节点的工作就和在迷宫中已知起点终点寻路的工作一样了。因此，在写这个算法之前主要参考了两种算法：一种是递归算法，一种是A星寻路算法。不说别的了，先奉上我写的伪码：</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;public class Node ｛//把所有的节点包装成一个Node对象，一下为Node中的属性及方法</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private String path;//图片路径<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                private boolean accessible;//节点位置是否为空<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private int x;//节点位置信息<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;private int y;//节点位置信息<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;private int score;//每个节点的权值</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; get/set方法略……</p>
+            <p>&nbsp;</p>
+            <p>｝</p>
+            <p>&nbsp;</p>
+            <p>public boolean sAstar()｛</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ……//获得每个节点是否可通过的信息.简单地，节点上有图片的为不可通过，没有图片的为可通过<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ……//获得每个节点的得分</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//计算得分的规则不惟一，但是所计算出来的得分必须能反映所有节点到终点的距离上的相对大小(这应该是一种估算)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                new Stack&lt;Node&gt;();//开启栈<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;open.push(node1);//把其中一个节点放入开启栈，相当于把这个节点当作迷宫中的起点<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new
+                Stack&lt;Node&gt;();// 关闭栈<br>&nbsp;&nbsp; &nbsp; &nbsp;while (//开启栈不为空) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;j = open.pop();//弹出开启栈顶的节点，称为一个可能的父节点</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                //因为这种算法找的的路径只有一条，并且关闭栈里最终保存的将是那条最短的路径<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ……// 清空open栈备待会儿装入周围点&nbsp;&nbsp;&nbsp;</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //遍历周围的节点{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;if (//正在遍历的节点就是终点){<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp; //returne true：可以连通<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;}
+                else if (//正在遍历的节点属性为可通过的，并且当前既不在开启栈又不在关闭栈) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;//将正在遍历的节点放入开启栈，以备接下来的判断和排序<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp; if (开启栈是空的，也就是会说周围四个点除了有一个可能是来路以外，无路可走了！) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;//当前弹出的那个可能的父节点j节点已经不在可能是父节点了，因此将它的可通行属性设为false<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;//将刚才放入关闭栈的符节点取出，再压入开启栈</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;//如果这时关闭栈是空的，那就是说退到起点了，就可以返回false了<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                }// end if<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //将那个可能的父节点放入关闭栈保存起来
+            </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//对开启栈排序，确保下次取到的可能父节点为离终点最近的</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;}// end while<br>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;//这个方法中如果可以连通，只有一处可以判断，即上边那个returne
+                true<br>&nbsp;}</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 我的整个连连看源码在附件中，不过除了能连无限拐点，以外就没有什么功能了，可以说是一个迷宫了，呵呵</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645362" href="http://my.oschina.net/cshadow/blog/645362">类之间的关系</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:34</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：设计模式,工作</div>
+        </div>
+        <div class='content'>
+            <pre class="brush:java;toolbar:true">这是本人系统学习设计模式之前的一篇记录类之间的关系的文章。</pre>
+            <p>首先感谢老师透彻的讲解，在这里我只做一些复习工作：</p>
+            <p>&nbsp;</p>
+            <p><strong>一、关联关系</strong></p>
+            <p>关联关系在英文中用万能动词have可以形象的说明。</p>
+            <p>据我们对英文的了解，用到have的时候大致可以分为两种：</p>
+            <p>1）I have blue eyes.&nbsp;&nbsp;&nbsp; 2）I have a&nbsp;girlfriend.</p>
+            <p>对于第一种，我和蓝眼睛是整体和部分的关系；第二种则不是。而且，第二句话通常情况下还可以说成某某girl has a boyfriend. 他们之间存在一对一、一对多以及多对多的关系。</p>
+            <p>关联关系在代码上的实现，基本上是通过将一个类的对象写成另一个类的成员变量。以下代码表示A has B.</p>
+<pre class="brush:java;toolbar:true">class ClassB {
+
+        ... ...
+
+}
+
+class ClassA {
+
+        private ClassB b;
+
+        ... ...
+
+}</pre>
+            <p>&nbsp;</p>
+            <p>对于具备整体和部分关系的关联关系可以进一步细分为聚合关系和组合关系。</p>
+            <p>它们的共同点在于整体和部分遵守一对一或一对多的关系，都不会出现多对多关系。</p>
+            <p>区别很简单，假想<strong>聚合</strong>的<strong>聚</strong>字就是朋友间<strong>聚会</strong>的<strong>聚</strong>字，那么一句话就搞定——天下没有不散的宴席。
+            </p>
+            <p>聚合关系的几个对象都是可以单独存在的，如汽车和轮胎、电脑和显示器。</p>
+            <p>组合关系顾名思义只有组合在一起才是个东东，这些东西一旦拆开后重用性不是很大，比如一个人和他的蓝眼睛。</p>
+            <p>在实现上两种关系更容易区别：</p>
+            <p>聚合关系的成员变量通过外部实例化好后以参数传入赋值，叫做注入。通常有两种注入：构造注入和Set注入。</p>
+<pre class="brush:java;toolbar:true">class ClassB {
+
+        ... ...
+
+}
+
+class ClassA {
+
+        private ClassB b;
+
+        ... ...
+
+        /* 构造注入; */
+        public ClassA(ClassB b) {
+                this.b=b;
+        }
+
+        /* Set注入; */
+        public setB(ClassB b) {
+                this.b=b;
+        }
+
+        ... ...
+
+}</pre>
+            <p>&nbsp;</p>
+            <p>组合关系的成员变量则通过在方法体内部实例化对象。</p>
+<pre class="brush:java;toolbar:true">class ClassB {
+
+        ... ...
+
+}
+
+class ClassA {
+
+        private ClassB b;
+
+        ... ...
+
+        public void method() {
+                ... ...
+                b=new ClassB();
+                ... ...
+        }
+
+        ... ...
+
+}</pre>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p><strong>二、依赖关系</strong></p>
+            <p>依赖关系与关联关系是不同的，用 A depend on B 记忆较为贴切。</p>
+            <p>依赖关系理解上没有障碍，在代码实现上以下有三种：</p>
+            <p>&nbsp;</p>
+<pre class="brush:java;toolbar:true">class ClassB {
+
+        public void method1(){
+                 ... ...
+        }
+
+        public static void method2(){
+                 ... ...
+        }
+
+}</pre>
+            <p>&nbsp;</p>
+            <p>1）类A的方法需传入类B的对象;</p>
+<pre class="brush:java;toolbar:true">class ClassA {
+
+         public void method(ClassB b) {
+                 ... ...
+                 b.method1();
+                 ... ...
+         }
+
+}</pre>
+            <p>&nbsp;</p>
+            <p>2）类A的方法实现时调用类B的静态方法;</p>
+<pre class="brush:java;toolbar:true">class ClassA {
+
+         public void method() {
+                 ... ...
+                 ClassB.method2();
+                 ... ...
+         }
+
+}</pre>
+            <p>&nbsp;</p>
+            <p>3）类A的方法体中有类B类型的局部变量。</p>
+<pre class="brush:java;toolbar:true">class ClassA {
+
+         public void method() {
+                 ... ...
+                 ClassB b=new ClassB();
+                 ... ...
+         }
+
+}</pre>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p><strong>三、泛化关系</strong></p>
+            <p>泛化关系实际上就是通常讲的那些继承啦、实现啦……</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645361" href="http://my.oschina.net/cshadow/blog/645361">神奇的paint方法</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:33</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：算法,IDEA</div>
+        </div>
+        <div class='content'>
+            <pre>胡老师曾讲过：做过画板项目后，界面那个东东就可以随心所欲了……</pre>
+            <pre>最近，学校做CPU调度算法的作业，要求图形化界面。我想到用paint来画一画，效果如下：</pre>
+            <pre><img src="http://static.oschina.net/uploads/img/201603/22164735_5qzv.jpg" height="582" alt=""
+                      width="623"></pre>
+            <pre>心得如下：</pre>
+            <pre>用paint画东东，就像用PS画图一样。什么“前景色”、“背景色”、“图层”等等的概念要自己实现。例如，要先</pre>
+            <pre>draw背景色再draw前景色。还有一些阴影、发光点等我能想到的大概都是这样。</pre>
+            <pre>有时会遇到纠结的问题，Math求的一些数值有时是有误差的。于是 ，我想到一个现象：java的API给了那么多牛X的</pre>
+            <pre>方法，很多都是调用的一个核心方法（重载是最明显的）。我找到平时最不常调用的几个方法，再找出不认识的那个单</pre>
+            <pre>词，就是Polygon（当然现在认识喽，多边形、多角形的意思）。就是它了drawPolygon 和 fillPolygon方法。</pre>
+            <pre>下面是另外一个我的实验品：</pre>
+            <pre><img src="http://static.oschina.net/uploads/img/201603/22164735_htro.jpg" height="498" alt=""
+                      width="498"></pre>
+            <pre>代码在附件中，还要用它完善操作系统的实验呢，Sayounala！</pre>
+        </div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645360" href="http://my.oschina.net/cshadow/blog/645360">对云存储的一点认识</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:32</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：云计算,本质,模型,技术</div>
+        </div>
+        <div class='content'>
+            <div class="Section0">
+                <p style="text-indent: 21pt; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-family: ">云存储是在云计算概念上延伸和发展出来的一个新的概念。关于云计算我在培训机构听说过，但没有参与到那个项目组，现在想起来很可惜。今天，就根据百度百科和前不久校长的一次讲座对云存储谈一二百字的认识。</span><span
+                        style="font-family: "></span></p>
+                <p style="text-indent: 21pt; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-family: ">首先，先谈谈云计算的本质。相对于现代计算机将并行计算转化为串行计算的本质而谈，云计算恰恰将计算机一贯的串行计算转化为并行计算。这其中不免涉及到不止一台服务器完成计算，因此在云计算的概念里网络也包含在内。</span><span
+                        style="font-family: "></span></p>
+                <p style="text-indent: 21pt; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-family: ">其次，云存储的4层模型。存储层、基础管理层、应用接口层、访问层。存储层是驱动硬件的一层；基础管理层将不同存储设备统一起来，并且提供额外的性能支撑如数据加密、容灾等；应用接口层是业务逻辑层；访问层提供标准的对外服务接口。</span><span
+                        style="font-family: "></span></p>
+                <p style="text-indent: 21pt; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-family: ">最后，关于云存储实际上使用什么技术。我不是非常了解，也没有相应的编码经验，我听说过Hadoop集群。在接下来的一段时间里，可以在培训机构那边补充部分具体知识吧。</span><span
+                        style="font-family: "></span></p>
+                <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-family: "></span></p>
+            </div>
+            &lt;!--EndFragment--&gt;</div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645359" href="http://my.oschina.net/cshadow/blog/645359">Java集合框架</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:32</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span><span
+                    style="font-family: Calibri;">Java</span></span><span style="">集合框架</span><span></span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span><span
+                    style="font-family: Calibri; font-size: small;"> </span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span><span
+                    style="font-family: Calibri;">HashMap</span></span><span style="">和</span><span><span
+                    style="font-family: Calibri;">HashSet</span></span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span><span
+                    style="font-family: Calibri;">HashMap</span></span><span style="">在底层将</span><span><span
+                    style="font-family: Calibri;">key-value</span></span><span
+                    style="">对当成一个整体进行处理，这个整体就是一个</span><span><span
+                    style="font-family: Calibri;">Entry</span></span><span style="">对象。</span><span><span
+                    style="font-family: Calibri;">HashMap</span></span><span style="">底层采用一个</span><span><span
+                    style="font-family: Calibri;">Entry[]</span></span><span style="">数组来保存所有的</span><span><span
+                    style="font-family: Calibri;">key-value</span></span><span style="">对，当需要存储一个</span><span><span
+                    style="font-family: Calibri;">Entry</span></span><span style="">对象时，会根据</span><span><span
+                    style="font-family: Calibri;">Hash</span></span><span style="">算法来决定其存储位置（</span><span><span
+                    style="font-family: Calibri;">indexFor</span></span><span style="">方法）；当需要取出一个</span><span><span
+                    style="font-family: Calibri;">Entry</span></span><span style="">时，也会根据</span><span><span
+                    style="font-family: Calibri;">Hash</span></span><span style="">算法找到其存储位置，直接取出该</span><span><span
+                    style="font-family: Calibri;">Entry</span></span><span style="">。由此可见，</span><span><span
+                    style="font-family: Calibri;">HashMap</span></span><span style="">之所以能快速存、取它所包含的</span><span><span
+                    style="font-family: Calibri;">Entry</span></span><span style="">，完全类似于现实生活中的：不同的东西要放在不同位置，需要时才能快速找到它。</span><span></span></span>
+            </p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span
+                    style="">当创建</span><span><span style="font-family: Calibri;">HashMap</span></span><span style="">时，有一个默认的负载因子（</span><span><span
+                    style="font-family: Calibri;">load factor</span></span><span style="">），其默认值为</span><span><span
+                    style="font-family: Calibri;">0.75</span></span><span
+                    style="">。这是时间和空间成本上的一种折衷：增大负载因子可以减少</span><span><span
+                    style="font-family: Calibri;">Hash</span></span><span style="">表（就是那个</span><span><span
+                    style="font-family: Calibri;">Entry</span></span><span style="">数组）所占用的内存空间，但会增加查询数据的时间开销，而查询是最频繁的操作（</span><span><span
+                    style="font-family: Calibri;">HashMap</span></span><span style="">的</span><span><span
+                    style="font-family: Calibri;">get()</span></span><span style="">与</span><span><span
+                    style="font-family: Calibri;">put()</span></span><span
+                    style="">方法都要用到查询）；减小负载因子会提高数据查询的性能，但会增加</span><span><span style="font-family: Calibri;">Hash</span></span><span
+                    style="">表所占用的内存空间。</span><span></span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span><span
+                    style="font-family: Calibri;">HashSet</span></span><span
+                    style="">的实现其实非常简单，它只是封装了一个</span><span><span
+                    style="font-family: Calibri;">HashMap</span></span><span
+                    style="">对象来存储所有的集合元素。所有放入</span><span><span
+                    style="font-family: Calibri;">HashSet</span></span><span style="">中的集合元素实际上由</span><span><span
+                    style="font-family: Calibri;">HashMap</span></span><span style="">的</span><span><span
+                    style="font-family: Calibri;">key</span></span><span style="">来保存，而</span><span><span
+                    style="font-family: Calibri;">HashMap</span></span><span style="">的</span><span><span
+                    style="font-family: Calibri;">value</span></span><span style="">则存储了一个</span><span><span
+                    style="font-family: Calibri;">PERSENT</span></span><span style="">，它是一个静态的</span><span><span
+                    style="font-family: Calibri;">Object</span></span><span style="">对象。</span><span><span
+                    style="font-family: Calibri;"><span style=""> </span></span></span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span><span
+                    style="font-family: Calibri; font-size: small;"> </span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span><span
+                    style="font-family: Calibri;">Deque</span></span><span style="">接口</span><span></span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span style="">在无需保证线程安全的情况下，程序完全可以使用</span><span><span
+                    style="font-family: Calibri;">ArrayDeque</span></span><span style="">来代替</span><span><span
+                    style="font-family: Calibri;">Stack</span></span><span style="">类。</span><span></span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span><span
+                    style="font-family: Calibri; font-size: small;"> </span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span><span
+                    style="font-family: Calibri;">ArrayList</span></span><span style="">和</span><span><span
+                    style="font-family: Calibri;">Vector</span></span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span><span
+                    style="font-family: Calibri;">ArrayList</span></span><span style="">使用</span><span><span
+                    style="font-family: Calibri;">transient</span></span><span style="">修饰了</span><span><span
+                    style="font-family: Calibri;">elementData</span></span><span style="">数组。这保证系统序列化</span><span><span
+                    style="font-family: Calibri;">ArrayList</span></span><span style="">对象时不会直接序列化</span><span><span
+                    style="font-family: Calibri;">elementData</span></span><span style="">数组，而是通过</span><span><span
+                    style="font-family: Calibri;">ArrayList</span></span><span style="">提供的</span><span><span
+                    style="font-family: Calibri;">writeObject</span></span><span style="">、</span><span><span
+                    style="font-family: Calibri;">readObject</span></span><span style="">方法来实现定制序列化；而</span><span><span
+                    style="font-family: Calibri;">Vector</span></span><span
+                    style="">并未完全实现定制序列化。</span><span></span></span></p>
+            <p><span style=""> </span></p>
+            <p style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: small;"><span
+                    style="">从序列化机制的角度看，</span><span><span style="font-family: Calibri;">ArrayList</span></span><span
+                    style="">的实现比</span><span><span style="font-family: Calibri;">Vector</span></span><span style="">的实现更安全；但如果从线程安全的角度看，</span><span><span
+                    style="font-family: Calibri;">Vector</span></span><span style="">更安全。</span><span></span></span></p>
+            <p><span style=""> </span><span style="">Java</span><span style="">提供了一个</span><span
+                    style="">Collections</span><span style="">工具类，通过该工具类</span><span
+                    style="">synchornizedList</span><span style="">方法即可将一个普通</span><span style="">ArrayList</span><span
+                    style="">包装成线程安全的</span><span style="">ArrayList</span><span style="">。</span></p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645358" href="http://my.oschina.net/cshadow/blog/645358">Java数组</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:31</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">小小的数组，知识还真不少！</span><span></span></span>
+        </p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span><span style="font-family: Calibri;">Java</span></span><span
+                    style="">数组是静态的，与之相对的是</span><span><span style="font-family: Calibri;">JavaScript</span></span><span
+                    style="">的动态数组。</span><span></span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">提到</span><span><span
+                    style="font-family: Calibri;">Java</span></span><span style="">数组，往往会提到两个概念：数组变量和数组对象。数组变量只是一个引用变量，而数组对象就是保存在堆内存中的连续内存空间。对于数组变量来说，它并不需要进行所谓的初始化，只要让数组变量指向一个有效的数组对象，程序即可正常使用该数组变量。对数组对象的初始化有以下两种方式：</span><span></span></span>
+            </p>
+            <p style=""><span style="font-family: Wingdings;"><span style=""><span
+                    style="font-size: small;">l</span><span style="">&nbsp; </span></span></span><span
+                    style="font-size: small;"><span
+                    style="">静态初始化：初始化时由程序员显示指定每个数组元素的初始值，由系统决定数组的长度。</span><span></span></span></p>
+            <p style=""><span style="font-family: Wingdings;"><span style=""><span
+                    style="font-size: small;">l</span><span style="">&nbsp; </span></span></span><span
+                    style="font-size: small;"><span
+                    style="">动态初始化：初始化时程序员只指定数组长度，由系统为数组元素分配初始值。</span><span></span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">所有局部变量都是放在栈内存里保存的，不管其是基本类型的变量，还是引用类型的变量，都是存储在各自的方法栈中；但引用类型变量所引用的对象（包括数组、普通</span><span><span
+                    style="font-family: Calibri;">Java</span></span><span
+                    style="">对象）则总是存储在堆内存中。</span><span></span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">引用变量本质上只是一个指针，只要程序通过引用变量访问属性，或者通过引用变量来调用方法，该引用变量将会由它所引用的对象代替。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span><span style="font-family: Calibri;">Java</span></span><span
+                    style="">语言不允许直接访问堆内存中的数据，因此无法直接访问堆内存中的数组对象，程序将通过数组引用变量来访问数组。</span><span></span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">只要在已有数据类型之后加上方括号，就会产生一个新的数据类型；无论哪种类型的数组，其数组元素其实相当于一个普通变量，把数组类型之后的方括号去掉后得到的类型就是该数组元素的类型。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span><span
+                    style="font-family: Calibri;">N</span></span><span style="">维数组就是数组元素为</span><span><span
+                    style="font-family: Calibri;">N-1</span></span><span style="">维数组的数组。</span></span><span></span></p>
+        </div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645357" href="http://my.oschina.net/cshadow/blog/645357">Java内存回收</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:31</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p>&nbsp;</p>
+            <p style="text-align: left;"><span> </span></p>
+            <p style="text-align: left;"><span>基本上，可以把</span> <span>JVM</span> <span>内存中的对象引用理解成一种有向图，把引用变量、对象都当成为有向图的顶点，将引用关系当成图的有向边，有向边总是从引用端指向被引用的</span>
+                <span>Java</span> <span>对象。因为</span> <span>Java</span> <span>所有对象都是由一条一条线程创建出来的，因此可以把线程对象当成有向图的起始顶点。采用有向图来管理内存中的对象具有较高的精度，但缺点是效率较低。</span>
+            </p>
+            <p style="text-align: left;"><span>当一个对象在堆内存中运行时，根据它在对应有向图中的状态，可以把它所处的状态分成可达状态、可恢复状态和不可达状态。其中，可恢复状态指对象已经没有任何引用变量引用它，系统的垃圾回收机制准备回收该对象所占的内存。但在回收之前，系统调用该对象的</span>
+                <span>finalize</span> <span>方法进行资源清理，如果系统在调用</span> <span>finalize</span> <span>方法重新让一个以上引用变量引用该对象，则这个对象会再次变为可达状态；否则，该对象进入不可达状态。需要注意的是，一个对象的</span>
+                <span>finalize</span> <span>方法只会被调用一次。</span></p>
+            <p style="text-align: left;"><span>一个对象可以被一个方法局部变量所引用，也可以被其他类的类变量引用，或者被其他对象的实例变量所引用。</span></p>
+            <p style="text-align: left;"><span> </span></p>
+            <p style="text-align: left;"><span>强引用</span></p>
+            <p style="text-align: left;"><span>由于</span> <span>JVM</span> <span>肯定不会回收强引用所引用的</span> <span>Java</span>
+                <span>对象，因此强引用是造成</span> <span>Java</span> <span>内存泄露的主要原因之一。</span></p>
+            <p style="text-align: left;"><span>软引用</span></p>
+            <p style="text-align: left;"><span>对于只有软引用的对象而言，当系统内存空间足够时，它不会被系统回收，程序也可使用该对象；当系统内存空间不足时，系统将会回收它。</span></p>
+            <p style="text-align: left;"><span>弱引用</span></p>
+            <p style="text-align: left;"><span>对于只有弱引用的对象而言，当系统垃圾回收机制运行时，不管系统内存是否足够，总会回收该对象所占用的内存。</span></p>
+            <p style="text-align: left;"><span>软引用和弱引用都会造成引用的对象为</span> <span>null</span> <span>的现象，为此，需要在使用引用对象前判断对象是否为空，如果为空就重建该对象。</span>
+            </p>
+            <p style="text-align: left;"><span>虚引用</span></p>
+            <p style="text-align: left;">
+                <span>如果一个对象只有一个虚引用，那它和没有引用的效果大致相同。虚引用主要用于跟踪对象被垃圾回收的状态，虚引用不能单独使用，虚引用必须和引用队列（</span>
+                <span>ReferenceQueue</span> <span>）联合使用。</span></p>
+            <p style="text-align: left;"><span>需要指出的是，要使用这些特殊的引用类，就不能保留对对象的强引用。如果保留了对对象的强引用，就会浪费这些类所提供的任何好处。</span></p>
+            <p style="text-align: left;"><span> </span></p>
+            <p style="text-align: left;"><span>堆内存的分代回收</span></p>
+            <p style="text-align: left;"><span>分代回收策略基于以下两点事实：</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span> <span>绝大多数对象不会被长时间引用，这些对象在</span>
+                <span>Young</span> <span>期间就会被回收；</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span> <span>很老的对象和很新的对象之间很少存在相互引用的情况。</span>
+            </p>
+            <p style="text-align: left;"><span>Permanent</span> <span>代主要用于装载</span> <span>Class</span>
+                <span>、方法等信息，默认为</span> <span>64M</span> <span>，垃圾回收机制通常不会回收</span> <span>Permanent</span> <span>代中的对象。对于像</span>
+                <span>Hibernate</span> <span>、</span> <span>Spring</span> <span>这类喜欢</span> <span>AOP</span> <span>动态生成类的框架，往往会生成大量的动态代理类，因此需要更多的</span>
+                <span>Permanent</span> <span>代内存。</span></p>
+            <p style="text-align: left;"><span> </span></p>
+            <p style="text-align: left;"><span>内存管理的小技巧</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span> <span>尽量使用直接量</span>
+            </p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span> <span>使用</span>
+                <span>StringBuilder</span> <span>和</span> <span>StringBuffer</span>
+                <span>进行字符串连接(其中StringBuffer是线程安全版本)</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span>
+                <span>尽早释放无用对象的引用</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span>
+                <span>尽量少用静态变量</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span> <span>避免在经常调用的方法、循环中创建</span>
+                <span>Java</span> <span>对象</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span>
+                <span>缓存经常使用的对象</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span> <span>尽量不要使用</span>
+                <span>finalize</span> <span>方法</span></p>
+            <p><span style="font-family: Wingdings;"><span>l<span style=""> </span> </span> </span> <span>考虑使用</span>
+                <span>SoftReference</span></p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645356" href="http://my.oschina.net/cshadow/blog/645356">泛型的类型擦除</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:30</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p></p>
+            <p><span style="">当把一个具有泛型信息的对象赋给另一个没有泛型信息的变量时，所有在尖括号之间的类型信息都将被丢弃。这种擦除不仅会擦除使用该</span><span>Java</span><span
+                    style="">类时传入的类型实参，而且会擦除所有的泛型信息，也就是擦除所有尖括号里的信息。</span></p>
+            <p></p>
+<pre class="brush:java;toolbar:true">import java.util.ArrayList;
+import java.util.List;
+
+public class ErasureTest {
+
+	public static void main(String[] args) {
+		Apple&lt;Integer&gt; a = new Apple&lt;Integer&gt;(6);
+		for(String apple : a.getApples()) {
+			System.out.println(apple);
+		}
+		Apple b = a;
+		// 提示“不兼容的类型”编译错误
+		for(String apple : b.getApples()) {
+			System.out.println(apple);
+		}
+	}
+
+}
+
+class Apple&lt;T extends Number&gt; {
+	T size;
+
+	public Apple(T size) {
+		this.size = size;
+	}
+
+	public String toString() {
+		return "Apple[size=" + size + "]";
+	}
+	
+	public List&lt;String&gt; getApples() {
+		List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+		for (int i = 0; i &lt; 3; i++) {
+			list.add(new Apple&lt;Integer&gt;(10*i).toString());
+		}
+		return list;
+	}
+}</pre>
+            &nbsp;</div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645355" href="http://my.oschina.net/cshadow/blog/645355">从Excel导入到MySQL</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:30</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p>这个项目是一个Java项目。项目需求如下:</p>
+            <p>1.需导入的数据文件是Excel文件，使用jxl.jar包解析;</p>
+            <p>2.表结构是给定的，在导入时需要判断数据文件是否与表结构吻合。</p>
+            <p>&nbsp;</p>
+            <p>jxl.jar是一套纯Java的API，具有良好的跨平台性。<a target="_blank" href="http://baike.baidu.com/view/1327707.htm"
+                                                rel="nofollow">http://baike.baidu.com/view/1327707.htm</a>中有对jxl.jar包的全部介绍和基本操作及示例代码。
+            </p>
+            <p>&nbsp;</p>
+            <p>JDBC（Java Data Base Connectivity,java数据库连接）是一种用于执行SQL语句的Java API。在</p>
+            <p><a target="_blank" href="http://docs.oracle.com/javase/tutorial/jdbc/index.html" rel="nofollow">http://docs.oracle.com/javase/tutorial/jdbc/index.html</a>中可以获得全面的支持。
+            </p>
+            <p>&nbsp;</p>
+            <p>项目中用到的工具如上。程序的流程是:</p>
+            <p>1.配置数据库;</p>
+            <p>2.选择要导入的文件;</p>
+            <p>3.验证文件内容;</p>
+            <p>4.导入数据，并且将导入的进度反馈给用户。</p>
+            <p>&nbsp;</p>
+            <p><img height="545" width="472" alt=""
+                    src="http://static.oschina.net/uploads/img/201603/22164731_tZgd.jpg"></p>
+            <p>&nbsp;</p>
+            <p>
+                excel包负责读取数据；exception包负责自定义exception；gui包负责流程中的界面；jdbc包负责数据库操作；reflact包负责表示基本的数据类型，util包负责解析程序中用到的配置。</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;<img height="210" width="704" alt=""
+                          src="http://static.oschina.net/uploads/img/201603/22164731_IvfP.jpg"></p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645354" href="http://my.oschina.net/cshadow/blog/645354">文件存取</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:29</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：Windows</div>
+        </div>
+        <div class='content'><p>首先说一下文件的概念。文件，是在逻辑上具有完整意义的一组相关的一组相关信息的集合。它可以是一组相关的字</p>
+            <p style="text-align: left;">节流集合，也可以是一组相关的记录集合，通常被保存在外储存器上。</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;">
+                这里再啰嗦一点关于文件名的概念（因为这里是初学者最头疼的地方）。不同的操作系统，关于文件名的说法会略有不同。我们熟悉的Windows下文件名分为两部分：文件主名；文件扩展名。通常文件主名有一个特点，那就是见名知意；而文件扩展名在Windows中其实是一种约定俗成的用法。操作系统将特定的文件扩展名和特定的软件联系在一起。这就是为什么一个Word可以打开一个*.doc文件。</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;">
+                接下来说一下一个文件的组成。上面提到的文件名就是其中的一部分，但不是全部。文件大体上分两块：文件控制块；文件体。文件体是文件的主体；文件控制块是包括文件名在内的用于管理文件和说明文件特性的全部信息。然而这些东东是因文件管理系统的差异而略显不同的。</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;">
+                那么这里就不得不说一下文件管理系统了。一个文件文件管理系统自底向上可以分为以下若干层：文件管理系统接口；外存设备驱动程序；物理文件管理系统；I/O管理系统；逻辑文件管理系统；文件其属性。常见的文件管理器有我们熟悉的FAT和NTFS，而其他操作系统上还会有其他的文件管理系统。</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;">
+                啊！终于扯到文件的存取了。上面提到的文件管理系统就是操作系统中用来进行文件存取的东东。可以说文件管理系统的设计者是个天才（虽然这是个被现代社会所不认可的词汇）。设计者从两种不同的观点出发，一方面考虑用户思维中抽象的文件，另一方面研究在物理设备上保存的实实在在的文件。因此上就抽象出来了两种文件结构：逻辑结构和物理结构。</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;">
+                文件的逻辑结构有两种：流式结构和记录式结构。记录式文件在逻辑上就像是一组记录（这里引用到数据库中的词汇）的集合。然而，流式文件就像是一个单一记录的记录式文件。</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;">再看物理结构。文件的物理结构分为三类：顺序结构；链式结构；索引结构。但是不管哪种结构，只是对文件处理带来方便，在磁盘上文件会统统变成了0、1位。</p>
+            <p style="text-align: left;">&nbsp;</p>
+            <p style="text-align: left;">呵呵，本文参考自《操操作系统》一书。</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645353" href="http://my.oschina.net/cshadow/blog/645353">端口扫描器</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:28</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：Swing,设计模式</div>
+        </div>
+        <div class='content'><p>这个小项目主要是练习了在事件侦听中使用代码低耦合，但是这篇总结中还会记录一些实际代码中技巧性的东西。</p>
+            <p>&nbsp;</p>
+            <p>
+                首先说明低耦合的设计模式。所谓低耦合，意思就是减少java代码的不同模块间的相互依赖性，提高程序代码的可扩展性。java中，通过定义一个事件侦听的接口，统一处理对某一类事件的侦听。例如，在我的端口扫描器中定义了如下一个接口：</p>
+<pre class="brush:java;toolbar:true">/**
+ * 端口扫描时侦听消息的接口
+ *
+ * @author KnightErrant
+ * @time 上午12:35:49 2010-4-18
+ *
+ */
+public interface PortScanListener {
+
+	/**
+	 * 将一次成功的扫描通知相应的组件
+	 * @param port 端口号
+	 * @param isAvailable 这个端口是否可用
+	 */
+	public void show(int port, boolean isAvailable);
+
+}</pre>
+            <p>&nbsp;定义好接口后，只需将要对响应该类事件的组件继承该接口，并实现接口中的方法即可。例如：</p>
+<pre class="brush:java;toolbar:true">/**
+ * 显示结果的文本区域
+ *
+ * @author KnightErrant
+ * @time 上午02:01:19 2010-4-18
+ *
+ */
+public class myTextArea extends javax.swing.JTextArea implements PortScanListener {
+
+	/**
+	 * 实现接口中的方法
+	 */
+	public void show(int port, boolean isAvailble){
+		if(isAvailble){
+			this.append("检测到可用的端口:"+port+"\r\n");
+		}
+	}
+	
+}</pre>
+            <p>&nbsp;</p>
+<pre class="brush:java;toolbar:true">/**
+ * 显示扫描进度
+ *
+ * @author KnightErrant
+ * @time 下午09:15:54 2010-4-19
+ *
+ */
+public class myProgressBar extends javax.swing.JProgressBar implements PortScanListener {
+
+	/**
+	 * 实现接口中的方法
+	 */
+	public void show(int port, boolean isAvailble){
+		count++;
+		this.setValue(count+this.getMinimum());
+		if(isDone(port)){
+			count=0;
+		}
+	}
+
+}</pre>
+            <p>&nbsp;然而，接口中的方法其实只做一件事：通知...
+                ...。所以，特定的交互型组件还是要在继承的类中多做点儿文章。例如，一次端口扫描任务可能启动多个线程扫描不同区段的端口，因而接口中的方法无法通知进度条当前扫描过的是第几个端口，这就需要在进度条类中自己定义一个计数器...
+                ...</p>
+            <p>&nbsp;</p>
+            <p>通过这次“端口扫描器”的练习，不仅对低耦合的事件侦听模式有了基本了解，同时也进一步增进了对程序流程的控制感。附件中为这个小程序的源代码。有两处待完善的地方：、</p>
+<pre class="brush:java;toolbar:true">/**
+	 * 检测用户填写是否正确
+	 * @category 待完善
+	 * @param IP 目标机器IP
+	 * @param first_check_port 端口扫描下限
+	 * @param last_check_port 端口扫描上限
+	 * @return TRUE-输入合法；FALSE-输入不合法
+	 */
+	private boolean checkFillings(String IP, int first_check_port, int last_check_port){
+		return false;
+	}
+	
+	/**
+	 * 取得常规子线程划分策略
+	 * @category 待完善
+	 * @param first_check_port 端口扫描下限
+	 * @param last_check_port 端口扫描上限
+	 * @return integer step
+	 */
+	private int getDivideStrategy(int first_check_port, int last_check_port){
+		return 0;
+	}</pre>
+            <p>&nbsp;</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645352" href="http://my.oschina.net/cshadow/blog/645352">Switch和for表达式细节</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:28</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p>程序在其它地方使用enum值时，通常应该使用枚举名作为限定，即【枚举名.枚举值】；但在case分支中访问枚举值时不能使用枚举类名作为限定。</p>
+            <p>&nbsp;</p>
+            <p>大部分时候，如果循环体只包含一条语句，那么就可以省略循环体的花括号；但如果循环体只包含一条局部变量定义语句，那依然不可以省略循环体的花括号。例：</p>
+            <p></p>
+<pre class="brush:java;toolbar:true">for (int i = 0; i &lt; args.length; i++) {
+			ForTest ft = new ForTest();
+		}</pre>
+            <p>&nbsp;</p>
+            <p>
+                根据Java语言规范，for循环里有且只能有两个分号作为分隔符。虽然for循环允许初始化条件定义多个变量，但初始化条件不能包括分号，因此只能拥有一条语句。虽然迭代部分可以包括多条语句，但这多条语句不能用分号作为分隔符，只能用逗号作为分隔符。</p>
+        </div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645351" href="http://my.oschina.net/cshadow/blog/645351">重回压缩</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:27</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：Bean,J#</div>
+        </div>
+        <div class='content'><p>
+            之前用Huffman编码做过一个压缩小程序。当时的Huffman树半自适应的，需要对源文件扫描两遍。这次是完全自适应的，只需要对源文件扫描一次就可以生成压缩文件，并且压缩文件中不会含编码表。具体关于原理的东西实在网上搜的文档（附件中有），C++的源代码网上也有。</p>
+            <p>以下是我的代码：（代码有错，代码有错，我是按那个文档并且参照C++的源代码做的，杯具杯具，路漫漫……）</p>
+<pre class="brush:java;toolbar:true">package cn.cls.greedy;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.print.DocFlavor.CHAR_ARRAY;
+
+import cn.cls.bean.HNode;
+
+public class Huffman {
+
+	// 常量--------------------------------------------------------------
+	/**
+	 * 编码的最大值
+	 */
+	private final int MAX_VALUE = 255;
+
+	/**
+	 * 首次出现数据的代替码
+	 */
+	private final int CODE_ESCAPE = 256;
+
+	/**
+	 * 用于扩展新节点
+	 */
+	private final int CODE_EXTAND = 257;
+
+	/**
+	 * 节点列表的大小
+	 */
+	private final int LIST_LENGTH = 258;
+
+	/**
+	 * 非叶子节点
+	 */
+	private final int NOT_DATA = -1;
+
+	/**
+	 * 字节最低位
+	 */
+	private final int BOTTOM_BIT = 0;
+
+	/**
+	 * 字节最高位
+	 */
+	private final int TOP_BIT = 7;
+
+	/**
+	 * 输出缓存区的大小
+	 */
+	private final int BUFFER_SIZE = 10240;
+
+	/**
+	 * 节点初始count值的左移量（加倍）
+	 */
+	private final int INIT_RATIO = 2;
+
+	/**
+	 * 每次重构树是节点count值右移量（减小）
+	 */
+	private final int SHRINK_RATIO = 1;
+
+	// 变量--------------------------------------------------------------
+	/**
+	 * 源文件、目标文件
+	 */
+	private File src, des;
+
+	/**
+	 * 文件输入、输出流
+	 */
+	private FileInputStream ins;
+	private FileOutputStream ous;
+
+	/**
+	 * 树的根节点、解压时当前指向的节点
+	 */
+	private HNode root, current;
+
+	/**
+	 * 输出流位指针、缓冲区指针
+	 */
+	private int bit_pointer, buffer_pointer;
+
+	/**
+	 * 输出缓冲区
+	 */
+	private byte[] outputBuffer;
+
+	/**
+	 * 节点列表
+	 */
+	private HNode[] list;
+
+	// 构造器、初始化-------------------------------------------------------
+	public Huffman(File src, File des) {
+
+		this.src = src;
+		this.des = des;
+	}
+
+	/**
+	 * 初始化
+	 */
+	public int init() {
+
+		// 初始化文件输入、输出流
+		try {
+			ins = new FileInputStream(src);
+			ous = new FileOutputStream(des);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return -1;
+		}
+
+		// 初始化节点列表
+		list = new HNode[LIST_LENGTH];
+		for (int i = 0; i &lt; list.length; i++)
+			list[i] = null;
+
+		// 初始化树
+		HNode tmp, tmp2;
+		root = newHNode(NOT_DATA, true, null);
+		tmp = newHNode(CODE_ESCAPE, false, root);
+		tmp2 = newHNode(CODE_EXTAND, true, root);
+		root.lchild = tmp2;
+		root.rchild = tmp;
+		root.count = tmp.count + tmp2.count;
+		current = root;
+		
+		// 初始化输出缓存区
+		outputBuffer = new byte[BUFFER_SIZE];
+		outputBuffer[0] = 0;
+		buffer_pointer = 0;
+		bit_pointer = TOP_BIT;
+
+		return 0;
+	}
+
+	// 外部接口-----------------------------------------------------------
+	/**
+	 * 读取源文件并压缩
+	 * 
+	 * @return 0:操作成功
+	 */
+	public int encode() {
+
+		// 初始化
+		if (init() == -1) {
+			return -1;
+		}
+
+		// 初始化输入缓存区
+		int[] buffer = new int[BUFFER_SIZE];
+
+		// 循环读取入缓存区
+		int available = 0;
+		try {
+			while ((available = ins.available()) &gt; 0) {
+				// 如果剩余字节不足以填满缓存区，则新建最小缓存区
+				if (available &lt; BUFFER_SIZE) {
+					buffer = new int[available];
+				}
+
+				// 读入缓存区
+				int tmp;
+				for (int i = 0; i &lt; buffer.length; i++) {
+					tmp = ins.read();
+					buffer[i] = (tmp &gt; 0) ? tmp : (tmp + 256);
+				}
+
+				// 对缓存区的数据编码
+				int data;
+				for (int i = 0; i &lt; buffer.length; i++) {
+					data = buffer[i];
+					/*
+					 * 如果该数据不在树中，则输出CODE_ESCAPE对应的编码（其实就是1），输出数据
+					 * 并且在树中新建该字符的节点；如果在数据已存在与树中，则输出其对应的编码，
+					 * 而且由于对树节点自底向上count加一，还需要对树进行必要的调整。
+					 */
+					if (list[data] == null) {
+						encodeData(CODE_ESCAPE);
+						for (int j = 7; j &gt; 0; j--)
+							writeBit(data &amp; (int) Math.pow(2, j));
+						enlargeHTree(data);
+					} else {
+						encodeData(data);
+						balanceHTree(list[data].parent);
+					}
+					/*
+					 * 对树进行瘦身，这一步是不要的，可以使你的压缩文件更小
+					 * （源文件越大，效果越明显。但如果源文件数据变态，也不一定的哦！）
+					 */
+					shrinkHTree();
+				}
+			}
+			flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return -1;
+		}
+
+		return 0;
+	}
+
+	/**
+	 * 读取压缩文件并压缩
+	 * 
+	 * @return 0:操作成功
+	 */
+	public int decode() {
+
+		return 0;
+	}
+
+	// 输入输出------------------------------------------------------------
+	/**
+	 * 输出一位，如果缓存区满了，就输出到文件
+	 * 
+	 * @param bit
+	 *            位数据
+	 * @return 0:操作成功
+	 */
+	private int writeBit(int bit) {
+
+		// 写入一位数据
+		if (bit != 0)
+			outputBuffer[buffer_pointer] |= (int) Math.pow(2, bit_pointer);
+
+		// 位指针向低位移动
+		bit_pointer--;
+
+		// 如果位指针越过字节最低位，则回归最高位，同时将缓冲区指针向后移动
+		if (bit_pointer &lt; BOTTOM_BIT) {
+			bit_pointer = TOP_BIT;
+			buffer_pointer++;
+
+			// 如果缓存区指针越过缓存区，则输出缓存区，指针归零，清零缓存区第一个字节
+			if (buffer_pointer == BUFFER_SIZE) {
+				try {
+					ous.write(outputBuffer);
+					ous.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+					return -1;
+				}
+				buffer_pointer = 0;
+				outputBuffer[0] = 0;
+			}
+
+			// 清零缓存区下一字节
+			outputBuffer[buffer_pointer] = 0;
+		}
+
+		return 0;
+	}
+
+	/**
+	 * 输出缓存区
+	 */
+	private void flush() {
+		try {
+			ous.write(outputBuffer, 0, buffer_pointer);
+			ous.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 自底向上遍历树，并将编码输出
+	 * 
+	 * @param data
+	 *            数据
+	 * @return 0:操作成功
+	 */
+	private int encodeData(int data) {
+
+		if (data &gt; CODE_ESCAPE) {
+			System.out.println("编码时遇到未知数据！");
+			return -1;
+		}
+
+		// 自底向上编码，并输出
+		HNode tmp = list[data];
+		do {
+			writeBit((tmp.isleft ? 0 : 1));
+			tmp.count++;
+		} while ((tmp = tmp.parent) != root);
+
+		return 0;
+	}
+
+	// 树操作------------------------------------------------------------
+	/**
+	 * 新建一个节点，并指定其父节点；同时初始化节点的count，并将节点放入节点列表
+	 * 
+	 * @param data
+	 *            节点数据
+	 * @param isleft
+	 *            true:左节点
+	 * @param parent
+	 *            父节点
+	 * @return 新建的节点
+	 */
+	private HNode newHNode(int data, boolean isleft, HNode parent) {
+
+		HNode tmp = new HNode();
+		tmp.data = data;
+		tmp.isleft = isleft;
+		tmp.parent = parent;
+
+		// 对编码数据count赋初始值
+		if (data &lt;= MAX_VALUE)
+			tmp.count = (int) Math.pow(2, INIT_RATIO) - 1;
+
+		// 加入叶节点列表
+		if (data != NOT_DATA)
+			list[data] = tmp;
+
+		return tmp;
+	}
+
+	/**
+	 * 当出现的数据是树中没有的数据时，扩展树
+	 * 
+	 * @param data
+	 *            节点数据
+	 * @return 0:操作成功
+	 */
+	private int enlargeHTree(int data) {
+
+		// 取出扩展节点
+		HNode tmp = list[CODE_EXTAND].parent;
+
+		// 生成非叶子节点，以扩展节点的父节点为父节点；将扩展节点接到此节点后
+		HNode tmp2 = newHNode(NOT_DATA, true, tmp);
+		tmp.lchild = tmp2;
+		tmp2.lchild = list[CODE_EXTAND];
+		list[CODE_EXTAND].parent = tmp2;
+
+		// 生成数据节点，此节点为扩展节点的兄弟节点
+		tmp = newHNode(data, false, tmp2);
+		tmp2.rchild = tmp;
+
+		// 自底向上调整count
+		tmp2.count = 0;
+		int tmp3 = tmp.count;
+		do {
+			tmp2.count += tmp3;
+		} while ((tmp2 = tmp2.parent) != root);
+
+		// 调整树
+		balanceHTree(tmp.parent);
+
+		return 0;
+	}
+
+	/**
+	 * 当计数器由某个根节点的更新到根节点后，需要考虑调整部分树节点
+	 * 
+	 * @param node
+	 *            调整的范围是node的父节点到node的子节点，深度范围为3
+	 * @return 0:操作成功
+	 */
+	private int balanceHTree(HNode node) {
+
+		HNode parent = node.parent;
+
+		// 如果父节点为根节点则不调整
+		if (parent == root) {
+			return 0;
+		}
+
+		// 找出node的兄弟节点
+		HNode brother = node.isleft ? parent.rchild : parent.lchild;
+
+		// 找出node下count较大的子节点
+		HNode child = node.lchild.count &gt; node.rchild.count ? node.lchild
+				: node.rchild;
+
+		// 如果node的兄弟节点的count小于child的count，则交换
+		if (child.count &gt; parent.count - brother.count) {
+			boolean isleft = child.isleft;
+			if (node.isleft) {
+				parent.rchild = child;
+				child.isleft = false;
+			} else {
+				parent.lchild = child;
+				child.isleft = true;
+			}
+			if (isleft) {
+				node.lchild = brother;
+				brother.isleft = true;
+			} else {
+				node.rchild = brother;
+				brother.isleft = false;
+			}
+		}
+		
+		// 递归向上调整
+		balanceHTree(parent);
+		
+		return 0;
+	}
+
+	/**
+	 * 为了是树尽可能的小（编码尽可能的短），对树进行瘦身是必要的，删除出现频率很小的节点
+	 * 
+	 * @return 0:操作成功
+	 */
+	private int shrinkHTree() {
+		
+		HNode tmp, parent, brother;
+		// 将所有数据节点count减倍，删除count为零的节点
+		for (int i = 0; i &lt;= MAX_VALUE; i++) {
+			tmp = list[i];
+			if (tmp!=null) {
+				tmp.count &gt;&gt;= SHRINK_RATIO;
+				if (tmp.count==0) {
+					
+					parent = tmp.parent;
+					
+					if (tmp.isleft) {
+						brother = parent.rchild;
+					} else {
+						brother = parent.lchild;
+					}
+
+					brother.parent = parent.parent;
+					if (parent.isleft) {
+						parent.parent.lchild = brother;
+						brother.isleft = true;
+					} else {
+						tmp.parent.rchild = brother;
+						brother.isleft = false;
+					}
+			
+					tmp = null;
+					parent = null;
+					list[i] = null;
+				}
+			}
+		}
+		
+		return 0;
+	}
+}</pre>
+            <p>&nbsp;</p>
+            <p>Hnode：</p>
+<pre class="brush:java;toolbar:true">package cn.cls.bean;
+
+public class HNode {
+
+		public int data;          //数据
+		public int count;         //频率
+		public HNode parent;      //父节点
+		public HNode lchild;      //左子节点
+		public HNode rchild;      //右子节点
+		public boolean isleft;    //0为左节点,1为右节点
+}</pre>
+            <p>&nbsp;</p>
+            <p>最后说明一下，解压的方法还没写，稍等，1h以后在下一篇日志里见。。。</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645350" href="http://my.oschina.net/cshadow/blog/645350">条件语句精简代码</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:27</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：JavaScript</div>
+        </div>
+        <div class='content'><p>&lt;script type="text/javascript"&gt;document.domain = &amp;quot;iteye.com&amp;quot;;&lt;/script&gt;</p>
+            <p>附件是我2010-2011年的课表，下面一行代码是就是那个条件语句。</p>
+            <pre class="brush:js;toolbar:true">var handleId = (diff%2 &lt; 1) ? "single" : "plural";</pre>
+            <p>&nbsp;你可能疑问判断的时候为什么用“&lt; ”号，请看完整的代码。</p>
+<pre class="brush:js;toolbar:true">var stDate = new Date("Mon Aug 30 2010 00:00:00 GMT+0800");
+var prDate = new Date();
+
+var stTime = stDate.getTime();
+var prTime = prDate.getTime();
+	
+var diff = Math.abs(prTime - stTime)/86400000/7;
+var handleId = (diff%2 &lt; 0.5 ? "single" : "plural";
+	
+var radio = document.getElementById(handleId);
+radio.checked = true;</pre>
+            <p>&nbsp;js中var定义出的变量的类型是随赋给他的值得类型而定的。我们这里的“diff%2”的计算结果为一个双精度表示的数字，因此把平日里当作定数的" 0.5 "在这里当作了临界点。</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645349" href="http://my.oschina.net/cshadow/blog/645349">继承的例子</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:26</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：Swing,Go</div>
+        </div>
+        <div class='content'><p>
+            最近学校留作业，因为用不惯NetBean，还是用JCreator编写代码。写着写着无意中搞出一个继承，不知道这样子是好还是坏。自我感觉在添加组件时挺方便的，希望路过的高手指点：</p>
+            <p>&nbsp;</p>
+<pre class="brush:java;toolbar:true"><pre class="brush:java;toolbar:true">/**
+ * @(#)MainFrame.java
+ *
+ *
+ * @author 
+ * @version 1.00 2010/10/20
+ */
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class MainFrame extends JFrame {
+
+    private JScrollPane jspForTxtArea;
+    private JLabel[] labels;
+    private JTextArea txtArea;
+    private JTextField txtField1,txtField2;
+    private MyButton[] buttons;
+    private String[] text;
+	
+    private void init() {
+        text = new String[7];
+        text[0] = "This should be a unique identifier for the purposes of filing. If more than one person is working on the project or more than one analysis technique is being used, this identifier could contain letters and numbers. For example, if Chris Smith and Jan Koo are both doing an analysis, the identifier might be CS1 or JK75. If both a heuristic evaluation and a think-aloud usability study were used, the identifiers might be HE6 or TA89. Follow the unique identifier with the word 'Problem,' if the report pertains to a usability problem of the interface, or the words 'Good Feature,' if it describes an aspect of the interface you feel should be preserved in any redesign.";
+        text[1] = "This description will be used as the 'name' of this UAR when you talk about its relation to other UARs. Make the name as short as possible (about three to five words) but still descriptive and distinguishable from other aspects of the system. If this UAR is about a problem (as opposed to a good feature), make sure you have a name that describes the problem, rather than a solution.";
+        text[2] = "This is the objective supporting material that justifies your identifying the aspect as worthy of report. This section needs to contain enough information for a reader of this UAR to understand what triggered the report. For an HE report, for instance, this could be an image of a cluttered screen and the heuristic about aesthetics and minimalist design. In a think-aloud study this is usually what was on the screen (a screen shot or description), what the user did (keystrokes, mouse movements), what the system did in response to any user actions, and what the user said. You need to include enough pertinent information about the identification of an aspect for the reader to understand what the analyst was thinking when the aspect was identified (for HE) or what the user was trying to do when the aspect either hindered or facilitated his or her progress.";
+        text[3] = "This is your interpretation of the evidence. That is, for a think-aloud usability test, why you think what happened happened, or, for an HE, why you think the aspect was designed the way it was. You need to provide enough content in this explanation for the reader to understand the problem-even if they do not know the system or domain as well as you do.";
+        text[4] = "This is your reasoning about how important it is to either fix this problem or preserve this good feature. This includes how frequently the users will experience this aspect, whether they are likely to learn how it works, whether it will affect new users, casual users, experienced users, etc.";
+        text[5] = "If this aspect is a problem (as opposed to a good feature to be preserved in the next version of the software), this is the place to propose a solution. It is not necessary to have a solution as soon as you identify a problem-you might find after analyzing the whole interface that many problems are related and can all be fixed by making a single broad change instead of making several small changes. However, if you do propose a possible solution, report any potential design trade-offs that you see";
+        text[6] = "It is often the case that UARs are related to each other. This is where you record which UARs this one is related to and a statement about how it is related. Make sure that all the related UARs point to each other. It is a common mistake to enter the pointer into a newly created UAR, but neglect to go back to the previous ones that it relates to and update their UARs.";
+		
+        labels = new JLabel[14];
+		
+        labels[0] = new JLabel("UAR componet names:");
+        labels[1] = new JLabel("UAR componet description:");
+        labels[2] = new JLabel("1.UAR Identifier");
+        labels[3] = new JLabel("2.Succinct Description of the Usability Aspect");
+        labels[4] = new JLabel("3.Evidence for the Aspect");
+        labels[5] = new JLabel("4.Explanation of the Aspect");
+        labels[6] = new JLabel("5.Severity of the Problem or Benefit of the Good Feature");
+        labels[7] = new JLabel("6.Possible Solutions and Petential Trade-offs");
+        labels[8] = new JLabel("7.Relationship to Other Usability Aspects");
+        labels[9] = new JLabel("Enter a number:");
+        labels[10] = new JLabel("Enter a search string:");
+        labels[11] = new JLabel("Found at:");
+        labels[12] = new JLabel();
+        labels[13] = new JLabel();
+		
+        for(int i=0; i&lt;2; i++) 
+            labels[i].setFont(new Font("Arial", 1, 13));
+        for(int i=2; i&lt;labels.length; i++) 
+            labels[i].setFont(new Font("宋体", 0, 12));
+		
+        txtArea = new JTextArea();
+        txtArea.setLineWrap(true);
+        txtArea.setWrapStyleWord(true);
+        jspForTxtArea = new JScrollPane(txtArea);
+        jspForTxtArea.setAutoscrolls(true);
+		
+        txtField1 = new JTextField(6);
+        txtField2 = new JTextField(6);
+		
+        txtField1.getDocument().addDocumentListener(
+            new DocumentListener(){
+                public void changedUpdate(DocumentEvent e) {
+                    insertUpdate(e);
+                }
+                public void insertUpdate(DocumentEvent e) {
+                    txtArea.setText("");
+                }
+                public void removeUpdate(DocumentEvent e) {
+         	    insertUpdate(e);
+                }
+            });
+		
+        buttons = new MyButton[3];
+		
+        buttons[0] = new DisplayButton();
+        buttons[1] = new SearchButton();
+        buttons[2] = new ExitButton();
+        buttons[0].setText("Display");
+        buttons[1].setText("Search");
+        buttons[2].setText("Exit");
+		
+        for(int i=0; i&lt;buttons.length; i++) 
+            buttons[i].addActionListener(new ProcessActions());
+    }
+	
+    /**
+     * 界面上所有按钮的父类，继承了JButton
+     */
+    private class MyButton extends JButton {
+        public void actionPerformed() {
+        System.out.println("Haven't you overwrite \"actionPerformed\" method?");
+        }
+    }
+	
+    private class DisplayButton extends MyButton {
+        public void actionPerformed() {
+            String strchosen = txtField1.getText();
+            int intchosen = 0;
+            try{
+                intchosen = Integer.parseInt(strchosen);
+            } catch (Exception e) {
+            }
+            if (intchosen &gt; 0 &amp;&amp; intchosen &lt; 8) {
+                txtArea.setText(text[intchosen-1]);
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, 
+                    "Please enter value between 1 and 7");
+                txtField1.setText("");
+                return;
+            }
+        }	
+     }
+	
+     private class SearchButton extends MyButton {
+        public void actionPerformed() {
+            String str = txtArea.getText();
+            if ( str.equals("") ) {
+	javax.swing.JOptionPane.showMessageDialog
+                    (null, "Please select text");return;
+            }
+            String pattern = txtField2.getText();
+            if ( pattern.equals("") ) {
+                javax.swing.JOptionPane.showMessageDialog
+                   (null, "Please enter a search string");return;
+            }
+            int first=0, end=0, index, count=0;
+            boolean flag = true;
+			
+            while(true) {
+                System.out.println("===="+count);
+                index = str.indexOf(pattern);
+                if (index==-1) break;
+                end = index;
+                count++;
+                if ( flag ) {
+                    first = end;
+                    flag = false;
+                }
+                str = str.substring(index+pattern.length());
+            }
+			
+            int intconfirm=0;
+            if (count==0) {
+                intconfirm=javax.swing.JOptionPane.showConfirmDialog
+                (null, "String '"+pattern+"' not found\r\nSearch same text again?");
+            } else if (count==1) {
+                intconfirm=javax.swing.JOptionPane.showConfirmDialog
+                (null, "The number of occurences of '"+pattern+"' is "+count+"\r\nSearch same text?");
+                labels[12].setText("Occurence "+1+" : Position : " + first);
+            } else {
+                intconfirm=javax.swing.JOptionPane.showConfirmDialog
+                (null, "The number of occurences of '"+pattern+"' is "+count+"\r\nSearch same text?");	
+                labels[12].setText("Occurence "+1+" : Position : " + first);
+                labels[13].setText("Occurence "+count+" : Position : " + end);
+           }
+			
+           if (intconfirm==1) {
+	txtArea.setText("");
+	txtField1.setText("");
+           }
+           txtField2.setText("");
+        }
+    }
+	
+    private class ExitButton extends MyButton {
+        public void actionPerformed() {
+             System.exit(0);
+        }
+    }
+
+    private class ProcessActions implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            MyButton button = (MyButton) e.getSource();
+            /**
+             * 当添加按钮组件时，不需要修改这部分代码
+         */
+            for(int i=0;i&lt;buttons.length;i++) {
+                if(button==buttons[i]) {
+                    button.actionPerformed();
+                }
+            }
+        }
+    }
+
+    private void setBoundsForAll() {
+        int xl=this.getWidth()/2-20, yl=20, x=20, y=8;
+        labels[0].setBounds(x, y, xl, yl);
+        labels[1].setBounds(xl+36, y, xl, yl);
+		
+        y+=25;
+        for(int i=2; i&lt;9; i++) 
+             labels[i].setBounds(x, y+28*(i-2), xl, yl);
+		
+        x=xl+33;
+        jspForTxtArea.setBounds(x, y+3, xl-50, 216);
+        labels[11].setBounds(x, y+230, xl, 20);
+	
+        x=20;xl=166;y=labels[8].getY()+103;
+        labels[9].setBounds(x, y, xl, yl);
+        labels[10].setBounds(x, y+40, xl, yl);
+		
+        x+=xl;y-=2;xl=136;yl+=4;
+        txtField1.setBounds(x, y, xl, yl);
+        txtField2.setBounds(x, y+40, xl, yl);
+		
+        x+=(xl+10);y-=5;xl=80;yl=30;
+        buttons[0].setBounds(x, y, xl, yl);
+        buttons[1].setBounds(x, y+40, xl, yl);
+		
+        xl=this.getWidth()/2-20;x=xl+33;y+=5;
+        labels[12].setBounds(x, y, xl, 20);
+        labels[13].setBounds(x, y+40, xl, 20);
+		
+        buttons[2].setBounds(this.getWidth()-120, this.getHeight()-78, 80, 30);
+    }
+
+    public MainFrame() {
+        super("UAR Components");
+        this.init();
+        this.setSize(880,500);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(getContentPane(new JPanel()));
+        this.setVisible(true);
+    }
+    
+    public Container getContentPane(Container pane) {
+        pane.setLayout(null);
+        for(int i=0;i&lt;labels.length;i++) pane.add(labels[i]);
+        for(int i=0;i&lt;buttons.length;i++) pane.add(buttons[i]);
+        pane.add(jspForTxtArea);
+        pane.add(txtField1);
+        pane.add(txtField2);
+        setBoundsForAll();
+        return pane;
+    }
+    
+}</pre>
+&nbsp;&nbsp;&nbsp;</pre>
+        </div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645348" href="http://my.oschina.net/cshadow/blog/645348">Java异常处理</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:26</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p></p>
+            <p><span style="">正确关闭资源的方式：</span></p>
+            <p></p>
+<pre class="brush:java;toolbar:true">Object src = new Object();
+		Object desc = null;
+		ObjectOutputStream oos = null;
+		ObjectInputStream ois = null;
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("a.bin"));
+			ois = new ObjectInputStream(new FileInputStream("a.bin"));
+			oos.writeObject(src);
+			oos.flush();
+			desc = ois.readObject();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			// 1.流可能根本无法创建
+			if (oos != null) {
+				// 2.异常处理
+				try {
+					oos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			// 同上
+			if (ois != null) {
+				try {
+					ois.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}</pre>
+            &nbsp;
+            <p><span>&nbsp;</span></p>
+            <p><span>Finally</span><span style="">块</span><span></span></p>
+            <p><span style="">当</span><span>Java</span><span style="">程序执行</span><span>try</span><span
+                    style="">块、</span><span>catch</span><span style="">块时遇到了</span><span>return</span><span style="">语句，会导致该方法立即结束。系统在立即结束之前会寻找该异常处理流程中是否包含</span><span>finally</span><span
+                    style="">块，如果没有</span><span>finally</span><span
+                    style="">块，方法终止，返回相应返回值；如果有</span><span>finally</span><span
+                    style="">块，系统立即开始执行</span><span>finally</span><span style="">块——只有当</span><span>finally</span><span
+                    style="">块执行完成后，系统才会再次跳回来根据</span><span>return</span><span
+                    style="">语句结束方法。如果</span><span>finally</span><span style="">块里使用了</span><span>return</span><span
+                    style="">语句来导致方法结束，则</span><span>finally</span><span
+                    style="">块已经结束了该方法，系统将不会跳回去执行</span><span>try</span><span style="">块、</span><span>catch</span><span
+                    style="">块里的任何代码。</span><span></span></p>
+            <p><span style="">同理，</span><span>try</span><span style="">块、</span><span>catch</span><span
+                    style="">块时遇到了</span><span>throw</span><span style="">语句时，系统会先寻找</span><span>finally</span><span
+                    style="">块。</span><span></span></p>
+            <p><span>&nbsp;</span></p>
+            <p><span>Catch</span><span style="">块</span><span></span></p>
+            <p><span style="">在</span><span>try</span><span style="">块后使用</span><span>catch</span><span style="">块来捕捉多个异常时，程序应该小心多个</span><span>catch</span><span
+                    style="">块之间的顺序：捕捉父类异常的</span><span>catch</span><span
+                    style="">块都应该排在捕捉子类异常的</span><span>catch</span><span
+                    style="">块之后（简称为先处理小异常，再处理大异常），否则将出现编译错误。</span><span></span></p>
+            <p><span>&nbsp;</span></p>
+            <p><span style="">继承得到的异常</span><span></span></p>
+            <p><span>Java</span><span style="">语言规定，子类重写父类方法时，不能声明抛出比父类方法类型更多、范围更大的异常。也就是说，子类重写父类方法时，子类方法只能声明抛出父类方法所声明抛出的异常的子类。</span><span></span>
+            </p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645347" href="http://my.oschina.net/cshadow/blog/645347">用Java实现信号量机制</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:25</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：Java,多线程,thread,编程,JDK</div>
+        </div>
+        <div class='content'><p>操作系统课上讲过，信号机制最开始是用无限循环实现的，信号量只是一个int型整数。</p>
+<pre class="brush:cpp;toolbar:true">wait(S) {
+    while(s&lt;=0) {
+        ; // no-op
+    }
+    S--;
+}
+
+signal(S) {
+    S++;
+}&nbsp;</pre>
+            <p>后来，将信号定义为结构体，由value和进程两部分组成。</p>
+<pre class="brush:java;toolbar:true">typedef struct {
+    int value;
+    struct process * L;
+} semaphore;
+
+void wait(semaphore S) {
+    S.value--;
+    if(S.value &lt; 0) {
+        add this process to S.L;
+        block();
+    }
+}
+
+void signal(semaphore S) {
+    S.value++;
+    if(S.value &lt;= 0) {
+        remove a process from S.L;
+        wakeup(P);
+    }
+}</pre>
+            <p>&nbsp;很多学Java的同学，一直苦恼于多线程编程的问题。因为，Java JDK里的确提供了很多现成的线程操作方法，但是真正运用总是会抛出异常……。其实，Java提供的wait 和 notify
+                方法对于我们构建自己的并发控制模块已经是绰绰有余了。<span style="color: #ff0000;">认识两个方法有两点必须要注意的：一，这两个方法是Object类的方法，也就是说Java中任何一个类都可以充当锁得角色；二，这两个方法必须放大synchronized 代码块里，以确保其执行时不受Java 多线程机制的影响。</span><span
+                        style="color: #0000ff;">跟C写的信号量类比的话，wait 和 notify 相当于 block 和 wakeup ，而 synchronized 则确保wait 与 signal 方法的原子性。</span>下面来看示例代码：
+            </p>
+<pre class="brush:java;toolbar:true">import java.util.LinkedList;
+
+import core.concurrent.LockManager;
+import core.concurrent.LockState;
+
+public class LockerTest {
+	
+    private static LockerTest locker = null;
+
+    public static LockerTest getLocker() {
+        if (locker == null) {
+            locker = new LockerTest();
+        }
+        return locker;
+    }
+
+    private volatile int count = 1;
+    private volatile LinkedList&lt;Thread&gt; waiting = new LinkedList&lt;Thread&gt;();
+	
+    public synchronized void wait(String name) {
+        count--;
+        System.out.println(name + " wait " + count);
+        if (count &lt; 0) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+	
+    public synchronized void signal() {
+        count++;
+        System.out.println("signal " + count);
+        if (count &lt; 1) {
+            notify();
+        }
+    }
+	
+    public static void main(String[] args) {
+        new Client("name1").start();
+        new Client("name2").start();
+        new Client("name3").start();
+    }
+
+}
+
+class Client extends Thread {
+    private String name; 
+    public Client (String name) {
+        this.name = name;
+    }
+    public void run() {
+        LockManager.getLockManager().lock("adsf", LockState.excusive);
+        new ClientFood().show(name);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        LockManager.getLockManager().unlock("adsf");
+    }
+}
+
+class ClientFood {
+    private static String name; // 这里的共享资源
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // 这里需要并发控制的代码段
+    public void show(String newname) {
+        System.out.println("odd name = " + this.getName());
+        this.setName(newname);
+        for (int i = 0; i &lt; 1000; i++) {
+            this.setName(newname + "_" + i);
+        }
+        System.out.println("new name = " + this.getName());
+    }
+}</pre>
+            <p>&nbsp;</p>
+            <p>&nbsp;悠嘻，收工……</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645346" href="http://my.oschina.net/cshadow/blog/645346">String对正则表达式的支持</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:25</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p>支持正则表达式的方法：</p>
+            <p></p>
+<pre class="brush:java;toolbar:true">boolean matches(String regex)
+String replaceAll(String regex, String replacement)
+String replaceFirst(String regex, String replacement)
+String[] split(String regex)
+String[] split(String regex, int limit)</pre>
+            <p>不支持正则表达式的方法：</p>
+            <p></p>
+<pre class="brush:java;toolbar:true">String replace(char oldChar, char newChar)
+String replace(CharSequence target, CharSequence replacement)</pre>
+            <p>例：</p>
+            <p></p>
+<pre class="brush:java;toolbar:true">String string = "com.cls.Test";
+System.out.println(string.replace(".", "\\"));
+System.out.println(string.replaceAll("\\.", "\\\\"));</pre>
+            &nbsp;</div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645345" href="http://my.oschina.net/cshadow/blog/645345">邻接矩阵表示图的深度优先算法-堆栈实现</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:24</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：邻接矩阵,图,深度优先,堆栈,算法</div>
+        </div>
+        <div class='content'><p>&nbsp;对于邻接矩阵表示的图做深度优先搜索用递归的方式实现起来代码简介，也好说明问题。递归函数是：</p>
+<pre class="brush:cpp;toolbar:true">void DFSM(MGraph *G,int i)  
+{  
+    int j;  
+    printf("深度优先遍历结点: 结点%c/n",G-&gt;vexs[i]);   //访问顶点vi  
+    visited[i]=TRUE;          
+    for(j=0;j&lt;G-&gt;n;j++)           //依次搜索vi邻接点  
+        if(G-&gt;edges[i][j]==1 &amp;&amp; !visited[j])  
+            DFSM(G,j);  
+}</pre>
+            <p>堆栈实现就是起到代替程序在执行递归时底层保存函数状态的作用。需要保存的状态一个是i,一个j，因此堆栈实现的深度优先搜索的流程图如下：&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p><img height="921" alt="" width="232"
+                    src="http://static.oschina.net/uploads/img/201603/22164726_TNkQ.jpg"></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;具体函数代码如下：</p>
+<pre class="brush:java;toolbar:true">public void traverseDfs(int v) {
+		boolean[] visited = new boolean[vertexlist.length()];
+		VertexStack stack1 = new VertexStack();
+		VertexStack stack2 = new VertexStack();
+		int i, j = 0, k;
+
+		i = vertexlist.findData(v);
+		k = i;
+
+		System.out.println("访问[" + i + "," + j + "]:" + v);
+		visited[i] = true;
+
+		while (true) {
+
+			while (j &lt; vertexlist.length()
+					&amp;&amp; (adjmatrix[i][j] == 0 || visited[j])) {
+				System.out.println("路过[" + i + "," + j + "]:" + v);
+				j++;
+			}
+
+			if (i == k &amp;&amp; j == vertexlist.length()) {
+				break;
+			}
+
+			if (j == vertexlist.length()) {
+				i = stack1.pop();
+				j = stack2.pop();
+				continue;
+			}
+
+			v = vertexlist.getData(j);
+			System.out.println("访问[" + i + "," + j + "]:" + v);
+			visited[j] = true;
+
+			stack1.push(i);
+			stack2.push(j);
+
+			i = j;
+			j = 0;
+
+		}
+
+	}</pre>
+            <p>&nbsp;</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645344" href="http://my.oschina.net/cshadow/blog/645344">24位真彩BMP格式</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:23</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：J#</div>
+        </div>
+        <div class='content'><p>BMP文件格式分析有很多，官方的资料已经通通涵盖在那份附件里了。这里具体些两个我遇到的问题...</p>
+            <p>No.1 BMP文件中<span style="background-color: #0000ff;">低位</span>在前。在读超过两个字节表示的数据时要格外小心一点：比如一个四字节的数据，共32位。这32位是一个整体，不能分成4个8位来看。以下是我的代码：
+            </p>
+<pre class="brush:java;toolbar:true">/**
+ * 读取位图文件中的数字型标签
+ * @param dins 数据输入流对象
+ * @param tagLen 该数字型标签的长度
+ * @return 位图文件中的数字型标签。读取异常则返回-1。
+ */
+private int readFileSize(java.io.DataInputStream dins, int tagLen){
+	int fileSize = 0;
+	try{
+	      byte[][] size = new byte[tagLen][8];
+	      //索引0-&gt;3，低位-&gt;高位。
+	   for(int i=0; i&lt;tagLen; i++){
+	             byte s = dins.readByte();
+	             if(s&lt;0){
+		short ss = (short) (s + 256);
+		size[i] = myBitSet(ss);
+	             }else{
+		size[i] = myBitSet(s);
+	             }
+	             for(int j=0; j&lt;8; j++){
+	                  fileSize += size[i][j] * Math.pow(2, (i * 8 + j));
+	             }
+	      }
+	      return fileSize;
+	}catch(Exception e){
+	      e.printStackTrace();
+	      return -1;
+	}</pre>
+            <p>&nbsp;</p>
+<pre class="brush:java;toolbar:true">/**
+ * 有一个byte值得到一个byte数组
+ * @param b byte型值
+ * @return 按索引0-&gt;7，低位-&gt;高位
+ */
+private byte[] myBitSet(short b){
+              byte[] bs = new byte[8];
+              for(int i=0; i&lt;8; i++){
+                       bs[i] = (byte) (b%2);
+                       b = (byte) (b/2);
+              }
+              return bs;
+}</pre>
+            <p>&nbsp;No.2
+                就是关于官方资料中不太明确的比特补满。这里只明确：它是在每一行的末尾如果出现不满足4的倍数时不上几个字节。我做的测试文件中，除四后的余数为3的，只需在每行末尾忽略一个字节；余数为1的...（我是没忽略什么也读过来了）；目前还没找到余数为2的...</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645343" href="http://my.oschina.net/cshadow/blog/645343">访问一个类的静态field</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:23</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p>当某个线程视图访问一个类的静态field时，根据该类的状态可能出现如下4种情况：</p>
+            <p>&nbsp;</p>
+            <ul>
+                <li>该类尚未被初始化：当前线程开始对其执行初始化。</li>
+                <li>该类正在被当前线程执行初始化：这是对初始化的递归请求。（只能使用前面定义的静态变量）</li>
+                <li>该类正在被其它线程执行初始化：当前线程暂停，等待其他线程初始化完成。（这里可能造成死锁）</li>
+                <li>这个类已经被初始化：直接得到该静态field的值。（保存在Permanent代中）</li>
+            </ul>
+        </div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645342" href="http://my.oschina.net/cshadow/blog/645342">System.identityHashCode(Object
+            obj)</a></h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:22</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p></p>
+            <p><span>System</span><span style="">提供的</span><span>identityHashCode()</span><span
+                    style="">静态方法用于获取某个对象唯一的</span><span>hashCode</span><span style="">值，这个</span><span>identityHashCode()</span><span
+                    style="">的返回值与该类是否重写了</span><span>hashCode()</span><span style="">方法无关，只有当两个对象相同时，它们的</span><span>identityHashCode</span><span
+                    style="">值才会相等。</span><span></span></p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645341" href="http://my.oschina.net/cshadow/blog/645341">JSP+Servlet的一些些编写方式</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:22</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：Servlet,JSP</div>
+        </div>
+        <div class='content'><p>1.Servlet内处理自己要处理的错误</p>
+            <p>写法是：</p>
+            <p>returnError(request, response);</p>
+            <p>本人刚在书上看到它时总是敲不对，一小时后恍然大悟：原来那应该是Servlet里的一个方法，唉~~~~</p>
+            <p>&nbsp;</p>
+            <p>2.form里的参数</p>
+            <p>写法是：</p>
+            <p>&lt;input type="hidden" nam="paraName" value="paraValue" /&gt;</p>
+            <p>原来form里可以写入参数的不只有那些看得见的组件，竟然还有个type叫"hidden"。</p>
+            <p>&nbsp;</p>
+            <p>未完待续……</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645340" href="http://my.oschina.net/cshadow/blog/645340">Java内存分配</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:21</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">变量可大致分为局部变量和成员变量。局部变量分为形参、方法内的局部变量和代码块内的局部变量（后两者必须显示初始化），作用时间短暂，它们都被储存的方法的栈内存中。类内定义的变量被称作成员变量，根据有无被</span><span><span
+                style="font-family: Calibri;">static</span></span><span
+                style="">关键字修饰分为非静态变量（实例变量）和静态变量（类变量）。</span><span></span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span><span style="font-family: Calibri;">Static</span></span><span
+                    style="">只能修饰在类里定义的成员部分，包括成员变量、方法、内部类、初始化块、内部枚举类，不能修饰外部类，不能修饰局部变量、局部内部类。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span
+                    style="">从语法角度来看，程序可以在</span><span><span style="font-family: Calibri;">3</span></span><span
+                    style="">个地方对实例变量执行初始化：</span><span></span></span></p>
+            <p style=""><span style="font-family: Wingdings;"><span style=""><span
+                    style="font-size: small;">l</span><span style="">&nbsp; </span></span></span><span
+                    style="font-size: small;"><span style="">定义实例变量时指定初始值；</span><span></span></span></p>
+            <p style=""><span style="font-family: Wingdings;"><span style=""><span
+                    style="font-size: small;">l</span><span style="">&nbsp; </span></span></span><span
+                    style="font-size: small;"><span style="">非静态初始化块中对实例变量指定初始值；</span><span></span></span></p>
+            <p style=""><span style="font-family: Wingdings;"><span style=""><span
+                    style="font-size: small;">l</span><span style="">&nbsp; </span></span></span><span
+                    style="font-size: small;"><span style="">构造器中对实例变量指定初始值。</span><span></span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">当经过编译处理之后，它们都将被提取到构造器中，在为变量分配内存之后。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">同理，对静态变量的初始化经过编译后都将被提取到静态初始化块中，在为变量分配内存之后。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">构造器只是负责对</span><span><span
+                    style="font-family: Calibri;">Java</span></span><span style="">对象实例变量执行初始化，在执行构造器代码之前，该对象所占的内存空间已经被分配下来，保存的是空值。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">子类构造器执行中既没有</span><span><span
+                    style="font-family: Calibri;">super</span></span><span style="">调用，也没有</span><span><span
+                    style="font-family: Calibri;">this</span></span><span
+                    style="">调用，系统将会在执行子类构造器之前，隐式调用父类无参数的构造器。</span><span></span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">当变量的编译时类型和运行时类型不同时，通过该变量访问它引用的对象的实例变量时，该实例变量的值由声明该变量的类型决定。但通过该变量调用它引用的对象的实例方法时，该方法行为将由它实际所引用的对象来决定。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span><span style="font-family: Calibri;">Java</span></span><span
+                    style="">继承在处理成员变量和方法时是有区别的。</span><span></span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">当程序创建一个子类对象时，系统不仅会为该类中定义的实例变量分配内存，也会为其父类中定义的所有实例变量分配内存，即使子类定义了与父类中同名实例变量。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">对于一个使用</span><span><span
+                    style="font-family: Calibri;">final</span></span><span style="">修饰的变量而言，如果定义该</span><span><span
+                    style="font-family: Calibri;">final</span></span><span
+                    style="">变量时就指定初始值，而且这个初始值可以在编译时就确定下来，那么这个</span><span><span
+                    style="font-family: Calibri;">final</span></span><span style="">变量将不再是一个变量，系统会将其当成“宏变量”处理。也就是说，所有出现该变量的地方，系统将直接把它当成对应的值处理。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">如果</span><span><span
+                    style="font-family: Calibri;">final</span></span><span style="">变量的赋值表达式是直接量、基本的算数表达式或字符串连接运算，没有访问普通变量，调用方法，</span><span><span
+                    style="font-family: Calibri;">Java</span></span><span style="">编译器就会将其当成“宏变量”处理。</span><span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span><span
+                    style="font-family: Calibri; font-size: small;">&nbsp;</span></span></p>
+            <p style="margin: 0cm 0cm 0pt;"><span style="font-size: small;"><span style="">如果父类某个方法使用的</span><span><span
+                    style="font-family: Calibri;">final</span></span><span style="">修饰符进行修饰，那么这个方法将不可能被它的子类访问到，因此这个方法也不可能被它的子类重写。</span></span><span></span>
+            </p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645339" href="http://my.oschina.net/cshadow/blog/645339">java中错误与异常的总结</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:20</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：Java,JDK,虚拟机,thread,IDEA</div>
+        </div>
+        <div class='content'><p><img src="http://static.oschina.net/uploads/img/201603/22164722_JUBr.png" height="416"
+                                     alt="错误与异常的继承体系" width="704"></p>
+            <p>这里是对java中错误与异常的总结。</p>
+            <p>&nbsp;</p>
+            <p>
+                Exception类是Java中的异常类，它继承了java.lang包下的Throwable类，它本身之下也有庞大的继承体系，稍后做详细说明。Error也继承了java.lang包下的Throwable类，其实二者的区别在本人理解看来就是Exception是可挽回的，而Error则是fatal的，只是程度上的区别。为什么有理由这么说呢？jdk中有一例AWTException和AWTError，这不是很奇怪吗？</p>
+            <p>&nbsp;</p>
+            <p>那么Throwable里的东东怎么去用呢？第一反应可能是try{}catch(Throwable
+                e){}；或者给那个方法直接throws一个某某Throwable的实现子类；再或者看某某种情况是程序所不期待的，就throw一个异常类实例（一般由于Error是致命的，所以程序员没有“义务”，也不必拉么“无聊”去处理一个Error）。</p>
+            <p>&nbsp;</p>
+            <p>这里说明一下Exception。一般异常可分为两种：运行时异常即RuntimeException（运行时异常）；强制异常（就是在编译前就应该由程序员处理的异常）。</p>
+            <p>&nbsp;</p>
+            <p>现列举几个常见的错误及异常：</p>
+            <p>&nbsp;</p>
+            <p>上面提到的AWTError是当发生严重的 Abstract Window Toolkit 错误时，抛出此错误。这个名字看着很恐怖，我当时</p>
+            <p>第一眼没看出来，定睛一瞧才发现就是平时使用的java.awt包啊！呵呵……</p>
+            <p>&nbsp;</p>
+            <p>接着看看另一个Error：ThreadDeath。jdk中描述：调用 Thread 类中带有零参数的 stop 方法时，受害线程将抛出一个 </p>
+            <p>ThreadDeath 实例。 仅当应用程序在被异步终止后必须清除时才应该捕获这个类的实例。如果 ThreadDeath 被一个方法捕获，那么将它重新抛出非常重要，因为这样才能让该线程真正终止。 如果没有捕获
+                ThreadDeath，则顶级错误处理程序不会输出消息。 </p>
+            <p>&nbsp;</p>
+            <p>虽然 ThreadDeath 类是“正常出现”的，但它只能是 Error 的子类而不是 Exception 的子类，因为许多应用程序捕获所有出现的 Exception，然后又将其放弃。</p>
+            <p>&nbsp;</p>
+            <p>虽然Thread.stop()已经是一个过时的方法，但ThreadDeath告诉我们有些东西是“正常出现”的，但却定义为Error。</p>
+            <p>&nbsp;</p>
+            <p>接下来是两个比较常见的Error：OutOfMemoryError和StackOverflowError。它们都是java.lang包下VirtualMachineError的子类。前者在Java
+                虚拟机因内存溢出或没有可用的内存提供给垃圾回收器而无法分配一个对象时抛</p>
+            <p>出；后者是当应用程序递归太深而发生堆栈溢出时抛出。对于Exception，先说说刚才那个AWTExcption。在调用java.awt包下的某些方法时会抛出AWTExcption异常。详见</p>
+            <p><a href="http://www.vifir.com/projectdoc/jdk16/java/awt/class-use/AWTException.html" rel="nofollow">http://www.vifir.com/projectdoc/jdk16/java/awt/class-use/AWTException.html</a>。
+            </p>
+            <p>&nbsp;</p>
+            <p>
+                有一些异常是比较常见的，如：DataFormatException（数据格式异常）、FontFormatException（字体格式异常）。这两个异常在JFC中都是没有子类的，比较简单。还有一些Exception的字类本身还有很多自类，如IOException就有比较庞大的继承体系。</p>
+            <p>&nbsp;</p>
+            <p>
+                不过，以上提到的异常均为强制异常。Exception类有一个子类比较特别，它是RuntimeException。运行时异常有一些子类中常见的有NullPointerException（空指针异常）、EmptyStackException（栈为空异常）、IndexOutOfBoundException（数组越界异常）等等。</p>
+            <p>&nbsp;</p>
+            <p>通过对错误与异常的总结，我本人不仅对Throwable类有个总括的认识，也终于发现java中继承体系之庞大。555...</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645338" href="http://my.oschina.net/cshadow/blog/645338">标准模板库STL</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:19</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p><span><span><span><span style="font-size: 10pt;"><span
+                style="font-size: 10pt;">STL</span> 的最主要的两个<strong>特点</strong> ：数据结构和算法的分离，非面向对象本质。访问对象是通过象指针一样的迭代器实现的；容器是象链表，矢量之类的数据结构，并按模板方式提供；算法是函数模板，用于操作容器中的数据。由于STL以模板为基础，所以能用于任何数据类型和结构。</span> </span> </span> </span>
+        </p>
+            <p><span><span>&nbsp;</span> </span></p>
+            <p><span><span><span><span style="font-size: 10pt;">我们常用到的STL<strong>容器</strong> 有vector、list、deque、map、multimap、set和multiset。其底层实现各不相同：</span> </span> </span> </span>
+            </p>
+            <p><span><span><span style="font-size: 10pt;"><span>vector是动态数组。list是双向链表。deque为一段段连续定长数组拼接而成。map是一对一映射。multimap是一对多映射。set是没有重复元素的平衡二叉树。multiset中可以包含重复元素。</span> </span> </span> </span>
+            </p>
+            <p>&nbsp;</p>
+            <p><span>STL<strong>迭代器</strong> 可分为五种：</span></p>
+            <p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> </span> <span><em><span
+                    style="font-size: 10pt;">Input iterators</span> </em> <span
+                    style="font-size: 10pt;"> 提供对数据的只读访问。</span> </span></p>
+            <p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> </span> <span><em><span
+                    style="font-size: 10pt;">Output iterators</span> </em> <span
+                    style="font-size: 10pt;"> 提供对数据的只写访问</span> </span></p>
+            <p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> </span> <span><em><span
+                    style="font-size: 10pt;">Forward iterators</span> </em> <span style="font-size: 10pt;"> 提供读写操作，并能向前推进迭代器。</span> </span>
+            </p>
+            <p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> </span> <span><em><span
+                    style="font-size: 10pt;">Bidirectional iterators</span> </em> <span style="font-size: 10pt;">提供读写操作，并能向前和向后操作。</span> </span>
+            </p>
+            <p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> </span> <span><em><span
+                    style="font-size: 10pt;">Random access iterators</span> </em> <span style="font-size: 10pt;">提供读写操作，并能在数据中随机移动。</span> </span>
+            </p>
+            <p>&nbsp;</p>
+            <p>STL提供很多使用的函数模板，在使用这些<strong>函数模板</strong> 时<span style="font-size: 10pt;"><span>能够<strong>回调</strong> 函数，这里需要注意的就是模版函数可以接收的binary_function的返回值类型，以及回调函数的参数列表两个问题。除了回调函数，还可以传入<strong>函数对象</strong> ，这个对象重载operator方法即可。</span> </span>
+            </p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645337" href="http://my.oschina.net/cshadow/blog/645337">差分法求数据压缩</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:19</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：压缩,C语言,文件读写,位操作,文件格式</div>
+        </div>
+        <div class='content'><p><strong><span style="">课程设计名称：差分法求数据压缩<br>题目:一数据文件中存放着若干个8位有符号数（补码），其相邻两数之间差值不超过-8至7。对这种变化缓慢的数据可采用差分方法进行压缩。即第一个数据不变，其后的数据取与前一数据的差值并用4位二进制补码表示，两个差值拼成一个字节，前一个差值放在高4位，后一个差值放在低4位。&nbsp;例如：&nbsp;原数据（X[n]）：0x23,0x27,0x2A,0x29,0x22，……&nbsp;压缩后（Y[n]）：0x23,&nbsp;0x43,&nbsp;0xF9&nbsp;，……&nbsp;1、编程按上述方法进行压缩，结果保存在另一文件中。&nbsp;2、能够实现将压缩后的文件解压。</span></strong>
+        </p>
+            <p><strong></strong>&nbsp;</p>
+            <p><span style="">虽然是帮同学做一道题目，我还是认真分析了一下的。</span></p>
+            <p><span style="">首先，考虑测试用的文件。不能用UtraEditor去写16进制文件吧，况且我只知道它能以16进制方式显示文件内容……于是，我用内容为“abcdefghgfedcba”的文本文件作为测试文件。</span>
+            </p>
+            <p><span style="">其次，我分析了一下程序的基本流程。获取参数-&gt;读取文件-&gt;压缩/解压-&gt;写出文件。</span></p>
+            <p>&nbsp;</p>
+            <p><span
+                    style="">在获取参数上，我考虑了两种方式。一种是直接用程序启动参数，在main函数参数列表里的。另一种是给用户提示信息，用户输入文件路径并回车确认输入。在使用第二种方式时我用到的C函数是<span
+                    style="color: #000080;">char *fgets(char *s, int n, FILE *stream);</span> 。</span></p>
+<pre class="brush:c;toolbar:true">char input_file[256] = "";    // 定义保存文件路径的变量
+
+printf("请输入文件路径：");    // 给出提示信息
+fgets(input_file,256,stdin); // 读取控制台输入</pre>
+            <p>&nbsp;</p>
+            <p>其中stdin指控制台输入。这里还遇到一个问题，<span style="color: #000080;">input_file</span><span style="color: #000000;">获取的值需要trim操作，而C语言对字符传的操作米有trim函数。无奈，从网上拷了一个漂亮的实现。希望拷走的BODY同样用着愉快。</span>
+            </p>
+<pre class="brush:c;toolbar:true">//////////////////////////////////////////////////////
+char* trim(char* desc,char* src,char* seps)
+{
+char* token=NULL;
+   /* Establish string and get the first token: */
+   token = strtok(src, seps);
+   while( token != NULL )
+   {
+      /* While there are tokens in "string" */
+      strcat(desc,token);
+      /* Get next token: */
+      token = strtok( NULL, seps );
+   }
+   return desc;
+}</pre>
+            <p>&nbsp;<br>文件读写用到的C函数是</p>
+            <p><span style="">FILE *stream=fopen(const char *filepath, const char *op);</span></p>
+            <p><span style="">int i=fgetc(FILE *stream);</span></p>
+            <p><span style="">int fputc(int i, FILE *stream);</span></p>
+            <p><span style="">int fclose(FILE *stream);</span></p>
+            <p>加入输出缓冲后用到的C函数是</p>
+            <p><span style="">int fwrite(const void* buf, int&nbsp;size, int count,&nbsp;FILE *stream);</span></p>
+            <p>缓冲区的实现分为三个步骤：定义缓冲区数组-&gt;将数据放到缓冲区-&gt;判断缓冲区是否已满（满就输出）-&gt;最后判断缓冲区是否为空（空就输出）。</p>
+<pre class="brush:c;toolbar:true">byte buffer[1024];                           // 缓冲区
+int index = 0;                                // 缓冲区下标
+
+......
+
+buffer[index] = chout;                  // 将数据放入缓冲区                
+index++;                                      // ditto
+if(1024 == index) {                      // 判断缓冲区是否已满 
+   fwrite(buffer, 1024, 1, fpout);
+    index = 0;                                // 清空缓冲区
+}
+
+......
+
+if(index != 0) {                             // 判断缓冲区是否为空
+    fwrite(buffer, index, 1, fpout);
+}</pre>
+            <p>&nbsp;</p>
+            <p>
+                这里需要注意的是，fwrite函数是针对内存操作的，一个int数组做缓冲区和一个byte数组做缓冲区是绝对不同的。虽然你写size=1;count=1024，但是对于int数组缓冲区来说只输出来256个数据。。。呵呵，这个地方真的很变态啊！！！</p>
+            <p>&nbsp;</p>
+            <p>对于压缩和解压的算法实现上，我采用最保险的编程，尽量一行代码只操作一个变量。</p>
+            <p>&nbsp;</p>
+<pre class="brush:c;toolbar:true">// 压缩
+    int ch,chfollow,tmp,chout=5;
+    fputc((ch = fgetc(fpin)), fpout); //第一个数据不变
+    long fs = filesize(fpin);  
+    fputc(fs%2, fpout);    // 保存文件奇偶性
+    while((chfollow = fgetc(fpin)) != EOF) {
+		tmp = chfollow - ch;   // 计算差值
+		if(tmp&lt;0) {   // 将负差转化为正数
+			tmp = 8 + (8 - (0 - tmp));
+		}
+    	if(chout&lt;8 &amp;&amp; chout&gt;0){
+    		chout = tmp &lt;&lt; 4; // 保存高位
+	    }else{
+    		chout += tmp;  // 保存低位
+    		
+    		printf("%d ", chout);
+			// fputc(chout, fpout);
+    		buffer[index] = chout;
+    		index++;
+    		if(1024 == index) {
+		    	fwrite(buffer, 1024, 1, fpout);
+		    	index = 0;
+		    }
+    		
+    		chout = 5;
+    	}
+    	ch = chfollow;
+    }
+    if(chout&gt;8 || chout==0) {
+    	printf("%d ", chout);
+    	// fputc(chout, fpout);
+    	buffer[index] = chout;
+    	index++;
+    	fwrite(buffer, index, 1, fpout);
+    } else {
+    	if(index != 0) {
+    		fwrite(buffer, index, 1, fpout);
+    	}
+    }</pre>
+            <p>&nbsp;</p>
+<pre class="brush:c;toolbar:true">// 解压
+    int flag,ch,chfollow,tmp,chout=0;
+    fputc((ch = fgetc(fpin)), fpout);   // 第一个数据不变
+    flag = fgetc(fpin);     // 数据奇偶性
+    while((chfollow = fgetc(fpin)) != EOF) {
+    	printf("%d ", chfollow);
+    	tmp = chfollow;
+		
+		chfollow = chfollow &gt;&gt; 4;  // 还原前一个数据
+		chout = add(ch, chfollow);
+		
+    	buffer[index] = chout;
+    	index++;
+		
+		tmp = tmp &amp; 15;  // 还原后一个数据
+		chout = add(chout, tmp);
+		
+		buffer[index] = chout;
+    	index++;
+    	
+    	if(1024 == index) {
+		    fwrite(buffer, 1024, 1, fpout);
+		    index = 0;
+		}
+		
+    	ch = chout;
+    }
+    if(index != 0) {
+    	fwrite(buffer, index, 1, fpout);
+    }
+    if(0 == flag) {  // 根据奇偶性删除
+    	fseek(fpout, -1, SEEK_CUR);
+    	fputc(EOF, fpout);
+    }</pre>
+            <p>对于源文件长度奇偶性的分析可用与解压时对最后一位数据做更加精准的还原，这里不细分析。。。。。。</p>
+            <p>&nbsp;</p>
+            <p>啊啊啊啊啊啊，就此，复习了C的文件读写，将当时Java文件压缩的小项目用C实现了一哈，感脚良好……</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645336" href="http://my.oschina.net/cshadow/blog/645336">二分搜索递归实现代码中return的去留问题</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:18</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：.net,Blog</div>
+        </div>
+        <div class='content'><p>二分搜索有两种常见的实现方法：递归实现、迭代实现。其中递归实现的代码量是最少的（但计算机执行的代码却很多哦）。</p>
+            <p>&nbsp;</p>
+<pre class="brush:java;toolbar:true">public static int binarySearch(int a[], int x, int left, int right) {
+    if (left &gt; right) {
+        return -1;
+    } else {
+        int mid = (left + right) / 2;
+        if (x == a[mid]) {
+            return mid;
+        }
+        if (x &gt; a[mid]) {
+            return binarySearch(a, x, mid + 1, right);//***
+        } else {
+            return binarySearch(a, x, left, mid);//***
+        }
+    }
+}</pre>
+            <p>&nbsp;</p>
+            <p>
+                代码中有注释***的两句就是递归调用啦！我任然记得：老师说每届学生都纠结于这两句里的return能不能删掉。我的理解是：binarySearch是一个有返回值的函数。这就会有两个要求：1、执行该函数时，得保证它有返回值；2、调用该函数时，一般要有个与它返回值类型相同类型的变量接收它（有些时候返回值就是一个标识，这种情况除外）。</p>
+            <p>&nbsp;</p>
+            <p>显然要求2可以说明问题了，但对于正在纠结的人可能说服力不是那么大。那么，就请继续仔细看看代码会如何执行。</p>
+            <p>&nbsp;</p>
+<pre class="brush:java;toolbar:true">public static int binarySearch(int a[], int x, int left, int right) {
+    if (left &gt; right) {
+        return -1;
+    } else {
+        int mid = (left + right) / 2;
+        if (x == a[mid]) {
+            return mid;
+        }
+        if (x &gt; a[mid]) {
+            binarySearch(a, x, mid + 1, right);//***
+        } else {
+            binarySearch(a, x, left, mid);//***
+        }
+        // ***statement ***
+    }
+}</pre>
+            <p>&nbsp;</p>
+            <p>我们清楚这个递归不会是死递归，在最后一次调用（假设为第N次调用）中，return -1; 或return mid; 会被执行。这样回到了第 N-1 次调用的函数体，代码接着往下执行到
+                ***statement*** 接着第 N-1 次调用走完了。恍然大悟，这次调用是没有返回值的。</p>
+            <p>&nbsp;</p>
+            <p>至此，道理讲明了。作为个人学习，顺便贴上些其它的实现代码。</p>
+            <p>&nbsp;</p>
+<pre class="brush:java;toolbar:true">public static int BinarySearch(int[] array, int key)   
+        {   
+            int low = 0;   
+            int high = array.Length - 1;   
+            int middle = 0;   
+            while (low &lt;= high)   
+            {   
+                middle = (low + high) / 2;   
+                int middleValue = array[middle];   
+                if (middleValue &lt; key)   
+                {   
+                    low = middle + 1;   
+                }   
+                else if (middleValue &gt; key)   
+                {   
+                    high = middle - 1;   
+                }   
+                else  
+                {   
+                    return middle;   
+                }   
+            }   
+            return -(low + 1);   
+        } 
+
+此代码来自CSDN博客：http://blog.csdn.net/xzjxylophone/archive/2009/10/23/4714326.aspx</pre>
+            <p>&nbsp;</p>
+<pre class="brush:java;toolbar:true">public static int BinarySearchIteration(int[] array, int key)   
+       {   
+           int low = 0;   
+           int high = array.Length - 1;   
+           int middle = 0;   
+           while (low &lt; high)   
+           {   
+               middle = (low + high) / 2;   
+               if (key &gt; array[middle])   
+               {   
+                   low = middle + 1;   
+               }   
+               else  
+               {   
+                   high = middle;   
+               }   
+           }   
+           if (low &gt; high)   
+           {   
+               return -1;   
+           }   
+           else  
+           {   
+               if (key == array[low])   
+               {   
+                   return low;   
+               }   
+               else  
+               {   
+                   return -1;   
+               }   
+           }   
+       } 
+
+本代码来自CSDN博客：http://blog.csdn.net/xzjxylophone/archive/2009/10/23/4714326.aspx</pre>
+            <p>&nbsp;</p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645335" href="http://my.oschina.net/cshadow/blog/645335">给Java类填入默认值</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:18</div>
+            <div class='catalog'>分类：工作日志</div>
+        </div>
+        <div class='content'><p>
+            <strong>项目背景：</strong>录接口数据。当时的原材料是Java源代码，产出是RAP文档。在可预见的未来，Controller代码中接收一个VO，返回一个VO。OK，就是这两个对象，我先把它们序列化成JSON，然后在RAP中导入。<br><br>过程中发现需要填各种数据类型的默认值。我们都知道，任何复杂的对象都是由基本数据类型构成的。所以，这个程序理想状态比较简单，只需要将VO的所有域中是基本数据类型的直接填值，其它类型递归处理。<br><br>但是，问题来了。数据集合类型中的域不是那么简单，size不能随意填，另外范性也需要特殊关照。所以，数据集合类型也扩充进来。<br><br>接着，问题又来了。我的小伙伴写的个别VO没那么单纯。所以也成了我的特殊关照类型。我当时的内心是这样的：
+        </p>
+            <pre class="brush:js;toolbar:true">console.log('照这样下去，不会马上就……');</pre>
+            <p>
+                &nbsp;于是，我想到了开闭原则：只要对扩展是开放的就好了。<br><br><a target="_blank"
+                                                          href="http://git.oschina.net/caoyouxin/myjava/tree/master/yactools7/src/com/toonly/defaultvalues?dir=1&amp;filepath=yactools7%2Fsrc%2Fcom%2Ftoonly%2Fdefaultvalues&amp;oid=ac60d17cf1ff59dc36535550544800005f8f6e58&amp;sha=af823c076bbed682cf2ca35747017f07d92a5680"
+                                                          rel="nofollow">源代码地址</a>
+            </p>
+            <p>
+                &nbsp;
+            </p>
+<pre class="brush:java;toolbar:true">private List integerList;
+
+    public static void main(String[] args) throws NoSuchFieldException {
+        IntDefaultValueGenerator intDefaultValueGenerator = new IntDefaultValueGenerator();
+
+        ListDefaultValueGenerator listDefaultValueGenerator = new ListDefaultValueGenerator();
+        listDefaultValueGenerator.add(intDefaultValueGenerator);
+
+        ChainedDefaultValueGenerator4Context root = new ChainedDefaultValueGenerator4Context();
+        root.add(listDefaultValueGenerator);
+        root.add(intDefaultValueGenerator);
+
+        Field integerList = Main.class.getDeclaredField(&amp;quot;integerList&amp;quot;);
+        root.set(new Context(integerList.getType(), integerList.getGenericType()));
+
+        System.out.println(root.generate());
+    }</pre>
+            <p>
+                &nbsp;<br><strong>简单的描述这份代码：</strong><span style="color: #ffffff; background-color: blue;"> intDefaultValueGenerator </span>是一个基本处理单元，<span
+                    style="color: white; background: -moz-linear-gradient(left top, blue, red);
+background: -webkit-linear-gradient(left top, blue, red);
+background: -o-linear-gradient(left top, blue, red);"> listDefaultValueGenerator </span>有着双重身份，对于<span
+                    style="color: #ffffff; background-color: blue;"> intDefaultValueGenerator </span>来说它是一个容器，对于<span
+                    style="color: #ffffff; background-color: red;"> root </span>来说它也是一个基本处理单元。那么程序的输出是这样的。
+            </p>
+<pre class="brush:java;toolbar:true">GeneratedValue{suc=true, value=[1]}
+
+Process finished with exit code 0</pre>
+            <p>
+                &nbsp;
+            </p>
+            <p>
+                &nbsp;
+            </p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645334" href="http://my.oschina.net/cshadow/blog/645334">ACM赛后感想</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:17</div>
+            <div class='catalog'>分类：日常记录</div>
+            <div class='tags'>标签：算法</div>
+        </div>
+        <div class='content'><p style="margin: 0cm 0cm 0pt;"><span style=""><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 我这次参加的是<span>2010</span>的<span>ACM</span>大赛，这是我第一次参加这种比赛，没能通过校赛，早早出局。惨败总能给人许多启示，我也感想颇多，终于在比赛日过后大约一周的时候记录下我在比赛整个过程中的一些所感所想。<span></span></span></span>
+        </p>
+            <p style="margin: 0cm 0cm 0pt;"><span style=""><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 老实说，我有个坏习惯，那就是习惯于临时抱佛脚。临到热身赛那天，连<span> C++</span>的基本语句都没搞懂。赛前在网上搜罗了很多关于<span>ACM</span>的资料，可惜大部分只是看看文件名就塞到“<span>ACM</span>大赛”的文件夹里，然后再也没被打开过。想起来真是可杯。<span></span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span style=""><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 接着，到了正式比赛那天。天气不太热，一些外部条件都非常好。整个比赛过程我就是在跟自己打仗，可以说那场战役共分为三个阶段。在第一阶段，我快速的看了看前五道题。幸运的是，我对前五道题的思路还是比较清晰的。到了第二阶段，由于心里已经有了五道题目，所以没有继续往后看，把注意力转向电脑。这时出现了一点小小的问题，比赛中三个人只有一台电脑，事先也没有分工，局面比较混乱。混乱中，第一道题目终于解决了。从第二道题开始，情况更加混乱了。由于只有一台电脑，一个人敲代码，另两个转而去在纸上写后几道题。问题不能集中，频繁的换座位，逐渐地失去了比赛的状态。最后第三阶段，心思已经不在当场比赛了，转而着手今天的这篇感想。<span></span></span></span>
+            </p>
+            <p style="margin: 0cm 0cm 0pt;"><span style=""><span style="font-size: small;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上三个阶段中，对比赛成绩起关键作用的是第二阶段。很明显，第二阶段中最欠缺的及时有效的交流。这种交流的欠缺不是源自个人主义，正是每个个体的个人知识储备都相当欠缺所致。试想，<span>ACM</span>中需要用到的那一些些初级、中级、高级算法我们三个知道几个。所以，想来想去，还是先抛开一切杂念，把个人的理论和实践的层次提高一些。希望明年的<span>ACM</span>大赛对我们三个会是一次检测成果的机会。<span></span></span></span>
+            </p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645333" href="http://my.oschina.net/cshadow/blog/645333">Log4j学习</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:16</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p></p>
+            <p><span style="">这不是一篇细致的总结，只是几个零星的知识点。</span><span></span></p>
+            <p><span>&nbsp;</span></p>
+            <p><span>Logger</span><span style="">之间的继承关系与类继承关系保持一致，根</span><span>Logger</span><span
+                    style="">由</span><span>getRootLogger()</span><span style="">来获得。</span><span></span></p>
+            <p><span>&nbsp;</span></p>
+            <p><span>Logger</span><span style="">的输出级别：</span><span></span></p>
+            <p><span>Debug &lt; Info &lt; Warn &lt; Error &lt; Fatal</span></p>
+            <p><span>&nbsp;</span></p>
+            <p><span>Logger.setLevel(Level level)</span><span style="">设置</span><span>Logger</span><span
+                    style="">级别。只有当</span><span>Logger</span><span style="">的输出方法的级别高于或等于</span><span>Logger</span><span
+                    style="">本身的级别时，这条输出语句才会生成真正的输出。如果程序没有为某个</span><span>Logger</span><span style="">显式指定其</span><span>Level</span><span
+                    style="">，它将继承离它最近的祖先的</span><span>Level</span><span style="">。</span><span></span></p>
+            <p><span>&nbsp;</span></p>
+            <p><span>Log4j</span><span style="">允许将一个</span><span>Logger</span><span
+                    style="">和多个</span><span>Appender</span><span style="">关联，这样一个</span><span>Logger</span><span
+                    style="">可同时将日志输出到多个输出设备中。如果不想祖先</span><span>Logger</span><span
+                    style="">关联的</span><span>Appender</span><span style="">影响其后代</span><span>Logger</span><span
+                    style="">，可以将后代</span><span>Logger</span><span style="">的</span><span>additivity</span><span
+                    style="">设置为</span><span>false</span><span style="">。</span></p>
+            <p>&nbsp;</p>
+            <p><img src="http://static.oschina.net/uploads/img/201603/22164718_nGqr.jpg" width="404"
+                    alt="Logger-Appender-Layout" height="345"></p></div>
+    </div>
+    <div class='blog'>
+        <h2><a href="#top" class='top'>回到顶部</a><a name="blog_645332" href="http://my.oschina.net/cshadow/blog/645332">多线程与同步</a>
+        </h2>
+        <div class='outline'>
+            <div class='date'>时间：2016-03-22 16:47:16</div>
+            <div class='catalog'>分类：日常记录</div>
+        </div>
+        <div class='content'><p>继承Thread类来创建线程类，重写run()方法作为线程执行体的坏处：</p>
+            <p>&nbsp;</p>
+            <ul>
+                <li>线程类继承了Thread类，无法再继承其它类；</li>
+                <li>因为每条线程都是一个Thread子类的实例，因此多个线程之间共享数据比较麻烦。</li>
+            </ul>
+            <p>当程序调用线程对象的run()方法时，与调用普通Java对象的普通方法并无任何区别，因此绝对不会启动一条新线程。</p>
+            <p>&nbsp;</p>
+            <p>Java语法规定，任何线程进入同步方法、同步代码块之前，必须先获取同步方法、同步代码块对应的同步监视器：</p>
+            <p>&nbsp;</p>
+            <ul>
+                <li>对于同步代码块而言，程序必须显示为它指定同步监视器；</li>
+                <li>对于同步非静态方法而言，该方法的同步监视器是this——即调用该方法的Java对象；</li>
+                <li>对于静态的同步方法而言，该方法的同步监视器不是this，而是该类本身（大概就是Permanent代里保存的class对象）。</li>
+            </ul>
+            <p>静态初始化块里启动多线程对静态field所赋的值根本不是初始值，它只是一个普通的赋值。</p></div>
+    </div>
+</div>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
+    

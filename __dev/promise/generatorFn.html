@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Generator Function</title>
+
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/normalize/normalize.min.css" media="screen">
+</head>
+<body>
+<script>
+    var buffer = (function* () {
+        var x;
+        while (true) {
+            x = yield x;
+        }
+    }());
+
+    buffer.next(1).value === undefined;
+    buffer.next("a").value === 1;
+    buffer.value(2).value === "a";
+    buffer.next().value === 2;
+    buffer.next().value === undefined;
+    buffer.next().value === undefined;
+</script>
+</body>
+</html>

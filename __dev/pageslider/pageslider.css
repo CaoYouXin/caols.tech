@@ -1,0 +1,57 @@
+*, *:before, *:after {
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+
+    font-family: monospace;
+
+    font-size: 12px;
+}
+
+ul.pageslides {
+    position: fixed;
+    height: 100%;
+    list-style: none;
+}
+
+ul.pageslides > li.pageslide {
+    display: block;
+    float: left;
+    height: 100%;
+    padding: 0 80px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.animation {
+    transition: transform 0.8s;
+}
+
+div.pager {
+    position: fixed;
+    z-index: 999999999;
+    top: 0;
+
+    width: 80px;
+    height: 100%;
+
+    text-align: center;
+    color: white;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0)));
+}
+
+div.pager > svg {
+    position: relative;
+    top: 50%;
+    left: 0;
+
+    margin-top: -50px;
+
+    width: 80px;
+    height: 100px;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Router</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/normalize/normalize.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="pageslider.css">
+
+    <script type="text/javascript" src="../../3rdLib/md5/md5.min.js"></script>
+    <script type="text/javascript" src="../../3rdLib/handlebars/handlebars.min.js"></script>
+    <script type="text/javascript" src="router.js"></script>
+    <script type="text/javascript" src="pageslider.js"></script>
+
+</head>
+<body>
+
+<!--<script>-->
+    <!--var handlers = {};-->
+
+    <!--function ops(event) {-->
+        <!--console.log(event.state);-->
+
+        <!--var handlerMd5 = event.state.handler;-->
+        <!--if (handlerMd5 && handlers[handlerMd5]) {-->
+            <!--handlers[handlerMd5](event.state.url);-->
+        <!--}-->
+    <!--}-->
+
+    <!--window.onpopstate = ops;-->
+
+    <!--function pgHandler(url) {-->
+        <!--alert(url);-->
+    <!--}-->
+
+    <!--var handlerMd5 = md5(pgHandler.toString());-->
+    <!--handlers[handlerMd5] = pgHandler;-->
+
+    <!--history.pushState({-->
+        <!--handler: handlerMd5,-->
+        <!--url: location.href-->
+    <!--}, '', location.href);-->
+    <!--history.pushState(null, '', location.href);-->
+
+    <!--history.back();-->
+<!--</script>-->
+
+<script>
+    PageSlider.init();
+
+//    PageSlider.go('__dev/pageslider/test.html');
+    Router.go('__dev/pageslider/test.html', PageSlider.go);
+</script>
+
+</body>
+</html>

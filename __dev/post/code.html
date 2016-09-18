@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>代码</title>
+
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/normalize/normalize.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/prism/prism.css">
+
+    <style>
+        *, *:before, *:after {
+            border: none;
+            padding: 0;
+            margin: 0;
+
+            box-sizing: border-box;
+
+            font-family: monospace;
+
+            font-size: 12px;
+        }
+
+        .code-border {
+            width: 100%;
+            border: solid 1px #000000;
+            box-shadow: 0 0 5px 3px rgba(0,0,0,0.75);
+        }
+    </style>
+</head>
+<body>
+
+<pre class="code-border"><code class="language-js line-numbers line-highlight">if (isAndroid) {
+    var medium_dpi = data.width / win.screen.availWidth * window.devicePixelRatio * 160;
+
+    medium_dpi = medium_dpi.toFixed(2);
+
+    data['target-densitydpi'] = medium_dpi;
+} else {
+    var scale = win.screen.availWidth / data.width;
+
+    scale = scale.toFixed(2);
+
+    data['initial-scale'] = data['maximum-scale'] = data['minimum-scale'] = scale;
+}
+</code></pre>
+
+<!--<script>-->
+    <!--function render(codeElement) {-->
+        <!--var code = codeElement.innerHTML;-->
+        <!--console.log(code['if (isAndroid) {'.length + 5] === '\n');-->
+
+        <!--var renderedCode = code.replace(/\n/g, '<br>');-->
+        <!--console.log(renderedCode);-->
+
+        <!--codeElement.innerHTML = renderedCode;-->
+    <!--}-->
+
+    <!--document.querySelectorAll('code').forEach(render);-->
+<!--</script>-->
+
+<script type="text/javascript" src="../../3rdLib/prism/prism.min.js"></script>
+</body>
+</html>

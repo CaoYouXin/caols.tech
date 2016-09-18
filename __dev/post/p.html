@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>段落开发</title>
+
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/normalize/normalize.min.css" media="screen">
+
+    <style>
+        *, *:before, *:after {
+            border: none;
+            padding: 0;
+            margin: 0;
+
+            box-sizing: border-box;
+
+            font-family: monospace;
+
+            font-size: 12px;
+        }
+
+        .post-p {
+            font-size: 1.5em;
+            text-indent: 2em;
+        }
+
+        .titled-post-p:before {
+            content: attr(data-title);
+
+            font-size: 1.5em;
+        }
+
+        .bg-post-p {
+            line-height: 1.5em;
+            background: url("../../images/back.png") repeat;
+            background-size: 6px 1.5em;
+        }
+    </style>
+</head>
+<body>
+<p class="post-p titled-post-p bg-post-p" data-title="项目背景：">炼形成气，炼气成神，炼神合道，未敢闻命。123.炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。</p>
+
+<p class="post-p bg-post-p">炼形成气，炼气成神，炼神合道，未敢闻命。123.炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。</p>
+</body>
+</html>
