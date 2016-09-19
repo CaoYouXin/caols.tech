@@ -3,7 +3,9 @@
  */
 ;(function () {
 
-    var locationPrefix = 'caols.tech' === document.domain ? '/' : '/myblog/';
+    var domain = 'caols.tech';
+    var isProductEnv = domain === document.domain;
+    var rootHref = isProductEnv ? '/' : '/' + domain + '/';
 
     var handlers = {}, historyStack = [], skip = null;
 
@@ -36,7 +38,7 @@
     window.onpopstate = ops;
 
     window.Router = {
-        LocationPrefix: locationPrefix,
+        rootHref: rootHref,
         go: function (url, cb) {
 
             if (url.match(/.*?:\/\/(.*?)\/.*/)) {
@@ -45,8 +47,8 @@
                 return;
             }
 
-            if (!url.match(new RegExp('^\\' + locationPrefix))) {
-                url = locationPrefix + url;
+            if (!url.match(new RegExp('^\\' + rootHref))) {
+                url = rootHref + url;
             }
 
             var index = historyStack.indexOf(url);
@@ -94,8 +96,8 @@
                     return;
                 }
 
-                if (url.indexOf(locationPrefix) === -1) {
-                    urls[i] = locationPrefix + url;
+                if (url.indexOf(rootHref) === -1) {
+                    urls[i] = rootHref + url;
                 }
 
                 historyStack.push(url);
