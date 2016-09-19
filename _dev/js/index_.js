@@ -29,7 +29,7 @@
 
         articleListElem.innerHTML = html;
 
-        function route(elem) {
+        function route(elem, e) {
             if (elem.tagName === 'A') {
                 e.preventDefault();
 
@@ -43,7 +43,7 @@
 
             var it = e.target;
             do {
-                route(it);
+                route(it, e);
             } while (it = it.parentElement);
         })
     });
