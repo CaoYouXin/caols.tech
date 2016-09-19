@@ -7,6 +7,7 @@ module.exports = function (srcBase, dstBase, dstDir) {
 
     var _data = [], data = {}, filePath = dstDir + 'articles.json';
     var linkRegExp = new RegExp(srcBase.replace(/\//g, '\\\/') + '(.*)');
+    var nameRegExp = /<meta name="post-name" content="(.*)">/;
     var dateRegExp = /<meta name="post-date" content="(.*)">/;
     var categoryRegExp = /<meta name="post-category" content="(.*)">/;
     var labelRegExp = /<meta name="post-label" content="(.*)">/;
@@ -28,6 +29,11 @@ module.exports = function (srcBase, dstBase, dstDir) {
             var linkRegResult = file.path.toString().match(linkRegExp);
             if (linkRegResult) {
                 metaData.url = dstBase + linkRegResult[1];
+            }
+
+            var nameRegResult = content.match(nameRegExp);
+            if (nameRegResult) {
+                metaData.name = nameRegResult[1];
             }
 
             var dateRegResult = content.match(dateRegExp);
