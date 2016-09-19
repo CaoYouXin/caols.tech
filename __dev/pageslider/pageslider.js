@@ -116,7 +116,7 @@
 
                 slidesElems = PageSlider.refresh();
 
-                Cookies.set('ps-pages', urlStack);
+                store('ps-pages', urlStack);
             }
 
             for (var i = 0; i < slidesElems.length; i++) {
