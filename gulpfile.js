@@ -10,6 +10,8 @@ const concat = require('gulp-concat');
 const __devSrc = './__dev/';
 const _devSrc = './_dev/';
 const dst = './build/';
+const imageSrc = './images/';
+const imageDst = '../images/';
 
 function jsDefault(src, dst) {
     gulp.src(src)
@@ -44,4 +46,24 @@ gulp.task('b-3d', function () {
     var _3dDst = dst + '3d/';
 
     jsDefault(jsSrc, _3dDst);
+});
+
+gulp.task('b-html', function () {
+    var htmlSrc = _devSrc + '*/*.html';
+
+    gulp.src([htmlSrc, _devSrc + '*.html'])
+        .pipe(gulp.dest(dst));
+});
+
+gulp.task('b-js', function () {
+    var promiseSrc = __devSrc + 'promise/*.js';
+    var promiseDst = dst + '/promise/';
+
+    jsDefault(promiseSrc, promiseDst);
+});
+
+gulp.task('cdn', function () {
+    gulp.src(imageSrc).pipe(gulp.dest(imageDst));
+
+    exec('cd '+imageDst+';git checkout master;git add *.png;git add *.jpg;git commit -m "add images";git push origin master;');
 });
