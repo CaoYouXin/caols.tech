@@ -1,70 +1,37 @@
 /**
  * Created by cls on 16/9/15.
  */
-;(function () {
+;(function (P) {
 
-    if (window === window.top) {
+    var locationPrefix = window.top.Router.LocationPrefix;
 
-        var cookieScript = document.createElement('script');
-        cookieScript.onload = function () {
-            var loc = location.href.toString();
-            var isProductEnv = 'caols.tech' === document.domain;
-            var locPre4Reg = isProductEnv ? '\/' : '\/myblog\/';
-            var reg = new RegExp('http:\/\/.*?' + locPre4Reg + '(.*)');
-            Cookies.set('url-snapshot', loc.match(reg)[1]);
+    P.all([
+        P.getJSON(locationPrefix + 'articles.json'),
+        P.ajax(locationPrefix + '_dev/x-handlebars-templates/article_list.html')
+    ]).then(function (values) {
+        var html = window.top.Handlebars.compile(values[1])(values[0]);
 
-            location.href = isProductEnv ? '/' : '/myblog/';
-        };
-        cookieScript.src = '../3rdLib/js.cookie/js.cookie.js';
-        document.head.appendChild(cookieScript);
+        var articleListElem = document.getElementById('article_list');
 
-    } else {
+        articleListElem.innerHTML = html;
 
-        var locationPrefix = window.top.Router.LocationPrefix;
+        function route(elem) {
+            if (elem.tagName === 'A') {
+                e.preventDefault();
 
-        var promises = [], articles = null, tplFn = null;
+                var url = elem.getAttribute('data-rel');
 
-        promises.push(new ES6Promise.Promise(function (resolve) {
-            nanoajax.ajax({url: locationPrefix + 'articles.json'}, function (code, responseText) {
+                window.top.Router.go(url, window.top.PageSlider.go);
+            }
+        }
 
-                if (200 === code) {
+        articleListElem.addEventListener('click', function (e) {
 
-                    articles = JSON.parse(responseText);
+            var it = e.target;
+            do {
+                route(it);
+            } while (it = it.parentElement);
+        })
+    });
 
-                    resolve();
-                }
-            });
-        }));
-
-        promises.push(new ES6Promise.Promise(function (resolve) {
-            nanoajax.ajax({url: locationPrefix + '_dev/x-handlebars-templates/article_list.html'}, function (code, responseText) {
-
-                if (200 === code) {
-
-                    tplFn = window.top.Handlebars.compile(responseText);
-
-                    resolve();
-                }
-            });
-        }));
-
-        ES6Promise.Promise.all(promises).then(function () {
-            var html = tplFn(articles);
-
-            var articleListElem = document.getElementById('article_list');
-
-            articleListElem.innerHTML = html;
-
-            articleListElem.addEventListener('click', function (e) {
-                if (e.target.tagName === 'A') {
-                    e.preventDefault();
-
-                    var url = e.target.getAttribute('data-rel');
-
-                    window.top.Router.go(url, window.top.PageSlider.go);
-                }
-            })
-        });
-    }
-
-})();
+})(window.ES6Promise.Promise);
