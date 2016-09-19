@@ -1,0 +1,13 @@
+{
+  "name": "caols.tech",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-concat": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-rename": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest",
+    "through-gulp": "^0.5.0"
+  }
+}

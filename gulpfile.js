@@ -6,6 +6,7 @@ const minifyCss = require('gulp-minify-css');
 const uglifyJs = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
+const postsMake = require('./gulp-posts-make.js');
 
 const __devSrc = './__dev/';
 const _devSrc = './_dev/';
@@ -60,6 +61,15 @@ gulp.task('b-js', function () {
     var promiseDst = dst + '/promise/';
 
     jsDefault(promiseSrc, promiseDst);
+});
+
+gulp.task('posts', function () {
+    var postsSrc = _devSrc + 'posts/*.html';
+    var postsDst = dst + 'posts/';
+
+    gulp.src(postsSrc)
+        .pipe(postsMake('_dev/', 'build/', postsDst))
+        .pipe(gulp.dest(postsDst));
 });
 
 gulp.task('cdn', function () {
