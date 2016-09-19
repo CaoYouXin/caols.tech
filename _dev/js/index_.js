@@ -3,13 +3,27 @@
  */
 ;(function (P) {
 
-    var locationPrefix = window.top.Router.LocationPrefix;
+    var rootHref = window.top.Router.rootHref;
+
+    function processData(data) {
+        var _categories = data.categories;
+        var ret = [];
+
+        for (var i = 0, keys = Object.keys(_categories); i < keys.length; i++) {
+            ret.push({
+                group: keys[i],
+                blogs: _categories[keys[i]]
+            });
+        }
+
+        return ret;
+    }
 
     P.all([
-        P.getJSON(locationPrefix + 'articles.json'),
-        P.ajax(locationPrefix + '_dev/x-handlebars-templates/article_list.html')
+        P.getJSON(rootHref + 'build/posts/articles.json'),
+        P.ajax(rootHref + 'build/x-handlebars-templates/article_list.html')
     ]).then(function (values) {
-        var html = window.top.Handlebars.compile(values[1])(values[0]);
+        var html = window.top.Handlebars.compile(values[1])(processData(values[0]));
 
         var articleListElem = document.getElementById('article_list');
 

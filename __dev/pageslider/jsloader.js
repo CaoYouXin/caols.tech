@@ -22,7 +22,7 @@
 
         var fileName = location.href.toString().match(/\/.*\/(.*)\.htm/)[1];
         var url = rootHref + 'build/js/' + fileName + '.js';
-        document.onload = function () {
+        window.onload = function () {
             P.script(url);
         };
     }
