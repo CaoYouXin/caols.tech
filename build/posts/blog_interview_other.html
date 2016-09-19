@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../toonly/stylesheets/blog.css" media="screen">
+    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
+    <script type="text/javascript" src="../require-config.js"></script>
+    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+</head>
+<body>
+<section class="blog-header">
+    <span>CaoYouXin's blog</span>
+</section>
+
+<section class="blog-content">
+    <p class="q">原来公司工作流程是怎么样的，如何与其他人协作的？如何夸部门合作的？</p>
+    <p class="a">QQ讨论组发送接口定义。Seafile共享美术资源。</p>
+
+    <p class="q">你遇到过比较难的技术问题是？你是如何解决的？</p>
+    <p class="a">三天时间重构整个项目, 整天脑袋里都是对象模型, 模块化; 加载, 路由。</p>
+
+    <p class="q">设计模式 知道什么是singleton, factory, strategy, decrator么?</p>
+    <p class="a">24个设计模式不算全熟悉, 但是这几个认识。</p>
+
+    <p class="q">常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？</p>
+    <p class="a">jquery。webstorm。gulp自定义编译胶水代码文件的插件。</p>
+
+    <p class="q">页面重构怎么操作？</p>
+    <p class="a">每次重构都有不同的目标, 只要目标明确, 代码如何重构都不成问题。</p>
+    <p class="a">最近刚重构了一份THREE.js的代码, 用对象模型封装。</p>
+
+    <p class="q">列举IE与其他浏览器不一样的特性？</p>
+    <p class="a">attachEvent VS. addEventListener</p>
+
+    <p class="q">什么叫优雅降级和渐进增强？</p>
+    <p class="a">“优雅降级”观点认为应该针对那些最高级、最完善的浏览器来设计网站。而将那些被认为“过时”或有功能缺失的浏览器下的测试工作安排在开发周期的最后阶段，并把测试对象限定为主流浏览器（如 IE、Mozilla 等）的前一个版本。在这种设计范例下，旧版的浏览器被认为仅能提供“简陋却无妨 (poor, but passable)” 的浏览体验。你可以做一些小的调整来适应某个特定的浏览器。但由于它们并非我们所关注的焦点，因此除了修复较大的错误之外，其它的差异将被直接忽略。</p>
+    <p class="a">“渐进增强”观点则认为应关注于内容本身。内容是我们建立网站的诱因。有的网站展示它，有的则收集它，有的寻求，有的操作，还有的网站甚至会包含以上的种种，但相同点是它们全都涉及到内容。这使得“渐进增强”成为一种更为合理的设计范例。这也是它立即被 Yahoo! 所采纳并用以构建其“分级式浏览器支持 (Graded Browser Support)”策略的原因所在。</p>
+
+    <p class="q">是否了解公钥加密和私钥加密。</p>
+    <p class="a">公钥可以在网络上传递。</p>
+    <p class="a">公钥用于对数据进行加密，私钥用于对数据进行解密。</p>
+
+    <p class="q">WEB应用从服务器主动推送Data到客户端有那些方式？</p>
+    <p class="a">WebSocket。Long Pulling。</p>
+
+    <p class="q">你有用过哪些前端性能优化的方法？</p>
+    <p class="a">更科学的选择类库,甚至自己实现。</p>
+    <p class="a">更科学的安排运行时的对象。</p>
+
+    <p class="q">http状态码有那些？分别代表是什么意思？</p>
+    <p class="a">200正常;304无修改;400网关错误;404找不到;500服务器错误。</p>
+
+    <p class="q">一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）</p>
+    <p class="a">向DNS服务器请求解析域名。向服务器请求页面文件, 接着请求资源文件。渲染Dom树。</p>
+
+    <p class="q">部分地区用户反应网站很卡，请问有哪些可能性的原因，以及解决方法？</p>
+    <p class="a">可能是该地区运营商DNS解析慢, 使用高速DNS服务器。</p>
+
+    <p class="q">从打开app到刷新出内容，整个过程中都发生了什么，如果感觉慢，怎么定位问题，怎么解决?</p>
+    <p class="a">大致上有两个过程, 一个是从下载文件到页面渲染; 另一个是向后端请求数据。</p>
+
+    <p class="q">除了前端以外还了解什么其它技术么？你最最厉害的技能是什么？</p>
+    <p class="a">还了解Java服务器编程, 有游戏服务器编程经验。到目前为止, 最崇尚的技术是代码重构技术, 即『好代码不是一次写出来的, 而是重构出来的』。</p>
+
+    <p class="q">你用的得心应手用的熟练地编辑器&开发环境是什么样子？</p>
+    <p class="a">没什么特别的, 就是网上看的INTELLIJ IDEA的视频那样学习中。</p>
+
+    <p class="q">对前端界面工程师这个职位是怎么样理解的？它的前景会怎么样？</p>
+    <p class="a">大致上分PC端和移动端。有布局和动画两个侧重。移动端的前景更明朗, 回向应用靠拢。</p>
+
+    <p class="q">你怎么看待Web App 、hybrid App、Native App？</p>
+    <p class="a">个人觉得界面布局用H5解决比较方便, 适应随时变化。而接口数据请求用Native则比较好, 我想没有跨域的问题吧。</p>
+
+    <p class="q">你对加班的看法？</p>
+    <p class="a">珍爱生命, 远离加班。</p>
+
+    <p class="q">平时如何管理你的项目？</p>
+    <p class="a">分个人兴趣, 开源社区, 公司项目三类。</p>
+
+    <p class="q">说说最近最流行的一些东西吧？常去哪些网站？</p>
+    <p class="a">说实话, 可能还是半年前的, gulp小插件, 当时看gulp的官网像是刚起步的东东。喜欢看些动画感十足的网站。个人在学习THREE.js。</p>
+
+    <p class="q">如何设计突发大规模并发架构？</p>
+    <p class="a">没有经验, 不过应该是使用大量CDN, 接口数据也应该是集群的。</p>
+
+    <p class="q">是否了解开源的工具 bower、npm、yeoman、grunt、gulp，一个 npm 的包里的 package.json 具备的必要的字段都有哪些？（名称、版本号，依赖）</p>
+    <p class="a">使用过npm, gulp, 百度fis。</p>
+
+    <p class="q">每个模块的代码结构都应该比较简单，且每个模块之间的关系也应该非常清晰，随着功能和迭代次数越来越多，你会如何去保持这个状态的？</p>
+    <p class="a">核心思想是抽出公共代码, 放在基类或者工具类当中。需要时间去重构。</p>
+
+    <p class="q">Git知道branch, diff, merge么?</p>
+    <p class="a">一般使用merge, 很少使用rebase。因为使用rebase时必须对两条分支上的节点充分的了解, 否则在重演的过程中很容易出错。</p>
+
+    <p class="q">当团队人手不足，把功能代码写完已经需要加班的情况下，你会做前端代码的测试吗？</p>
+    <p class="a">代码功能测试虽然做不到测试先行, 但不熟悉的功能还是会做测试的。</p>
+
+    <p class="q">知道什么是SEO并且怎么优化么? 知道各种meta data的含义么?</p>
+    <p class="a">这方面有专门的人做, 而且SEO不是对内容还要了解么, 觉得跟代码技术关系不大, 所以不感兴趣。</p>
+
+    <p class="q">移动端（Android IOS）怎么做好用户体验?</p>
+    <p class="a">结合业务, 对于一个功能或者说工作流有一个流畅快捷的感觉。</p>
+
+    <p class="q">简单描述一下你做过的移动APP项目研发流程？</p>
+    <p class="a">首先是界面+接口数据两步走。接着重构出接口和路由以及平台文件区分加载三大底层模块。最后是gulp部署, 插件编写。</p>
+
+    <p class="q">你在现在的团队处于什么样的角色，起到了什么明显的作用？</p>
+    <p class="a">以前的前端团队中只有我一个人, 但是我尽量像个精分那样扮演多个角色工作哈哈^_^。性格上据说是double型的人, 就是说团队好我更好。也可以理解为受环境影响比较多的人。</p>
+
+    <p class="q">你认为怎样才是全端工程师（Full Stack developer）？</p>
+    <p class="a">不是说全技术栈工程师么? 我前一份工作, 因为人手很缺, 从后端到前端, 从开发到运维都接触一些。</p>
+    <p class="a">但是现在成长之后, 觉得结合个人能力来看, 时间上只够在一个领域成长。对于全栈的理解是某领域全技术栈, 即编程语言+设计模式+开源项目+业务逻辑。</p>
+    <p class="a">对于全端, 理解为PC, Android, iOS, Mac</p>
+
+    <p class="q">对前端安全有什么看法？</p>
+    <p class="a">在游戏中, 尽量不相信前端数据, 将安全问题抛给后端处理。</p>
+    <p class="a">在web前端, 常见的攻击有XSS(跨站脚本), CSRF(伪造用户请求)。</p>
+
+    <p class="q">最近在学什么东西？</p>
+    <p class="a">Blender 3D</p>
+
+    <p class="q">你的优点是什么？缺点是什么？</p>
+    <p class="a">谨慎, 安静。身体素质略差, 微胖, 缺乏锻炼。</p>
+
+    <p class="q">如何管理前端团队?</p>
+    <p class="a">业务模块分工 + 清道夫</p>
+
+    <p class="q">最近在学什么？能谈谈你未来3，5年给自己的规划吗？</p>
+    <p class="a">Blender 3D。3、5年内在成熟团队过上安逸的生活。</p>
+</section>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>

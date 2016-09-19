@@ -1,0 +1,45 @@
+<style>
+    ul.blogs {
+        list-style: inside decimal;
+        padding: 20px;
+        background: rgba(200, 200, 200, 0.3);
+        border-radius: 10px;
+        border-bottom: solid 1px #000000;
+    }
+
+    ul.blogs + ul.blogs  {
+        border-top: solid 1px #333333;
+    }
+
+    ul.blogs:before {
+        display: block;
+        width: auto;
+        height: 50px;
+        font-size: 2em;
+        line-height: 50px;
+        content: attr(data-rel);
+        color: #666666;
+        background: rgba(200, 200, 200, 0.5);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+
+    ul.blogs span {
+        font-size: 1.8em;
+    }
+</style>
+
+{{#each this}}
+<ul class="blogs" data-rel="{{group}}">
+    {{#each blogs}}
+    <li>
+        <h1>
+            <a data-rel="{{url}}" href="#">
+                <span>{{name}}</span>
+            </a>
+        </h1>
+    </li>
+    {{/each}}
+</ul>
+{{/each}}

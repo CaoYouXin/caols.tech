@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>如何做缓存?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../toonly/stylesheets/blog.css" media="screen">
+    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
+    <script type="text/javascript" src="../require-config.js"></script>
+    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+</head>
+<body>
+<section class="blog-header">
+    <span>CaoYouXin's blog</span>
+</section>
+
+<section class="blog-content">
+    <p>
+        去年的时候，做过一段时间的缓存方案。切入点比较跟过往的工作经验相悖。到现在几个月过后，觉得很难再接触到这方面的东西了，抱着“到此为止”的心态写下这篇博文。
+    </p>
+    <p>
+        首先，我之前理解的缓存是这样的：
+    </p>
+    <img src="../images/java_howto_cache_001.png" alt="模型 1⃣ ️">
+    <p>
+        然后，设计出来的模型，大致是这样的：
+    </p>
+    <img src="../images/java_howto_cache_002.png" alt="模型 2⃣ ️">
+    <p>
+        虽然硬件的架构没有变化，但是却对服务器软件缓存方式做了改变。目标是“提供以精准的数据内容为前提，更快响应速度的接口服务。”
+    </p>
+    <p>
+        将缓存做到接口上，虽然需要更大的缓存空间，但是硬件成本受到多年摩尔定律的作用，已经非常廉价了，加上缓存后所能提供的服务质量将是更重要的考虑因素。
+    </p>
+    <p>
+        由于原本并没有参与很多业务系统的开发，所以在设计时所考虑的因素主要是独立完成，尽量少的麻烦其他后端同事。所以最初就确定不能针对特定的Controller代码（既特定的接口）编写缓存代码，而是主要利用AOP和加在Controller上的Annotations。
+    </p>
+    <p>
+        这个过程中需要提取共性的东西，也是在这里发现了RESTful API的魅力。业务上独立的接口，数据上也会比较独立，当然还是会有交集。举例来说，发表文章的接口会影响读取文章列表的接口；那么在读取文章列表的时候，会在没有缓存数据的时候，执行原业务代码，返回并保存缓存数据待下一次访问直接读取缓存数据返回；在发表文章的时候，会删除相应的文章列表的缓存数据，这样会自然地触发下一次读取文章时读到新发表的文章。基于这个例子，可以构建出更复杂业务模型下的模型，所以当时的解决方案可以描述为“利用Redis服务，提供基于接口簇的实时的业务数据接口服务”。
+    </p>
+</section>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>

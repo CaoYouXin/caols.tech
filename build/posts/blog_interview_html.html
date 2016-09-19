@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML相关问答</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../toonly/stylesheets/blog.css" media="screen">
+    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
+    <script type="text/javascript" src="../require-config.js"></script>
+    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+</head>
+<body>
+<section class="blog-header">
+    <span>CaoYouXin's blog</span>
+</section>
+
+<section class="blog-content">
+    <p class="q">Doctype作用？严格模式与混杂模式如何区分？它们有何意义?</p>
+    <p class="a">Doctype的作用一定是描述文档本身, 并且告诉浏览器如何渲染该文档。DTD概念缘于SGML，每一份SGML 文件，均应有相对应的DTD。HTML5 不基于 SGML，所以不需要引用 DTD。</p>
+    <p class="a">严格模式与混杂模式是不同版本浏览器对具有不同Doctype的文档的不同渲染模式。其意义主要在于新版本浏览器兼容旧规范下的文档。</p>
+    <p class="a">HTML5 认准: <code>&lt;!DOCTYPE html&gt;</code></p>
+    <p class="q">HTML5 为什么只需要写&lt;!DOCTYPE html&gt;？</p>
+    <p class="a">HTML5 不基于 SGML，所以不需要引用 DTD。</p>
+    <p class="q">行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？</p>
+    <p class="a">首先说明: 行内元素和块级元素针对display的默认值而言, VOID 元素则是标签在一对尖括号内关闭(/)的元素。</p>
+<pre>
+（1）行内元素有：a b span img input select strong
+（2）块级元素有：div ul ol li dl dt dd h1 h2 h3 h4… p
+
+（3）常见的空元素：
+    br hr img input link meta
+    鲜为人知的是：
+    area base col command embed keygen param source track wbr
+</pre>
+    <p class="a"><a href="../tests/element_type.html" class="ex" target="_blank">元素类型: 行内元素上下补丁无效</a></p>
+    <p class="q">页面导入样式时，使用link和@import有什么区别？</p>
+    <p class="a">link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS。</p>
+    <p class="a">link中定义的CSS文件会有按照加载次序的覆盖效果, 而@import加载的CSS不会覆盖link加载的CSS, 似乎在优先级上有区别。</p>
+    <p class="a"><a href="../tests/import_load.html" class="ex" target="_blank">@import加载时机</a></p>
+    <p class="q">介绍一下你对浏览器内核的理解？</p>
+    <p class="a">与内核相对的是壳(shell), 我曾使用过KDE系统, Linux下最炫酷的shell。浏览器的内核分两个主要组成部分, 渲染引擎和JS引擎。</p>
+    <p class="a">渲染引擎负责获取网页内容, 及I/O部分; 计算样式, 显示内容。</p>
+    <p class="a">JS引擎比如谷歌浏览器的V8引擎, 负责高效地执行Javascript脚本。</p>
+    <p class="a">就浏览器来说，互联网经历了十年的高速发展期，近几年市场上也推出了很多新的浏览器，但是他们并非是采用自主开发的内核，所以浏览器内核本身实际没有实质突破。</p>
+    <p class="q">常见的浏览器内核有哪些？</p>
+    <p class="a">Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]</p>
+    <p class="a">Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等</p>
+    <p class="a">Presto内核：Opera7及以上。      [Opera内核原为：Presto，现为：Blink;]</p>
+    <p class="a">Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]</p>
+    <p class="q">html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</p>
+    <p class="a">HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。</p>
+    <ul>
+        <li>绘画 canvas</li>
+        <li>用于媒介回放的 video 和 audio 元素</li>
+        <li>本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失</li>
+        <li>sessionStorage 的数据在浏览器关闭后自动删除</li>
+        <li>语意化更好的内容元素，比如 article、footer、header、nav、section</li>
+        <li>表单控件，calendar、date、time、email、url、search</li>
+        <li>新的技术web worker, web socket, GeoLocation</li>
+    </ul>
+    <p class="a"><a
+            href="https://aarontgrogg.com/blog/2015/07/20/the-difference-between-service-workers-web-workers-and-websockets/"
+            class="ex" target="_blank">service worker, web worker, web socket的异同</a></p>
+    <p class="a">移除的元素：</p>
+    <ul>
+        <li>纯表现的元素：basefont，big，center，font, s，strike，tt，u</li>
+        <li>对可用性产生负面影响的元素：frame，frameset，noframes</li>
+    </ul>
+    <p class="a">支持HTML5新标签：IE8/IE7/IE6支持通过document.createElement方法产生的标签，
+        可以利用这一特性让这些浏览器支持HTML5新标签，
+        浏览器支持新标签后，还需要添加标签默认的样式。
+        当然也可以直接使用成熟的框架、比如html5shim;</p>
+<pre>
+&lt;!--[if lt IE 9]&gt;
+    &lt;script&gt; src="http://html5shim.googlecode.com/svn/trunk/html5.js"&lt;/script&gt;
+&lt;![endif]--&gt;
+</pre>
+    <p class="a">如何区分HTML5： 根据以上介绍的新特性, 另简单的一点doctype。</p>
+    <p class="q">简述一下你对HTML语义化的理解？</p>
+    <p class="a">从网页开发人员的角度讲, 非语义化的局面所描述的一种极端情况是用一个标签, 加上不同的class CSS来实现所有控件。
+        我想这是语义化的初衷, 因为极端情况下实现起来看似牛逼, 实则心累啊。</p>
+    <p class="a">从处理语义化文档的程序的角度讲, 又是给另一部分开发人员解放了心灵。</p>
+    <p class="q">HTML5的离线储存怎么使用，工作原理能不能解释一下？浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？</p>
+    <p class="a"><a
+            href="../tests/offline-cache.html"
+            class="ex" target="_blank">离线存储小实例</a></p>
+    <p class="a">离线存储的原理大致是浏览器解析html标签的manifest属性后, 将需要缓存的文件的ETag或者Last-Modify Time请求到本机对比。manifest属性是对一个html文件的定制, 对缓存的定制不受浏览器disable cache设置的影响。</p>
+    <p class="q">请描述一下 cookies，sessionStorage 和 localStorage 的区别？</p>
+    <p class="a">cookies是一小段文本为内容的文件, 一般文件名作为键, 文件内容作为值。 sessionStorage 和 localStorage 为键值对管理工具, 其中 sessionStorage 的内容在页面关闭时清除。</p>
+    <p class="q">iframe有那些缺点？</p>
+    <p class="a">在我的<a
+            href="https://caoyouxin.gitbooks.io/pageslider/content/"
+            class="" target="_blank">框架</a>中正是使用了iframe, 恰恰利用了iframe提供页面内嵌页面的逻辑。缺点不再赘述, 坑是要慢慢躺的。</p>
+    <p class="q">Label的作用是什么？是怎么用的？（加 for 或 包裹）</p>
+    <p class="a">语义化。<a href="../tests/labels.html" class="ex" target="_blank">请查看源代码</a></p>
+    <p class="q">HTML5的form如何关闭自动完成功能？</p>
+    <p class="a">设置autocomplete属性</p>
+    <p class="q">如何实现浏览器内多个标签页之间的通信? (阿里)</p>
+    <p class="a">localStorage, cookies, 后端接口调用。</p>
+    <p class="q">webSocket如何兼容低浏览器？(阿里)</p>
+    <p class="a">使用AS3, 前前公司的游戏用的就是它。</p>
+    <p class="q">页面可见性（Page Visibility）API 可以有哪些用途？</p>
+    <p class="a">这个什么鬼API在MDN上搜不到, 怀疑又是什么鬼编造出来的名词。CSS中控制可见性的属性有display, filter, 如果背景也算的话, 还包括background, box-shadow.</p>
+    <p class="q">如何在页面上实现一个圆形的可点击区域？</p>
+    <p class="a"><a href="blogcontent/blog_living_env.html" class="ex" target="_self">圆形, 你说地球?</a></p>
+    <p class="q">实现不使用 border 画出1px高的线，在不同浏览器的Quirksmode和CSSCompat模式下都能保持同一效果。</p>
+    <p class="a">height, background-color, display</p>
+    <p class="q">网页验证码是干嘛的，是为了解决什么安全问题？</p>
+    <p class="a">为了防止机器自动填充密码, 非法登录用户账号。</p>
+    <p class="q">title与h1的区别、b与strong的区别、i与em的区别？</p>
+    <p class="a">title是整个网页文件的标题, 写在head里, 常出现在浏览器标签的文本里; h1是网页内容文本中的标题。</p>
+    <p class="a">b是物理状态, 粗体; strong是逻辑状态, 只是默认显示为粗体。如果给b标签的显示用css修改为其它形式, 就会引起逻辑上的混乱。</p>
+    <p class="a">i同样是物理状态, 斜体; em同样是逻辑状态, 而且具有语义性质, 例如在朗读过程中, em标签的内容会设置为重音。</p>
+</section>
+
+<script>
+    require(['jquery'], function ($) {
+        window.top.require(['toonly/javascripts/only-router'], function (router) {
+            $('a[target="_self"]').click(function(e) {
+                e.preventDefault();
+
+                var url = $(this).attr('href');
+
+                router.go(url);
+            });
+        });
+    });
+</script>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
