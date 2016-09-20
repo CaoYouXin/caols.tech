@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <title>恍恍惚惚；杳杳冥冥！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <script type="text/javascript" src="3rdLib/NV/nv.ua.js"></script>
+    <script>
+        if (window.NV.name !== 'chrome') {
+            window.onload = function () {
+                document.getElementById('needChangeBrowser').style.visibility = 'visible';
+            }
+        }
+    </script>
+
     <style type="text/css">
         *, *:before, *:after {
             border: none;
@@ -12,7 +22,7 @@
 
             box-sizing: border-box;
 
-            font-family: monospace;
+            font-family: '微软黑体', '圆体', 'Yuanti SC', 'Microsoft Sans Serif', monospace;
 
             font-size: 12px;
         }
@@ -46,9 +56,48 @@
                 padding-top: 0;
             }
         }
+
+        .cssarrow {
+            position: absolute;
+            background: #88b7d5;
+            border: 4px solid #c2e1f5;
+
+            margin-top: 35px;
+            padding-top: 1em;
+            width: 100%;
+            height: calc(100% - 35px);
+            text-align: center;
+            font-size: 2em;
+            visibility: hidden;
+        }
+        .cssarrow:after,
+        .cssarrow:before {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+        .cssarrow:after {
+            border-color: rgba(136, 183, 213, 0);
+            border-bottom-color: #88b7d5;
+            border-width: 30px;
+            margin-left: -30px;
+        }
+        .cssarrow:before {
+            border-color: rgba(194, 225, 245, 0);
+            border-bottom-color: #c2e1f5;
+            border-width: 35px;
+            margin-left: -35px;
+        }
     </style>
 </head>
 <body>
 <div class="center">CaoLS の technique blog<br>Coming soon...</div>
+
+<div id="needChangeBrowser" class="cssarrow">由于本人喜爱webkit，且国内浏览器大多webkit内核<br>本站已经使用并且计划使用大量关于webkit特性的技术<br>所以，请关闭本页面，用谷歌浏览器打开！</div>
 </body>
 </html>
