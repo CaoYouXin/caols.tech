@@ -2,6 +2,7 @@
 
 const gulp = require('gulp');
 const exec = require('child_process').exec;
+const clean = require('gulp-clean');
 const minifyCss = require('gulp-minify-css');
 const uglifyJs = require('gulp-uglify');
 const rename = require('gulp-rename');
@@ -25,7 +26,7 @@ function jsDefault(src, dst) {
         .pipe(gulp.dest(dst));
 }
 
-gulp.task('default', function() {
+gulp.task('default', ['clean'], function() {
     gulp.start('b-js', 'b-css', 'cdn-upload', 'b-others');
 });
 
@@ -113,4 +114,9 @@ gulp.task('b-others', function () {
 
     gulp.src(htmlSrc, {base: _devSrc})
         .pipe(gulp.dest(dst));
+});
+
+gulp.task('clean', function () {
+    return gulp.src(dst, {read: false})
+        .pipe(clean());
 });

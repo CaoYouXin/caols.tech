@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "devDependencies": {
     "gulp": "latest",
+    "gulp-clean": "^0.3.2",
     "gulp-concat": "latest",
     "gulp-minify-css": "latest",
     "gulp-rename": "latest",
