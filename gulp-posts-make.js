@@ -5,7 +5,7 @@ var through = require('through-gulp');
 
 module.exports = function (srcBase, dstBase, dstDir) {
 
-    var _data = [], data = {}, filePath = dstDir + 'articles.json';
+    var _data = [], data = {}, filename = 'articles.json';
     var linkRegExp = new RegExp(srcBase.replace(/\//g, '\\\/') + '(.*)');
     var nameRegExp = /<meta name="post-name" content="(.*)">/;
     var dateRegExp = /<meta name="post-date" content="(.*)">/;
@@ -122,9 +122,9 @@ module.exports = function (srcBase, dstBase, dstDir) {
         }
 
         this.push(new gutil.File({
-            cwd: "/",
-            base: dstDir,
-            path: filePath,
+            cwd: '',
+            base: '',
+            path: dstDir + filename,
             contents: new Buffer(JSON.stringify(data))
         }));
 

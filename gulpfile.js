@@ -7,7 +7,9 @@ const uglifyJs = require('gulp-uglify');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const postsMake = require('./gulp-posts-make.js');
+const cssMake = require('./gulp-css-make.js');
 
+const _3rdLib = './3rdLib/';
 const __devSrc = './__dev/';
 const _devSrc = './_dev/';
 const dst = './build/';
@@ -24,7 +26,7 @@ function jsDefault(src, dst) {
 }
 
 gulp.task('default', function() {
-    gulp.start('b-html', 'b-js', 'b-css', 'posts', 'cdn', 'b-others');
+    gulp.start('b-js', 'b-css', 'cdn-upload', 'b-others');
 });
 
 gulp.task('b-ps-js', function() {
@@ -63,7 +65,8 @@ gulp.task('b-pu', function () {
 gulp.task('b-html', function () {
     var htmlSrc = _devSrc + '*.html';
 
-    gulp.src(htmlSrc)
+    return gulp.src(htmlSrc)
+        .pipe(cssMake({msg: 'makefile', base: '_dev/', id: 'html'}))
         .pipe(gulp.dest(dst));
 });
 
@@ -75,26 +78,33 @@ gulp.task('b-js', ['b-3d', 'b-pu', 'b-ps-js'], function () {
         .pipe(gulp.dest(jsDst));
 });
 
-gulp.task('b-css', ['b-ps-css'], function () {
-    var jsSrc = _devSrc + 'css/';
-    var jsDst = dst + '/css/';
+gulp.task('b-css', ['b-ps-css', 'b-html', 'posts'], function () {
+    var cssSrc = _devSrc + 'css/';
+    var cssDst = dst + 'css/';
+    var _3rdLibCssSrc = _3rdLib + '*/*.css';
+    var cssmakefiles = dst + '*-cssmakefile.json';
 
-    gulp.src([jsSrc + '*.css', jsSrc + '*/*.css'], {base: jsSrc})
-        .pipe(gulp.dest(jsDst));
+    gulp.src([cssSrc + '*.css', cssSrc + '*/*.css', _3rdLibCssSrc, cssmakefiles])
+        .pipe(cssMake({msg: 'make', expections: ['pageslider']}))
+        .pipe(minifyCss())
+        .pipe(gulp.dest(cssDst));
 });
 
 gulp.task('posts', function () {
     var postsSrc = _devSrc + 'posts/*.html';
     var postsDst = dst + 'posts/';
 
-    gulp.src(postsSrc)
-        .pipe(postsMake('_dev/', 'build/', postsDst))
-        .pipe(gulp.dest(postsDst));
+    return gulp.src(postsSrc, {base: _devSrc})
+        .pipe(cssMake({msg: 'makefile', base: '_dev/', id: 'posts'}))
+        .pipe(postsMake('_dev/', 'build/', 'posts/'))
+        .pipe(gulp.dest(dst));
 });
 
-gulp.task('cdn', function () {
-    gulp.src(imageSrc).pipe(gulp.dest(imageDst));
+gulp.task('cdn-copy', function () {
+    return gulp.src(imageSrc + '*').pipe(gulp.dest(imageDst));
+});
 
+gulp.task('cdn-upload', ['cdn-copy'], function () {
     exec('cd '+imageDst+';git checkout master;git add *.png;git add *.jpg;git commit -m "add images";git push origin master;');
 });
 
