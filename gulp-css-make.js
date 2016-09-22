@@ -23,7 +23,7 @@ module.exports = function (options) {
         var fileNameRegResult = htmlfile.path.toString().match(fileNameRegExp);
         if (fileNameRegResult) {
             var cssFileName = fileNameRegResult[1] + '.min.css';
-            var cssFilePath = 'css/' + cssFileName;
+            var cssFilePath = options.dst + cssFileName;
 
             var html = htmlfile.contents.toString().replace(cssLinkRegExp, function ($0, $1) {
                 if (!data[cssFileName]) {

@@ -67,7 +67,7 @@ gulp.task('b-html', function () {
     var htmlSrc = _devSrc + '*.html';
 
     return gulp.src(htmlSrc)
-        .pipe(cssMake({msg: 'makefile', base: '_dev/', id: 'html'}))
+        .pipe(cssMake({msg: 'makefile', base: '_dev/', dst: 'css/', id: 'html'}))
         .pipe(gulp.dest(dst));
 });
 
@@ -93,10 +93,9 @@ gulp.task('b-css', ['b-ps-css', 'b-html', 'posts'], function () {
 
 gulp.task('posts', function () {
     var postsSrc = _devSrc + 'posts/*.html';
-    var postsDst = dst + 'posts/';
 
     return gulp.src(postsSrc, {base: _devSrc})
-        .pipe(cssMake({msg: 'makefile', base: '_dev/', id: 'posts'}))
+        .pipe(cssMake({msg: 'makefile', base: '_dev/', dst: '../css/', id: 'posts'}))
         .pipe(postsMake('_dev/', 'build/', 'posts/'))
         .pipe(gulp.dest(dst));
 });
@@ -119,4 +118,8 @@ gulp.task('b-others', function () {
 gulp.task('clean', function () {
     return gulp.src(dst, {read: false})
         .pipe(clean());
+});
+
+gulp.task('watch', function () {
+    gulp.watch([_devSrc + '*/*', __devSrc + '*/*'], ['default']);
 });
