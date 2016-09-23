@@ -37,7 +37,7 @@
 }
 
 .post-content {
-    width: 64em;
+    max-width: 64em;
     position: relative;
     left: 50%;
     margin-left: -32em;
