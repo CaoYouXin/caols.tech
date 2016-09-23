@@ -27,21 +27,21 @@
         });
     };
 
-    P.script = function (url, id) {
+    P.script = function (doc, url, id) {
         return new P(function (resolve) {
-            var elem = document.getElementById(id);
+            var elem = doc.getElementById(id);
 
             if (elem) {
 
                 resolve();
             } else {
 
-                var script = document.createElement('script');
+                var script = doc.createElement('script');
                 script.onload = function () {
                     resolve()
                 };
                 script.src = url;
-                document.head.appendChild(script);
+                doc.head.appendChild(script);
             }
         })
     }

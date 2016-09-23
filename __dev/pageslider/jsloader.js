@@ -20,11 +20,11 @@
 
     } else {
 
-        var fileName = location.href.toString().match(/\/.*\/(.*)\.htm/)[1];
+        var fileName = location.href.toString().match(/build\/(.*)\.htm/)[1];
         var url = rootHref + 'build/js/' + fileName + '.js';
         window.onload = function () {
-            P.script(url);
+            P.script(document, url);
         };
     }
 
-})(window.ES6Promise.Promise);
+})(window.top.ES6Promise.Promise);
