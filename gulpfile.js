@@ -9,6 +9,7 @@ const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const postsMake = require('./gulp-posts-make.js');
 const cssMake = require('./gulp-css-make.js');
+const imageReplacement = require('./gulp-images-replacement.js');
 
 const _3rdLib = './3rdLib/';
 const __devSrc = './__dev/';
@@ -68,6 +69,7 @@ gulp.task('b-html', function () {
 
     return gulp.src(htmlSrc)
         .pipe(cssMake({msg: 'makefile', base: '_dev/', dst: 'css/', id: 'html'}))
+        .pipe(imageReplacement())
         .pipe(gulp.dest(dst));
 });
 
@@ -87,6 +89,7 @@ gulp.task('b-css', ['b-ps-css', 'b-html', 'posts'], function () {
 
     gulp.src([cssSrc + '*.css', cssSrc + '*/*.css', _3rdLibCssSrc, cssmakefiles])
         .pipe(cssMake({msg: 'make', expections: ['pageslider']}))
+        .pipe(imageReplacement())
         .pipe(minifyCss())
         .pipe(gulp.dest(cssDst));
 });
@@ -97,6 +100,7 @@ gulp.task('posts', function () {
     return gulp.src(postsSrc, {base: _devSrc})
         .pipe(cssMake({msg: 'makefile', base: '_dev/', dst: '../css/', id: 'posts'}))
         .pipe(postsMake('_dev/', 'build/', 'posts/'))
+        .pipe(imageReplacement())
         .pipe(gulp.dest(dst));
 });
 
