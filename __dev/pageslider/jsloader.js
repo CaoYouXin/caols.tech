@@ -12,11 +12,15 @@
         var loc = location.href.toString();
         var locPre4Reg = isProductEnv ? '\/' : '\/' + domain + '\/';
         var reg = new RegExp('http:\/\/.*?' + locPre4Reg + '(.*)');
-        P.script(rootHref + '3rdLib/store/SimpleStore.js').then(function () {
+
+        var script = document.createElement('script');
+        script.src = rootHref + '3rdLib/store/SimpleStore.js';
+        script.onload = function () {
             store('url-snapshot', loc.match(reg)[1]);
 
             location.href = rootHref;
-        });
+        };
+        document.head.appendChild(script);
 
     } else {
 
@@ -27,4 +31,4 @@
         };
     }
 
-})(window.top.ES6Promise.Promise);
+})((window.top.ES6Promise || {Promise: null}).Promise);
