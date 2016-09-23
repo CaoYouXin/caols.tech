@@ -94,6 +94,8 @@ a:hover {
 }
 
 #resume {
+    z-index: 9999;
+
     cursor: pointer;
     background: url("../../images/曹力升的个人简历.jpg") no-repeat center;
     background-size: contain;
