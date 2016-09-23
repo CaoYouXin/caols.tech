@@ -6,7 +6,7 @@
 
     box-sizing: border-box;
 
-    font-family: monospace;
+    font-family: '圆体', 'Vera Sans YuanTi', 'Yuanti SC', 'Comic San MS', monospace;
 
     font-size: 12px;
 }
@@ -47,6 +47,23 @@
 .post-p {
     font-size: 1.5em;
     text-indent: 2em;
+    margin: 1em 0;
+}
+
+.post-p a {
+    display: inline-block;
+    font-size: 1em;
+    text-indent: 0;
+    text-decoration: none;
+    border-radius: 0.8em;
+    border: solid 1px #121;
+    padding: 0.3em 0.5em;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.post-p a:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* 带标题段落 */
