@@ -21,7 +21,8 @@
 
     P.all([
         P.getJSON(rootHref + 'build/posts/articles.json'),
-        P.ajax(rootHref + 'build/x-handlebars-templates/article_list.html')
+        P.ajax(rootHref + 'build/x-handlebars-templates/article_list.html'),
+        P.script(document, rootHref + 'build/js/duoshuo.js')
     ]).then(function (values) {
         var html = window.top.Handlebars.compile(values[1])(processData(values[0]));
 
@@ -48,4 +49,15 @@
         })
     });
 
-})(window.ES6Promise.Promise);
+    var resume = document.createElement('div');
+    resume.id = 'resume';
+    resume.onclick = function () {
+        this.classList.remove("show");
+    };
+    document.querySelector('section.page-header').appendChild(resume);
+
+    document.getElementById('resume-marker').onclick = function () {
+        resume.classList.add('show');
+    }
+
+})(window.top.ES6Promise.Promise);
