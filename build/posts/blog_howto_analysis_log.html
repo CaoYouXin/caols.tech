@@ -3,118 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <title>如何分析日志</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+
+    <meta name="post-name" content="如何分析日志">
+    <meta name="post-date" content="2016-3-19 ~ 2016-3-31">
+    <meta name="post-category" content="Java">
+    <meta name="post-label" content="Java,log analysis">
+
     
     
     
     
-    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
-    <script type="text/javascript" src="../require-config.js"></script>
-    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+
+    <script type="text/javascript" src="../../3rdLib/prism/prism.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blog_howto_analysis_log.min.css">
 <body>
-<section class="blog-header">
-    <span>CaoYouXin's blog</span>
+<section class="post-header">
+    <span>恍恍惚惚，杳杳冥冥……</span>
 </section>
 
-<section class="blog-content">
-    <p>项目背景: 加入缓存模块后, 发生宕机, 分析tomcat日志.</p>
-    <p style="color: green;"><br>
-        以下为1月9号宕机前后日志分析资料：搜索关键字［原因］<br>
-<br>
-        2016-01-09 15:58:04.865 [http-bio-8180-exec-94] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:android;app_name:yangaiche_client;client_version:4.2.1<br>
-    </p><br>
-    <p style="color: red;"><br>
-        开始计时:2016-01-09 15:50:00<br>
-        结束计时:2016-01-09 16:12:28<br>
-        线程数:158<br>
-        旧线程数:19<br>
-        阻塞线程数:[141, 109, 60, 16, 0]<br>
-        程序停止时间:2016-01-09 16:01:26<br>
-<br>
-        Process finished with exit code 0<br>
-<br>
+<section class="post-content">
+    <p class="post-p titled-post-p" data-title="项目背景: ">加入缓存模块后, 发生宕机, 分析tomcat日志.</p>
+    <p class="post-p">以下为1月9号宕机前后日志分析资料：搜索关键字［原因］</p>
+    <pre class="code-border"><code class="language-shell line-numbers line-highlight">2016-01-09 15:58:04.865 [http-bio-8180-exec-94] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:android;app_name:yangaiche_client;client_version:4.2.1
+
+开始计时:2016-01-09 15:50:00
+结束计时:2016-01-09 16:12:28
+线程数:158
+旧线程数:19
+阻塞线程数:[141, 109, 60, 16, 0]
+程序停止时间:2016-01-09 16:01:26
+
+Process finished with exit code 0</code></pre>
+
+    <p class="post-p">
         分析宕机主要原因: 根据重启前十多分钟的日志，经过按照线程名分组，截取相应时间段的日志，并打印每条线程最后7行日志。<br>
         处理后的日志中发现当时短短十多分钟里新创建的线程剧增，这可能是由于大量新链接打入的原因；这些新线程所打印的最后一行日志大多数为AppVersionCheckInterceptor打印，说明这些处理并没有执行逻辑代码，甚至并没有走到RequestParamInterceptor中；至于redis的切面，由于没有看到[process]***的日志，所以这批被新建的线程并没有走到redis aspect。<br>
-<br>
+
         旧线程的判断基于排除上述的新建线程，日志行数2行以上的线程，从日志情况看，当时也处于阻塞状态。这应该是受到了大量新建线程争夺CPU资源导致。<br>
-<br>
+
         阻塞线程的判断基于距离程序停止时间1到5分钟以上没有日志的标准，结合当时的线程数，这一判断标准是接近科学的。程序停止时间是一个估计时间，该时间到16点12分并没有任何日志。<br>
-<br>
+
         基于jmeter的压测并没有响应时间以及人对界面的感知，不能确定当服务器压到190多线程时候的会不会已经出现大量延迟了。（压力测试这块确实不是我的强项……所以要完美复现当时的状况以我现在的能力很难办到）<br>
-    </p><br>
-    <p style="color: green;"><br>
-        2016-01-09 15:49:29.259 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [process] : webPushServlet<br>
-        2016-01-09 15:49:59.268 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [POST] annotation : null<br>
-        2016-01-09 15:49:59.269 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [POST] did some expires : 30007ms.<br>
-<br>
-    </p><br>
-    <p style="color: red;"><br>
-        开始计时:2016-01-09 15:40:00<br>
-        结束计时:2016-01-09 15:50:00<br>
-<br>
-        startStop线程:<br>
-<br>
-        线程数:18<br>
-        旧线程数:18<br>
-        阻塞线程数:[3, 0, 0, 0, 0]<br>
-        程序停止时间:2016-01-09 15:49:59<br>
-<br>
-        Process finished with exit code 0<br>
-    </p><br>
-    <p style="color: green;"><br>
-        2016-01-09 16:12:29.840 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
-    </p><br>
-    <p style="color: red;"><br>
-        开始计时:2016-01-09 16:01:27<br>
-        结束计时:2016-01-09 16:12:29<br>
-        线程数:1<br>
-<br>
-        分析宕机原因2: 程序首次重启时间2016-01-09 16:12:29.840。此时间为Spring的InitialBean打印。<br>
-<br>
-        2016-01-09 16:47:12.811 [http-bio-8180-exec-5] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:android;app_name:yangaiche_community;client_version:2.3.0<br>
-    </p><br>
-    <p style="color: green;"><br>
-        开始计时:2016-01-09 16:12:29<br>
-        结束计时:2016-01-09 16:47:12<br>
-<br>
-        startStop线程:<br>
-        2016-01-09 16:12:29.840 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
-        2016-01-09 16:21:57.146 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
-        2016-01-09 16:36:07.971 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
-        2016-01-09 16:45:24.847 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
-        2016-01-09 16:47:12.549 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
-<br>
-        线程数:6<br>
-        旧线程数:1<br>
-        阻塞线程数:[0, 0, 0, 0, 0]<br>
-        程序停止时间:2016-01-09 16:47:12<br>
-<br>
-        Process finished with exit code 0<br>
-    </p><br>
-    <p style="color: red;"><br>
-        分析宕机原因3: 此间，程序共重启了五次，前四次均重启失败。每次启动，redis初始化检测都是通过的。<br>
-<br>
-        2016-01-09 16:59:41.516 [http-bio-8180-exec-3] INFO  org.reststackteam.reststack.handlers.RequestParamInterceptor - 【request-parameters-info:】127.0.0.1 /v2/api/store/ware/detail.json GET {"ware_id":["15"]}<br>
-        2016-01-09 16:59:56.754 [http-bio-8180-exec-3] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:appstore_ios;app_name:yangaiche;client_version:4.2.3<br>
-<br>
-        开始计时:2016-01-09 16:47:12<br>
-        结束计时:2016-01-09 17:00:00<br>
-<br>
-        startStop线程:<br>
-        2016-01-09 16:47:12.549 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
-<br>
-        线程数:12<br>
-        旧线程数:11<br>
-<br>
-        Process finished with exit code 0<br>
-<br>
-        分析宕机原因4: 这里有一根线程是短信推送线程。线程数正常。启动时，redis检测正常。<br>
     </p>
-    <p>
+
+    <pre class="code-border"><code class="language-shell line-numbers line-highlight">2016-01-09 15:49:29.259 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [process] : webPushServlet
+2016-01-09 15:49:59.268 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [POST] annotation : null
+2016-01-09 15:49:59.269 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [POST] did some expires : 30007ms.
+
+开始计时:2016-01-09 15:40:00
+结束计时:2016-01-09 15:50:00
+
+startStop线程:
+
+线程数:18
+旧线程数:18
+阻塞线程数:[3, 0, 0, 0, 0]
+程序停止时间:2016-01-09 15:49:59
+
+Process finished with exit code 0
+
+2016-01-09 16:12:29.840 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
+
+开始计时:2016-01-09 16:01:27
+结束计时:2016-01-09 16:12:29
+线程数:1
+
+Process finished with exit code 0</code></pre>
+        
+    <p class="post-p">分析宕机原因2: 程序首次重启时间2016-01-09 16:12:29.840。此时间为Spring的InitialBean打印。</p>
+
+    <pre class="code-border"><code class="language-shell line-numbers line-highlight">2016-01-09 16:47:12.811 [http-bio-8180-exec-5] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:android;app_name:yangaiche_community;client_version:2.3.0
+
+开始计时:2016-01-09 16:12:29
+结束计时:2016-01-09 16:47:12
+
+startStop线程:
+2016-01-09 16:12:29.840 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+2016-01-09 16:21:57.146 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+2016-01-09 16:36:07.971 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+2016-01-09 16:45:24.847 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+2016-01-09 16:47:12.549 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+
+线程数:6
+旧线程数:1
+阻塞线程数:[0, 0, 0, 0, 0]
+程序停止时间:2016-01-09 16:47:12
+
+Process finished with exit code 0</code></pre>
+    
+    <p class="post-p">
+        分析宕机原因3: 此间，程序共重启了五次，前四次均重启失败。每次启动，redis初始化检测都是通过的。
+    </p>
+
+    <pre class="code-border"><code class="language-shell line-numbers line-highlight">2016-01-09 16:59:41.516 [http-bio-8180-exec-3] INFO  org.reststackteam.reststack.handlers.RequestParamInterceptor - 【request-parameters-info:】127.0.0.1 /v2/api/store/ware/detail.json GET {"ware_id":["15"]}
+2016-01-09 16:59:56.754 [http-bio-8180-exec-3] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:appstore_ios;app_name:yangaiche;client_version:4.2.3
+
+开始计时:2016-01-09 16:47:12
+结束计时:2016-01-09 17:00:00
+
+startStop线程:
+2016-01-09 16:47:12.549 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+
+线程数:12
+旧线程数:11
+
+Process finished with exit code 0</code></pre>
+
+    <p class="post-p">
+        分析宕机原因4: 这里有一根线程是短信推送线程。线程数正常。启动时，redis检测正常。
+    </p>
+
+    <p class="post-p titled-post-p" data-title="结论：">最有可能的就是遭受了DDos攻击。</p>
+
+    <p class="post-p">
         <a href="http://git.oschina.net/caoyouxin/myjava/blob/master/yactools/src/com/toonly/loganalysis/Main.java?dir=0&filepath=yactools%2Fsrc%2Fcom%2Ftoonly%2Floganalysis%2FMain.java&oid=c69a78fad176ebf1554f7b8b3c4f7beb19e9d8ae&sha=4c8e463f32b57cf46d516a68af82a1a80cc4d268">源代码地址</a>
     </p>
+
+    <div id="disqus_thread"></div>
 </section>
+
+<script type="text/javascript" src="../js/disqus.js"></script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 <div id="tongji">
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
