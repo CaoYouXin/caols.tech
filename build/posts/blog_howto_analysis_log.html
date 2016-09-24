@@ -39,14 +39,20 @@
 Process finished with exit code 0</code></pre>
 
     <p class="post-p">
-        分析宕机主要原因: 根据重启前十多分钟的日志，经过按照线程名分组，截取相应时间段的日志，并打印每条线程最后7行日志。<br>
-        处理后的日志中发现当时短短十多分钟里新创建的线程剧增，这可能是由于大量新链接打入的原因；这些新线程所打印的最后一行日志大多数为AppVersionCheckInterceptor打印，说明这些处理并没有执行逻辑代码，甚至并没有走到RequestParamInterceptor中；至于redis的切面，由于没有看到[process]***的日志，所以这批被新建的线程并没有走到redis aspect。<br>
-
-        旧线程的判断基于排除上述的新建线程，日志行数2行以上的线程，从日志情况看，当时也处于阻塞状态。这应该是受到了大量新建线程争夺CPU资源导致。<br>
-
-        阻塞线程的判断基于距离程序停止时间1到5分钟以上没有日志的标准，结合当时的线程数，这一判断标准是接近科学的。程序停止时间是一个估计时间，该时间到16点12分并没有任何日志。<br>
-
-        基于jmeter的压测并没有响应时间以及人对界面的感知，不能确定当服务器压到190多线程时候的会不会已经出现大量延迟了。（压力测试这块确实不是我的强项……所以要完美复现当时的状况以我现在的能力很难办到）<br>
+        分析宕机主要原因: 根据重启前十多分钟的日志，经过按照线程名分组，截取相应时间段的日志，并打印每条线程最后7行日志。
+    </p>
+    <p class="post-p">
+        处理后的日志中发现当时短短十多分钟里新创建的线程剧增，这可能是由于大量新链接打入的原因；这些新线程所打印的最后一行日志大多数为AppVersionCheckInterceptor打印，说明这些处理并没有执行逻辑代码，甚至并没有走到RequestParamInterceptor中；至于redis的切面，由于没有看到[process]***的日志，所以这批被新建的线程并没有走到redis
+        aspect。
+    </p>
+    <p class="post-p">
+        旧线程的判断基于排除上述的新建线程，日志行数2行以上的线程，从日志情况看，当时也处于阻塞状态。这应该是受到了大量新建线程争夺CPU资源导致。
+    </p>
+    <p class="post-p">
+        阻塞线程的判断基于距离程序停止时间1到5分钟以上没有日志的标准，结合当时的线程数，这一判断标准是接近科学的。程序停止时间是一个估计时间，该时间到16点12分并没有任何日志。
+    </p>
+    <p class="post-p">
+        基于jmeter的压测并没有响应时间以及人对界面的感知，不能确定当服务器压到190多线程时候的会不会已经出现大量延迟了。（压力测试这块确实不是我的强项……所以要完美复现当时的状况以我现在的能力很难办到）
     </p>
 
     <pre class="code-border"><code class="language-shell line-numbers line-highlight">2016-01-09 15:49:29.259 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [process] : webPushServlet
@@ -65,14 +71,14 @@ startStop线程:
 
 Process finished with exit code 0
 
-2016-01-09 16:12:29.840 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.<br>
+2016-01-09 16:12:29.840 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
 
 开始计时:2016-01-09 16:01:27
 结束计时:2016-01-09 16:12:29
 线程数:1
 
 Process finished with exit code 0</code></pre>
-        
+
     <p class="post-p">分析宕机原因2: 程序首次重启时间2016-01-09 16:12:29.840。此时间为Spring的InitialBean打印。</p>
 
     <pre class="code-border"><code class="language-shell line-numbers line-highlight">2016-01-09 16:47:12.811 [http-bio-8180-exec-5] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:android;app_name:yangaiche_community;client_version:2.3.0
@@ -93,7 +99,7 @@ startStop线程:
 程序停止时间:2016-01-09 16:47:12
 
 Process finished with exit code 0</code></pre>
-    
+
     <p class="post-p">
         分析宕机原因3: 此间，程序共重启了五次，前四次均重启失败。每次启动，redis初始化检测都是通过的。
     </p>
@@ -119,7 +125,8 @@ Process finished with exit code 0</code></pre>
     <p class="post-p titled-post-p" data-title="结论：">最有可能的就是遭受了DDos攻击。</p>
 
     <p class="post-p">
-        <a target="_blank" href="http://git.oschina.net/caoyouxin/myjava/blob/master/yactools/src/com/toonly/loganalysis/Main.java?dir=0&filepath=yactools%2Fsrc%2Fcom%2Ftoonly%2Floganalysis%2FMain.java&oid=c69a78fad176ebf1554f7b8b3c4f7beb19e9d8ae&sha=4c8e463f32b57cf46d516a68af82a1a80cc4d268">源代码地址</a>
+        <a target="_blank"
+           href="http://git.oschina.net/caoyouxin/myjava/blob/master/yactools/src/com/toonly/loganalysis/Main.java?dir=0&filepath=yactools%2Fsrc%2Fcom%2Ftoonly%2Floganalysis%2FMain.java&oid=c69a78fad176ebf1554f7b8b3c4f7beb19e9d8ae&sha=4c8e463f32b57cf46d516a68af82a1a80cc4d268">源代码地址</a>
     </p>
 </section>
 
