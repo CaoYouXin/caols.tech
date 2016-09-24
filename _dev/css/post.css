@@ -1,16 +1,3 @@
-/* 盒模型，字体，尺寸基准 */
-*, *:before, *:after {
-    border: none;
-    padding: 0;
-    margin: 0;
-
-    box-sizing: border-box;
-
-    font-family: '圆体', 'Vera Sans YuanTi', 'Yuanti SC', 'Comic San MS', monospace;
-
-    font-size: 12px;
-}
-
 /* sections */
 .post-header {
     width: 100%;
