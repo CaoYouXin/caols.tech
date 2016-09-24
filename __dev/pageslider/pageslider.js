@@ -4,9 +4,10 @@
 ;(function (handlebars, router) {
 
     var urlStack = null, regular = /data-rel=".*?"/g;
+    var iOSFix = navigator.userAgent.match(/iPad|iPhone/i) ? 'style="-webkit-overflow-scrolling: touch;overflow-y: auto;" ' : '';
 
     var pageslideTplFn = handlebars.compile('{{#each this}}' +
-        '<li class="pageslide" data-rel="{{this}}">' +
+        '<li class="pageslide" ' + iOSFix + 'data-rel="{{this}}">' +
         '<iframe src="{{this}}" frameborder="0"></iframe>' +
         '</li>{{/each}}');
 
