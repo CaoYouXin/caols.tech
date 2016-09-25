@@ -14,9 +14,9 @@
     ul.blogs:before {
         display: block;
         width: auto;
-        height: 50px;
-        font-size: 2em;
-        line-height: 50px;
+        height: 2em;
+        font-size: 2rem;
+        line-height: 2em;
         content: attr(data-rel);
         color: #666666;
         background: rgba(200, 200, 200, 0.5);
@@ -27,6 +27,17 @@
 
     ul.blogs span {
         font-size: 1.8em;
+    }
+
+    @media (max-device-width: 400px) {
+        ul.blogs {
+            padding: 10px;
+        }
+
+        ul.blogs:before {
+            height: 1.5em;
+            line-height: 1.5em;
+        }
     }
 </style>
 

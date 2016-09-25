@@ -61,6 +61,7 @@ a:hover {
 #resume-marker {
     font-size: 2em;
     position: absolute;
+    z-index: 1;
     top: 3em;
     right: 4em;
     width: 2em;
@@ -80,9 +81,14 @@ a:hover {
     opacity: 1;
 }
 
-#resume {
-    z-index: 9999;
+@media (max-device-width: 400px) {
+    #resume-marker {
+        left: 1em;
+        top: 12em;
+    }
+}
 
+#resume {
     cursor: pointer;
     background: url("../../images/曹力升的个人简历.jpg") no-repeat center;
     background-size: contain;
@@ -91,10 +97,11 @@ a:hover {
     height: 1px;
 
     position: fixed;
+    z-index: 2;
     left: 0;
     top: 0;
 
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
     transition: all 1s;
 }
 
@@ -107,7 +114,7 @@ a:hover {
     width: auto;
     height: auto;
 
-    transform: rotateY(0deg);
+    transform: rotateY(720deg);
 }
 
 .main-content {
@@ -119,6 +126,6 @@ a:hover {
 @media (max-device-width: 800px) {
     .main-content {
         max-width: 100%;
-        padding: 1em 2em 0;
+        padding: 1em 1em 0;
     }
 }
