@@ -64,6 +64,13 @@ gulp.task('b-pu', function () {
     return jsDefault(promiseSrc, promiseDst);
 });
 
+gulp.task('b-mu', function () {
+    var promiseSrc = __devSrc + 'mobile/*.js';
+    var promiseDst = _devSrc + 'js/mobile/';
+
+    return jsDefault(promiseSrc, promiseDst);
+});
+
 gulp.task('b-html', function () {
     var htmlSrc = _devSrc + '*.html';
 
@@ -73,7 +80,7 @@ gulp.task('b-html', function () {
         .pipe(gulp.dest(dst));
 });
 
-gulp.task('b-js', ['b-3d', 'b-pu', 'b-ps-js'], function () {
+gulp.task('b-js', ['b-3d', 'b-pu', 'b-mu', 'b-ps-js'], function () {
     var jsSrc = _devSrc + 'js/';
     var jsDst = dst + '/js/';
 
