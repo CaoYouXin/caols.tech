@@ -81,8 +81,7 @@ div.pager > svg {
     }
 
     div.pager {
-        width: 40px;
-        height: 40px;
+        height: 80px;
 
         background: -webkit-radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, .5) 10%, rgba(255, 255, 255, 0) 100%);
     }

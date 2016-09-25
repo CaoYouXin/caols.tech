@@ -28,6 +28,13 @@
     margin: 0 auto;
 }
 
+@media (max-device-width: 800px) {
+    .post-content {
+        max-width: 100%;
+        padding: 0.5em 2em 0;
+    }
+}
+
 /* 段落 */
 .post-p {
     font-size: 1.5em;

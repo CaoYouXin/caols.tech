@@ -17,10 +17,3 @@
         filter: blur(10px);
     }
 }
-
-@media (max-device-width: 400px) {
-    body {
-        width: 600px;
-        filter: blur(10px);
-    }
-}
