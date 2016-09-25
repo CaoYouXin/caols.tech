@@ -44,6 +44,8 @@ var store = function store(key, value) {
 
     // No value supplied, return value
     if (typeof value === "undefined") {
+        var data = null;
+
         // Get value
         if (lsSupport) { // Native support
             data = localStorage.getItem(key);
@@ -56,7 +58,7 @@ var store = function store(key, value) {
             data = JSON.parse(data);
         }
         catch(e) {
-            data = data;
+            data = e;
         }
 
         return data;
