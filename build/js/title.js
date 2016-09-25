@@ -22,7 +22,7 @@
 
     for (var keys = Object.keys(config), len = keys.length, i = 0, key = keys[i]; i < len; key = keys[++i]) {
         var node = span.cloneNode(false);
-        node.setAttribute('data-title', (0 === i ? '' : '; ') + config[key]);
+        node.setAttribute('data-title', config[key]);
         node.innerHTML = document.querySelector('meta[name="'+key+'"]').getAttribute('content');
         body.insertBefore(node, it);
     }
