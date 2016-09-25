@@ -25,9 +25,7 @@
 
 .post-content {
     max-width: 64em;
-    position: relative;
-    left: 50%;
-    margin-left: -32em;
+    margin: 0 auto;
 }
 
 /* 段落 */
@@ -95,6 +93,13 @@ ul.post-drawer-l > li.active > .hidden {
     width: 100%;
     border: solid 1px #000000;
     box-shadow: 0 0 5px 3px rgba(0,0,0,0.75);
+
+    overflow: hidden;
+}
+
+/* 图片 */
+img {
+    max-width: 100%;
 }
 
 /* disqus_thread */

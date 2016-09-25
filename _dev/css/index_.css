@@ -111,8 +111,7 @@ a:hover {
 }
 
 .main-content {
-    max-width: 64rem;
-    padding: 2rem 6rem;
+    max-width: 64em;
     margin: 0 auto;
-    font-size: 1.1rem;
+    padding-top: 1em;
 }

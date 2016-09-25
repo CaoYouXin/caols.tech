@@ -11,3 +11,16 @@
     font-size: 12px;
 }
 
+@media (max-device-width: 800px) {
+    body {
+        width: 800px;
+        filter: blur(10px);
+    }
+}
+
+@media (max-device-width: 400px) {
+    body {
+        width: 600px;
+        filter: blur(10px);
+    }
+}
