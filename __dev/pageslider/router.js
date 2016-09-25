@@ -10,14 +10,10 @@
     var handlers = {}, historyStack = [], skip = null;
 
     function ops(event) {
-        if (event.state && event.state.home) {
-            location.reload();
-            return false;
-        }
 
-        historyStack.reverse();
+        historyStack = historyStack.reverse();
         historyStack.shift();
-        historyStack.reverse();
+        historyStack = historyStack.reverse();
 
         if (event.state && event.state.skip) {
             skip = event.state.skip;
@@ -64,7 +60,9 @@
                 }, '', url);
                 history.pushState(null, '', location.href);
 
-                history.back();
+                setTimeout(function () {
+                    history.back();
+                }, 1);
                 return;
             }
 
@@ -79,7 +77,9 @@
                 url: url
             }, '', url);
             history.pushState(null, '', location.href);
-            history.back();
+            setTimeout(function () {
+                history.back();
+            }, 1);
         },
         init: function (urls, cb) {
 

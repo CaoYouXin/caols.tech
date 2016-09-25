@@ -7,8 +7,8 @@
     var iOSFix = navigator.userAgent.match(/iPad|iPhone/i) ? 'style="-webkit-overflow-scrolling: touch;overflow-y: auto;" ' : '';
 
     var pageslideTplFn = handlebars.compile('{{#each this}}' +
-        '<li class="pageslide" ' + iOSFix + 'data-rel="{{this}}">' +
-        '<iframe src="{{this}}" frameborder="0"></iframe>' +
+        '<li class="pageslide" ' + iOSFix + 'data-rel="{{url}}">' +
+        '<iframe src="{{url}}" frameborder="0" width="{{width}}px" style="overflow-x: hidden;"></iframe>' +
         '</li>{{/each}}');
 
     function findActive(slidesElems) {
@@ -57,7 +57,10 @@
             var ulElem = document.querySelector('ul.pageslides');
             ulElem.style.width = (windowWidth * urlStack.length) + 'px';
 
-            var html = pageslideTplFn(urlStack);
+            var data = urlStack.map(function (url) {
+                return {url: url, width: windowWidth - 160};
+            });
+            var html = pageslideTplFn(data);
 
             var oldItems = [];
             for (var it = ulElem.firstElementChild; it != null; it = it.nextElementSibling) {

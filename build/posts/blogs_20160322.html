@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="Content-Language" content="zh-CN"/>
     <title>CaoYouxin的博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <meta name="post-name" content="年少の时候写的">
     <meta name="post-date" content="2011-11-11 ~ 2016-4-1">
@@ -78,12 +78,24 @@
             clear: left;
             margin: 5px 0 0 0;
         }
+
+        @media (max-device-width: 800px) {
+            body {
+                width: 800px;
+                filter: blur(10px);
+            }
+        }
+
+        @media (max-device-width: 400px) {
+            body {
+                width: 600px;
+                filter: blur(10px);
+            }
+        }
     </style>
-    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
-    <script type="text/javascript" src="../require-config.js"></script>
-    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blogs_20160322.min.css">
 <body>
+<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
 <h1><a name='top' href="http://my.oschina.net/cshadow/blog">CaoYouxin的博客@OSCHINA</a></h1>
 <p class='backupDesc'>共有<em>32</em>篇文章，备份时间：2016-03-22 17:36:31</p>
 <ol>

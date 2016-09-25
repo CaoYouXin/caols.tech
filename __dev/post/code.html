@@ -25,11 +25,16 @@
             border: solid 1px #000000;
             box-shadow: 0 0 5px 3px rgba(0,0,0,0.75);
         }
+
+        body {
+            padding: 2em;
+        }
     </style>
 </head>
 <body>
 
-<pre class="code-border"><code class="language-js line-numbers line-highlight">if (isAndroid) {
+<pre class="code-border"><code class="language-js line-numbers line-highlight">2016-01-09 15:58:04.865 [http-bio-8180-exec-94] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:android;app_name:yangaiche_client;client_version:4.2.1
+if (isAndroid) {
     var medium_dpi = data.width / win.screen.availWidth * window.devicePixelRatio * 160;
 
     medium_dpi = medium_dpi.toFixed(2);

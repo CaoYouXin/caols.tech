@@ -58,6 +58,6 @@
 
     document.getElementById('resume-marker').onclick = function () {
         resume.classList.add('show');
-    }
+    };
 
 })(window.top.ES6Promise.Promise);
