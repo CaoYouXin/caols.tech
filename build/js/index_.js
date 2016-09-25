@@ -22,7 +22,8 @@
     P.all([
         P.getJSON(rootHref + 'build/posts/articles.json'),
         P.ajax(rootHref + 'build/x-handlebars-templates/article_list.html'),
-        P.script(document, rootHref + 'build/js/duoshuo.js')
+        P.script(document, rootHref + 'build/js/duoshuo.js'),
+        P.script(document, rootHref + 'build/js/share.js')
     ]).then(function (values) {
         var html = window.top.Handlebars.compile(values[1])(processData(values[0]));
 
