@@ -100,7 +100,7 @@ a:hover {
     left: 0;
     top: 0;
 
-    transform: rotateY(-180deg);
+    transform: rotateY(-900deg);
     transition: all 1s;
 }
 
@@ -113,7 +113,7 @@ a:hover {
     width: auto;
     height: auto;
 
-    transform: rotateY(720deg);
+    transform: rotateY(0deg);
 }
 
 .main-content {
