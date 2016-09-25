@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/normalize/normalize.min.css" media="screen">
+
+    <style>
+        *, *:before, *:after {
+            border: none;
+            padding: 0;
+            margin: 0;
+
+            box-sizing: border-box;
+
+            font-family: monospace;
+
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: 4rem;
+        }
+
+        .post-span {
+            font-size: 1rem;
+        }
+
+        .titled-post-span:before {
+            content: attr(data-title);
+            display: inline;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+<h1>Title</h1>
+<span class="titled-post-span post-span" data-title="分类: ">Category</span>
+<span class="titled-post-span post-span" data-title="; 时间: ">2016-11-11 ~ 2016-12-12</span>
+<span class="titled-post-span post-span" data-title="; 标签: ">l1, l2</span>
+</body>
+</html>

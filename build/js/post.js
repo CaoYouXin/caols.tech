@@ -1,13 +1,9 @@
 /**
  * Created by cls on 16/9/14.
  */
-;(function () {
+;(function (P, rootHref) {
 
-    document.addEventListener('click', function (e) {
-        var parentElement = e.target.parentElement;
-        if (parentElement.tagName === 'UL' && parentElement.classList.contains('post-drawer-l')) {
-            e.target.classList.toggle('active');
-        }
-    });
+    P.script(document, rootHref + 'build/js/duoshuo.js');
+    P.script(document, rootHref + 'build/js/title.js');
 
-})();
+})(window.top.ES6Promise.Promise, window.top.Router.rootHref);

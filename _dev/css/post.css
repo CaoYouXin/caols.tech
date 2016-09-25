@@ -131,3 +131,19 @@ img {
 div#disqus_thread {
     margin-top: 3em;
 }
+
+/* post 顶部 */
+h1 {
+    font-size: 3rem;
+    margin: 0.3em 0;
+}
+
+.post-span {
+    font-size: 1rem;
+}
+
+.titled-post-span:before {
+    content: attr(data-title);
+    display: inline;
+    font-size: 1.2rem;
+}
