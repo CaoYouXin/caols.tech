@@ -70,6 +70,16 @@ div.pager > svg {
         background: -webkit-radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, .5) 10%, rgba(255, 255, 255, 0) 100%);
     }
 
+    #left {
+        transform-origin: 0 0 0;
+        transform: scale(0.6);
+    }
+
+    #right {
+        transform-origin: 100% 0 0;
+        transform: scale(0.6);
+    }
+
     div.pager > svg {
         transform: scale(0.5);
     }
@@ -77,6 +87,6 @@ div.pager > svg {
 
 @media (max-device-width: 400px) {
     div.pager > svg {
-        transform: scale(0.3);
+
     }
 }

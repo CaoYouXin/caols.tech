@@ -61,7 +61,6 @@ a:hover {
 #resume-marker {
     font-size: 2em;
     position: absolute;
-    z-index: 1;
     top: 3em;
     right: 4em;
     width: 2em;
@@ -97,7 +96,7 @@ a:hover {
     height: 1px;
 
     position: fixed;
-    z-index: 2;
+    z-index: 999;
     left: 0;
     top: 0;
 

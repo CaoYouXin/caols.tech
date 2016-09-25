@@ -8,11 +8,11 @@
 
     var pageslideTplFn = handlebars.compile('{{#each this}}' +
         '<li class="pageslide" ' + iOSFix + 'data-rel="{{url}}">' +
-        '<iframe src="{{url}}" frameborder="0" width="{{width}}px" style="overflow-x: hidden;"></iframe>' +
+        '<iframe src="{{url}}" frameborder="0"></iframe>' +
         '</li>{{/each}}');
 
     function findActive(slidesElems) {
-        return Array.from(slidesElems).reduce(function (previousValue, currentValue, currentIndex, array) {
+        return Array.from(slidesElems|| []).reduce(function (previousValue, currentValue, currentIndex, array) {
             return previousValue + (currentValue.classList.contains('active') ? (currentIndex + 1) : 0);
         }, -1);
     }
@@ -58,7 +58,7 @@
             ulElem.style.width = (windowWidth * urlStack.length) + 'px';
 
             var data = urlStack.map(function (url) {
-                return {url: url, width: windowWidth - 160};
+                return {url: url};
             });
             var html = pageslideTplFn(data);
 
