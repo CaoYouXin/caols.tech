@@ -58,7 +58,7 @@ var store = function store(key, value) {
             data = JSON.parse(data);
         }
         catch(e) {
-            data = e;
+            data = data;
         }
 
         return data;

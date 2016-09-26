@@ -30,7 +30,7 @@
         init: function (urls) {
             var self = this;
 
-            document.body.innerHTML = '<ul class="pageslides animation"></ul>' +
+            append(document.body, '<ul class="pageslides animation"></ul>' +
                 '<div id="left" class="pager" style="left: 0;">' +
                 '<svg>' +
                 '<path style="fill:#ffff00;" d="M10 50 L70 0 L70 100"></path>' +
@@ -40,7 +40,7 @@
                 '<svg>' +
                 '<path style="fill:#ffff00;" d="M10 0 L70 50 L10 100"></path>' +
                 '</svg>' +
-                '</div>';
+                '</div>');
 
             document.getElementById('left').addEventListener('click', self.left, true);
             document.getElementById('left').addEventListener('touchend', self.left, true);

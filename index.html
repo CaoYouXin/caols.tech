@@ -22,9 +22,9 @@
 <script>
     var psPages = store('ps-pages');
     window.PageSlider.init(psPages);
-    var urlSnapshot = store('url-snapshot');
+    var urlSnapshot = (store('url-snapshot') || '').toString();
     store('url-snapshot', null);
-    window.Router.go((null !== urlSnapshot && undefined !== urlSnapshot) ? urlSnapshot : 'build/index_.html', window.PageSlider.go);
+    window.Router.go(!!urlSnapshot ? urlSnapshot : 'build/index_.html', window.PageSlider.go);
 </script>
 </body>
 </html>
