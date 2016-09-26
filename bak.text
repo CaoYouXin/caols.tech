@@ -1,0 +1,14 @@
+
+<script>
+    require(['jquery'], function ($) {
+        window.top.require(['toonly/javascripts/only-router'], function (router) {
+            $('a[target="_self"]').click(function(e) {
+                e.preventDefault();
+
+                var url = $(this).attr('href');
+
+                router.go(url);
+            });
+        });
+    });
+</script>

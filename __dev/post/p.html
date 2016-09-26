@@ -35,11 +35,40 @@
             background: url("../../images/back.png") repeat;
             background-size: 6px 1.5em;
         }
+
+        p.q {
+            display: block;
+            width: 100%;
+            height: auto;
+            font-size: 1.8rem;
+            line-height: 2em;
+            background: #ffeeff;
+        }
+
+        p.q:before {
+            content: '';
+
+            background: #eeddee;
+
+            font-size: 1rem;
+
+            display: block;
+            float: left;
+
+            width: 1em;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
 <p class="post-p titled-post-p bg-post-p" data-title="项目背景：">炼形成气，炼气成神，炼神合道，未敢闻命。123.炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。</p>
 
 <p class="post-p bg-post-p">炼形成气，炼气成神，炼神合道，未敢闻命。123.炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。炼形成气，炼气成神，炼神合道，未敢闻命。</p>
+
+<p class="q">question<br>question</p>
+<script>
+    var p = document.querySelector('p.q');
+    p.style.height = p.offsetHeight + 'px';
+</script>
 </body>
 </html>

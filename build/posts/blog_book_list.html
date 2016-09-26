@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>读书列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--<meta name="post-name" content="读书列表">-->
+    <!--<meta name="post-date" content="2016-9-25 ~ ">-->
+    <!--<meta name="post-category" content="Personal">-->
+    <!--<meta name="post-label" content="哲学,科普">-->
+
+    
+    
+    
+    
+    
+
+    <script type="text/javascript" src="../../3rdLib/prism/prism.min.js"></script>
+    <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/posts/blog_book_list.min.css">
+<body>
+<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<section class="post-header">
+    <span>恍恍惚惚，杳杳冥冥……</span>
+</section>
+
+<section class="post-content">
+    <p class="post-p titled-post-p" data-title="项目背景: ">适应各种手机屏幕尺寸的H5页面.</p>
+    <p class="post-p">1. 解析&lt;meta name="viewport" content="width=750, user-scalable=no"&gt;</p>
+    <p class="post-p">2. 针对不同平台做不同的处理</p>
+<pre class="code-border"><code class="language-js line-numbers line-highlight">if (isAndroid) {
+    var medium_dpi = data.width / win.screen.availWidth * window.devicePixelRatio * 160;
+
+    medium_dpi = medium_dpi.toFixed(2);
+
+    data['target-densitydpi'] = medium_dpi;
+} else {
+    var scale = win.screen.availWidth / data.width;
+
+    scale = scale.toFixed(2);
+
+    data['initial-scale'] = data['maximum-scale'] = data['minimum-scale'] = scale;
+}
+</code></pre>
+    <p class="post-p">3. PageSlide中的问题, iframe设置方式采用body上加zoom属性</p>
+<pre class="code-border"><code class="language-js line-numbers line-highlight">if (data.width !== pData.width) {
+    document.body.style.zoom = pData.width / data.width;
+}
+</code></pre>
+
+</section>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>

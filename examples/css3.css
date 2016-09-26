@@ -1,0 +1,8 @@
+body {
+    background: #0000ff;
+}
+
+p.fn {
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.5);
+}
