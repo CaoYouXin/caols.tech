@@ -5,8 +5,10 @@
 
     var duoshuo = document.createElement('div');
     duoshuo.classList.add('ds-thread');
-    var url = location.href.toString();
-    duoshuo.setAttribute('data-url', url.match(/(\.html)/)[1]);
+    var url = location.href.toString().replace(/(https*:\/\/)(.*?)\//, function ($0, $1) {
+        return $1 + 'caols.tech/';
+    });
+    duoshuo.setAttribute('data-url', url.match(/(.*\.html)/)[1]);
     var buildUrl = url.match(/(build\/(.*\.html))/)[2];
     duoshuo.setAttribute('data-thread-key', buildUrl);
     var meta = document.querySelector('meta[name="post-name"]');
