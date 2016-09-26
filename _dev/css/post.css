@@ -96,6 +96,7 @@ p.q {
     height: auto;
     font-size: 1.8rem;
     line-height: 2em;
+    padding-left: 1em;
     background: #ffeeff;
 }
 
@@ -117,13 +118,26 @@ p.a {
 }
 
 /* 列表 */
+ol.post-l {
+    list-style-type: decimal;
+}
+
 ol.post-l > li, ul.post-l > li {
-    font-size: 1.5em;
-    list-style: inside;
+    font-size: 1.3rem;
+    list-style-position: inside;
+}
+
+ol.post-l p.post-p {
+    font-size: 1.3rem;
+    text-indent: 0;
 }
 
 /* 抽屉列表 */
-ul.post-drawer-l {
+ul.post-drawer-l > li {
+    cursor: pointer;
+}
+
+ul.post-drawer-l > li:not(.active) {
     list-style: square inside url('../../images/eg_arrow_right.png');
 }
 
@@ -137,15 +151,6 @@ ul.post-drawer-l > li > .hidden {
 
 ul.post-drawer-l > li.active > .hidden {
     display: block;
-}
-
-/* ul */
-ul {
-    list-style-position: inside;
-}
-
-ul > li {
-    font-size: 1.3rem;
 }
 
 /* 代码框 */

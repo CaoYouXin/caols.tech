@@ -5,7 +5,7 @@
 
     var duoshuo = document.createElement('div');
     duoshuo.classList.add('ds-thread');
-    var url = location.href.toString().replace(/(https*:\/\/)(.*?)\//, function ($0, $1) {
+    var url = location.href.toString().replace(/(https*:\/\/)(.*?)\/caols.tech\//, function ($0, $1) {
         return $1 + 'caols.tech/';
     });
     duoshuo.setAttribute('data-url', url.match(/(.*\.html)/)[1]);

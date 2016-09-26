@@ -7,7 +7,8 @@
     P.script(document, rootHref + 'build/js/title.js');
 
     document.querySelectorAll('p.q').forEach(function (p) {
-        p.style.height = (p.offsetHeight / 24).toFixed(0) + 'em';
+        p.style.height = p.offsetHeight + 'px';
+        p.style.paddingLeft = '0';
     });
 
     document.addEventListener('click', function (e) {
@@ -17,6 +18,11 @@
 
                 R.go(e.target.href.toString().match(/(build\/.*\.html)/)[1], PS.go);
             }
+        }
+
+        var parentElement = e.target.parentElement;
+        if (parentElement.tagName === 'UL' && parentElement.classList.contains('post-drawer-l')) {
+            e.target.classList.toggle('active');
         }
     });
 

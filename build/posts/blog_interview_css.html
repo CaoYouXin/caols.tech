@@ -2,26 +2,33 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS相关问答</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="post-name" content="CSS相关问答">
+    <meta name="post-date" content="2016-7-21 ~ 2016-7-31">
+    <meta name="post-category" content="Web Interview">
+    <meta name="post-label" content="Web,CSS">
+
     
     
     
     
-    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
-    <script type="text/javascript" src="../require-config.js"></script>
-    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+
+    <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blog_interview_css.min.css">
 <body>
-<section class="blog-header">
-    <span>CaoYouXin's blog</span>
+<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<section class="post-header">
+    <span>恍恍惚惚，杳杳冥冥……</span>
 </section>
 
-<section class="blog-content">
+<section class="post-content">
     <p class="q">介绍一下标准的CSS的盒子模型？与低版本IE的盒子模型有什么不同的？</p>
-    <p class="a">也就是CSS3中的box-sizing属性的content-box和border-box, 其中后者为低版本IE的盒子模型。</p>
+    <p class="a post-p">也就是CSS3中的box-sizing属性的content-box和border-box, 其中后者为低版本IE的盒子模型。</p>
+
     <p class="q">CSS选择符有哪些？哪些属性可以继承？</p>
-    <ol>
+    <ol class="post-l">
         <li>*</li>
         <li>#X</li>
         <li>.X</li>
@@ -55,7 +62,7 @@
         <li>X:first-of-type</li>
         <li>X:last-of-type</li>
     </ol>
-    <ul>
+    <ul class="post-l">
         <li>
             不可继承的：display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、left、right、top、bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、page-bread-before和unicode-bidi。
         </li>
@@ -66,8 +73,9 @@
         <li>终端块状元素可继承：text-indent和text-align。</li>
         <li>列表元素可继承：list-style、list-style-type、list-style-position、list-style-image。</li>
     </ul>
+
     <p class="q">CSS优先级算法如何计算？</p>
-    <ul>
+    <ul class="post-l">
         <li>元素标签中定义的样式（Style属性）,加1,0,0,0</li>
         <li>每个ID选择符(如 #id),加0,1,0,0</li>
         <li>每个Class选择符(如 .class)、每个属性选择符(如 [attribute=])、每个伪类(如 :hover)加0,0,1,0</li>
@@ -79,189 +87,230 @@
         <li>继承得到的样式的优先级最低。</li>
         <li>Universal selector (*), combinators (+, >, ~, ' ') and negation pseudo-class (:not()) have no effect on specificity. (The selectors declared <em>inside</em> :not() do, however.)</li>
     </ul>
+
     <p class="q">CSS3新增伪类有那些？</p>
-    <p class="a">这一块真是百思不得其解。<a
+    <p class="a post-p">这一块真是百思不得其解。<a
             href="https://developer.mozilla.org/en-US/Learn/CSS/Introduction_to_CSS/Selectors/Pseudo-classes_and_pseudo-elements"
             target="_blank">MDN关于pseudo-classes和pseudo-elements的说明</a></p>
+
     <p class="q">如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？</p>
-    <p class="a"><a class="ex" href="../tests/make_it_center.html" target="_blank">直接查看元素</a></p>
+    <p class="a post-p"><a class="ex" href="../../examples/make_it_center.html" target="_blank">直接查看元素</a></p>
+
     <p class="q">display有哪些值？说明他们的作用。</p>
-    <p class="a">none | inline | block | list-item | inline-list-item | inline-block | inline-table | table | table-cell | table-column | table-column-group | table-footer-group | table-header-group | table-row | table-row-group | flex | inline-flex | grid | inline-grid | run-in | ruby | ruby-base | ruby-text | ruby-base-container | ruby-text-container | contents</p>
-    <p class="a">按inline、block可分为两类。按照table、flex、ruby可分为三类。当然还有最新的值揉合inline和block。</p>
-    <p class="a">
-        <a href="../tests/display.html" class="ex" target="_blank">list-item和inline-list-item</a>
-        <a href="../tests/ruby.html" class="ex" target="_blank">方块字拼音</a>
+    <p class="a post-p">none | inline | block | list-item | inline-list-item | inline-block | inline-table | table | table-cell | table-column | table-column-group | table-footer-group | table-header-group | table-row | table-row-group | flex | inline-flex | grid | inline-grid | run-in | ruby | ruby-base | ruby-text | ruby-base-container | ruby-text-container | contents</p>
+    <p class="a post-p">按inline、block可分为两类。按照table、flex、ruby可分为三类。当然还有最新的值揉合inline和block。</p>
+    <p class="a post-p">
+        <a href="../../examples/display.html" class="ex" target="_blank">list-item和inline-list-item</a>
+        <a href="../../examples/ruby.html" class="ex" target="_blank">方块字拼音</a>
     </p>
+
     <p class="q">position的值relative和absolute定位原点是？</p>
-    <p class="a">relative的定位原点在元素本来应该出现的位置上。</p>
-    <p class="a">absolute的定位原点在父元素的左上角, 如果 <em>所有</em> 父元素都没有设置position, 那么定位原点在body元素的左上角。</p>
+    <p class="a post-p">relative的定位原点在元素本来应该出现的位置上。</p>
+    <p class="a post-p">absolute的定位原点在父元素的左上角, 如果 <em>所有</em> 父元素都没有设置position, 那么定位原点在body元素的左上角。</p>
+
     <p class="q">CSS3有哪些新特性？</p>
-    <ul class="drawer">
+    <ul class="post-l post-drawer-l">
         <li>CSS3选择器</li>
         <li>@font-face</li>
         <li>word-wrap、text-overflow</li>
-        <li class="brief">
-            <p class="a">Text-decoration</p>
-            <p class="a">text-fill-color、text-stroke-color、text-stroke-width</p>
+        <li>Text-decoration
+            <div class="hidden">
+                <p class="a post-p">text-fill-color、text-stroke-color、text-stroke-width</p>
+            </div>
         </li>
-        <li class="brief">
-            <p class="a">Multi-column Layout</p>
-            <p class="a">column-count、column-rule、column-gap</p>
+        <li>Multi-column Layout
+            <div class="hidden">
+                <p class="a post-p">column-count、column-rule、column-gap</p>
+            </div>
         </li>
         <li>边框和颜色</li>
-        <li class="brief">
-            <p class="a">渐变效果</p>
-            <p class="a">线性渐变、径向渐变</p>
+        <li>渐变效果
+            <div class="hidden">
+                <p class="a post-p">线性渐变、径向渐变</p>
+            </div>
         </li>
-        <li class="brief">
-            <p class="a">阴影和反射效果</p>
-            <p class="a">文字阴影、盒子阴影（一个div绘制一副画）</p>
+        <li>阴影和反射效果
+            <div class="hidden">
+                <p class="a post-p">文字阴影、盒子阴影（一个div绘制一副画）</p>
+            </div>
         </li>
-        <li class="brief">
-            <p class="a">背景效果</p>
-            <p class="a">background-clip、background-origin、background-size、background-break</p>
-            <p class="a">多背景图片</p>
+        <li>背景效果
+            <div class="hidden">
+                <p class="a post-p">background-clip、background-origin、background-size、background-break</p>
+                <p class="a post-p">多背景图片</p>
+            </div>
         </li>
         <li>盒子模型（牛X的flex盒子）</li>
-        <li class="brief">
-            <p class="a">动画</p>
-            <p class="a">transition-property、transition-duration、transition-delay、transition-timing-function</p>
-            <p class="a">transform: skew、scale、rotate、translate</p>
+        <li>动画
+            <div class="hidden">
+                <p class="a post-p">transition-property、transition-duration、transition-delay、transition-timing-function</p>
+                <p class="a post-p">transform: skew、scale、rotate、translate</p>
+            </div>
         </li>
     </ul>
-    <p class="a"><a href="http://www.ibm.com/developerworks/cn/web/1202_zhouxiang_css3/" class="ex" target="_blank">外链文章</a></p>
+    <p class="a post-p"><a href="http://www.ibm.com/developerworks/cn/web/1202_zhouxiang_css3/" class="ex" target="_blank">外链文章</a></p>
+
     <p class="q">请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？</p>
-    <p class="a">弹性盒模型可以用简单的方式满足很多常见的复杂的布局需求。它的优势在于开发人员只是声明布局应该具有的行为，而不需要给出具体的实现方式。浏览器会负责完成实际的布局。该布局模型在主流浏览器中都得到了支持。</p>
-    <p class="a">应用场景例如图片展示（格子拼图）、柱状图; （个人认为display属性分几大派系, 每一派系都能撑起一片天。）</p>
-    <p class="a"><a href="http://www.ibm.com/developerworks/cn/web/1409_chengfu_css3flexbox/" class="ex" target="_blank">外链文章</a></p>
+    <p class="a post-p">弹性盒模型可以用简单的方式满足很多常见的复杂的布局需求。它的优势在于开发人员只是声明布局应该具有的行为，而不需要给出具体的实现方式。浏览器会负责完成实际的布局。该布局模型在主流浏览器中都得到了支持。</p>
+    <p class="a post-p">应用场景例如图片展示（格子拼图）、柱状图; （个人认为display属性分几大派系, 每一派系都能撑起一片天。）</p>
+    <p class="a post-p"><a href="http://www.ibm.com/developerworks/cn/web/1409_chengfu_css3flexbox/" class="ex" target="_blank">外链文章</a></p>
+
     <p class="q">用纯CSS创建一个三角形的原理是什么？</p>
-    <p class="a">CSS中border分8块, 通过颜色和none隐藏的手段,创建8种方位的三角形。</p>
+    <p class="a post-p">CSS中border分8块, 通过颜色和none隐藏的手段,创建8种方位的三角形。</p>
+
     <p class="q">一个满屏 品 字布局 如何设计?</p>
-    <p class="a">百分比确定宽度, float漂浮。或者, 使用弹性盒子布局。</p>
-    <p class="a"><a href="../tests/pin.html" class="ex" target="_blank">直接查看源代码</a></p>
+    <p class="a post-p">百分比确定宽度, float漂浮。或者, 使用弹性盒子布局。</p>
+    <p class="a post-p"><a href="../../examples/pin.html" class="ex" target="_blank">直接查看源代码</a></p>
+
     <p class="q">常见兼容性问题？</p>
-    <p class="a">解决兼容性问题有两条思路, 一是使用某些浏览器不支持的语法; 二是使用带浏览器前缀的属性和值。</p>
+    <p class="a post-p">解决兼容性问题有两条思路, 一是使用某些浏览器不支持的语法; 二是使用带浏览器前缀的属性和值。</p>
+
     <p class="q">li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</p>
-    <p class="a">本来不理解这个问题, 经百度, 这是将li设置为内联块元素后出现的问题。实际上, 对所有内联元素布局时都会有这个问题。</p>
-    <p class="a">我们一般写代码都是带缩进的, HTML中多个空格会当做一个空格处理, 因此这是由字体大小导致的。修复时可以讲ul或ol字体大小设置为0px, 但是不要忘了设置li字体大小, 因为font-size在内联元素中是可继承的。</p>
+    <p class="a post-p">本来不理解这个问题, 经百度, 这是将li设置为内联块元素后出现的问题。实际上, 对所有内联元素布局时都会有这个问题。</p>
+    <p class="a post-p">我们一般写代码都是带缩进的, HTML中多个空格会当做一个空格处理, 因此这是由字体大小导致的。修复时可以讲ul或ol字体大小设置为0px, 但是不要忘了设置li字体大小, 因为font-size在内联元素中是可继承的。</p>
+
     <p class="q">经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</p>
-    <ul class="drawer">
+    <ul class="post-l post-drawer-l">
         <li>浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。</li>
-        <li>IE6双边距 <a href="../tests/compatibility.html" class="ex" target="_blank">直接查看源代码</a> 将其转化为行内属性。</li>
+        <li>IE6双边距 <a href="../../examples/compatibility.html" class="ex" target="_blank">直接查看源代码</a> 将其转化为行内属性。</li>
         <li>在ie6，ie7中元素高度超出自己设置高度。原因是IE8以前的浏览器中会给元素设置默认的行高的高度导致的。解决方案是加上overflow:hidden或设置line-height为更小的高度。</li>
         <li>min-height在IE6下不起作用。解决方案是添加 height:auto !important;height:xxpx;其中xx就是min-height设置的值。</li>
         <li>透明性IE用filter:Alpha(Opacity=60)，而其他主流浏览器用 opacity:0.6;</li>
-        <li class="brief">
-            <p class="a">ie6的默认CSS样式，涉及到border的有border-style:inset;border-width:2px;浏览器根据自己的内核解析规则，先解析自身的默认CSS，再解析开发者书写的CSS，达到渲染标签的目的。IE6对INPUT的渲染存在bug，border:none;不被解析，当有border-width或border-color设置的时候才会令IE6去解析border-style:none;。</p>
-            <p class="a">a(有href属性)标签嵌套下的img标签，在IE下会带有边框。解决办法是加上a img{border:none;}样式。</p>
-            <p class="a">input边框问题。去掉input边框一般用border:none;就可以，但由于IE6在解析input样式时的BUG(优先级问题)，在IE6下无效。</p>
-            <p class="a">解决方案是用:border:0或border:0 none;或border:none:border-color:transparent;，推荐用第三种方案。</p>
+        <li>ie6的默认CSS样式，涉及到border的有border-style:inset;border-width:2px;浏览器根据自己的内核解析规则，先解析自身的默认CSS，再解析开发者书写的CSS，达到渲染标签的目的。IE6对INPUT的渲染存在bug，border:none;不被解析，当有border-width或border-color设置的时候才会令IE6去解析border-style:none;。
+            <div class="hidden">
+                <p class="a post-p">a(有href属性)标签嵌套下的img标签，在IE下会带有边框。解决办法是加上a img{border:none;}样式。</p>
+                <p class="a post-p">input边框问题。去掉input边框一般用border:none;就可以，但由于IE6在解析input样式时的BUG(优先级问题)，在IE6下无效。</p>
+                <p class="a post-p">解决方案是用:border:0或border:0 none;或border:none:border-color:transparent;，推荐用第三种方案。</p>
+            </div>
         </li>
-        <li class="brief">
-            <p class="a">父子标签间用margin的问题，表现在有时除IE(6/7)外的浏览器子标签margin转移到了父标签上，IE6&7下没有转移。</p>
-            <p class="a">解决办法就是父子标签间的间隔建议用padding，兄弟标签间用margin。</p>
-            <p class="a">另外一个解决办法是, 转化为BFC, 即overflow: hidden;</p>
+        <li>父子标签间用margin的问题，表现在有时除IE(6/7)外的浏览器子标签margin转移到了父标签上，IE6&7下没有转移。
+            <div class="hidden">
+                <p class="a post-p">解决办法就是父子标签间的间隔建议用padding，兄弟标签间用margin。</p>
+                <p class="a post-p">另外一个解决办法是, 转化为BFC, 即overflow: hidden;</p>
+            </div>
         </li>
-        <li class="brief">
-            <p class="a">父子关系的标签，子标签浮动导致父标签不再包裹子标签。</p>
-            <p class="a">清除浮动</p>
-            <p class="a">转化为BFC</p>
+        <li>父子关系的标签，子标签浮动导致父标签不再包裹子标签。
+            <div class="hidden">
+                <p class="a post-p">清除浮动</p>
+                <p class="a post-p">转化为BFC</p>
+            </div>
         </li>
     </ul>
+
     <p class="q">为什么要初始化CSS样式? </p>
-    <p class="a">我是使用的是 normalize.min.css 。可以使各浏览器对相同的元素作出一致的表现。</p>
+    <p class="a post-p">我是使用的是 normalize.min.css 。可以使各浏览器对相同的元素作出一致的表现。</p>
+
     <p class="q">absolute的containing block计算方式跟正常流有什么不同？</p>
-    <p class="a">正常流cb为就近的父元素的content box（除margin,border,padding外的区域）</p>
-    <p class="a">absolute的cb则是找到其祖先元素中最近的position属性非static的元素, 然后判断。</p>
+    <p class="a post-p">正常流cb为就近的父元素的content box（除margin,border,padding外的区域）</p>
+    <p class="a post-p">absolute的cb则是找到其祖先元素中最近的position属性非static的元素, 然后判断。</p>
+
     <p class="q">CSS里的visibility属性有个collapse属性值是干嘛用的？在不同浏览器下以后什么区别？</p>
-    <p class="a">这个属性值是为了快速移除行列而设计的, 移除过程中不用计算全部表格。应用在表格里的显示效果与display: none;一致。</p>
-    <p class="a">对于其它元素, 显示效果与visibility: hidden;一致, 即留出空白区域。</p>
-    <p class="a">不过, 谷歌浏览器中似乎collapse与hidden一致。</p>
+    <p class="a post-p">这个属性值是为了快速移除行列而设计的, 移除过程中不用计算全部表格。应用在表格里的显示效果与display: none;一致。</p>
+    <p class="a post-p">对于其它元素, 显示效果与visibility: hidden;一致, 即留出空白区域。</p>
+    <p class="a post-p">不过, 谷歌浏览器中似乎collapse与hidden一致。</p>
+
     <p class="q">position跟display、margin collapse、overflow、float这些特性相互叠加后会怎么样？</p>
-    <p class="a">首先overflow: hidden;会构建一个新的BFC, 可以包含浮动元素。</p>
-    <p class="a">display: none;会使元素彻底消失, margin也会消失。</p>
-    <p class="a">float相当于z-index上高出一级的位置上重新开始排列。</p>
+    <p class="a post-p">首先overflow: hidden;会构建一个新的BFC, 可以包含浮动元素。</p>
+    <p class="a post-p">display: none;会使元素彻底消失, margin也会消失。</p>
+    <p class="a post-p">float相当于z-index上高出一级的位置上重新开始排列。</p>
+
     <p class="q">对BFC规范(块级格式化上下文：block formatting context)的理解？</p>
-    <p class="a">简单来说，BFC 就是一种属性，这种属性会影响着元素的定位以及与其兄弟元素之间的相互作用。</p>
-    <p class="a">IE6-7 并不支持 W3C 的 BFC ，而是使用私有属性 hasLayout 。从表现上来说，hasLayout 跟 BFC 很相似。使用 zoom: 1 既可以触发 hasLayout 又不会对元素造成其他影响，相对来说会更为方便。</p>
-    <p class="a">满足下面任一条件的元素，会触发为 BFC ：</p>
-    <ul>
+    <p class="a post-p">简单来说，BFC 就是一种属性，这种属性会影响着元素的定位以及与其兄弟元素之间的相互作用。</p>
+    <p class="a post-p">IE6-7 并不支持 W3C 的 BFC ，而是使用私有属性 hasLayout 。从表现上来说，hasLayout 跟 BFC 很相似。使用 zoom: 1 既可以触发 hasLayout 又不会对元素造成其他影响，相对来说会更为方便。</p>
+    <p class="a post-p">满足下面任一条件的元素，会触发为 BFC ：</p>
+    <ul class="post-l">
         <li>浮动元素，float 除 none 以外的值</li>
         <li>绝对定位元素，position（absolute，fixed）</li>
         <li>display 为以下其中之一的值 inline-blocks，table-cells，table-captions</li>
         <li>overflow 除了 visible 以外的值（hidden，auto，scroll）</li>
     </ul>
-    <p class="a"><a href="../tests/overflow.html" class="ex" target="_blank">直接查看源代码</a></p>
+    <p class="a post-p"><a href="../../examples/overflow.html" class="ex" target="_blank">直接查看源代码</a></p>
+
     <p class="q">请解释一下为什么会出现浮动和什么时候需要清除浮动？清除浮动的方式</p>
-    <p class="a">浮动提供一种布局方式, 可以很方便的实现品字布局以及其它布局。</p>
-    <p class="a">简单说, 需要换行的时候需要通过清除浮动来完成。</p>
-    <p class="a">清除浮动有两种方式:</p>
-    <ul>
+    <p class="a post-p">浮动提供一种布局方式, 可以很方便的实现品字布局以及其它布局。</p>
+    <p class="a post-p">简单说, 需要换行的时候需要通过清除浮动来完成。</p>
+    <p class="a post-p">清除浮动有两种方式:</p>
+    <ul class="post-l">
         <li>在浮动元素后, 追加一个元素, 样式中加入clear: both;。追加的元素可以是伪元素。</li>
         <li>在父元素上构建BFC</li>
     </ul>
-    <p class="q">移动端的布局用过媒体查询吗？</p>
-    <p class="a">媒体查询几乎是写两套CSS, 不如使用flexbox, 在设计上多下功夫。</p>
-    <p class="q">使用 CSS 预处理器吗？喜欢那个？</p>
-    <p class="a">并没有使用过 CSS 预处理器, 喜欢自行设计选择器结构。</p>
-    <p class="a">另外, 使用过 CSS 压缩、合并插件。</p>
-    <p class="q">CSS优化、提高性能的方法有哪些？</p>
-    <p class="a">说到性能, 不得不提开发速度与代码可维护性。关于这些, 就之前的开发实践, 认为应该向semantic ui学习, 即将常用 CSS 功能作合理归类、拆分, 平时多积累, 这样才是写 CSS 的道路。</p>
-    <p class="q">浏览器是怎样解析CSS选择器的？</p>
-    <p class="a">解析 CSS 选择器离不开 HTML 的特性, ID唯一, class可以应用在多个标签上。所以, 解析过程先从ID开始, 然后从左至右。</p>
-    <p class="q">在网页中的应该使用奇数还是偶数的字体？为什么呢？</p>
-    <p class="a">偶数的多吧, 这个多是设计人员决定的。</p>
-    <p class="q">margin和padding分别适合什么场景使用？</p>
-    <p class="a">margin多用在边框外边距, 相反padding多用在边框内边距。</p>
-    <p class="q">抽离样式模块怎么写，说出思路，有无实践经验？[阿里航旅的面试题]</p>
-    <p class="a">模仿semantic ui, 首先可以抽出数字作为 class 的选择器。另外一条思路可以是根据开发中的新型界面抽离。</p>
-    <p class="q">元素竖向的百分比设定是相对于容器的高度吗？</p>
-    <p class="a">貌似是宽度。</p>
-    <p class="q">全屏滚动的原理是什么？用到了CSS的那些属性？</p>
-    <p class="a">滚动用到transform: translate(); overflow: hidden;</p>
-    <p class="q">什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？</p>
-    <p class="a">即能够适应不同屏幕尺寸的页面设计, 基本原理是使用媒体查询。低版本IE可以使用JS来实现媒体查询的功能。</p>
-    <p class="q">视差滚动效果，如何给每页做不同的动画？（回到顶部，向下滑动要再次出现，和只出现一次分别怎么做？）</p>
-    <p class="a">没做过, 看是看得出, 这是件体力活。</p>
-    <p class="q">::before 和 :after中双冒号和单冒号 有什么区别？解释一下这2个伪元素的作用。</p>
-    <p class="a">双冒号是伪元素, 单冒号是伪类。对于before和after这两种写法作用一样。</p>
-    <p class="q">如何修改chrome记住密码后自动填充表单的黄色背景 ？</p>
-    <p class="a">input:-webkit-autofill</p>
-    <p class="q">你对line-height是如何理解的？</p>
-    <p class="a">是个对inline元素以及inline元素内文本进行垂直居中的好属性。</p>
-    <p class="q">设置元素浮动后，该元素的display值是多少？（自动变成display:block）</p>
-    <p class="a">好神奇, 这可能是BFC的作用。</p>
-    <p class="q">怎么让Chrome支持小于12px 的文字？</p>
-    <p class="a">-webkit-transform: scale();</p>
-    <p class="q">让页面里的字体变清晰，变细用CSS怎么做？（-webkit-font-smoothing: antialiased;）</p>
-    <p class="a">反锯齿</p>
-    <p class="q">font-style属性可以让它赋值为“oblique” oblique是什么意思？</p>
-    <p class="a">人工倾斜版本, 另外两个值是normal、italic, 正常版本和斜体版本<a href="../tests/oblique.html" class="ex" target="_blank">查看代码</a></p>
-    <p class="q">position:fixed;在android下无效怎么处理？</p>
-    <p class="a">没遇到过这个问题哦, 百度了一下, viewport设置好了就OK。</p>
-    <p class="q">如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）</p>
-    <p class="a">多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms</p>
-    <p class="q">display:inline-block 什么时候会显示间隙？(携程)</p>
-    <p class="a">父容器字体大小不为0。</p>
-    <p class="q">overflow: scroll时不能平滑滚动的问题怎么处理？</p>
-    <p class="a">老实说, 没遇到这种情况, 看出平滑滚动对眼睛的考验蛮高的。这里记下网上的解答思路, 阻止所有能导致页面滚动的事件。</p>
-    <p class="q">有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度。</p>
-    <p class="a">选定盒模型, 有两条思路, 补丁互补, 绝对定位。</p>
-    <p class="q">png、jpg、gif 这些图片格式解释一下，分别什么时候用。有没有了解过webp？</p>
-    <p class="a">png支持透明背景; jpg格式文件小, 下载快; gif支持动画。webp是谷歌推出的文件格式, 并没有深入了解。</p>
-    <p class="q">style标签写在body后与body前有什么区别？</p>
-    <p class="a">页面加载自上而下 当然是先加载样式。</p>
-</section>
 
-<script>
-    require(['jquery'], function ($) {
-        $('ul.drawer > li > p.a:first-child').click(function () {
-            var parent = $(this).parent();
-            parent.toggleClass('brief');
-            parent.toggleClass('detail');
-        });
-    });
-</script>
+    <p class="q">移动端的布局用过媒体查询吗？</p>
+    <p class="a post-p">媒体查询几乎是写两套CSS, 不如使用flexbox, 在设计上多下功夫。</p>
+
+    <p class="q">使用 CSS 预处理器吗？喜欢那个？</p>
+    <p class="a post-p">并没有使用过 CSS 预处理器, 喜欢自行设计选择器结构。</p>
+    <p class="a post-p">另外, 使用过 CSS 压缩、合并插件。</p>
+
+    <p class="q">CSS优化、提高性能的方法有哪些？</p>
+    <p class="a post-p">说到性能, 不得不提开发速度与代码可维护性。关于这些, 就之前的开发实践, 认为应该向semantic ui学习, 即将常用 CSS 功能作合理归类、拆分, 平时多积累, 这样才是写 CSS 的道路。</p>
+
+    <p class="q">浏览器是怎样解析CSS选择器的？</p>
+    <p class="a post-p">解析 CSS 选择器离不开 HTML 的特性, ID唯一, class可以应用在多个标签上。所以, 解析过程先从ID开始, 然后从左至右。</p>
+
+    <p class="q">在网页中的应该使用奇数还是偶数的字体？为什么呢？</p>
+    <p class="a post-p">偶数的多吧, 这个多是设计人员决定的。</p>
+
+    <p class="q">margin和padding分别适合什么场景使用？</p>
+    <p class="a post-p">margin多用在边框外边距, 相反padding多用在边框内边距。</p>
+
+    <p class="q">抽离样式模块怎么写，说出思路，有无实践经验？[阿里航旅的面试题]</p>
+    <p class="a post-p">模仿semantic ui, 首先可以抽出数字作为 class 的选择器。另外一条思路可以是根据开发中的新型界面抽离。</p>
+
+    <p class="q">元素竖向的百分比设定是相对于容器的高度吗？</p>
+    <p class="a post-p">貌似是宽度。</p>
+
+    <p class="q">全屏滚动的原理是什么？用到了CSS的那些属性？</p>
+    <p class="a post-p">滚动用到transform: translate(); overflow: hidden;</p>
+
+    <p class="q">什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？</p>
+    <p class="a post-p">即能够适应不同屏幕尺寸的页面设计, 基本原理是使用媒体查询。低版本IE可以使用JS来实现媒体查询的功能。</p>
+
+    <p class="q">视差滚动效果，如何给每页做不同的动画？（回到顶部，向下滑动要再次出现，和只出现一次分别怎么做？）</p>
+    <p class="a post-p">没做过, 看是看得出, 这是件体力活。</p>
+
+    <p class="q">::before 和 :after中双冒号和单冒号 有什么区别？解释一下这2个伪元素的作用。</p>
+    <p class="a post-p">双冒号是伪元素, 单冒号是伪类。对于before和after这两种写法作用一样。</p>
+
+    <p class="q">如何修改chrome记住密码后自动填充表单的黄色背景 ？</p>
+    <p class="a post-p">input:-webkit-autofill</p>
+
+    <p class="q">你对line-height是如何理解的？</p>
+    <p class="a post-p">是个对inline元素以及inline元素内文本进行垂直居中的好属性。</p>
+
+    <p class="q">设置元素浮动后，该元素的display值是多少？（自动变成display:block）</p>
+    <p class="a post-p">好神奇, 这可能是BFC的作用。</p>
+
+    <p class="q">怎么让Chrome支持小于12px 的文字？</p>
+    <p class="a post-p">-webkit-transform: scale();</p>
+
+    <p class="q">让页面里的字体变清晰，变细用CSS怎么做？（-webkit-font-smoothing: antialiased;）</p>
+    <p class="a post-p">反锯齿</p>
+
+    <p class="q">font-style属性可以让它赋值为“oblique” oblique是什么意思？</p>
+    <p class="a post-p">人工倾斜版本, 另外两个值是normal、italic, 正常版本和斜体版本<a href="../../examples/oblique.html" class="ex" target="_blank">查看代码</a></p>
+
+    <p class="q">position:fixed;在android下无效怎么处理？</p>
+    <p class="a post-p">没遇到过这个问题哦, 百度了一下, viewport设置好了就OK。</p>
+
+    <p class="q">如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）</p>
+    <p class="a post-p">多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms</p>
+
+    <p class="q">display:inline-block 什么时候会显示间隙？(携程)</p>
+    <p class="a post-p">父容器字体大小不为0。</p>
+
+    <p class="q">overflow: scroll时不能平滑滚动的问题怎么处理？</p>
+    <p class="a post-p">老实说, 没遇到这种情况, 看出平滑滚动对眼睛的考验蛮高的。这里记下网上的解答思路, 阻止所有能导致页面滚动的事件。</p>
+
+    <p class="q">有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度。</p>
+    <p class="a post-p">选定盒模型, 有两条思路, 补丁互补, 绝对定位。</p>
+
+    <p class="q">png、jpg、gif 这些图片格式解释一下，分别什么时候用。有没有了解过webp？</p>
+    <p class="a post-p">png支持透明背景; jpg格式文件小, 下载快; gif支持动画。webp是谷歌推出的文件格式, 并没有深入了解。</p>
+
+    <p class="q">style标签写在body后与body前有什么区别？</p>
+    <p class="a post-p">页面加载自上而下 当然是先加载样式。</p>
+</section>
 
 <div id="tongji">
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
