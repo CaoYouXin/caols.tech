@@ -122,6 +122,10 @@ ol.post-l {
     list-style-type: decimal;
 }
 
+ol.post-l, ul.post-l {
+    margin: 1em 0;
+}
+
 ol.post-l > li, ul.post-l > li {
     font-size: 1.3rem;
     list-style-position: inside;

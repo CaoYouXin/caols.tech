@@ -42,7 +42,7 @@
         <li>X[attr="foo"]</li>
         <li>X[attr*="mid"]</li>
         <li>X[attr^="start"]</li>
-        <li>X[attr="end"]</li>
+        <li>X[attr$="end"]</li>
         <li>X[attrStart-*="foo"]</li>
         <li>X[foo~="bar"]&nbsp;&nbsp;&nbsp;&nbsp;a spaced-separated list of values</li>
         <li>X:checked</li>
@@ -64,7 +64,7 @@
     </ol>
     <ul class="post-l">
         <li>
-            不可继承的：display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、left、right、top、bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、page-bread-before和unicode-bidi。
+            不可继承的：display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、left、right、top、bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、page-break-before和unicode-bidi。
         </li>
         <li>所有元素可继承：visibility和cursor。</li>
         <li>
@@ -168,6 +168,7 @@
     <p class="q">li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</p>
     <p class="a post-p">本来不理解这个问题, 经百度, 这是将li设置为内联块元素后出现的问题。实际上, 对所有内联元素布局时都会有这个问题。</p>
     <p class="a post-p">我们一般写代码都是带缩进的, HTML中多个空格会当做一个空格处理, 因此这是由字体大小导致的。修复时可以讲ul或ol字体大小设置为0px, 但是不要忘了设置li字体大小, 因为font-size在内联元素中是可继承的。</p>
+    <p class="a post-p">还有white-space属性，应该也可以解决问题。</p>
 
     <p class="q">经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</p>
     <ul class="post-l post-drawer-l">
@@ -198,7 +199,7 @@
     </ul>
 
     <p class="q">为什么要初始化CSS样式? </p>
-    <p class="a post-p">我是使用的是 normalize.min.css 。可以使各浏览器对相同的元素作出一致的表现。</p>
+    <p class="a post-p">我使用的是 normalize.min.css 。可以使各浏览器对相同的元素作出一致的表现。</p>
 
     <p class="q">absolute的containing block计算方式跟正常流有什么不同？</p>
     <p class="a post-p">正常流cb为就近的父元素的content box（除margin,border,padding外的区域）</p>
@@ -258,10 +259,11 @@
     <p class="a post-p">模仿semantic ui, 首先可以抽出数字作为 class 的选择器。另外一条思路可以是根据开发中的新型界面抽离。</p>
 
     <p class="q">元素竖向的百分比设定是相对于容器的高度吗？</p>
-    <p class="a post-p">貌似是宽度。</p>
+    <p class="a post-p">对于 padding-top,padding-bottom,margin-top,margin-bottom， 貌似是宽度。</p>
 
     <p class="q">全屏滚动的原理是什么？用到了CSS的那些属性？</p>
     <p class="a post-p">滚动用到transform: translate(); overflow: hidden;</p>
+    <p class="a post-p">记得大二时，连这个效果都没有实现就给院长献丑了，真是不逢时啊！</p>
 
     <p class="q">什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？</p>
     <p class="a post-p">即能够适应不同屏幕尺寸的页面设计, 基本原理是使用媒体查询。低版本IE可以使用JS来实现媒体查询的功能。</p>
