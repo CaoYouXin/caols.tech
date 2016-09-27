@@ -2,24 +2,32 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/normalize.min.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="../stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="../toonly/stylesheets/blog.css" media="screen">
-    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
-    <script type="text/javascript" src="../require-config.js"></script>
-    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+    <title>JS相关问答</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="post-name" content="JS相关问答">
+    <meta name="post-date" content="2016-8-1 ~ 2016-8-11">
+    <meta name="post-category" content="Web Interview">
+    <meta name="post-label" content="Web,JS">
+
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/normalize/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/prism/prism.css">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/post.css">
+    <link rel="stylesheet" type="text/css" href="../css/tongji.css">
+
+    <script type="text/javascript" src="../../3rdLib/prism/prism.min.js"></script>
+    <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 </head>
 <body>
-<section class="blog-header">
-    <span>CaoYouXin's blog</span>
+<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<section class="post-header">
+    <span>恍恍惚惚，杳杳冥冥……</span>
 </section>
 
-<section class="blog-content">
+<section class="post-content">
     <p class="q">介绍JavaScript的基本数据类型。</p>
-    <ul>
+    <ul class="post-l">
         <li>Number 数字类型</li>
         <li>String 字符串类型</li>
         <li>Boolean 布尔类型</li>
@@ -30,20 +38,20 @@
     </ul>
 
     <p class="q">说说写JavaScript的基本规范？</p>
-    <p class="a">一切都已经习惯成自然, 有一点很有意思: </p>
-    <p class="a">为了避免混乱，建议在HTML中使用双引号，在JavaScript中使用单引号。</p>
+    <p class="a post-p">一切都已经习惯成自然, 有一点很有意思: </p>
+    <p class="a post-p">为了避免混乱，建议在HTML中使用双引号，在JavaScript中使用单引号。</p>
 
     <p class="q">JavaScript原型，原型链? 有什么特点？</p>
-    <p class="a">prototype是构造函数的一个属性, 该属性指向一个对象. 而这个对象将作为该构造函数所创建的所有实例的基引用(base reference), 可以把对象的基引用想像成一个自动创建的隐藏属性. 当访问对象的一个属性时, 首先查找对象本身, 找到则返回; 若不, 则查找基引用指向的对象的属性(如果还找不到实际上还会沿着原型链向上查找,  直至到根). 只要没有被覆盖的话, 对象原型的属性就能在所有的实例中找到.</p>
+    <p class="a post-p">prototype是构造函数的一个属性, 该属性指向一个对象. 而这个对象将作为该构造函数所创建的所有实例的基引用(base reference), 可以把对象的基引用想像成一个自动创建的隐藏属性. 当访问对象的一个属性时, 首先查找对象本身, 找到则返回; 若不, 则查找基引用指向的对象的属性(如果还找不到实际上还会沿着原型链向上查找,  直至到根). 只要没有被覆盖的话, 对象原型的属性就能在所有的实例中找到.</p>
 
     <p class="q">JavaScript有几种类型的值？（堆：原始数据类型和 栈：引用数据类型），你能画一下他们的内存图吗？</p>
-    <p class="a">基本数据类型存储在栈中，引用数据类型（对象）存储在堆中，指针放在栈中。两种类型的区别是：存储位置不同；原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定,如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。</p>
+    <p class="a post-p">基本数据类型存储在栈中，引用数据类型（对象）存储在堆中，指针放在栈中。两种类型的区别是：存储位置不同；原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定,如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。</p>
 
     <p class="q">Javascript如何实现继承？</p>
-    <p class="a">构造继承，原型继承，（实例继承，拷贝继承）。构造函数继承可以将构造函数的属性拷贝给实例（＊.call(this,[])）。但是缺点是无法实现函数复用。原型继承可以实现函数复用，但是所有实例共享一个属性，任意一个实例改变原型属性都会改变其它实例的属性值。推荐采用构造函数继承传递属性（拷贝），原型继承传递方法.</p>
+    <p class="a post-p">构造继承，原型继承，（实例继承，拷贝继承）。构造函数继承可以将构造函数的属性拷贝给实例（＊.call(this,[])）。但是缺点是无法实现函数复用。原型继承可以实现函数复用，但是所有实例共享一个属性，任意一个实例改变原型属性都会改变其它实例的属性值。推荐采用构造函数继承传递属性（拷贝），原型继承传递方法.</p>
 
     <p class="q">Javascript创建对象的几种方式？</p>
-    <ul>
+    <ul class="post-l">
         <li>对象字面量的方式p＝{};</li>
         <li>用function来模拟无参的构造函数，再定义属性;</li>
         <li>用function模拟构造函数，利用this;</li>
@@ -53,87 +61,89 @@
     </ul>
 
     <p class="q">Javascript作用域链?</p>
-    <p class="a">闭包。</p>
-    <p class="a">当代码在一个环境中执行时，会创建变量对象的一个作用域链。如果是个函数，则将其活动对象作为变量对象。活动对象在最开始只包含一个arguments对象。而下一个变量对象则来自下一个包含环境。如此一直延续到全局执行环境，这种组织形式即为作用域链。内部函数可访问外部变量，外部变量无法访问内部函数。注意：js没有块级作用域，若要形成块级作用域，可通过（function（）｛｝）（）；立即执行的形式实现。</p>
+    <p class="a post-p">闭包。</p>
+    <p class="a post-p">当代码在一个环境中执行时，会创建变量对象的一个作用域链。如果是个函数，则将其活动对象作为变量对象。活动对象在最开始只包含一个arguments对象。而下一个变量对象则来自下一个包含环境。如此一直延续到全局执行环境，这种组织形式即为作用域链。内部函数可访问外部变量，外部变量无法访问内部函数。注意：js没有块级作用域，若要形成块级作用域，可通过（function（）｛｝）（）；立即执行的形式实现。</p>
 
     <p class="q">谈谈This对象的理解。</p>
-    <ul>
+    <ul class="post-l">
         <li>this总是指向函数的直接调用者（而非间接调用者）;</li>
         <li>如果有new关键字，this指向new出来的那个对象;</li>
         <li>在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window; 在addEventListener中this总是指向DomElement。</li>
     </ul>
 
     <p class="q">eval是做什么的？</p>
-    <p class="a">计算某个字符串，并执行其中的的 JavaScript 代码。eval(string)。应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval('('+ str +')');</p>
-    <p class="a">当然, 使用JSON.parse更佳。</p>
-    <p class="a">非严格模式下, eval里变量的作用域是window。</p>
+    <p class="a post-p">计算某个字符串，并执行其中的的 JavaScript 代码。eval(string)。应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval('('+ str +')');</p>
+    <p class="a post-p">当然, 使用JSON.parse更佳。</p>
+    <p class="a post-p">非严格模式下, eval里变量的作用域是window。</p>
 
     <p class="q">什么是window对象? 什么是document对象?</p>
-    <p class="a">Window对象代表浏览器中打开的一个窗口。document对象代表整个HTML文档。</p>
+    <p class="a post-p">Window对象代表浏览器中打开的一个窗口。document对象代表整个HTML文档。</p>
 
     <p class="q">null，undefined的区别？</p>
-    <p class="a">null表示一个对象被定义了，但存放的是空指针。undefined 表示这个值不存在。typeof（null）－object；typeof（undefined）－undefined。</p>
+    <p class="a post-p">null表示一个对象被定义了，但存放的是空指针。undefined 表示这个值不存在。typeof（null）－object；typeof（undefined）－undefined。</p>
 
     <p class="q">写一个通用的事件侦听器函数(机试题)。</p>
-<pre>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
 (dom.addEventListener || dom.attachEvent)(function(event){
     console.log(event);
 });
-</pre>
+    </code></pre>
 
     <p class="q">["1", "2", "3"].map(parseInt) 答案是多少？</p>
-    <p class="a">[1, NaN, NaN] <a href="../tests/map.html" class="ex" target="_blank">查看console结果。</a></p>
-    <ul>
+    <p class="a post-p">[1, NaN, NaN] <a href="../../examples/map.html" class="ex" target="_blank">查看console结果。</a></p>
+    <ul class="post-l">
         <li>parseInt("1", 0); // 1</li>
         <li>parseInt("2", 1); // NaN</li>
         <li>parseInt("3", 2); // NaN</li>
     </ul>
 
     <p class="q">关于事件，IE与火狐的事件机制有什么区别？ 如何阻止冒泡？</p>
-    <p class="a">IE为事件冒泡，Firefox同时支持事件捕获和冒泡事件。但并非所有浏览器都支持事件捕获。jQuery中使用event.stopPropagation()方法可阻止冒泡;（旧ie的方法 ev.cancelBubble = true;）</p>
+    <p class="a post-p">IE为事件冒泡，Firefox同时支持事件捕获和冒泡事件。但并非所有浏览器都支持事件捕获。jQuery中使用event.stopPropagation()方法可阻止冒泡;（旧ie的方法 ev.cancelBubble = true;）</p>
 
     <p class="q">什么是闭包（closure），为什么要用它？</p>
-    <p class="a">闭包指的是一个函数可以访问另一个函数作用域中变量的函数。常见的构造方法，是在一个函数内部定义另外一个函数。内部函数可以引用外层的参数和变量；参数和变量不会被垃圾回收机制回收。注意，闭包的原理是作用域链，所以闭包访问的上级作用域中的变量是个对象，其值为其运算结束后的最后一个值。除非用立即执行函数来解决。</p>
+    <p class="a post-p">闭包指的是一个函数可以访问另一个函数作用域中变量的函数。常见的构造方法，是在一个函数内部定义另外一个函数。内部函数可以引用外层的参数和变量；参数和变量不会被垃圾回收机制回收。注意，闭包的原理是作用域链，所以闭包访问的上级作用域中的变量是个对象，其值为其运算结束后的最后一个值。除非用立即执行函数来解决。</p>
+    <p class="a post-p">大二时，准备一个关于闭包的PPT来的，怎么也理不清思路，理解不了闭包；最后的PPT自己都感觉大假空，更别提演讲了，^_^</p>
 
     <p class="q">javascript 代码中的”use strict”;是什么意思 ? 使用它区别是什么？</p>
-    <p class="a">use strict是一种ECMAscript 5 添加的（严格）运行模式,这种模式使得 Javascript 在更严格的条件下运行,使JS编码更加规范化的模式,消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为。目前支持的浏览器为IE10+，Firefox 4+，Safari 5.1+和Chrome。默认支持的糟糕特性都会被禁用，比如不能用with，也不能在意外的情况下给全局变量赋值全局变量的显示声明,函数必须声明在顶层，不允许在非函数代码块内声明函数,arguments.callee也不允许使用；消除代码运行的一些不安全之处，保证代码运行的安全,限制函数中的arguments修改，严格模式下的eval函数的行为和非严格模式的也不相同(严格模式下eval用法无效, 如果在 eval 函数内声明变量，则不能在此函数外部使用该变量。);提高编译器效率，增加运行速度；为未来新版本的Javascript标准化做铺垫。</p>
+    <p class="a post-p">use strict是一种ECMAscript 5 添加的（严格）运行模式,这种模式使得 Javascript 在更严格的条件下运行,使JS编码更加规范化的模式,消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为。目前支持的浏览器为IE10+，Firefox 4+，Safari 5.1+和Chrome。默认支持的糟糕特性都会被禁用，比如不能用with，也不能在意外的情况下给全局变量赋值全局变量的显示声明,函数必须声明在顶层，不允许在非函数代码块内声明函数,arguments.callee也不允许使用；消除代码运行的一些不安全之处，保证代码运行的安全,限制函数中的arguments修改，严格模式下的eval函数的行为和非严格模式的也不相同(严格模式下eval用法无效, 如果在 eval 函数内声明变量，则不能在此函数外部使用该变量。);提高编译器效率，增加运行速度；为未来新版本的Javascript标准化做铺垫。</p>
 
     <p class="q">如何判断一个对象是否属于某个类？</p>
-    <p class="a">instanceof</p>
+    <p class="a post-p">instanceof</p>
 
     <p class="q">new操作符具体干了什么呢?</p>
-    <ul>
+    <ul class="post-l">
         <li>创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。</li>
         <li>属性和方法被加入到 this 引用的对象中</li>
         <li>新创建的对象由 this 所引用，并且最后隐式的返回 this </li>
     </ul>
 
     <p class="q">用原生JavaScript的实现过什么功能吗？</p>
-    <p class="a">querySelector</p>
-    <p class="a">Array API</p>
-    <p class="a">我爱原生API!!!</p>
+    <p class="a post-p">querySelector</p>
+    <p class="a post-p">Array API</p>
+    <p class="a post-p">我爱原生API!!!</p>
+    <p class="a post-p">目前这个网站大多建立在原生API上。</p>
 
     <p class="q">Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？</p>
-    <p class="a">Object.prototype.hasOwnProperty()</p>
+    <p class="a post-p">Object.prototype.hasOwnProperty()</p>
 
     <p class="q">对JSON的了解？</p>
-    <p class="a">JSON.parse()</p>
-    <p class="a">JSON.stringify()</p>
+    <p class="a post-p">JSON.parse()</p>
+    <p class="a post-p">JSON.stringify()</p>
 
     <p class="q">[].forEach.call($$("*"),function(a){ a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16) }) 能解释一下这段代码的意思吗？</p>
-    <p class="a">操作符~， 是按位取反的意思，表面上~~（取反再取反）没有意义，实际上在JS中可以将浮点数变成整数。</p>
-    <p class="a">为每一个元素加上随机上色的边框。</p>
+    <p class="a post-p">操作符~， 是按位取反的意思，表面上~~（取反再取反）没有意义，实际上在JS中可以将浮点数变成整数。</p>
+    <p class="a post-p">为每一个元素加上随机上色的边框。</p>
 
     <p class="q">js延迟加载的方式有哪些？</p>
-    <ul>
+    <ul class="post-l">
         <li>script标签的defer、async属性。Opera浏览器不支持。defer属性必须由含src属性的script标签含有。</li>
         <li>动态添加script dom节点。</li>
         <li>setTimeout</li>
     </ul>
 
     <p class="q">Ajax 是什么? 如何创建一个Ajax？</p>
-    <p class="a">ajax的全称：Asynchronous Javascript And XML。所谓异步，在这里简单地解释就是：向服务器发送请求的时候，我们不必等待结果，而是可以同时做其他的事情，等到有了结果它自己会根据设定进行后续操作，与此同时，页面是不会发生整页刷新的，提高了用户体验。</p>
-    <ul>
+    <p class="a post-p">ajax的全称：Asynchronous Javascript And XML。所谓异步，在这里简单地解释就是：向服务器发送请求的时候，我们不必等待结果，而是可以同时做其他的事情，等到有了结果它自己会根据设定进行后续操作，与此同时，页面是不会发生整页刷新的，提高了用户体验。</p>
+    <ul class="post-l">
         <li>创建XMLHttpRequest对象,也就是创建一个异步调用对象</li>
         <li>创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息</li>
         <li>设置响应HTTP请求状态变化的函数</li>
@@ -143,12 +153,62 @@
     </ul>
 
     <p class="q">同步和异步的区别?</p>
-    <p class="a">同步的概念应该是来自于OS中关于同步的概念:不同进程为协同完成某项工作而在先后次序上调整(通过阻塞,唤醒等方式).同步强调的是顺序性.谁先谁后.异步则不存在这种顺序性.同步：浏览器访问服务器请求，用户看得到页面刷新，重新发请求,等请求完，页面刷新，新内容出现，用户看到新内容,进行下一步操作。异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。</p>
+    <p class="a post-p">同步的概念应该是来自于OS中关于同步的概念:不同进程为协同完成某项工作而在先后次序上调整(通过阻塞,唤醒等方式).同步强调的是顺序性.谁先谁后.异步则不存在这种顺序性.同步：浏览器访问服务器请求，用户看得到页面刷新，重新发请求,等请求完，页面刷新，新内容出现，用户看到新内容,进行下一步操作。异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。</p>
 
     <p class="q">如何解决跨域问题?</p>
-    <p class="a"><img src="../images/tongyuancelue.png" alt="" style="width: calc(800px - 4em);"></p>
-    <p class="a">前端解决跨域问题的方法:</p>
-    <ul>
+    <table>
+        <thead>
+        <tr>
+            <th>URL</th>
+            <th>说明</th>
+            <th>是否允许通信</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>http://www.a.com/a.js<br>http://www.a.com/b.js</td>
+            <td>同一域名下</td>
+            <td>允许</td>
+        </tr>
+        <tr>
+            <td>http://www.a.com/lab/a.js<br>http://www.a.com/script/b.js</td>
+            <td>同域名下不同文件夹</td>
+            <td>允许</td>
+        </tr>
+        <tr>
+            <td>http://www.a.com:8080/a.js<br>http://www.a.com/b.js</td>
+            <td>同一域名，不同端口</td>
+            <td>不允许</td>
+        </tr>
+        <tr>
+            <td>http://www.a.com/a.js<br>https://www.a.com/b.js</td>
+            <td>同一域名，不同协议</td>
+            <td>不允许</td>
+        </tr>
+        <tr>
+            <td>http://www.a.com/a.js<br>http://123.123.123.123/b.js</td>
+            <td>域名和域名对应IP</td>
+            <td>不允许</td>
+        </tr>
+        <tr>
+            <td>http://www.a.com/a.js<br>http://script.a.com/b.js</td>
+            <td>主域相同，子域不同</td>
+            <td>不允许</td>
+        </tr>
+        <tr>
+            <td>http://www.a.com/a.js<br>http://a.com/b.js</td>
+            <td>主域相同，不同二级域名（同上）</td>
+            <td>不允许（cookie neither）</td>
+        </tr>
+        <tr>
+            <td>http://www.a.com/a.js<br>http://www.b.com/b.js</td>
+            <td>不同域名</td>
+            <td>不允许</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="a post-p">前端解决跨域问题的方法:</p>
+    <ul class="post-l">
         <li>document.domain + iframe (只有在主域相同的时候才能使用该方法)</li>
         <li>动态创建script</li>
         <li>location.hash + iframe</li>
@@ -158,75 +218,84 @@
         <li>JSONP</li>
         <li>web sockets</li>
     </ul>
-    <p class="a"><a href="http://blog.csdn.net/joyhen/article/details/21631833" class="ex" target="_blank">外文链接</a></p>
+    <p class="a post-p"><a href="http://blog.csdn.net/joyhen/article/details/21631833" class="ex" target="_blank">外文链接</a></p>
 
     <p class="q">页面编码和被请求的资源编码如果不一致如何处理？</p>
-<pre>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
 &lt;script src="http://www.xxx.com/test.js" charset="utf-8"&gt;&lt;/script&gt;
-</pre>
+    </code></pre>
 
     <p class="q">模块化开发怎么做？</p>
-    <p class="a">就个人心得讲, 模块化是熟悉业务以后, 自然而然的产物。</p>
+    <p class="a post-p">就个人心得讲, 模块化是熟悉业务以后, 自然而然的产物。</p>
 
     <p class="q">AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？</p>
-    <p class="a">对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。</p>
-    <p class="a">CMD 推崇依赖就近，AMD 推崇依赖前置。</p>
+    <p class="a post-p">对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。</p>
+    <p class="a post-p">CMD 推崇依赖就近，AMD 推崇依赖前置。</p>
 
     <p class="q">requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何 缓存的？）</p>
-    <p class="a">requireJS通过动态创建script标签动态加载JS文件。</p>
-    <p class="a">为了避免多次加载, requireJS为每个文件编号, 编号相同的文件只加载一次。</p>
+    <p class="a post-p">requireJS通过动态创建script标签动态加载JS文件。</p>
+    <p class="a post-p">为了避免多次加载, requireJS为每个文件编号, 编号相同的文件只加载一次。</p>
 
     <p class="q">让你自己设计实现一个requireJS，你会怎么做？</p>
-    <p class="a">我确实自己实现过一个loader, 使用jquery ajax加载script。不过, 当时更多的是业务上的逻辑, 以适应不同平台的页面。</p>
+    <p class="a post-p">我确实自己实现过一个loader, 使用jquery ajax加载script。不过, 当时更多的是业务上的逻辑, 以适应不同平台的页面。</p>
 
     <p class="q">谈一谈你对ECMAScript6的了解？</p>
-    <p class="a"><a href="http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651551081&idx=1&sn=fbab887bf0f91de2bb33c405f9392fe4&scene=0#wechat_redirect" class="ex" target="_blank">外文链接</a></p>
+    <p class="a post-p"><a href="http://mp.weixin.qq.com/s?__biz=MzAxODE2MjM1MA==&mid=2651551081&idx=1&sn=fbab887bf0f91de2bb33c405f9392fe4&scene=0#wechat_redirect" class="ex" target="_blank">外文链接</a></p>
 
     <p class="q">document.write和 innerHTML 的区别?</p>
-    <p class="a">document.write是重写整个document, 写入内容是字符串的html</p>
-    <p class="a">innerHTML是HTMLElement的属性，是一个元素的内部html内容</p>
+    <p class="a post-p">document.write是重写整个document, 写入内容是字符串的html</p>
+    <p class="a post-p">innerHTML是HTMLElement的属性，是一个元素的内部html内容</p>
 
     <p class="q">DOM操作——怎样添加、移除、移动、复制、创建和查找节点?</p>
-    <p class="a">appendChild</p>
-    <p class="a">removeChild</p>
-    <p class="a">querySelector</p>
+    <p class="a post-p">appendChild</p>
+    <p class="a post-p">removeChild</p>
+    <p class="a post-p">querySelector</p>
+    <p class="a post-p">insertBefore</p>
+    <p class="a post-p">insertAfter</p>
 
     <p class="q">.call() 和 .apply() 的含义和区别？</p>
-    <p class="a">相比call, apply接收数组作为参数列表。</p>
+    <p class="a post-p">相比call, apply接收数组作为参数列表。</p>
 
     <p class="q">数组和对象有哪些原生方法，列举一下？</p>
-    <p class="a">
-        <img src="../images/array.png" alt="array api" style="width: calc(400px - 2em);">
-        <img src="../images/object.png" alt="object api" style="width: calc(400px - 2em);">
-    </p>
+    <table id="api">
+        <thead>
+        <tr>
+            <th>Array API</th>
+            <th>Object API</th>
+            <!--<th>Reflect API</th>-->
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
     <p class="q">JS 怎么实现一个类。怎么实例化这个类</p>
-    <p class="a">JS ES5是函数为第一类元素的存在, 所以通过new fn实例化一个类, fn内部this指针为正在实例化的对象指针。</p>
+    <p class="a post-p">JS ES5是函数为第一类元素的存在, 所以通过new fn实例化一个类, fn内部this指针为正在实例化的对象指针。</p>
 
     <p class="q">JavaScript中的作用域与变量声明提升？</p>
-    <p class="a">变量声明提升即执行function时, 内部变量的内存空间会第一时间创建出来。</p>
+    <p class="a post-p">变量声明提升即执行function时, 内部变量的内存空间会第一时间创建出来。</p>
 
     <p class="q">如何编写高性能的Javascript？</p>
-    <p class="a">尽量使用原生API, 使用高效的算法。</p>
+    <p class="a post-p">尽量使用原生API, 使用高效的算法。</p>
+    <p class="a post-p">合理使用缓存。</p>
 
     <p class="q">那些操作会造成内存泄漏？</p>
-    <ul>
+    <ul class="post-l">
         <li>给DOM对象添加的属性是一个对象的引用。document.getElementById('myDiv').myProp = {};</li>
         <li>DOM对象与JS对象相互引用。</li>
         <li>给DOM对象用attachEvent绑定事件。</li>
     </ul>
 
     <p class="q">JQuery的源码看过吗？能不能简单概况一下它的实现原理？</p>
-    <p class="a">封装。 P.S.jquery使用的el解析库并不是document.querySelector</p>
+    <p class="a post-p">封装。 P.S.jquery使用的el解析库并不是document.querySelector</p>
 
     <p class="q">jQuery.fn的init方法返回的this指的是什么对象？为什么要返回this？</p>
-    <p class="a">即jQuery对象, this是new关键字创建的对象指针。</p>
+    <p class="a post-p">即jQuery对象, this是new关键字创建的对象指针。</p>
 
     <p class="q">jquery中如何将数组转化为json字符串，然后再转化回来？</p>
-    <p class="a">这个有原生API啊, JSON.parse .stringify</p>
+    <p class="a post-p">这个有原生API啊, JSON.parse .stringify</p>
 
     <p class="q">jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？</p>
-<pre>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
 jQuery.extend = jQuery.fn.extend = function() {
     var options, name, src, copy, copyIsArray, clone,
         target = arguments[0] || {},
@@ -290,18 +359,18 @@ jQuery.extend = jQuery.fn.extend = function() {
     // Return the modified object
     return target;
 };
-</pre>
-    <p class="a">源码面前, 没有秘密。</p>
+    </code></pre>
+    <p class="a post-p">源码面前, 没有秘密。</p>
 
     <p class="q">jquery.extend 与 jquery.fn.extend的区别？</p>
-    <p class="a">jquery.extend是工具方法。</p>
-    <p class="a">jquery.fn.extend是修改的是jquery本身。</p>
+    <p class="a post-p">jquery.extend是工具方法。</p>
+    <p class="a post-p">jquery.fn.extend是修改的是jquery本身。</p>
 
     <p class="q">jQuery 的队列是如何实现的？队列可以用在哪些地方？</p>
-    <p class="a">底层利用Array的push、shift。可以用在动画上, 分镜。</p>
+    <p class="a post-p">底层利用Array的push、shift。可以用在动画上, 分镜。</p>
 
     <p class="q">谈一下Jquery中的bind(),live(),delegate(),on()的区别？</p>
-    <ul>
+    <ul class="post-l">
         <li>.bind()是直接绑定在元素上</li>
         <li>.live()则是通过冒泡的方式来绑定到元素上的。更适合列表类型的，绑定到document DOM节点上。和.bind()的优势是支持动态数据</li>
         <li>.delegate()则是更精确的小范围使用事件代理，性能优于.live()</li>
@@ -309,56 +378,56 @@ jQuery.extend = jQuery.fn.extend = function() {
     </ul>
 
     <p class="q">JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p>
-    <p class="a">jQuery内部维护一个handler对象数组, 当某个事件触发时, 调用相应数组内的所有事件处理函数。</p>
+    <p class="a post-p">jQuery内部维护一个handler对象数组, 当某个事件触发时, 调用相应数组内的所有事件处理函数。</p>
 
     <p class="q">是否知道自定义事件。jQuery里的fire函数是什么意思，什么时候用？</p>
-    <p class="a">并没有在jQuery 3.1中找到事件的fire函数。貌似以前也只听说过trigger函数。</p>
+    <p class="a post-p">并没有在jQuery 3.1中找到事件的fire函数。貌似以前也只听说过trigger函数。</p>
 
     <p class="q">jQuery 是通过哪个方法和 Sizzle 选择器结合的？（jQuery.fn.find()进入Sizzle）</p>
-    <p class="a">为什么用 Sizzle 而不是 document.querySelector 呢?</p>
+    <p class="a post-p">为什么用 Sizzle 而不是 document.querySelector 呢?</p>
 
     <p class="q">针对 jQuery性能的优化方法？</p>
-    <p class="a">原生方法 > jQuery工具函数 > jQuery对象方法</p>
-    <p class="a">读取局部变量比读取全局变量快得多.在调用对象方法的时候，closure模式要比prototype模式更快.</p>
-    <p class="a">使用Pub/Sub模式管理事件(.on, .trigger), 还可以考虑使用deferred对象(promise)。</p>
+    <p class="a post-p">原生方法 > jQuery工具函数 > jQuery对象方法</p>
+    <p class="a post-p">读取局部变量比读取全局变量快得多.在调用对象方法的时候，closure模式要比prototype模式更快.</p>
+    <p class="a post-p">使用Pub/Sub模式管理事件(.on, .trigger), 还可以考虑使用deferred对象(promise)。</p>
 
     <p class="q">jQuery UI 与 jquery 的主要区别?</p>
-    <p class="a">jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等。</p>
+    <p class="a post-p">jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等。</p>
 
     <p class="q">jquery 中如何将数组转化为json字符串，然后再转化回来？</p>
-<pre>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
 $.fn.stringify = function() {
   return JSON.stringify(this);
 }
 
 $(array).stringify();
-</pre>
+    </code></pre>
 
     <p class="q">jQuery和Zepto的区别？各自的使用场景？</p>
-    <p class="a">Zepto属轻量级js库, 主要应用在移动端。不过, 我之前的开发中不很喜欢使用这个库, 给人的感觉是限制太多。</p>
+    <p class="a post-p">Zepto属轻量级js库, 主要应用在移动端。不过, 我之前的开发中不很喜欢使用这个库, 给人的感觉是限制太多。</p>
 
     <p class="q">Zepto的点透问题如何解决？</p>
-    <p class="a">科普: zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的,及tap事件是冒泡到document上触发的,再点击完成时的tap事件(touchstart\touchend)需要冒泡到document上才会触发，而在冒泡到document之前，用户手的接触屏幕(touchstart)和离开屏幕(touchend)是会触发click事件的,因为click事件有延迟触发(这就是为什么移动端不用click而用tap的原因)(大概是300ms,为了实现safari的双击事件的设计)，所以在执行完tap事件之后，弹出来的选择组件马上就隐藏了，此时click事件还在延迟的300ms之中，当300ms到来的时候，click到的其实不是完成而是隐藏之后的下方的元素，如果正下方的元素绑定的有click事件此时便会触发，如果没有绑定click事件的话就当没click，但是正下方的是input输入框(或者select选择框或者单选复选框)，点击默认聚焦而弹出输入键盘，也就出现了上面的点透现象。</p>
-    <p class="a">用touchend代替tap事件并阻止掉touchend的默认行为preventDefault().</p>
+    <p class="a post-p">科普: zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的,及tap事件是冒泡到document上触发的,再点击完成时的tap事件(touchstart\touchend)需要冒泡到document上才会触发，而在冒泡到document之前，用户手的接触屏幕(touchstart)和离开屏幕(touchend)是会触发click事件的,因为click事件有延迟触发(这就是为什么移动端不用click而用tap的原因)(大概是300ms,为了实现safari的双击事件的设计)，所以在执行完tap事件之后，弹出来的选择组件马上就隐藏了，此时click事件还在延迟的300ms之中，当300ms到来的时候，click到的其实不是完成而是隐藏之后的下方的元素，如果正下方的元素绑定的有click事件此时便会触发，如果没有绑定click事件的话就当没click，但是正下方的是input输入框(或者select选择框或者单选复选框)，点击默认聚焦而弹出输入键盘，也就出现了上面的点透现象。</p>
+    <p class="a post-p">用touchend代替tap事件并阻止掉touchend的默认行为preventDefault().</p>
 
     <p class="q">jQueryUI如何自定义组件?</p>
-    <p class="a">用$.widget()方法开始定义你的组件，它只接收三个参数：第一个是组件名称，第二个是可选的基类组件（默认的基类是$.Widget），第三个是组件的原型。</p>
+    <p class="a post-p">用$.widget()方法开始定义你的组件，它只接收三个参数：第一个是组件名称，第二个是可选的基类组件（默认的基类是$.Widget），第三个是组件的原型。</p>
 
     <p class="q">需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</p>
-    <p class="a">使用history popup事件。本页面即是。</p>
+    <p class="a post-p">使用history popup事件。本页面即是。</p>
 
     <p class="q">如何判断当前脚本运行在浏览器还是node环境中？（阿里）</p>
-    <p class="a">window对象。通过判断Global对象是否为window，如果不为window，当前脚本没有运行在浏览器中。</p>
+    <p class="a post-p">window对象。通过判断Global对象是否为window，如果不为window，当前脚本没有运行在浏览器中。</p>
 
     <p class="q">移动端最小触控区域是多大？</p>
-    <p class="a">移动端最小触控区域 44*44px ，再小就容易点击不到或者误点。</p>
+    <p class="a post-p">移动端最小触控区域 44*44px ，再小就容易点击不到或者误点。</p>
 
     <p class="q">jQuery 的 slideUp动画 ，如果目标元素是被外部事件驱动, 当鼠标快速地连续触发外部元素事件, 动画会滞后的反复执行，该如何处理呢?</p>
-    <ol>
+    <ol class="post-l">
         <li>在触发元素上的事件设置为延迟处理, 即可避免滞后反复执行的问题（使用setTimeout）</li>
         <li>在触发元素的事件时预先停止所有的动画，再执行相应的动画事件（使用stop）</li>
     </ol>
-    <ul>
+    <ul class="post-l">
         <li>$("#div").stop();//停止当前动画，继续下一个动画</li>
         <li>$("#div").stop(true);//清除元素的所有动画</li>
         <li>$("#div").stop(false, true);//让当前动画直接到达末状态 ，继续下一个动画</li>
@@ -366,44 +435,44 @@ $(array).stringify();
     </ul>
 
     <p class="q">移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？</p>
-    <p class="a">click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。</p>
-    <p class="a">使用touch事件代替click事件。</p>
+    <p class="a post-p">click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。</p>
+    <p class="a post-p">使用touch事件代替click事件。</p>
 
     <p class="q">知道各种JS框架(Angular, Backbone, Ember, React, Meteor, Knockout…)么? 能讲出他们各自的优点和缺点么?</p>
-    <p class="a">接触过Angular, Backbone, React。分别是依赖注入, MVC设计模式, 一门新语法。</p>
+    <p class="a post-p">接触过Angular, Backbone, React。分别是依赖注入, MVC设计模式, 一门新语法。</p>
 
     <p class="q">Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？</p>
-    <p class="a"><a href="http://underscorejs.org/#collections" class="ex" target="_blank">官方文档</a></p>
+    <p class="a post-p"><a href="http://underscorejs.org/#collections" class="ex" target="_blank">官方文档</a></p>
 
     <p class="q">如何测试前端代码么? 知道BDD, TDD, Unit Test么? 知道怎么测试你的前端工程么(mocha, sinon, jasmin, qUnit..)?</p>
-    <p class="a">通过了解Angular, 认识到前端代码自动化测试工程。</p>
+    <p class="a post-p">通过了解Angular, 认识到前端代码自动化测试工程。</p>
 
     <p class="q">前端templating(Mustache, underscore, handlebars)是干嘛的, 怎么用?</p>
-    <p class="a">代替繁琐的拼接字符串的工作。</p>
+    <p class="a post-p">代替繁琐的拼接字符串的工作。</p>
 
     <p class="q">简述一下 Handlebars 的基本用法？</p>
-    <p class="a"><a href="http://handlebarsjs.com/expressions.html" class="ex" target="_blank">官方文档</a></p>
+    <p class="a post-p"><a href="http://handlebarsjs.com/expressions.html" class="ex" target="_blank">官方文档</a></p>
 
     <p class="q">简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？</p>
-    <p class="a">我认真研读过doT的源代码, 模板编译的过程就是将模板语言转化为函数字符串, 其中重要的是数据变量名需保持一致。而handlebars应该是在模板中省略了该变量, 编译过程中自动添加的。</p>
+    <p class="a post-p">我认真研读过doT的源代码, 模板编译的过程就是将模板语言转化为函数字符串, 其中重要的是数据变量名需保持一致。而handlebars应该是在模板中省略了该变量, 编译过程中自动添加的。</p>
 
     <p class="q">用js实现千位分隔符?(来源：前端农民工，提示：正则+replace)</p>
-<pre>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
 function thousandBitSeparator(num) {
   return num && (num.toString().indexOf('.') != -1
     ? num.toString().replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {
       return $1 + ",";
-    }) : num.toString().replace(/(\d)(?=(\d{3}))/g, function($0, $1) {
+    }) : num.toString().replace(/(\d)(?=(\d{3})+$)/g, function($0, $1) {
       return $1 + ",";
     }));
 }
-</pre>
+    </code></pre>
 
     <p class="q">检测浏览器版本版本有哪些方式？</p>
-    <p class="a">UserAgent</p>
+    <p class="a post-p">UserAgent</p>
 
     <p class="q">我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡，你来说下会执行几次事件，然后会先执行冒泡还是捕获</p>
-    <p class="a">先捕获,后冒泡。</p>
+    <p class="a post-p">先捕获,后冒泡。</p>
 </section>
 
 <div id="tongji">
