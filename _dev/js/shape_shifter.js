@@ -37,7 +37,7 @@ var S = {
 S.Drawing = (function () {
     var canvas,
         context,
-        renderFn
+        renderFn,
     requestFrame = window.requestAnimationFrame       ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame    ||
@@ -150,7 +150,7 @@ S.UI = (function () {
 
     function performAction(value) {
         var action,
-            value,
+            // value,
             current;
 
         overlay.classList.remove('overlay--visible');

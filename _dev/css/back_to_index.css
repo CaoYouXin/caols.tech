@@ -1,0 +1,19 @@
+div.back-to-index {
+    position: fixed;
+    z-index: 10000;
+
+    font-size: 2rem;
+    line-height: 2em;
+    padding: 0 1em;
+
+    color: #001100;
+    text-shadow: 1px 1px 2px #030;
+    
+    border-radius: 1em;
+    background: rgba(200, 200, 200, 0.5);
+
+    left: 4em;
+    top: 1em;
+
+    cursor: pointer;
+}

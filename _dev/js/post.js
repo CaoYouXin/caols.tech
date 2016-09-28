@@ -11,6 +11,14 @@
         p.style.paddingLeft = '0';
     });
 
+    function route(elem, e) {
+        if (elem.tagName === 'SECTION' && elem.classList.contains('post-header')) {
+            e.preventDefault();
+
+            R.go('build/index_.html', PS.go);
+        }
+    }
+
     document.addEventListener('click', function (e) {
         if (e.target.tagName === 'A') {
             if (e.target.getAttribute('target') === '_self') {
@@ -24,6 +32,11 @@
         if (parentElement.tagName === 'UL' && parentElement.classList.contains('post-drawer-l')) {
             e.target.classList.toggle('active');
         }
+
+        var it = e.target;
+        do {
+            route(it, e);
+        } while (it = it.parentElement);
     });
 
 })(window.top.ES6Promise.Promise, window.top.Router.rootHref, window.top.Router, window.top.PageSlider);
