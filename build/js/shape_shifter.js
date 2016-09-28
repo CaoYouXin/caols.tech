@@ -1,4 +1,3 @@
-
 /*
 
  Shape Shifter
@@ -38,14 +37,14 @@ S.Drawing = (function () {
     var canvas,
         context,
         renderFn,
-    requestFrame = window.requestAnimationFrame       ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame    ||
-        window.oRequestAnimationFrame      ||
-        window.msRequestAnimationFrame     ||
-        function(callback) {
-            window.setTimeout(callback, 1000 / 60);
-        };
+        requestFrame = window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
 
     return {
         init: function (el) {
@@ -66,8 +65,8 @@ S.Drawing = (function () {
         },
 
         adjustCanvas: function () {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            // canvas.width = document.body.offsetWidth;
+            // canvas.height = document.body.offsetHeight;
         },
 
         clearFrame: function () {
@@ -75,7 +74,7 @@ S.Drawing = (function () {
         },
 
         getArea: function () {
-            return { w: canvas.width, h: canvas.height };
+            return {w: canvas.width, h: canvas.height};
         },
 
         drawCircle: function (p, c) {
@@ -367,7 +366,7 @@ S.Color = function (r, g, b, a) {
 
 S.Color.prototype = {
     render: function () {
-        return 'rgba(' + this.r + ',' +  + this.g + ',' + this.b + ',' + this.a + ')';
+        return 'rgba(' + this.r + ',' + +this.g + ',' + this.b + ',' + this.a + ')';
     }
 };
 
@@ -530,7 +529,7 @@ S.ShapeBuilder = (function () {
             }
         }
 
-        return { dots: dots, w: w + fx, h: h + fy };
+        return {dots: dots, w: w + fx, h: h + fy};
     }
 
     function setFontSize(s) {
@@ -607,7 +606,7 @@ S.ShapeBuilder = (function () {
                 }
             }
 
-            return { dots: dots, w: width, h: height };
+            return {dots: dots, w: width, h: height};
         }
     };
 }());

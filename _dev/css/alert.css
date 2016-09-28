@@ -1,5 +1,6 @@
 .alert {
     position: absolute;
+    z-index: 1000;
     background: #88b7d5;
     border: 0.357em solid #c2e1f5;
 
