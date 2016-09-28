@@ -6,6 +6,7 @@
     if (document.querySelector('meta[name="post-name"]').getAttribute('cOnly')
         && navigator.userAgent.toLowerCase().match(/ipad|iphone|andriod/)) {
         alert('此页面仅适合在电脑上观看');
+        document.body.style.filter = 'blur(10px)';
         R.go('build/index_.html', PS.go);
     }
 

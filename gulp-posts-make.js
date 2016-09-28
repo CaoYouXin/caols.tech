@@ -7,7 +7,7 @@ module.exports = function (srcBase, dstBase, dstDir) {
 
     var _data = [], data = {}, filename = 'articles.json';
     var linkRegExp = new RegExp(srcBase.replace(/\//g, '\\\/') + '(.*)');
-    var nameRegExp = /<meta name="post-name" content="(.*)">/;
+    var nameRegExp = /<meta name="post-name" content="(.*?)".*>/;
     var dateRegExp = /<meta name="post-date" content="(.*)">/;
     var categoryRegExp = /<meta name="post-category" content="(.*)">/;
     var labelRegExp = /<meta name="post-label" content="(.*)">/;
