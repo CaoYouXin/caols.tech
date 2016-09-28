@@ -59,7 +59,7 @@
             }
         }
 
-        .cssarrow {
+        .alert {
             position: absolute;
             background: #88b7d5;
             border: 4px solid #c2e1f5;
@@ -72,8 +72,8 @@
             font-size: 2em;
             visibility: hidden;
         }
-        .cssarrow:after,
-        .cssarrow:before {
+        .alert:after,
+        .alert:before {
             bottom: 100%;
             left: 50%;
             border: solid transparent;
@@ -83,12 +83,12 @@
             position: absolute;
             pointer-events: none;
         }
-        .cssarrow:after {
+        .alert:after {
             border: solid 30px rgba(136, 183, 213, 0);
             border-bottom-color: #88b7d5;
             margin-left: -30px;
         }
-        .cssarrow:before {
+        .alert:before {
             border: solid 35px rgba(194, 225, 245, 0);
             border-bottom-color: #c2e1f5;
             margin-left: -35px;
@@ -98,6 +98,6 @@
 <body>
 <div class="center">CaoLS の technique blog<br>Coming soon...</div>
 
-<div id="needChangeBrowser" class="cssarrow">由于本人喜爱webkit，且国内浏览器大多webkit内核<br>本站已经使用并且计划使用大量关于webkit特性的技术<br>所以，请关闭本页面，用谷歌浏览器打开！</div>
+<div id="needChangeBrowser" class="alert">由于本人喜爱webkit，且国内浏览器大多webkit内核<br>本站已经使用并且计划使用大量关于webkit特性的技术<br>所以，请关闭本页面，用谷歌浏览器打开！</div>
 </body>
 </html>

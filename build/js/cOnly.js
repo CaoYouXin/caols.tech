@@ -3,11 +3,18 @@
  */
 ;(function (P, rootHref, R, PS) {
 
+    function showAlert(cb) {
+        document.querySelector('.alert').style.visibility = 'visible';
+
+        document.querySelector('.alert button').onclick = cb;
+    }
+
     if (document.querySelector('meta[name="post-name"]').getAttribute('cOnly')
         && navigator.userAgent.toLowerCase().match(/ipad|iphone|andriod/)) {
-        alert('此页面仅适合在电脑上观看');
-        document.body.style.filter = 'blur(10px)';
-        R.go('build/index_.html', PS.go);
+        showAlert(function () {
+            document.body.style.filter = 'blur(0)';
+            R.go('build/index_.html', PS.go);
+        });
     }
 
 })(window.top.ES6Promise.Promise, window.top.Router.rootHref, window.top.Router, window.top.PageSlider);
