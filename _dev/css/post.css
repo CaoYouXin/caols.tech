@@ -122,36 +122,6 @@ div#disqus_thread {
     margin-top: 3em;
 }
 
-/* post 顶部 */
-h1 {
-    font-size: 3rem;
-    margin: 0.3em 0;
-}
-
-.post-span {
-    font-size: 1rem;
-}
-
-.post-span + .post-span {
-    padding-left: 2em;
-}
-
-.titled-post-span:before {
-    content: attr(data-title);
-    display: inline;
-    font-size: 1.2rem;
-}
-
-@media (max-device-width: 400px) {
-    .post-span {
-        display: block;
-    }
-
-    .post-span + .post-span {
-        padding-left: 0;
-    }
-}
-
 /* table */
 table {
     margin: 1em auto;
