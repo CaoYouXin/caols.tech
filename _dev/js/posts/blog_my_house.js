@@ -7,7 +7,7 @@
 
     P.ajax(rootHref + 'build/x-handlebars-templates/house_images.html')
         .then(function (html) {
-            P.append(document.querySelector('section.post-content'), html);
+            P.append(document.querySelector('section.post-content > .images'), html);
 
             var cover = document.getElementById('cover'),
                 pageX, pageY;
