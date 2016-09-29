@@ -22,7 +22,9 @@
 
                     var src = elem.getAttribute('src');
 
-                    cover.style.background = 'url("'+src+'") center no-repeat';
+                    cover.style.backgroundImage = 'url("'+src+'")';
+                    cover.style.backgroundPosition = 'center';
+                    cover.style.backgroundRepeat = 'no-repeat';
                     cover.style.backgroundSize = 'contain';
                     cover.style.opacity = '1';
                     cover.style.visibility = 'visible';
@@ -33,10 +35,6 @@
                 if (e instanceof TouchEvent) {
                     var dx = Math.abs(e.pageX - pageX);
                     var dy = Math.abs(e.pageY - pageY);
-
-                    alert(dx);
-                    alert(dy);
-                    alert(dx * dx + dy * dy > 44 * 44);
 
                     if (dx * dx + dy * dy > 44 * 44) {
                         return;

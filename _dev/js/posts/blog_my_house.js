@@ -22,7 +22,9 @@
 
                     var src = elem.getAttribute('src');
 
-                    cover.style.background = 'url("'+src+'") center no-repeat';
+                    cover.style.backgroundImage = 'url("'+src+'")';
+                    cover.style.backgroundPosition = 'center';
+                    cover.style.backgroundRepeat = 'no-repeat';
                     cover.style.backgroundSize = 'contain';
                     cover.style.opacity = '1';
                     cover.style.visibility = 'visible';
