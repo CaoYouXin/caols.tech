@@ -44,6 +44,15 @@
                 doc.head.appendChild(script);
             }
         })
-    }
+    };
+
+    P.append = function append(element, htmldata) {
+        var e = document.createElement('div');
+        e.innerHTML = htmldata;
+
+        while(e.firstChild) {
+            element.appendChild(e.firstChild);
+        }
+    };
 
 })(window.ES6Promise.Promise, window.nanoajax);

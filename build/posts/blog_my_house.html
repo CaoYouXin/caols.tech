@@ -2,112 +2,30 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scale=0">
+    <title>小家装修</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="post-name" content="小家装修">
+    <meta name="post-date" content="2016-9-11 ~ 2016-9-29">
+    <meta name="post-category" content="Personal">
+    <meta name="post-label" content="Blender 3D, Flex Layout">
+
     
     
     
     
-    <script id="require.min" type="text/javascript" src="../javascripts/require.min.js"></script>
-    <script type="text/javascript" src="../require-config.js"></script>
-    <script type="text/javascript" src="../toonly/javascripts/init/blog_.js"></script>
+
+    <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blog_my_house.min.css">
 <body>
-<section class="blog-header">
-    <span>CaoYouXin's blog</span>
+<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<section class="post-header">
+    <span>恍恍惚惚，杳杳冥冥……</span>
 </section>
 
-<section class="blog-content">
-    <ul class="gallery">
-        <li><img src="http://image.caols.tech/house/b.png"/></li>
-        <li><img src="http://image.caols.tech/house/d.png"/></li>
-        <li><img src="http://image.caols.tech/house/e.png"/></li>
-        <li><img src="http://image.caols.tech/house/f.png"/></li>
-        <li><img src="http://image.caols.tech/house/g.png"/></li>
-        <li><img src="http://image.caols.tech/house/h.png"/></li>
-        <li><img src="http://image.caols.tech/house/i.png"/></li>
-        <li><img src="http://image.caols.tech/house/j.png"/></li>
-        <li><img src="http://image.caols.tech/house/k.png"/></li>
-        <li><img src="http://image.caols.tech/house/l.png"/></li>
-    </ul>
-
-    <ul class="gallery" style="margin-top: 30px;">
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-        <li><img src="http://image.caols.tech/house/200x200.png" height="200" width="200"/></li>
-    </ul>
-
-    <p style="margin-top: 30px;font-size: 30px;line-height: 30px;">参考: </p>
-    <ul class="gallery">
-        <li><img src="http://image.caols.tech/house/柜.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/升降桌.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/椅子.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/TB2m9xNcXXXXXcvXXXXXXXXXXXX_!!2104534311.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/TB1XGgxIpXXXXcnXXXXXXXXXXXX_!!0-item_pic.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/TB2RXbGmpXXXXXKXpXXXXXXXXXX_!!109784949.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/TB2angGqXXXXXXqXFXXXXXXXXXX_!!1912022932.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/TB2fZnetVXXXXa1XpXXXXXXXXXX_!!1043832306.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/TB2hvw1qXXXXXbMXXXXXXXXXXXX_!!1912022932.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/TB22Zg2qXXXXXcTXXXXXXXXXXXX_!!1912022932.jpg"/></li>
-        <li><img src="http://image.caols.tech/house/TB27pFgqpXXXXapXXXXXXXXXXXX_!!1912022932.jpg"/></li>
-    </ul>
+<section class="post-content">
+    <div id="cover" style="visibility: hidden;position: fixed;z-index: 10000;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0, 0, 0, 0.3);opacity: 0;transition: opacity 1s;"></div>
 </section>
-
-<div id="cover" style="visibility: hidden;position: fixed;z-index: 1;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0, 0, 0, 0.3);"></div>
-
-<script>
-    require(['jquery'], function ($) {
-        var $cover = $('#cover');
-        var $allLis = $('ul.gallery li');
-
-        $cover.click(function () {
-            $cover.css('visibility', 'hidden');
-            $allLis.removeClass('active');
-            $('#showEle').remove();
-        });
-
-        $('ul.gallery').on('click', 'img', {}, function (e) {
-            $cover.css('visibility', 'visible');
-
-            $allLis.removeClass('active');
-            this.parentElement.className = 'active';
-
-            var imageSrc = this.getAttribute('src');
-
-            var ele = document.createElement('div');
-
-            ele.id = 'showEle';
-            ele.style.background = 'url("' + imageSrc + '")';
-            ele.style.backgroundSize = 'contain';
-            ele.style.backgroundRepeat = 'no-repeat';
-            ele.style.backgroundPosition = '50%';
-
-            ele.style.position = 'absolute';
-            ele.style.zIndex = 2;
-            ele.style.transition = 'all 1s';
-            ele.style.top = this.clientTop + 'px';
-            ele.style.left = this.clientLeft + 'px';
-            ele.style.width = ele.style.height = '0px';
-
-            document.body.appendChild(ele);
-
-            setTimeout(function () {
-                ele.style.width = '600px';
-                ele.style.height = '500px';
-                ele.style.top = ele.style.left = '50%';
-                ele.style.marginTop = '-250px';
-                ele.style.marginLeft = '-300px';
-            }, 10);
-        });
-    });
-</script>
 
 <div id="tongji">
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");

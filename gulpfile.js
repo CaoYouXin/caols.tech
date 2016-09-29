@@ -123,6 +123,7 @@ gulp.task('b-others', function () {
     var htmlSrc = _devSrc + 'x-handlebars-templates/*.html';
 
     gulp.src(htmlSrc, {base: _devSrc})
+        .pipe(imageReplacement())
         .pipe(gulp.dest(dst));
 });
 
