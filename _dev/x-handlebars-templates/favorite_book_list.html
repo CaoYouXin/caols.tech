@@ -38,6 +38,7 @@
 
     .book-box > .book-content.hidden {
         opacity: 0;
+        visibility: hidden;
     }
 
     .book-box > .book-content.active {
@@ -99,7 +100,7 @@
 
     .book-content > div.introduction {
         white-space: normal;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 2;
     }
 
     .book-content.active > div.introduction {
@@ -110,6 +111,7 @@
 <div class="book-box" style="background-color: {{bgColor}};background-image: url('{{cover_url}}');">
     <span class="show-full-cover" style="color: {{color}};background-color: {{bgColor}};">+</span>
     <div class="book-content" style="background-color: {{bgColor}};" data-state="{{state}}">
+        <div class="name" style="color: {{color}};" data-title="书名: ">{{name}}</div>
         <div class="category" style="color: {{color}};" data-title="分类: ">{{category}}</div>
         <div class="pub-time" style="color: {{color}};" data-title="出版时间: ">{{publish_time}}</div>
         <div class="pub-org" style="color: {{color}};" data-title="出版组织: ">{{publish_org}}</div>
