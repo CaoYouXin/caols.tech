@@ -14,6 +14,8 @@
     
     
     
+    
+    
 
     <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blog_interview_css.min.css">
@@ -168,7 +170,6 @@
     <p class="q">li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</p>
     <p class="a post-p">本来不理解这个问题, 经百度, 这是将li设置为内联块元素后出现的问题。实际上, 对所有内联元素布局时都会有这个问题。</p>
     <p class="a post-p">我们一般写代码都是带缩进的, HTML中多个空格会当做一个空格处理, 因此这是由字体大小导致的。修复时可以讲ul或ol字体大小设置为0px, 但是不要忘了设置li字体大小, 因为font-size在内联元素中是可继承的。</p>
-    <p class="a post-p">还有white-space属性，应该也可以解决问题。</p>
 
     <p class="q">经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</p>
     <ul class="post-l post-drawer-l">

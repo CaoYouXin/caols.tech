@@ -15,10 +15,11 @@
     <link rel="stylesheet" type="text/css" href="../css/all.css">
     <link rel="stylesheet" type="text/css" href="../css/post-section.css">
     <link rel="stylesheet" type="text/css" href="../css/post-title.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-code.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-table.css">
     <link rel="stylesheet" type="text/css" href="../css/book-list.css">
     <link rel="stylesheet" type="text/css" href="../css/tongji.css">
 
-    <script type="text/javascript" src="../../3rdLib/prism/prism.min.js"></script>
     <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 </head>
 <body>
@@ -28,12 +29,29 @@
 </section>
 
 <section class="post-content">
-    <div class="btns"><span class="btn">表格</span><span class="btn">代码</span><span class="btn">我最爱</span></div>
-    <ul class="book-list-show">
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <div class="btns"><span class="btn active">表格</span><span class="btn">代码</span><span class="btn">我最爱</span></div>
+    <div class="list-box">
+        <ul class="book-list-show">
+            <li>
+                <table id="table">
+                    <thead>
+                    <tr>
+                        <th>书名</th>
+                        <th>分类</th>
+                        <th>出版时间</th>
+                        <th>出版社</th>
+                        <th>说明</th>
+                        <th>状态</th>
+                        <th>封面</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </li>
+            <li><pre class="code-border"><code id="code" class="language-js line-numbers line-highlight"></code></pre></li>
+            <li id="favorite"></li>
+        </ul>
+    </div>
 </section>
 
 <div id="tongji">

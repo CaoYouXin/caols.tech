@@ -7,9 +7,10 @@
 
     function processData(data) {
         var _categories = data.categories;
+        var order = ['H5', 'Java', 'Personal', 'Web Interview', 'Old'];
         var ret = [];
 
-        for (var i = 0, keys = Object.keys(_categories); i < keys.length; i++) {
+        for (var i = 0, keys = order; i < keys.length; i++) {
             ret.push({
                 group: keys[i],
                 blogs: _categories[keys[i]]

@@ -28,7 +28,7 @@ function jsDefault(src, dst) {
 }
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('b-js', 'b-css', 'cdn-upload', 'b-others');
+    gulp.start('b-js', 'b-css', 'cdn-upload', 'b-others1', 'b-others2');
 });
 
 gulp.task('b-ps-js', function() {
@@ -119,11 +119,18 @@ gulp.task('cdn-upload', ['cdn-copy'], function () {
     exec('cd '+imageDst+';git checkout master;git add *.png;git add *.jpg;git commit -m "add images";git push origin master;');
 });
 
-gulp.task('b-others', function () {
+gulp.task('b-others1', function () {
     var htmlSrc = _devSrc + 'x-handlebars-templates/*.html';
 
     gulp.src(htmlSrc, {base: _devSrc})
         .pipe(imageReplacement())
+        .pipe(gulp.dest(dst));
+});
+
+gulp.task('b-others2', function () {
+    var jsonSrc = _devSrc + 'json/*.json';
+
+    gulp.src(jsonSrc, {base: _devSrc})
         .pipe(gulp.dest(dst));
 });
 

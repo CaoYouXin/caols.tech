@@ -1,0 +1,119 @@
+<style>
+    .book-box {
+        display: block;
+        float: left;
+
+        width: 360px;
+        height: 500px;
+
+        margin: 10px;
+
+        align-items: flex-end;
+
+        background-position: top;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .book-box > .show-full-cover {
+        float: left;
+        font-size: 1rem;
+        padding: 0.25em 0.5em;
+        border-bottom-right-radius: 1em;
+        cursor: pointer;
+    }
+
+    .book-box > .book-content {
+        width: 360px;
+        height: 200px;
+
+        display: block;
+
+        margin-top: 300px;
+
+        cursor: pointer;
+
+        transition: all 1s;
+    }
+
+    .book-box > .book-content.hidden {
+        opacity: 0;
+    }
+
+    .book-box > .book-content.active {
+        height: 300px;
+        margin-top: 200px;
+
+        overflow-y: auto;
+    }
+
+    .book-box > .book-content:before {
+        content: attr(data-state);
+
+        position: relative;
+        bottom: 1em;
+        left: 1em;
+
+        font-size: 1rem;
+        line-height: 2em;
+
+        display: block;
+        float: left;
+
+        height: 2em;
+        padding: 0 1em;
+
+        color: #f5f2f0;
+        background-color: rgba(0 ,0, 0, 0.8);
+        border-radius: 1em;
+
+        transition: bottom 1s;
+    }
+
+    .book-box > .book-content.active:before {
+        bottom: 0;
+    }
+
+    .book-content > div {
+        font-size: 1.5rem;
+        width: 360px;
+        padding: 0 10px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .book-content.active > div {
+        white-space: normal;
+    }
+
+    .book-content > div:before {
+        content: attr(data-title);
+        font-size: 1.5rem;
+    }
+
+    .book-content > div.category {
+        clear: both;
+    }
+
+    .book-content > div.introduction {
+        white-space: normal;
+        -webkit-line-clamp: 3;
+    }
+
+    .book-content.active > div.introduction {
+        -webkit-line-clamp: 666;
+    }
+</style>
+{{#each this}}
+<div class="book-box" style="background-color: {{bgColor}};background-image: url('{{cover_url}}');">
+    <span class="show-full-cover" style="color: {{color}};background-color: {{bgColor}};">+</span>
+    <div class="book-content" style="background-color: {{bgColor}};" data-state="{{state}}">
+        <div class="category" style="color: {{color}};" data-title="分类: ">{{category}}</div>
+        <div class="pub-time" style="color: {{color}};" data-title="出版时间: ">{{publish_time}}</div>
+        <div class="pub-org" style="color: {{color}};" data-title="出版组织: ">{{publish_org}}</div>
+        <div class="introduction" style="color: {{color}};" data-title="说明: ">{{introduction}}</div>
+    </div>
+</div>
+{{/each}}

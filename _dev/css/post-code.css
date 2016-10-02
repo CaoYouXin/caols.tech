@@ -1,0 +1,8 @@
+/* 代码框 */
+.code-border {
+    width: 100%;
+    border: solid 1px #000000;
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
+
+    overflow: hidden;
+}
