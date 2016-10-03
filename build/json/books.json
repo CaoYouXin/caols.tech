@@ -58,5 +58,15 @@
     "publish_org": "人民邮电出版社",
     "introduction": "还记得在上离散数学之前就把这本书的前半部分读了一些，到了开课的时候，离散似乎没那么重要了（刚上大学的时候还是保留了「笨鸟先飞」的品质的），当然啦……最后学业平平。",
     "state": "在读"
+  },
+  {
+    "name": "程序员的数学",
+    "author": "结城浩（Hiroshi Yuki）;译:管 杰",
+    "cover_url": "http://image.caols.tech/books/coder-math.jpg",
+    "category": "培养兴趣的丛书",
+    "publish_time": "2012-10",
+    "publish_org": "人民邮电出版社",
+    "introduction": "还记得在上离散数学之前就把这本书的前半部分读了一些，到了开课的时候，离散似乎没那么重要了（刚上大学的时候还是保留了「笨鸟先飞」的品质的），当然啦……最后学业平平。",
+    "state": "在读"
   }
 ]

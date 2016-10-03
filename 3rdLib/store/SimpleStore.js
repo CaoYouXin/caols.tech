@@ -14,19 +14,7 @@
  *   store('my_key', null);
  */
 
-var store = function store(key, value) {
-
-    var lsSupport = (function () {
-         try {
-             var key = 'aKey', value = 'aValue';
-             localStorage.setItem(key, value);
-             var ret = localStorage.getItem(key) === value;
-             localStorage.removeItem(key);
-             return ret;
-         } catch (e) {
-             return false;
-         }
-    })();
+function store(key, value) {
 
     // If value is detected, set new or modify store
     if (typeof value !== "undefined" && value !== null) {
@@ -35,10 +23,10 @@ var store = function store(key, value) {
             value = JSON.stringify(value);
         }
         // Set the store
-        if (lsSupport) { // Native support
+        if (store.lsSupport) { // Native support
             localStorage.setItem(key, value);
         } else { // Use Cookie
-            createCookie(key, value, 30);
+            store.createCookie(key, value, 30);
         }
     }
 
@@ -47,10 +35,10 @@ var store = function store(key, value) {
         var data = null;
 
         // Get value
-        if (lsSupport) { // Native support
+        if (store.lsSupport) { // Native support
             data = localStorage.getItem(key);
         } else { // Use cookie
-            data = readCookie(key);
+            data = store.readCookie(key);
         }
 
         // Try to parse JSON...
@@ -67,41 +55,64 @@ var store = function store(key, value) {
 
     // Null specified, remove store
     if (value === null) {
-        if (lsSupport) { // Native support
+        if (store.lsSupport) { // Native support
             localStorage.removeItem(key);
         } else { // Use cookie
-            createCookie(key, '', -1);
+            store.createCookie(key, '', -1);
         }
     }
 
-    /**
-     * Creates new cookie or removes cookie with negative expiration
-     * @param  key       The key or identifier for the store
-     * @param  value     Contents of the store
-     * @param  exp       Expiration - creation defaults to 30 days
-     */
+}
 
-    function createCookie(key, value, exp) {
-        var date = new Date();
-        date.setTime(date.getTime() + (exp * 24 * 60 * 60 * 1000));
-        var expires = "; expires=" + date.toGMTString();
-        document.cookie = key + "=" + value + expires + "; path=/";
+store.lsSupport = (function () {
+    try {
+        var key = 'aKey', value = 'aValue';
+        localStorage.setItem(key, value);
+        var ret = localStorage.getItem(key) === value;
+        localStorage.removeItem(key);
+        return ret;
+    } catch (e) {
+        return false;
     }
+})();
 
-    /**
-     * Returns contents of cookie
-     * @param  key       The key or identifier for the store
-     */
+/**
+ * Creates new cookie or removes cookie with negative expiration
+ * @param  key       The key or identifier for the store
+ * @param  value     Contents of the store
+ * @param  exp       Expiration - creation defaults to 30 days
+ */
+store.createCookie = function createCookie(key, value, exp) {
+    var date = new Date();
+    date.setTime(date.getTime() + (exp * 24 * 60 * 60 * 1000));
+    var expires = "; expires=" + date.toGMTString();
+    document.cookie = key + "=" + value + expires + "; path=/";
+};
 
-    function readCookie(key) {
-        var nameEQ = key + "=";
+/**
+ * Returns contents of cookie
+ * @param  key       The key or identifier for the store
+ */
+store.readCookie = function readCookie(key) {
+    var nameEQ = key + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0, max = ca.length; i < max; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+};
+
+store.clear = function () {
+    if (store.lsSupport) {
+        localStorage.clear();
+    } else {
         var ca = document.cookie.split(';');
         for (var i = 0, max = ca.length; i < max; i++) {
             var c = ca[i];
             while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            store.createCookie(c, '', -1);
         }
-        return null;
     }
-
 };

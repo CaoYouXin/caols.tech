@@ -1,7 +1,7 @@
 /**
  * Created by cls on 16/9/15.
  */
-;(function (P) {
+;(function (P, rootHref) {
 
     var rootHref = window.top.Router.rootHref;
 
@@ -31,6 +31,13 @@
     }
 
     function eventHandler(e) {
+        if (e.target.classList.contains('project-tagline')) {
+            e.preventDefault();
+
+            window.top.store.clear();
+            window.top.location.href = rootHref;
+        }
+
         var it = e.target;
         do {
             route(it, e);
@@ -63,4 +70,4 @@
         resume.classList.add('show');
     };
 
-})(window.top.ES6Promise.Promise);
+})(window.top.ES6Promise.Promise, window.top.Router.rootHref);
