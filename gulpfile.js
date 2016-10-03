@@ -116,7 +116,7 @@ gulp.task('cdn-copy', function () {
 });
 
 gulp.task('cdn-upload', ['cdn-copy'], function () {
-    exec('cd '+imageDst+';git checkout master;git add *.png;git add *.jpg;git add *.jpeg;git commit -m "add images";git push origin master;');
+    exec('cd '+imageDst+';git checkout master;git add *;git commit -m "add images";git push origin master;');
 });
 
 gulp.task('b-others1', function () {
