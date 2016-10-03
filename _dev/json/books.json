@@ -1,22 +1,72 @@
 [
   {
-    "name": "name",
-    "author": "author",
+    "name": "Java编程思想",
+    "author": "埃克尔;译:陈昊鹏,饶若楠",
     "cover_url": "http://image.caols.tech/cover-not-found.png",
-    "category": "cate",
-    "publish_time": "pub time",
-    "publish_org": "publish organization",
-    "introduction": "intro",
-    "state": "state"
+    "category": "Java工具书",
+    "publish_time": "2005",
+    "publish_org": "机械工业出版社",
+    "introduction": "大学时期接触到的第二本Java宝典，全班统一购买的。虽然思想上没有太多感触，但是的确认识一些初学者不知道的API。",
+    "state": "记忆已沾灰"
   },
   {
-    "name": "name",
-    "author": "author",
+    "name": "设计模式之禅",
+    "author": "大神趣味总结",
     "cover_url": "http://image.caols.tech/cover-not-found.png",
-    "category": "cate",
-    "publish_time": "pub time",
-    "publish_org": "publish organization",
-    "introduction": "intro",
-    "state": "state"
+    "category": "边磕瓜子边看的技术书",
+    "publish_time": "2010",
+    "publish_org": "碁峰資訊",
+    "introduction": "这是一本好书，看到最后已经将设计模式融入血脉之中。虽然文邹邹的说不出来，但是模式是什么，是自然而然的东西。知识让人明智，就是这个道理。",
+    "state": "记忆已沾灰"
+  },
+  {
+    "name": "Java 8 Recipes; Expert's voice in Java",
+    "author": "Carl Dea, Mark Beaty, Freddy Guime, John OConner, Josh Juneau",
+    "cover_url": "http://image.caols.tech/books/java8-recipes.jpeg",
+    "category": "当时紧跟时代的工具书",
+    "publish_time": "2014",
+    "publish_org": "Apress",
+    "introduction": "我做过最有趣的事是在线指导两个在校大学生，通过一些免费的屏幕分享、远程会议的软件陪他们度过了大半个学期，这本书也就作为一本语言地道且易懂的原版工具书走入了我的列表。",
+    "state": "读到一半转了前端"
+  },
+  {
+    "name": "How Tomcat Works: A Guide to Developing Your Own Java Servlet Container;Brainly Software",
+    "author": "Budi Kurniawan, Paul Deck",
+    "cover_url": "http://image.caols.tech/books/how-tomcat-works.jpeg",
+    "category": "揭开技术神秘面纱的技术书",
+    "publish_time": "2004",
+    "publish_org": "BrainySoftware.com",
+    "introduction": "Tomcat是Java写的Web Server，对于Java Coder来说非常重要。一直都在用的软件，有朝一日能看懂本质，对自身技术来说无疑是质的飞跃。",
+    "state": "记忆已沾灰"
+  },
+  {
+    "name": "游戏开发中的人工智能",
+    "author": "Seemann, Glenn·泽",
+    "cover_url": "http://image.caols.tech/cover-not-found.png",
+    "category": "高级工具书",
+    "publish_time": "2006",
+    "publish_org": "东南大学出版社",
+    "introduction": "这是做毕设时遇到的，可以说是一类书。重点学习了遗传算法和神经网络算法。有趣的是当时整天没课，跑去新校区图书馆借书，然后陪着女友上课，有幸在大学里旁听了航空航天的课程（虽然听不懂，因为我从大二开始是没大学物理基础的）",
+    "state": "已读"
+  },
+  {
+    "name": "程序员的数学",
+    "author": "结城浩（Hiroshi Yuki）;译:管 杰",
+    "cover_url": "http://image.caols.tech/books/coder-math.jpg",
+    "category": "培养兴趣的丛书",
+    "publish_time": "2012-10",
+    "publish_org": "人民邮电出版社",
+    "introduction": "还记得在上离散数学之前就把这本书的前半部分读了一些，到了开课的时候，离散似乎没那么重要了（刚上大学的时候还是保留了「笨鸟先飞」的品质的），当然啦……最后学业平平。",
+    "state": "在读"
+  },
+  {
+    "name": "程序员的数学",
+    "author": "结城浩（Hiroshi Yuki）;译:管 杰",
+    "cover_url": "http://image.caols.tech/books/coder-math.jpg",
+    "category": "培养兴趣的丛书",
+    "publish_time": "2012-10",
+    "publish_org": "人民邮电出版社",
+    "introduction": "还记得在上离散数学之前就把这本书的前半部分读了一些，到了开课的时候，离散似乎没那么重要了（刚上大学的时候还是保留了「笨鸟先飞」的品质的），当然啦……最后学业平平。",
+    "state": "在读"
   }
 ]
