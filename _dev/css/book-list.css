@@ -69,6 +69,14 @@ ul.book-list-show > li {
     display: block;
     float: left;
 
-    min-height: 1em;
     overflow-x: hidden;
+
+    min-height: 1em;
+    max-height: 50em;
+    overflow-y: auto;
+}
+
+ul.book-list-show > li:nth-child(2) {
+    padding-left: 1rem;
+    padding-right: 3rem;
 }

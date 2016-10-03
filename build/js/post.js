@@ -14,7 +14,14 @@
         }
     }
 
+    var _timestamp = 0;
     function eventHandler(e) {
+        var timestamp = new Date().getTime();
+        if (Math.abs(_timestamp - timestamp) < 400) {
+            return true;
+        }
+        _timestamp = timestamp;
+
         if (e.target.tagName === 'A') {
             if (e.target.getAttribute('target') === '_self') {
                 e.preventDefault();

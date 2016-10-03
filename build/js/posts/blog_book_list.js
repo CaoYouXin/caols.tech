@@ -13,10 +13,19 @@
             e.preventDefault();
 
             elem.classList.toggle('active');
+
+            return true;
         }
     }
 
+    var _timestamp = 0;
     function eventHandler(e) {
+        var timestamp = new Date().getTime();
+        if (Math.abs(_timestamp - timestamp) < 400) {
+            return true;
+        }
+        _timestamp = timestamp;
+
         var indexOf = btns.indexOf(e.target);
         if (-1 !== indexOf) {
             e.preventDefault();
@@ -27,6 +36,8 @@
                 b.classList.remove('active');
             });
             e.target.classList.add('active');
+
+            return true;
         }
 
         if (e.target.classList.contains('show-full-cover')) {
@@ -37,13 +48,16 @@
                 if (it.tagName === 'DIV' && it.classList.contains('book-content')) {
                     it.classList.toggle('hidden');
                     e.target.innerHTML = it.classList.contains('hidden') ? '-' : '+';
+                    return true;
                 }
             } while (it = it.nextSibling);
         }
 
         var iter = e.target;
         do {
-            route(iter, e);
+            if (route(iter, e)) {
+                return true;
+            }
         } while (iter = iter.parentElement);
     }
 
