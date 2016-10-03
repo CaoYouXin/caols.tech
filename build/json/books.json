@@ -1,6 +1,7 @@
 [
   {
     "name": "name",
+    "author": "author",
     "cover_url": "http://image.caols.tech/cover-not-found.png",
     "category": "cate",
     "publish_time": "pub time",
@@ -10,6 +11,7 @@
   },
   {
     "name": "name",
+    "author": "author",
     "cover_url": "http://image.caols.tech/cover-not-found.png",
     "category": "cate",
     "publish_time": "pub time",

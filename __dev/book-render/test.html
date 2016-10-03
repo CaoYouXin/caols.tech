@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="/normalize/normalize.min.css" media="screen">
+</head>
+<body>
+<style data-ghostlab-node-id="{favorite}Sx">
+    .book-box {
+        display: block;
+        float: left;
+
+        font-size: 1rem;
+
+        width: 30em;
+        height: 42em;
+
+        margin: 1em;
+
+        align-items: flex-end;
+
+        background-position: top;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .book-box > .show-full-cover {
+        float: left;
+        font-size: 1rem;
+        padding: 0.25em 0.5em;
+        border-bottom-right-radius: 1em;
+        cursor: pointer;
+    }
+
+    .book-box > .book-content {
+        font-size: 1rem;
+
+        width: 30em;
+        height: 17em;
+
+        display: block;
+
+        margin-top: 24em;
+
+        cursor: pointer;
+
+        transition: all 1s;
+    }
+
+    .book-box > .book-content.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .book-box > .book-content.active {
+        height: 29em;
+        margin-top: 12em;
+
+        overflow-y: auto;
+    }
+
+    .book-box > .book-content:before {
+        content: attr(data-state);
+
+        position: relative;
+        bottom: 1em;
+        left: 1em;
+
+        font-size: 1rem;
+        line-height: 2em;
+
+        display: block;
+        float: left;
+
+        height: 2em;
+        padding: 0 1em;
+
+        color: #f5f2f0;
+        background-color: rgba(0 ,0, 0, 0.8);
+        border-radius: 1em;
+
+        transition: bottom 1s;
+    }
+
+    .book-box > .book-content.active:before {
+        bottom: 0;
+    }
+
+    .book-content > div {
+        font-size: 1.3rem;
+        width: 360px;
+        padding: 0 10px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .book-content.active > div {
+        white-space: normal;
+    }
+
+    .book-content > div:before {
+        content: attr(data-title);
+        font-size: 1.3rem;
+    }
+
+    .book-content > div.category {
+        clear: both;
+    }
+
+    .book-content > div.introduction {
+        white-space: normal;
+        -webkit-line-clamp: 2;
+    }
+
+    .book-content.active > div.introduction {
+        -webkit-line-clamp: 666;
+    }
+</style>
+<div class="book-box" style="background-color: #c45896;background-image: url('http://image.caols.tech/cover-not-found.png');" data-ghostlab-node-id="{favorite}D0">
+    <span class="show-full-cover" style="color: #000000;background-color: #c45896;" data-ghostlab-node-id="{favorite}D0S">+</span>
+    <div class="book-content" style="background-color: #c45896;" data-state="state" data-ghostlab-node-id="{favorite}D0D">
+        <div class="name" style="color: #000000;" data-title="书名: ">name</div>
+        <div class="author" style="color: #000000;" data-title="作者: ">author</div>
+        <div class="category" style="color: #000000;" data-title="分类: ">cate</div>
+        <div class="pub-time" style="color: #000000;" data-title="出版时间: ">pub time</div>
+        <div class="pub-org" style="color: #000000;" data-title="出版组织: ">publish organization</div>
+        <div class="introduction" style="color: #000000;" data-title="说明: ">intro</div>
+    </div>
+</div>
+<div class="book-box" style="background-color: #07c786;background-image: url('http://image.caols.tech/cover-not-found.png');" data-ghostlab-node-id="{favorite}D1">
+    <span class="show-full-cover" style="color: #ffffff;background-color: #07c786;" data-ghostlab-node-id="{favorite}D1S">+</span>
+    <div class="book-content" style="background-color: #07c786;" data-state="state" data-ghostlab-node-id="{favorite}D1D">
+        <div class="name" style="color: #ffffff;" data-title="书名: ">name</div>
+        <div class="author" style="color: #ffffff;" data-title="作者: ">author</div>
+        <div class="category" style="color: #ffffff;" data-title="分类: ">cate</div>
+        <div class="pub-time" style="color: #ffffff;" data-title="出版时间: ">pub time</div>
+        <div class="pub-org" style="color: #ffffff;" data-title="出版组织: ">publish organization</div>
+        <div class="introduction" style="color: #ffffff;" data-title="说明: ">intro</div>
+    </div>
+</div>
+</body>
+</html>

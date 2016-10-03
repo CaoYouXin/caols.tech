@@ -5,7 +5,7 @@
 
     P.script(document, rootHref + 'build/js/post.js');
 
-    var btns = document.querySelectorAll('.btns > span.btn');
+    var btns = Array.from(document.querySelectorAll('.btns > span.btn'));
     var listShow = document.querySelector('ul.book-list-show');
 
     function route(elem, e) {
@@ -16,8 +16,8 @@
         }
     }
 
-    document.addEventListener('click', function (e) {
-        var indexOf = Array.from(btns).indexOf(e.target);
+    function eventHandler(e) {
+        var indexOf = btns.indexOf(e.target);
         if (-1 !== indexOf) {
             e.preventDefault();
 
@@ -45,7 +45,10 @@
         do {
             route(iter, e);
         } while (iter = iter.parentElement);
-    });
+    }
+
+    document.addEventListener('touchend', eventHandler);
+    document.addEventListener('click', eventHandler);
 
     P.all([
         P.script(document, rootHref + '3rdLib/prism/prism.min.js'),
@@ -57,7 +60,7 @@
 
         var tableBody = document.querySelector('#table > tbody');
         var data = JSON.parse(values[1]);
-        var keys = ['name', 'category', 'publish_time', 'publish_org', 'introduction', 'state', 'cover_url'];
+        var keys = ['name', 'author', 'category', 'publish_time', 'publish_org', 'introduction', 'state', 'cover_url'];
         data.forEach(function (d) {
             var tr = document.createElement('tr');
 
@@ -83,7 +86,11 @@
         });
 
         var favorite = document.getElementById('favorite');
-        favorite.innerHTML = H.compile(values[2])(data);
+        P.append(favorite, H.compile(values[2])(data));
+    }).then(function () {
+        console.log(document.getElementById('code').offsetHeight);
+        console.log(document.getElementById('table').offsetHeight);
+        console.log(document.getElementById('favorite').offsetHeight);
     });
 
 })(window.top.ES6Promise.Promise, window.top.Router.rootHref, window.top.Handlebars);
