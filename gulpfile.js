@@ -112,11 +112,11 @@ gulp.task('posts', function () {
 });
 
 gulp.task('cdn-copy', function () {
-    return gulp.src(imageSrc + '*').pipe(gulp.dest(imageDst));
+    return gulp.src([imageSrc + '*', imageSrc + '*/*']).pipe(gulp.dest(imageDst));
 });
 
 gulp.task('cdn-upload', ['cdn-copy'], function () {
-    exec('cd '+imageDst+';git checkout master;git add *.png;git add *.jpg;git commit -m "add images";git push origin master;');
+    exec('cd '+imageDst+';git checkout master;git add *.png;git add *.jpg;git add *.jpeg;git commit -m "add images";git push origin master;');
 });
 
 gulp.task('b-others1', function () {
