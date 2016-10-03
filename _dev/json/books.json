@@ -58,5 +58,75 @@
     "publish_org": "人民邮电出版社",
     "introduction": "还记得在上离散数学之前就把这本书的前半部分读了一些，到了开课的时候，离散似乎没那么重要了（刚上大学的时候还是保留了「笨鸟先飞」的品质的），当然啦……最后学业平平。",
     "state": "在读"
+  },
+  {
+    "name": "宇宙之书：从托勒密、爱因斯坦到多重宇宙",
+    "author": "【英】约翰·D.巴罗（John D.Barrow）",
+    "cover_url": "http://image.caols.tech/books/universe.jpg",
+    "category": "科普读物",
+    "publish_time": "2013-03-01",
+    "publish_org": "北京图灵文化发展有限公司",
+    "introduction": "应该说我对宇宙的神秘非常向往，书中系统介绍了西方世界对宇宙的认识史。",
+    "state": "在读"
+  },
+  {
+    "name": "黄帝内经家用说明书",
+    "author": "徐文兵  梁冬",
+    "cover_url": "http://image.caols.tech/books/huang-di-nei-jing-1.jpg",
+    "category": "养身读物",
+    "publish_time": "2009-08-01",
+    "publish_org": "北京凤凰联动图书发行有限公司",
+    "introduction": "黄帝内经是一本医书，我看过最搞笑的说法是「黄帝内经是皇帝才看的书」。这本书不是黄帝内经原文，所写内容不过涵盖原文的第一章，不过已是收益匪浅。",
+    "state": "已读"
+  },
+  {
+    "name": "《黄帝内经》养生大道",
+    "author": "张其成",
+    "cover_url": "http://image.caols.tech/books/huang-di-nei-jing-2.jpg",
+    "category": "养身读物",
+    "publish_time": "未知",
+    "publish_org": "北京阳光秀美图书有限责任公司",
+    "introduction": "养生的目的是「精满气足神旺」，用情志治愈情伤，用心药打败心病，在生命的不同阶段，养生有着不同的侧重点。",
+    "state": "在读"
+  },
+  {
+    "name": "中华道家修炼学",
+    "author": "诚阳·田 (道教)",
+    "cover_url": "http://image.caols.tech/cover-not-found.png",
+    "category": "养身读物",
+    "publish_time": "1999",
+    "publish_org": "宗教文化出版社",
+    "introduction": "道家修炼学一书记载着详细着道家修炼的法门，其中白话文部分仅是入门，作者选录的文言文原文则是历史上真实存在的丹书。所以说，孙悟空的创作或许是讽刺官僚阶级，但是孙悟空的身手却不一定不存在。",
+    "state": "已读"
+  },
+  {
+    "name": "仙学详述",
+    "author": "田诚阳",
+    "cover_url": "http://image.caols.tech/cover-not-found.png",
+    "category": "养身读物",
+    "publish_time": "1999",
+    "publish_org": "宗教文化出版社",
+    "introduction": "百度上搜索陈撄宁，显示「现代的太上老君」。通过这本书，可以认识到陈老君。",
+    "state": "在读"
+  },
+  {
+    "name": "一用就灵治病特效穴: 10分钟快速祛病",
+    "author": "孙呈祥",
+    "cover_url": "http://image.caols.tech/books/xue-wei-1.jpeg",
+    "category": "养身读物",
+    "publish_time": "2014",
+    "publish_org": "XinXueTang",
+    "introduction": "简单易懂的认穴知识。",
+    "state": "在读"
+  },
+  {
+    "name": "我的美女老师",
+    "author": "黑夜de白羊",
+    "cover_url": "http://image.caols.tech/books/wo-de-mei-nv-lao-shi.jpg",
+    "category": "小说",
+    "publish_time": "已完结（2013年2月20日）",
+    "publish_org": "17K小说网",
+    "introduction": "看过的唯一一本小说，决定不再看任何小说。",
+    "state": "已读"
   }
 ]
