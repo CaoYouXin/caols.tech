@@ -65,8 +65,12 @@ S.Drawing = (function () {
         },
 
         adjustCanvas: function () {
-            // canvas.width = document.body.offsetWidth;
-            // canvas.height = document.body.offsetHeight;
+            var _doc = window.top.document;
+            var ul_li = _doc.querySelector('ul.pageslides > li:first-child');
+            var left = _doc.getElementById('left');
+            var right = _doc.getElementById('right');
+            canvas.width = ul_li.offsetWidth - 2 * (right.offsetWidth + left.offsetWidth);
+            canvas.height = ul_li.offsetHeight - 100;
         },
 
         clearFrame: function () {
