@@ -6,9 +6,13 @@
 
     box-sizing: border-box;
 
-    font-family: '微软雅黑', 'Microsoft Yahei', 'Vera Sans YuanTi', 'Yuanti SC', 'Comic San MS', monospace;
+    font-family: 'Hiragino Sans GB', 'Comic San MS', '微软雅黑', 'Microsoft Yahei', sans-serif;
     font-weight: normal;
     font-size: 12px;
+}
+
+code {
+    font-family: Monaco, monospace;
 }
 
 @media (max-device-width: 800px) {
