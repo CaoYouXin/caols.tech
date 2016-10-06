@@ -65,12 +65,15 @@ S.Drawing = (function () {
         },
 
         adjustCanvas: function () {
-            var _doc = window.top.document;
-            var ul_li = _doc.querySelector('ul.pageslides > li:first-child');
-            var left = _doc.getElementById('left');
-            var right = _doc.getElementById('right');
-            canvas.width = ul_li.offsetWidth - 2 * (right.offsetWidth + left.offsetWidth);
-            canvas.height = ul_li.offsetHeight - 100;
+            // var _doc = window.top.document;
+            // var ul_li = _doc.querySelector('ul.pageslides > li:first-child');
+            // var left = _doc.getElementById('left');
+            // var right = _doc.getElementById('right');
+            // canvas.width = ul_li.offsetWidth - (right.offsetWidth + left.offsetWidth);
+            // canvas.height = ul_li.offsetHeight;
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         },
 
         clearFrame: function () {

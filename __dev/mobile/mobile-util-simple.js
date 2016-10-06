@@ -3,7 +3,7 @@
  */
 ;(function () {
 
-    document.body.style.zoom = window.screen.availWidth /document.body.offsetWidth;
+    document.body.style.zoom = window.innerWidth / document.body.offsetWidth;
 
     var _onload = window.onload || function () {
             
