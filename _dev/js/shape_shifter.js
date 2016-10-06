@@ -52,7 +52,7 @@ S.Drawing = (function () {
             context = canvas.getContext('2d');
             this.adjustCanvas();
 
-            window.addEventListener('resize', function (e) {
+            window.addEventListener('resize', function () {
                 S.Drawing.adjustCanvas();
             });
         },
@@ -65,13 +65,6 @@ S.Drawing = (function () {
         },
 
         adjustCanvas: function () {
-            // var _doc = window.top.document;
-            // var ul_li = _doc.querySelector('ul.pageslides > li:first-child');
-            // var left = _doc.getElementById('left');
-            // var right = _doc.getElementById('right');
-            // canvas.width = ul_li.offsetWidth - (right.offsetWidth + left.offsetWidth);
-            // canvas.height = ul_li.offsetHeight;
-
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         },
@@ -115,8 +108,8 @@ S.UI = (function () {
     function formatTime(date) {
         var h = date.getHours(),
             m = date.getMinutes(),
-            s = date.getSeconds(),
-            m = m < 10 ? '0' + m : m,
+            s = date.getSeconds();
+            m = m < 10 ? '0' + m : m;
             s = s < 10 ? '0' + s : s;
         return h + ':' + m + ':' + s;
     }
@@ -156,7 +149,7 @@ S.UI = (function () {
 
     function performAction(value) {
         var action,
-            // value,
+            value,
             current;
 
         overlay.classList.remove('overlay--visible');
@@ -456,13 +449,13 @@ S.Dot.prototype = {
                 } else {
                     this.move(new S.Point({
                         x: this.p.x + (Math.random() * 50) - 25,
-                        y: this.p.y + (Math.random() * 50) - 25,
+                        y: this.p.y + (Math.random() * 50) - 25
                     }));
                 }
             }
         }
 
-        d = this.p.a - this.t.a;
+        var d = this.p.a - this.t.a;
         this.p.a = Math.max(0.1, this.p.a - (d * 0.05));
         d = this.p.z - this.t.z;
         this.p.z = Math.max(1, this.p.z - (d * 0.05));
@@ -486,7 +479,7 @@ S.Dot.prototype = {
         this._update();
         this._draw();
     }
-}
+};
 
 
 S.ShapeBuilder = (function () {
