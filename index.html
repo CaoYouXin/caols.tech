@@ -20,6 +20,16 @@
 </head>
 <body>
 <audio src="http://image.caols.tech/witcher.mov" autoplay style="display: none;"></audio>
+<!-- webkit check -->
+<script>
+
+    if (!navigator.userAgent.toLowerCase().match(/webkit/)) {
+        location.href = '404.html';
+    }
+
+</script>
+
+<!-- page slide -->
 <script>
     var psPages = store('ps-pages');
     window.PageSlider.init(psPages);
@@ -27,7 +37,8 @@
     store('url-snapshot', null);
     window.Router.go(!!urlSnapshot ? urlSnapshot : 'build/index_.html', window.PageSlider.go);
 </script>
-    <!-- Hotjar Tracking Code for http://caols.tech/ -->
+
+<!-- Hotjar Tracking Code for http://caols.tech/ -->
 <script>
 //     (function(h,o,t,j,a,r){
 //         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};

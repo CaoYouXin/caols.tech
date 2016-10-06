@@ -3,8 +3,6 @@
  */
 ;(function (P, rootHref) {
 
-    var rootHref = window.top.Router.rootHref;
-
     function processData(data) {
         var _categories = data.categories;
         var order = ['H5', 'Java', 'Personal', 'Web Interview', 'Old'];
@@ -22,15 +20,20 @@
 
     function route(elem, e) {
         if (elem.tagName === 'A') {
-            e.preventDefault();
-
             var url = elem.getAttribute('data-rel');
 
-            window.top.Router.go(url, window.top.PageSlider.go);
+            if (url) {
+                e.preventDefault();
+
+                window.top.Router.go(url, window.top.PageSlider.go);
+
+                return true;
+            }
         }
     }
 
     var _timestamp = 0;
+
     function eventHandler(e) {
         var timestamp = new Date().getTime();
         if (Math.abs(_timestamp - timestamp) < 400) {
@@ -38,16 +41,20 @@
         }
         _timestamp = timestamp;
 
-        if (e.target.classList.contains('project-tagline')) {
+        if (e.target.classList.contains('project-tagline') && e.target.classList.contains('btn')) {
             e.preventDefault();
 
             window.top.store.clear();
             window.top.location.href = rootHref;
+
+            return true;
         }
 
         var it = e.target;
         do {
-            route(it, e);
+            if (route(it, e)) {
+                return true;
+            }
         } while (it = it.parentElement);
     }
 

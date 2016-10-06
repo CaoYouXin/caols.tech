@@ -5,11 +5,9 @@
     <title>恍恍惚惚；杳杳冥冥！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <script type="text/javascript" src="3rdLib/NV/nv.ua.js"></script>
+    <!--<script type="text/javascript" src="3rdLib/NV/nv.ua.js"></script>-->
     <script>
-        alert(navigator.userAgent);
-        alert(JSON.stringify(window.NV));
-        if (window.NV.name !== 'chrome') {
+        if (!navigator.userAgent.toLowerCase().match(/webkit/)) {
             window.onload = function () {
                 document.getElementById('needChangeBrowser').style.visibility = 'visible';
             }
