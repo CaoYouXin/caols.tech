@@ -1,3 +1,7 @@
+body {
+    background: #ffffff url('../../images/index_bg.gif') repeat;
+}
+
 .page-header {
     color: #fff;
     text-align: center;

@@ -21,3 +21,8 @@ code {
         filter: blur(10px);
     }
 }
+
+/* disqus_thread */
+div.ds-thread {
+   background-color: rgba(255, 255, 255, 0.9);
+}

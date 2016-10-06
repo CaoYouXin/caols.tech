@@ -2,12 +2,12 @@
     ul.blogs {
         list-style: inside decimal;
         padding: 20px;
-        background: rgba(200, 200, 200, 0.3);
+        background: rgba(237, 255, 213, 0.8);
         border-radius: 3px;
         border-bottom: solid 2px #666;
     }
 
-    ul.blogs + ul.blogs  {
+    ul.blogs + ul.blogs {
         border-top: solid 2px #010;
     }
 
@@ -18,8 +18,16 @@
         font-size: 2rem;
         line-height: 2em;
         content: attr(data-rel);
-        color: #666666;
-        background: rgba(200, 200, 200, 0.5);
+        color: #ffffff;
+        text-shadow: 1px 1px 1px #010;
+        background: rgba(179, 220, 237, 1);
+        background: -moz-linear-gradient(-45deg, rgba(41, 184, 229, 1) 0%, rgba(188, 224, 238, 1) 100%);
+        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(41, 184, 229, 1)), color-stop(100%, rgba(188, 224, 238, 1)));
+        background: -webkit-linear-gradient(-45deg, rgba(41, 184, 229, 1) 0%, rgba(188, 224, 238, 1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(41, 184, 229, 1) 0%, rgba(188, 224, 238, 1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(41, 184, 229, 1) 0%, rgba(188, 224, 238, 1) 100%);
+        background: linear-gradient(135deg, rgba(41, 184, 229, 1) 0%, rgba(188, 224, 238, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1);
         border-radius: 10px;
         margin-bottom: 10px;
         padding-left: 10px;
@@ -27,6 +35,7 @@
 
     ul.blogs span {
         font-size: 1.8em;
+        color: #ffffff;
     }
 
     @media (max-device-width: 400px) {

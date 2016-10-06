@@ -108,11 +108,6 @@ img {
     max-width: 100%;
 }
 
-/* disqus_thread */
-div#disqus_thread {
-    margin-top: 3em;
-}
-
 /* image gallery */
 ul.gallery {
     list-style: none;
