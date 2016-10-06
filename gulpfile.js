@@ -112,7 +112,7 @@ gulp.task('posts', function () {
 });
 
 gulp.task('cdn-copy', function () {
-    return gulp.src([imageSrc + '*', imageSrc + '*/*']).pipe(gulp.dest(imageDst));
+    return gulp.src([imageSrc + '*', imageSrc + '*/*', imageSrc + '*/*/*']).pipe(gulp.dest(imageDst));
 });
 
 gulp.task('cdn-upload', ['cdn-copy'], function () {
