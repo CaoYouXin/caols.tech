@@ -5,6 +5,15 @@
     <title>恍恍惚惚；杳杳冥冥！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <!-- webkit check -->
+    <script>
+
+        if (!navigator.userAgent.toLowerCase().match(/webkit/)) {
+            location.href = '404.html';
+        }
+
+    </script>
+
     <link rel="stylesheet" type="text/css" href="3rdLib/normalize/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="build/css/pageslider/pageslider.min.css">
 
@@ -20,14 +29,6 @@
 </head>
 <body>
 <audio src="http://image.caols.tech/witcher.mov" autoplay style="display: none;"></audio>
-<!-- webkit check -->
-<script>
-
-    if (!navigator.userAgent.toLowerCase().match(/webkit/)) {
-        location.href = '404.html';
-    }
-
-</script>
 
 <!-- page slide -->
 <script>
