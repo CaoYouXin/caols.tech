@@ -10,6 +10,7 @@ const concat = require('gulp-concat');
 const postsMake = require('./gulp-posts-make.js');
 const cssMake = require('./gulp-css-make.js');
 const imageReplacement = require('./gulp-images-replacement.js');
+const surveyCompute = require('./gulp-survey-compute.js');
 
 const _3rdLib = './3rdLib/';
 const __devSrc = './__dev/';
@@ -28,7 +29,7 @@ function jsDefault(src, dst) {
 }
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('b-js', 'b-css', 'cdn-upload', 'b-others1', 'b-others2');
+    gulp.start('b-js', 'b-css', 'cdn-upload', 'b-others1', 'b-others2', 'b-others3');
 });
 
 gulp.task('b-ps-js', function() {
@@ -131,6 +132,14 @@ gulp.task('b-others2', function () {
     var jsonSrc = _devSrc + 'json/*.json';
 
     gulp.src(jsonSrc, {base: _devSrc})
+        .pipe(gulp.dest(dst));
+});
+
+gulp.task('b-others3', function () {
+    var csvSrc = _devSrc + 'csv/*.csv';
+
+    gulp.src(csvSrc, {base: _devSrc + 'csv/'})
+        .pipe(surveyCompute('json/'))
         .pipe(gulp.dest(dst));
 });
 

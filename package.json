@@ -2,6 +2,7 @@
   "name": "caols.tech",
   "version": "0.0.1",
   "devDependencies": {
+    "d3-dsv": "^1.0.3",
     "gulp": "latest",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "latest",
