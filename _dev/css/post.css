@@ -25,7 +25,7 @@
 .titled-post-p:before {
     content: attr(data-title);
 
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 /* 带行标背景的段落 */
