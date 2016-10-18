@@ -5,7 +5,7 @@
 
     function processData(data) {
         var _categories = data.categories;
-        var order = ['2d & 3d', 'H5', 'Java', 'Personal', 'Web Interview', 'Old'];
+        var order = ['2d & 3d', 'D3', 'H5', 'Java', 'Personal', 'Web Interview', 'Old'];
         var ret = [];
 
         for (var i = 0, keys = order; i < keys.length; i++) {

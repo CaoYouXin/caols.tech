@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>关于D3 Scale的学习之路</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="not-supported" content="max-width=800">
+
+    <meta name="post-name" content="关于D3 Scale的学习之路">
+    <meta name="post-date" content="2016-10-15 ~ 2016-10-15">
+    <meta name="post-category" content="D3">
+    <meta name="post-label" content="D3, Scale, 3D Axises, Three.js, Canvas">
+
+    
+    
+    
+    
+    
+    
+
+    <script type="text/javascript" src="../../3rdLib/threejs/three.min.js"></script>
+    <script type="text/javascript" src="../../3rdLib/threejs/Animation.js"></script>
+    <script type="text/javascript" src="../../3rdLib/threejs/AnimationHandler.js"></script>
+    <script type="text/javascript" src="../../3rdLib/threejs/KeyFrameAnimation.js"></script>
+    <script type="text/javascript" src="../../3rdLib/threejs/Detector.js"></script>
+    <script type="text/javascript" src="../../3rdLib/threejs/stats.min.js"></script>
+
+    <script type="text/javascript" src="../js/3d/3d_.min.js"></script>
+    <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/posts/blog_scale.min.css">
+<body>
+<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<section class="post-header">
+    <span>恍恍惚惚，杳杳冥冥……</span>
+</section>
+
+<section class="post-content">
+    <br>
+    <p class="post-p titled-post-p" data-title="项目背景: ">自从接触D3以来，就觉得不像React或Angular一样，它更像是个迷。然而对于我个人的感觉，我自己非常清楚地知道原因。那就是做可视化需要灵感，并且需要些数学基础。然而当我决定阅读D3源码的时候，碰巧发现有同学在朋友圈晒源码阅读活动的宣传海报，再一次说明『世界是物质的，物质是运动的，并且是相互作用的』。</p>
+    <p class="post-p">经过阅读源码，逐渐理解D3-Scale对于连续性Scale的算法。核心思想是将任意「domain」区间缩放到0至1，然后再缩放到任意「range」区间。从这里，我的理解有两个分支，其中一条稍后再说，先说比较直观的，尽管结果似乎跟D3官方文档上比有出入。</p>
+    <p class="post-p">将domain到range的缩放图像理解为平面1，将domain到0-1的图像理解为平面2，将0-1到range的图像理解为平面3，并且合并相关数轴，得到下面的3D图像。</p>
+    <p class="post-p">线性缩放</p>
+    <div id="linearScaleDemo1">
+        <br>
+        <canvas class="main"></canvas>
+    </div>
+    <p class="post-p">指数缩放</p>
+    <div id="powScaleDemo1">
+        <br>
+        <canvas class="main"></canvas>
+    </div>
+    <p class="post-p">对数缩放</p>
+    <div id="logScaleDemo1">
+        <br>
+        <canvas class="main"></canvas>
+    </div>
+    <p class="post-p">另外一条思路更接近源码描述的算法，尽管源码中使用的是化简以后的式子，我还是根据直觉加判断还原了算法本质。</p>
+    <p class="post-p">本质上，指数缩放、对数缩放是类似的，将domain和range利用指数或对数函数映射到d'和r'，而d'与r'之间的关系是最普通的线性关系，最后再利用映射函数的反函数映射回来。先想象一下，之后我会制作一些图像来直观理解。</p>
+</section>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
