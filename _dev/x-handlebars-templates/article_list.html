@@ -1,17 +1,23 @@
 <style>
-    ul.blogs {
-        list-style: inside decimal;
-        padding: 20px;
+    .blogs-wrapper {
+        width: 100%;
+        height: auto;
+
         background: rgba(237, 255, 213, 0.8);
+
         border-radius: 3px;
         border-bottom: solid 2px #666;
+
+        padding-bottom: 10px;
+
+        overflow: hidden;
     }
 
-    ul.blogs + ul.blogs {
+    .blogs-wrapper + .blogs-wrapper {
         border-top: solid 2px #010;
     }
 
-    ul.blogs:before {
+    .blogs-wrapper:before {
         display: block;
         width: auto;
         height: 2em;
@@ -29,37 +35,64 @@
         background: linear-gradient(135deg, rgba(41, 184, 229, 1) 0%, rgba(188, 224, 238, 1) 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1);
         border-radius: 10px;
-        margin-bottom: 10px;
+        margin: 10px;
         padding-left: 10px;
     }
 
-    ul.blogs span {
-        font-size: 1.8em;
+    .blogs-wrapper.pager:after {
+        content: attr(data-pager);
+        white-space: pre;
+        display: block;
+        float: right;
+        width: auto;
+        height: 1.5em;
+        line-height: 1.5em;
+        font-size: 1.5rem;
+        text-align: right;
+        margin: 0 10px;
+    }
+
+    .blogs-wrapper.hidden > .blogs {
+        display: none;
+    }
+
+    .blogs-wrapper.hidden:after {
+        display: none;
+    }
+
+    ul.blogs {
+        transition: transform 1s;
+    }
+
+    ul.blogs > li {
+        display: block;
+        float: left;
+        padding: 10px 20px;
+    }
+
+    ul.blogs > li > a{
+        font-size: 1.8rem;
+        line-height: 1em;
         color: #ffffff;
     }
 
-    @media (max-device-width: 400px) {
-        ul.blogs {
-            padding: 10px;
-        }
+    ul.blogs:after {
+        clear: both;
+    }
 
-        ul.blogs:before {
-            height: 1.5em;
-            line-height: 1.5em;
-        }
+    @media (max-device-width: 400px) {
+
     }
 </style>
 
 {{#each this}}
-<ul class="blogs" data-rel="{{group}}">
-    {{#each blogs}}
-    <li>
-        <h1>
-            <a data-rel="{{url}}" href="#">
-                <span>{{name}}</span>
-            </a>
-        </h1>
-    </li>
-    {{/each}}
-</ul>
+<div class="blogs-wrapper{{pager}}" data-rel="{{group}}" data-pager="<<   <   >   >>">
+    <ul class="blogs" style="width: {{blogs_width}}%;">
+        {{#each blogs}}
+        <li style="width: {{blog_width}}%;">
+            <a data-rel="{{url}}" href="#">{{name}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
 {{/each}}
