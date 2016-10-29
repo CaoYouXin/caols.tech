@@ -39,8 +39,15 @@
 }
 
 .post-content {
-    max-width: 64rem;
+    max-width: calc(64rem + 160px);
     margin: 0 auto;
+
+    background: url('../../images/content-bg/paper-1-bg.jpg') repeat;
+
+    border: 80px solid #000000;
+    border-image: url('../../images/content-bg/paper-1.jpg') 160 80 150 80;
+    border-top-width: 120px;
+    border-bottom-width: 150px;
 }
 
 @media (max-device-width: 400px) {
