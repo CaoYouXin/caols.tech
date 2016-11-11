@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="post-name" content="JavaScript设计模式">
+    <meta name="post-date" content="2016-11-4 ~ 2016-11-5">
+    <meta name="post-category" content="Design Pattern">
+    <meta name="post-label" content="哲学, 科普">
+
+    
+    
+    
+    
+    
+    
+
+    <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/posts/blog_design_pattern.min.css">
+<body>
+<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<section class="post-header">
+    <span>恍恍惚惚，杳杳冥冥……</span>
+</section>
+
+<section class="post-content">
+    <p class="q">singleton</p>
+    <p class="a post-p">实现单一实例的常用方法是创建全局唯一变量。为了保证唯一，常用命名空间区分。利用私有函数作为实例构造器，可以实现延迟加载。</p>
+
+    <p class="q">chain</p>
+    <p class="a post-p">链式调用。对于本身没有返回值的返回this，对于有返回值的可以通过传入回调函数使用返回值。</p>
+
+    <p class="q">factory</p>
+    <p class="a post-p">延迟加载的实现与单例延迟加载相同。工厂模式的作用是抽取公共代码，满足不同场景。</p>
+
+    <p class="q">bridge</p>
+    <p class="a post-p">此桥单向通行，不知桥的那头还有桥否。</p>
+
+    <p class="q">composite</p>
+    <p class="a post-p">树状结构型设计模式。不适用table。</p>
+
+    <p class="q">facade</p>
+    <p class="a post-p">例如ES6中import,export。消除差异。</p>
+
+    <p class="q">adapter</p>
+    <p class="a post-p">整合旧框架</p>
+
+    <p class="q">decoration</p>
+    <p class="a post-p">比继承更优，自由组合。例如Java中最常见的输入输出模块。</p>
+
+    <p class="q">flyweight</p>
+    <p class="a post-p">创建型模式，节省内存。</p>
+
+    <p class="q">proxy</p>
+    <p class="a post-p">与装饰模式类似，实现相同的接口。但是，实际工作的代码是本体的代码。</p>
+
+    <p class="q">observer</p>
+    <p class="a post-p">用数组保存一列观察者，当相应事件发生的时候，一次性依次fire。</p>
+
+    <p class="q">command</p>
+    <p class="a post-p">封装一套指令，就像我一直以来觉得高大上的linux shell。</p>
+
+    <p class="q">chain-of-responsibility</p>
+    <p class="a post-p">连接一系列实现同一接口的类。可以通过AOP实现。</p>
+</section>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
