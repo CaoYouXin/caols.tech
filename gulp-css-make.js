@@ -3,6 +3,7 @@
  */
 'use strict';
 
+const fs = require('fs');
 var gutil = require('gulp-util');
 var through = require('through-gulp');
 

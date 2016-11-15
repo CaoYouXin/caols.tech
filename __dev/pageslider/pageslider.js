@@ -158,7 +158,7 @@
                 return true;
             }
             _timestamp = timestamp;
-            
+
             var slidesElems = document.querySelectorAll('ul.pageslides > li.pageslide');
             var indexOf = findActive(slidesElems);
 
