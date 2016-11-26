@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="post-name" content="JavaScript设计模式代码">
+    <meta name="post-date" content="2016-11-26 ~ 2016-11-26">
+    <meta name="post-category" content="Design Pattern">
+    <meta name="post-label" content="JavaScript, 设计模式, 代码">
+
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/normalize/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../3rdLib/prism/prism.css">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-section.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-title.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-code.css">
+    <link rel="stylesheet" type="text/css" href="../css/post.css">
+    <link rel="stylesheet" type="text/css" href="../css/tongji.css">
+
+    <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<section class="post-header">
+    <span>做技术，爱代码</span>
+</section>
+
+<section class="post-content">
+    <p class="q">singleton</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function singletonFactory() {
+    var obj = null;
+    return function() {
+        if (obj == null) {
+            obj = {}; // 创建实例
+        }
+        return obj;
+    };
+}
+    </code></pre>
+
+    <p class="q">chain</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function setter(obj) {
+    return this.obj = obj, this;
+}
+    </code></pre>
+
+    <p class="q">factory</p>
+    <p class="a post-p">参考singletonFactory。</p>
+
+    <p class="q">bridge</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function bridge(params) {
+    callSth(params.a, params.b);
+}
+
+function bridge(a, b) {
+    callSth(add(a, b));
+}
+    </code></pre>
+
+    <p class="q">composite</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function entity(isLeaf) {
+    this.isLeaf = isLeaf;
+    this.entities = [];
+}
+
+entity.prototype.add = function(entity) {
+    this.entities.push(entity);
+}
+
+entity.prototype.do = function() {
+    if (this.isLeaf) {
+        // do sth;
+    } else {
+        for (var i = 0; i < this.entities.length; i++) {
+            this.entities[i].do();
+        }
+    }
+}
+    </code></pre>
+
+    <p class="q">facade</p>
+    <p class="a post-p">例如ES6中import,export。</p>
+
+    <p class="q">adapter</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function fn1(params) {
+    // use params;
+}
+
+function fn2(a, b) {
+    // use a, b;
+}
+
+function fn1Adapter(a, b) {
+    fn1({a:a,b:b});
+}
+
+fn2 = fn1Adapter;
+    </code></pre>
+
+    <p class="q">decoration</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function shopDecorator(shop) {
+    this.shop = shop;
+}
+
+shopDecorator.prototype.open = function() {
+    this.shop.open();
+};
+
+shopDecorator.prototype.close = function() {
+    this.shop.close();
+};
+    </code></pre>
+
+    <p class="q">flyweight</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function flyweight() {
+    this.a = 'a';
+    this.b = 'b';
+}
+
+flyweight.prototype.setA = function(a) {
+    this.a = a;
+    return this;
+};
+
+flyweight.prototype.setB = function(b) {
+    this.b = b;
+    return this;
+};
+    </code></pre>
+
+    <p class="q">proxy</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function proxy(remote) {
+    this.remote = remote;
+}
+
+proxy.prototype.remoteMethod = function(a) {
+    return this.remote.remoteMethod(a);
+};
+    </code></pre>
+
+    <p class="q">observer</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function observer() {
+    this.handlers = [];
+}
+
+observer.prototype.registerHandler = function(handler) {
+    this.handlers.push(handler);
+};
+
+observer.prototype.fireEvent = function(event) {
+    for (var i = 0; i < this.handlers.length; i++) {
+        this.handlers[i](event);
+    }
+};
+    </code></pre>
+
+    <p class="q">command</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function doOneThing() {
+    // one;
+}
+
+function doAnotherThing() {
+    // another;
+}
+
+// command
+function doThingsInOrder() {
+    doOneThing();
+    doAnotherThing();
+}
+    </code></pre>
+
+    <p class="q">chain-of-responsibility</p>
+    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+function fn() {
+    // func;
+}
+
+Function.prototype.before = function(beforeFn) {
+    var self = this;
+    return function() {
+        beforeFn.apply(self, arguments);
+        self.apply(self, arguments);
+    };
+};
+
+Function.prototype.after = function(afterFn) {
+    var self = this;
+    return function() {
+        self.apply(self, arguments);
+        afterFn.apply(self, arguments);
+    };
+};
+    </code></pre>
+</section>
+
+<div id="tongji">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
