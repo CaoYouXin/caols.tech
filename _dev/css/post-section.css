@@ -39,16 +39,45 @@
 }
 
 .post-content {
-    max-width: calc(64rem + 160px);
+    width: calc(64rem + 160px);
     margin: 0 auto;
+    padding: 0 80px;
 
-    background: url('../../images/content-bg/paper-1-bg.jpg') repeat;
+    background: url('../../images/content-bg/paper-mid-1.png') repeat;
+    background-size: 100%;
 
-    border: 80px solid #000000;
-    border-image: url('../../images/content-bg/paper-1.jpg') 160 80 150 80;
-    border-top-width: 120px;
-    border-bottom-width: 150px;
+    overflow: hidden;
 }
+
+.content {
+     display: block;
+     margin: 0 auto;
+     width: calc(64rem + 160px);
+
+     background-size: 100%;
+ }
+
+/*.post-content:before {*/
+    /*content: '';*/
+
+    /*display: block;*/
+    /*width: calc(64rem + 160px);*/
+    /*height: 151px;*/
+
+    /*background: url('../../images/content-bg/paper-up-1.png');*/
+    /*background-size: 100%;*/
+/*}*/
+
+/*.post-content:after {*/
+    /*content: '';*/
+
+    /*display: block;*/
+    /*width: calc(64rem + 160px);*/
+    /*height: 115px;*/
+
+    /*background: url('../../images/content-bg/paper-down-1.png');*/
+    /*background-size: 100%;*/
+/*}*/
 
 @media (max-device-width: 400px) {
     .post-content {

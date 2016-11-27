@@ -51,4 +51,19 @@
         p.style.paddingLeft = '0';
     });
 
+    var elem = document.getElementsByClassName('post-content');
+    if (elem.length) {
+        var before = document.createElement('div');
+        before.classList.add('content');
+        before.style.backgroundImage = 'url("../../images/content-bg/paper-up-1.png")';
+        before.style.height = '151px';
+        document.body.insertBefore(before, elem[0]);
+
+        var after = document.createElement('div');
+        after.classList.add('content');
+        after.style.backgroundImage = 'url("../../images/content-bg/paper-down-1.png")';
+        after.style.height = '115px';
+        document.body.insertBefore(after, elem[0].nextElementSibling);
+    }
+
 })(window.top.ES6Promise.Promise, window.top.Router.rootHref, window.top.Router, window.top.PageSlider);
