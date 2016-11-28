@@ -66,4 +66,12 @@
         document.body.insertBefore(after, elem[0].nextElementSibling);
     }
 
+    P.all([
+        P.script(document, rootHref + '3rdLib/prism/prism.min.js')
+    ]).then(function () {
+        for (var i = 0, codes = document.getElementsByClassName('code'); i < codes.length; i++) {
+            codes[i].innerHTML = window.Prism.highlight(codes[i].innerHTML, window.Prism.languages.javascript);
+        }
+    });
+
 })(window.top.ES6Promise.Promise, window.top.Router.rootHref, window.top.Router, window.top.PageSlider);

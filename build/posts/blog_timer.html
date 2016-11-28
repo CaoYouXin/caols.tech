@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>能力图谱</title>
+    <title>关于D3 Timer的学习之路</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <meta name="post-name" content="关于D3 Timer的学习之路">
@@ -29,14 +29,14 @@
 
 <section class="post-content">
     <p class="post-p titled-post-p" data-title="传统方法：">传统方法有两个可以调用的函数：</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 var timeoutID = window.setTimeout(func[, delay, param1, param2, ...]);
 
 var intervalID = window.setInterval(func, delay[, param1, param2, ...]);
     </code></pre>
 
     <p class="post-p titled-post-p" data-title="D3 solo Timer：">D3 Timer模块提供如下两个API：</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 Timer.prototype = timer.prototype = {
   constructor: Timer,
   restart: function(callback, delay, time) {
@@ -49,7 +49,7 @@ Timer.prototype = timer.prototype = {
     <p class="post-p">D3 Timer中新增一个控制变量『time』，通过检测当前时间是否大于time，执行callback。也就是说，只有当你未来计划的时间走入现在或过去时，计划就变成现实。正事利用这种逻辑，Solo Timer可以递归实现Interval的效果。然而，D3 Timer严谨的API需要在Timeout效果中使用stop。</p>
 
     <p class="post-p title-post-p" data-title="D3 multi Timer：">D3 Timer的构造器如下：</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function Timer() {
   this._call =
   this._time =

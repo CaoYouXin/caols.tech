@@ -29,7 +29,7 @@
 
 <section class="post-content">
     <p class="q">singleton</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function singletonFactory() {
     var obj = null;
     return function() {
@@ -42,7 +42,7 @@ function singletonFactory() {
     </code></pre>
 
     <p class="q">chain</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function setter(obj) {
     return this.obj = obj, this;
 }
@@ -52,7 +52,7 @@ function setter(obj) {
     <p class="a post-p">参考singletonFactory。</p>
 
     <p class="q">bridge</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function bridge(params) {
     callSth(params.a, params.b);
 }
@@ -63,7 +63,7 @@ function bridge(a, b) {
     </code></pre>
 
     <p class="q">composite</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function entity(isLeaf) {
     this.isLeaf = isLeaf;
     this.entities = [];
@@ -88,7 +88,7 @@ entity.prototype.do = function() {
     <p class="a post-p">例如ES6中import,export。</p>
 
     <p class="q">adapter</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function fn1(params) {
     // use params;
 }
@@ -105,7 +105,7 @@ fn2 = fn1Adapter;
     </code></pre>
 
     <p class="q">decoration</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function shopDecorator(shop) {
     this.shop = shop;
 }
@@ -120,7 +120,7 @@ shopDecorator.prototype.close = function() {
     </code></pre>
 
     <p class="q">flyweight</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function flyweight() {
     this.a = 'a';
     this.b = 'b';
@@ -138,7 +138,7 @@ flyweight.prototype.setB = function(b) {
     </code></pre>
 
     <p class="q">proxy</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function proxy(remote) {
     this.remote = remote;
 }
@@ -149,7 +149,7 @@ proxy.prototype.remoteMethod = function(a) {
     </code></pre>
 
     <p class="q">observer</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function observer() {
     this.handlers = [];
 }
@@ -166,7 +166,7 @@ observer.prototype.fireEvent = function(event) {
     </code></pre>
 
     <p class="q">command</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function doOneThing() {
     // one;
 }
@@ -183,7 +183,7 @@ function doThingsInOrder() {
     </code></pre>
 
     <p class="q">chain-of-responsibility</p>
-    <pre class="code-border"><code class="language-js line-numbers line-highlight">
+    <pre class="code-border"><code class="code language-js line-numbers line-highlight">
 function fn() {
     // func;
 }
