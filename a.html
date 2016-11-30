@@ -25,6 +25,14 @@
 			process({a:'a',b:'b'});
 		};
 
+		window.addEventListener("message", receiveMessage, false);
+
+		function receiveMessage(event) {
+		  var origin = event.origin || event.originalEvent.origin;
+		  
+		  console.log(origin);
+		}
+
 	</script>
 </body>
 </html>
