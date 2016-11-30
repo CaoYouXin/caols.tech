@@ -7,9 +7,15 @@
 				console.log('A');
 			}
 		};
+
+		document.domain = 'profile.caols.tech';
+		var iframe = document.createElement('iframe');
+		iframe.src = 'http://profile.caols.tech/b.html';
+		document.body.appendChild(iframe);
+
 	</script>
 </head>
 <body>
-	<iframe src="http://profile.caols.tech/b.html" frameborder="0"></iframe>
+
 </body>
 </html>
