@@ -15,6 +15,13 @@
 		iframe.src = 'http://profile.caols.tech/b.html';
 		document.body.appendChild(iframe);
 
+		var script = document.createElement('script');
+		script.src = 'http://profile.caols.tech/b.js';
+		document.body.appendChild(script);
+		script.onload = function() {
+			process({a:'a',b:'b'}});
+		};
+
 	</script>
 </body>
 </html>
