@@ -35,6 +35,10 @@
 		  	console.log(origin);
 		}
 
+		setTimeout(function() {
+			iframe.contentWindow.postMessage('b.txt', '*');
+		}, 2000);
+
 	</script>
 </body>
 </html>
