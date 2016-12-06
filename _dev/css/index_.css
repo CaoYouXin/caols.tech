@@ -1,5 +1,19 @@
+@keyframes bgChanger {
+    0% { background: #000 repeating-linear-gradient(-45deg, transparent, transparent 25px, rgba(255,255,255,1) 25px, rgba(255,255,255,1) 50px); }
+    20% { background: #000 repeating-linear-gradient(-45deg, transparent, transparent 15px, rgba(255,255,255,1) 15px, rgba(255,255,255,1) 40px, transparent 40px, transparent 50px); }
+    40% { background: #000 repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255,255,255,1) 5px, rgba(255,255,255,1) 30px, transparent 30px, transparent 50px); }
+    60% { background: #000 repeating-linear-gradient(-45deg, rgba(255,255,255,1), rgba(255,255,255,1) 20px, transparent 20px, transparent 45px, rgba(255,255,255,1) 45px, rgba(255,255,255,1) 50px); }
+    80% { background: #000 repeating-linear-gradient(-45deg, rgba(255,255,255,1), rgba(255,255,255,1) 10px, transparent 10px, transparent 35px, rgba(255,255,255,1) 35px, rgba(255,255,255,1) 50px); }
+    100% { background: #000 repeating-linear-gradient(-45deg, transparent, transparent 25px, rgba(255,255,255,1) 25px, rgba(255,255,255,1) 50px); }
+}
+
 body {
-    background: #ffffff url('../../images/index_bg.gif') repeat;
+    /*background: #000 repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255,255,255,1) 20px, rgba(255,255,255,1) 45px, transparent 45px, transparent 50px);*/
+    /*background: #ffffff url('../../images/index_bg.gif') repeat;*/
+
+    animation-duration: 3s;
+    animation-name: bgChanger;
+    animation-iteration-count: infinite;
 }
 
 .page-header {
@@ -67,8 +81,8 @@ a:hover {
 #resume-marker {
     font-size: 2em;
     position: absolute;
-    top: 3em;
-    right: 4em;
+    top: 12em;
+    right: 1em;
     width: 2em;
     height: 2em;
     text-align: center;
@@ -86,12 +100,12 @@ a:hover {
     opacity: 1;
 }
 
-@media (max-device-width: 400px) {
-    #resume-marker {
-        left: 1em;
-        top: 12em;
-    }
-}
+/*@media (max-device-width: 400px) {*/
+    /*#resume-marker {*/
+        /*left: 1em;*/
+        /*top: 12em;*/
+    /*}*/
+/*}*/
 
 #resume {
     cursor: pointer;

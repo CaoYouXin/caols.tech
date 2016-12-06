@@ -15,12 +15,12 @@ code {
     font-family: Monaco, monospace;
 }
 
-@media (max-device-width: 800px) {
-    body {
-        width: 800px;
-        filter: blur(10px);
-    }
-}
+/*@media (max-device-width: 800px) {*/
+    /*body {*/
+        /*width: 800px;*/
+        /*filter: blur(10px);*/
+    /*}*/
+/*}*/
 
 /* disqus_thread */
 div.ds-thread {
