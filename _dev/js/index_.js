@@ -205,4 +205,20 @@
         resume.classList.add('show');
     };
 
+    // console.log((function (start, end) {
+    //     function step(i) {
+    //         return end - (end - start) / 50 * Math.abs(50 - i);
+    //     }
+    //
+    //     var frames = ['50% { background: linear-gradient(135deg, rgba(107,107,7,1), rgba(185,185,20,1) ' + (end - 10) + '%, rgba(245,245,0,1) ' + end + '%, rgba(185,185,20,1) ' + (end + 10) + '%, rgba(0,0,0,1) 100%); }'];
+    //     for (var i = 49; i >= 0; i--) {
+    //         var j = step(i);
+    //         frames.unshift(i + '% { background: linear-gradient(135deg, rgba(107,107,7,1), rgba(185,185,20,1) ' + (j - 10) + '%, rgba(245,245,0,1) ' + j + '%, rgba(185,185,20,1) ' + (j + 10) + '%, rgba(0,0,0,1) 100%); }');
+    //         frames.push((100 - i) + '% { background: linear-gradient(135deg, rgba(107,107,7,1), rgba(185,185,20,1) ' + (j - 10) + '%, rgba(245,245,0,1) ' + j + '%, rgba(185,185,20,1) ' + (j + 10) + '%, rgba(0,0,0,1) 100%); }');
+    //     }
+    //
+    //     return '@keyframes bgChanger { ' + frames.join(' ') + ' }';
+    // })(20, 80));
+
+
 })(window.top.ES6Promise.Promise, window.top.Router.rootHref);
