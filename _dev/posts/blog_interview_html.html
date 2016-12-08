@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>HTML相关问答</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script type="text/javascript" src="../js/mobile/mobile-util-prefix.min.js"></script>
 
     <meta name="post-name" content="HTML相关问答">
     <meta name="post-date" content="2016-7-11 ~ 2016-7-21">
@@ -23,14 +24,15 @@
     <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<!--<script type="text/javascript" src="js/mobile/mobile-util-simple.min.js"></script>-->
 <section class="post-header">
     <span>做技术，爱代码</span>
 </section>
 
 <section class="post-content">
     <p class="q">Doctype作用？严格模式与混杂模式如何区分？它们有何意义?</p>
-    <p class="a post-p">Doctype的作用一定是描述文档本身, 并且告诉浏览器如何渲染该文档。DTD概念缘于SGML，每一份SGML 文件，均应有相对应的DTD。HTML5 不基于 SGML，所以不需要引用 DTD。</p>
+    <p class="a post-p">Doctype的作用一定是描述文档本身, 并且告诉浏览器如何渲染该文档。DTD概念缘于SGML，每一份SGML 文件，均应有相对应的DTD。HTML5 不基于 SGML，所以不需要引用
+        DTD。</p>
     <p class="a post-p">严格模式与混杂模式是不同版本浏览器对具有不同Doctype的文档的不同渲染模式。其意义主要在于新版本浏览器兼容旧规范下的文档。</p>
     <p class="a post-p">HTML5 认准: <code>&lt;!DOCTYPE html&gt;</code></p>
 
@@ -65,8 +67,8 @@
     <p class="q">常见的浏览器内核有哪些？</p>
     <p class="a post-p">Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]</p>
     <p class="a post-p">Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等</p>
-    <p class="a post-p">Presto内核：Opera7及以上。      [Opera内核原为：Presto，现为：Blink;]</p>
-    <p class="a post-p">Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]</p>
+    <p class="a post-p">Presto内核：Opera7及以上。 [Opera内核原为：Presto，现为：Blink;]</p>
+    <p class="a post-p">Webkit内核：Safari,Chrome等。 [ Chrome的：Blink（WebKit的分支）]</p>
 
     <p class="q">html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</p>
     <p class="a post-p">HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。</p>
@@ -107,10 +109,12 @@
     <p class="a post-p"><a
             href="../../examples/offline-cache.html"
             class="ex" target="_blank">离线存储小实例</a></p>
-    <p class="a post-p">离线存储的原理大致是浏览器解析html标签的manifest属性后, 将需要缓存的文件的ETag或者Last-Modify Time请求到本机对比。manifest属性是对一个html文件的定制, 对缓存的定制不受浏览器disable cache设置的影响。</p>
+    <p class="a post-p">离线存储的原理大致是浏览器解析html标签的manifest属性后, 将需要缓存的文件的ETag或者Last-Modify
+        Time请求到本机对比。manifest属性是对一个html文件的定制, 对缓存的定制不受浏览器disable cache设置的影响。</p>
 
     <p class="q">请描述一下 cookies，sessionStorage 和 localStorage 的区别？</p>
-    <p class="a post-p">cookies是一小段文本为内容的文件, 一般文件名作为键, 文件内容作为值。 sessionStorage 和 localStorage 为键值对管理工具, 其中 sessionStorage 的内容在页面关闭时清除。</p>
+    <p class="a post-p">cookies是一小段文本为内容的文件, 一般文件名作为键, 文件内容作为值。 sessionStorage 和 localStorage 为键值对管理工具, 其中
+        sessionStorage 的内容在页面关闭时清除。</p>
 
     <p class="q">iframe有那些缺点？</p>
     <p class="a post-p">在我的<a
@@ -130,7 +134,8 @@
     <p class="a post-p">使用AS3, 前前公司的游戏用的就是它。</p>
 
     <p class="q">页面可见性（Page Visibility）API 可以有哪些用途？</p>
-    <p class="a post-p">这个什么鬼API在MDN上搜不到, 怀疑又是什么鬼编造出来的名词。CSS中控制可见性的属性有display, filter, visibility, 如果背景也算的话, 还包括background, box-shadow。</p>
+    <p class="a post-p">这个什么鬼API在MDN上搜不到, 怀疑又是什么鬼编造出来的名词。CSS中控制可见性的属性有display, filter, visibility, 如果背景也算的话,
+        还包括background, box-shadow。</p>
 
     <p class="q">如何在页面上实现一个圆形的可点击区域？</p>
     <p class="a post-p"><a href="blog_living_env.html" class="ex" target="_self">圆形, 你说地球?</a></p>

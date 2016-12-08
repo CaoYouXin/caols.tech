@@ -63,6 +63,12 @@ p.q:before {
 p.a {
 }
 
+@media (max-device-width: 800px) {
+    p.q {
+        width: calc(100% - 2em);
+    }
+}
+
 /* 列表 */
 ol.post-l {
     list-style-type: decimal;

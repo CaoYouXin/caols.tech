@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>如何做缓存?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script type="text/javascript" src="../js/mobile/mobile-util-prefix.min.js"></script>
 
     <meta name="post-name" content="如何做缓存">
     <meta name="post-date" content="2016-3-19 ~ 2016-3-31">
@@ -20,7 +21,7 @@
     <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blog_howto_cache.min.css">
 <body>
-<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<!--<script type="text/javascript" src="js/mobile/mobile-util-simple.min.js"></script>-->
 <section class="post-header">
     <span>做技术，爱代码</span>
 </section>
@@ -47,7 +48,8 @@
         由于原本并没有参与很多业务系统的开发，所以在设计时所考虑的因素主要是独立完成，尽量少的麻烦其他后端同事。所以最初就确定不能针对特定的Controller代码（既特定的接口）编写缓存代码，而是主要利用AOP和加在Controller上的Annotations。
     </p>
     <p class="post-p">
-        这个过程中需要提取共性的东西，也是在这里发现了RESTful API的魅力。业务上独立的接口，数据上也会比较独立，当然还是会有交集。举例来说，发表文章的接口会影响读取文章列表的接口；那么在读取文章列表的时候，会在没有缓存数据的时候，执行原业务代码，返回并保存缓存数据待下一次访问直接读取缓存数据返回；在发表文章的时候，会删除相应的文章列表的缓存数据，这样会自然地触发下一次读取文章时读到新发表的文章。基于这个例子，可以构建出更复杂业务模型下的模型，所以当时的解决方案可以描述为“利用Redis服务，提供基于接口簇的实时的业务数据接口服务”。
+        这个过程中需要提取共性的东西，也是在这里发现了RESTful
+        API的魅力。业务上独立的接口，数据上也会比较独立，当然还是会有交集。举例来说，发表文章的接口会影响读取文章列表的接口；那么在读取文章列表的时候，会在没有缓存数据的时候，执行原业务代码，返回并保存缓存数据待下一次访问直接读取缓存数据返回；在发表文章的时候，会删除相应的文章列表的缓存数据，这样会自然地触发下一次读取文章时读到新发表的文章。基于这个例子，可以构建出更复杂业务模型下的模型，所以当时的解决方案可以描述为“利用Redis服务，提供基于接口簇的实时的业务数据接口服务”。
     </p>
 </section>
 

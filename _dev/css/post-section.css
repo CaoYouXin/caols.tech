@@ -26,15 +26,9 @@
 
 @media (max-device-width: 800px) {
     .post-header > span {
-        margin-left: 7em;
-    }
-}
-
-@media (max-device-width: 400px) {
-    .post-header > span {
         line-height: 4rem;
         font-size: 1.5rem;
-        margin-left: 4em;
+        margin-left: 5em;
     }
 }
 
@@ -57,35 +51,18 @@
      background-size: 100%;
  }
 
-/*.post-content:before {*/
-    /*content: '';*/
-
-    /*display: block;*/
-    /*width: calc(64rem + 160px);*/
-    /*height: 151px;*/
-
-    /*background: url('../../images/content-bg/paper-up-1.png');*/
-    /*background-size: 100%;*/
-/*}*/
-
-/*.post-content:after {*/
-    /*content: '';*/
-
-    /*display: block;*/
-    /*width: calc(64rem + 160px);*/
-    /*height: 115px;*/
-
-    /*background: url('../../images/content-bg/paper-down-1.png');*/
-    /*background-size: 100%;*/
-/*}*/
-
-@media (max-device-width: 400px) {
+@media (max-device-width: 800px) {
     .post-content {
         max-width: 100%;
+        padding: 10px;
     }
 
     .post-content > *:not(pre) {
         margin-left: 1em;
         margin-right: 1em;
+    }
+
+    .content {
+        max-width: 100%;
     }
 }

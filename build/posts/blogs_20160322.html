@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Language" content="zh-CN"/>
     <title>CaoYouxin的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script type="text/javascript" src="../js/mobile/mobile-util-prefix.min.js"></script>
 
     <meta name="post-name" content="年少の时候写的">
     <meta name="post-date" content="2011-11-11 ~ 2016-4-1">
@@ -95,7 +96,7 @@
     </style>
 <link rel="stylesheet" type="text/css" href="../css/posts/blogs_20160322.min.css">
 <body>
-<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<!--<script type="text/javascript" src="js/mobile/mobile-util-simple.min.js"></script>-->
 <h1><a name='top' href="http://my.oschina.net/cshadow/blog">CaoYouxin的博客@OSCHINA</a></h1>
 <p class='backupDesc'>共有<em>32</em>篇文章，备份时间：2016-03-22 17:36:31</p>
 <ol>
@@ -202,7 +203,7 @@
             <p>1）I have blue eyes.&nbsp;&nbsp;&nbsp; 2）I have a&nbsp;girlfriend.</p>
             <p>对于第一种，我和蓝眼睛是整体和部分的关系；第二种则不是。而且，第二句话通常情况下还可以说成某某girl has a boyfriend. 他们之间存在一对一、一对多以及多对多的关系。</p>
             <p>关联关系在代码上的实现，基本上是通过将一个类的对象写成另一个类的成员变量。以下代码表示A has B.</p>
-<pre class="brush:java;toolbar:true">class ClassB {
+            <pre class="brush:java;toolbar:true">class ClassB {
 
         ... ...
 
@@ -224,7 +225,7 @@ class ClassA {
             <p>组合关系顾名思义只有组合在一起才是个东东，这些东西一旦拆开后重用性不是很大，比如一个人和他的蓝眼睛。</p>
             <p>在实现上两种关系更容易区别：</p>
             <p>聚合关系的成员变量通过外部实例化好后以参数传入赋值，叫做注入。通常有两种注入：构造注入和Set注入。</p>
-<pre class="brush:java;toolbar:true">class ClassB {
+            <pre class="brush:java;toolbar:true">class ClassB {
 
         ... ...
 
@@ -251,7 +252,7 @@ class ClassA {
 }</pre>
             <p>&nbsp;</p>
             <p>组合关系的成员变量则通过在方法体内部实例化对象。</p>
-<pre class="brush:java;toolbar:true">class ClassB {
+            <pre class="brush:java;toolbar:true">class ClassB {
 
         ... ...
 
@@ -278,7 +279,7 @@ class ClassA {
             <p>依赖关系与关联关系是不同的，用 A depend on B 记忆较为贴切。</p>
             <p>依赖关系理解上没有障碍，在代码实现上以下有三种：</p>
             <p>&nbsp;</p>
-<pre class="brush:java;toolbar:true">class ClassB {
+            <pre class="brush:java;toolbar:true">class ClassB {
 
         public void method1(){
                  ... ...
@@ -291,7 +292,7 @@ class ClassA {
 }</pre>
             <p>&nbsp;</p>
             <p>1）类A的方法需传入类B的对象;</p>
-<pre class="brush:java;toolbar:true">class ClassA {
+            <pre class="brush:java;toolbar:true">class ClassA {
 
          public void method(ClassB b) {
                  ... ...
@@ -302,7 +303,7 @@ class ClassA {
 }</pre>
             <p>&nbsp;</p>
             <p>2）类A的方法实现时调用类B的静态方法;</p>
-<pre class="brush:java;toolbar:true">class ClassA {
+            <pre class="brush:java;toolbar:true">class ClassA {
 
          public void method() {
                  ... ...
@@ -313,7 +314,7 @@ class ClassA {
 }</pre>
             <p>&nbsp;</p>
             <p>3）类A的方法体中有类B类型的局部变量。</p>
-<pre class="brush:java;toolbar:true">class ClassA {
+            <pre class="brush:java;toolbar:true">class ClassA {
 
          public void method() {
                  ... ...
@@ -599,7 +600,7 @@ class ClassA {
             <p><span style="">当把一个具有泛型信息的对象赋给另一个没有泛型信息的变量时，所有在尖括号之间的类型信息都将被丢弃。这种擦除不仅会擦除使用该</span><span>Java</span><span
                     style="">类时传入的类型实参，而且会擦除所有的泛型信息，也就是擦除所有尖括号里的信息。</span></p>
             <p></p>
-<pre class="brush:java;toolbar:true">import java.util.ArrayList;
+            <pre class="brush:java;toolbar:true">import java.util.ArrayList;
 import java.util.List;
 
 public class ErasureTest {
@@ -715,7 +716,7 @@ class Apple&lt;T extends Number&gt; {
             <p>&nbsp;</p>
             <p>
                 首先说明低耦合的设计模式。所谓低耦合，意思就是减少java代码的不同模块间的相互依赖性，提高程序代码的可扩展性。java中，通过定义一个事件侦听的接口，统一处理对某一类事件的侦听。例如，在我的端口扫描器中定义了如下一个接口：</p>
-<pre class="brush:java;toolbar:true">/**
+            <pre class="brush:java;toolbar:true">/**
  * 端口扫描时侦听消息的接口
  *
  * @author KnightErrant
@@ -733,7 +734,7 @@ public interface PortScanListener {
 
 }</pre>
             <p>&nbsp;定义好接口后，只需将要对响应该类事件的组件继承该接口，并实现接口中的方法即可。例如：</p>
-<pre class="brush:java;toolbar:true">/**
+            <pre class="brush:java;toolbar:true">/**
  * 显示结果的文本区域
  *
  * @author KnightErrant
@@ -753,7 +754,7 @@ public class myTextArea extends javax.swing.JTextArea implements PortScanListene
 	
 }</pre>
             <p>&nbsp;</p>
-<pre class="brush:java;toolbar:true">/**
+            <pre class="brush:java;toolbar:true">/**
  * 显示扫描进度
  *
  * @author KnightErrant
@@ -779,7 +780,7 @@ public class myProgressBar extends javax.swing.JProgressBar implements PortScanL
                 ...</p>
             <p>&nbsp;</p>
             <p>通过这次“端口扫描器”的练习，不仅对低耦合的事件侦听模式有了基本了解，同时也进一步增进了对程序流程的控制感。附件中为这个小程序的源代码。有两处待完善的地方：、</p>
-<pre class="brush:java;toolbar:true">/**
+            <pre class="brush:java;toolbar:true">/**
 	 * 检测用户填写是否正确
 	 * @category 待完善
 	 * @param IP 目标机器IP
@@ -814,7 +815,7 @@ public class myProgressBar extends javax.swing.JProgressBar implements PortScanL
             <p>&nbsp;</p>
             <p>大部分时候，如果循环体只包含一条语句，那么就可以省略循环体的花括号；但如果循环体只包含一条局部变量定义语句，那依然不可以省略循环体的花括号。例：</p>
             <p></p>
-<pre class="brush:java;toolbar:true">for (int i = 0; i &lt; args.length; i++) {
+            <pre class="brush:java;toolbar:true">for (int i = 0; i &lt; args.length; i++) {
 			ForTest ft = new ForTest();
 		}</pre>
             <p>&nbsp;</p>
@@ -833,7 +834,7 @@ public class myProgressBar extends javax.swing.JProgressBar implements PortScanL
         <div class='content'><p>
             之前用Huffman编码做过一个压缩小程序。当时的Huffman树半自适应的，需要对源文件扫描两遍。这次是完全自适应的，只需要对源文件扫描一次就可以生成压缩文件，并且压缩文件中不会含编码表。具体关于原理的东西实在网上搜的文档（附件中有），C++的源代码网上也有。</p>
             <p>以下是我的代码：（代码有错，代码有错，我是按那个文档并且参照C++的源代码做的，杯具杯具，路漫漫……）</p>
-<pre class="brush:java;toolbar:true">package cn.cls.greedy;
+            <pre class="brush:java;toolbar:true">package cn.cls.greedy;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -1286,7 +1287,7 @@ public class Huffman {
 }</pre>
             <p>&nbsp;</p>
             <p>Hnode：</p>
-<pre class="brush:java;toolbar:true">package cn.cls.bean;
+            <pre class="brush:java;toolbar:true">package cn.cls.bean;
 
 public class HNode {
 
@@ -1312,7 +1313,7 @@ public class HNode {
             <p>附件是我2010-2011年的课表，下面一行代码是就是那个条件语句。</p>
             <pre class="brush:js;toolbar:true">var handleId = (diff%2 &lt; 1) ? "single" : "plural";</pre>
             <p>&nbsp;你可能疑问判断的时候为什么用“&lt; ”号，请看完整的代码。</p>
-<pre class="brush:js;toolbar:true">var stDate = new Date("Mon Aug 30 2010 00:00:00 GMT+0800");
+            <pre class="brush:js;toolbar:true">var stDate = new Date("Mon Aug 30 2010 00:00:00 GMT+0800");
 var prDate = new Date();
 
 var stTime = stDate.getTime();
@@ -1336,7 +1337,7 @@ radio.checked = true;</pre>
         <div class='content'><p>
             最近学校留作业，因为用不惯NetBean，还是用JCreator编写代码。写着写着无意中搞出一个继承，不知道这样子是好还是坏。自我感觉在添加组件时挺方便的，希望路过的高手指点：</p>
             <p>&nbsp;</p>
-<pre class="brush:java;toolbar:true"><pre class="brush:java;toolbar:true">/**
+            <pre class="brush:java;toolbar:true"><pre class="brush:java;toolbar:true">/**
  * @(#)MainFrame.java
  *
  *
@@ -1591,7 +1592,7 @@ public class MainFrame extends JFrame {
         <div class='content'><p></p>
             <p><span style="">正确关闭资源的方式：</span></p>
             <p></p>
-<pre class="brush:java;toolbar:true">Object src = new Object();
+            <pre class="brush:java;toolbar:true">Object src = new Object();
 		Object desc = null;
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
@@ -1662,7 +1663,7 @@ public class MainFrame extends JFrame {
             <div class='tags'>标签：Java,多线程,thread,编程,JDK</div>
         </div>
         <div class='content'><p>操作系统课上讲过，信号机制最开始是用无限循环实现的，信号量只是一个int型整数。</p>
-<pre class="brush:cpp;toolbar:true">wait(S) {
+            <pre class="brush:cpp;toolbar:true">wait(S) {
     while(s&lt;=0) {
         ; // no-op
     }
@@ -1673,7 +1674,7 @@ signal(S) {
     S++;
 }&nbsp;</pre>
             <p>后来，将信号定义为结构体，由value和进程两部分组成。</p>
-<pre class="brush:java;toolbar:true">typedef struct {
+            <pre class="brush:java;toolbar:true">typedef struct {
     int value;
     struct process * L;
 } semaphore;
@@ -1697,7 +1698,7 @@ void signal(semaphore S) {
                 方法对于我们构建自己的并发控制模块已经是绰绰有余了。<span style="color: #ff0000;">认识两个方法有两点必须要注意的：一，这两个方法是Object类的方法，也就是说Java中任何一个类都可以充当锁得角色；二，这两个方法必须放大synchronized 代码块里，以确保其执行时不受Java 多线程机制的影响。</span><span
                         style="color: #0000ff;">跟C写的信号量类比的话，wait 和 notify 相当于 block 和 wakeup ，而 synchronized 则确保wait 与 signal 方法的原子性。</span>下面来看示例代码：
             </p>
-<pre class="brush:java;toolbar:true">import java.util.LinkedList;
+            <pre class="brush:java;toolbar:true">import java.util.LinkedList;
 
 import core.concurrent.LockManager;
 import core.concurrent.LockState;
@@ -1794,18 +1795,18 @@ class ClientFood {
         </div>
         <div class='content'><p>支持正则表达式的方法：</p>
             <p></p>
-<pre class="brush:java;toolbar:true">boolean matches(String regex)
+            <pre class="brush:java;toolbar:true">boolean matches(String regex)
 String replaceAll(String regex, String replacement)
 String replaceFirst(String regex, String replacement)
 String[] split(String regex)
 String[] split(String regex, int limit)</pre>
             <p>不支持正则表达式的方法：</p>
             <p></p>
-<pre class="brush:java;toolbar:true">String replace(char oldChar, char newChar)
+            <pre class="brush:java;toolbar:true">String replace(char oldChar, char newChar)
 String replace(CharSequence target, CharSequence replacement)</pre>
             <p>例：</p>
             <p></p>
-<pre class="brush:java;toolbar:true">String string = "com.cls.Test";
+            <pre class="brush:java;toolbar:true">String string = "com.cls.Test";
 System.out.println(string.replace(".", "\\"));
 System.out.println(string.replaceAll("\\.", "\\\\"));</pre>
             &nbsp;</div>
@@ -1819,7 +1820,7 @@ System.out.println(string.replaceAll("\\.", "\\\\"));</pre>
             <div class='tags'>标签：邻接矩阵,图,深度优先,堆栈,算法</div>
         </div>
         <div class='content'><p>&nbsp;对于邻接矩阵表示的图做深度优先搜索用递归的方式实现起来代码简介，也好说明问题。递归函数是：</p>
-<pre class="brush:cpp;toolbar:true">void DFSM(MGraph *G,int i)  
+            <pre class="brush:cpp;toolbar:true">void DFSM(MGraph *G,int i)
 {  
     int j;  
     printf("深度优先遍历结点: 结点%c/n",G-&gt;vexs[i]);   //访问顶点vi  
@@ -1835,7 +1836,7 @@ System.out.println(string.replaceAll("\\.", "\\\\"));</pre>
                     src="http://static.oschina.net/uploads/img/201603/22164726_TNkQ.jpg"></p>
             <p>&nbsp;</p>
             <p>&nbsp;具体函数代码如下：</p>
-<pre class="brush:java;toolbar:true">public void traverseDfs(int v) {
+            <pre class="brush:java;toolbar:true">public void traverseDfs(int v) {
 		boolean[] visited = new boolean[vertexlist.length()];
 		VertexStack stack1 = new VertexStack();
 		VertexStack stack2 = new VertexStack();
@@ -1891,7 +1892,7 @@ System.out.println(string.replaceAll("\\.", "\\\\"));</pre>
         <div class='content'><p>BMP文件格式分析有很多，官方的资料已经通通涵盖在那份附件里了。这里具体些两个我遇到的问题...</p>
             <p>No.1 BMP文件中<span style="background-color: #0000ff;">低位</span>在前。在读超过两个字节表示的数据时要格外小心一点：比如一个四字节的数据，共32位。这32位是一个整体，不能分成4个8位来看。以下是我的代码：
             </p>
-<pre class="brush:java;toolbar:true">/**
+            <pre class="brush:java;toolbar:true">/**
  * 读取位图文件中的数字型标签
  * @param dins 数据输入流对象
  * @param tagLen 该数字型标签的长度
@@ -1920,7 +1921,7 @@ private int readFileSize(java.io.DataInputStream dins, int tagLen){
 	      return -1;
 	}</pre>
             <p>&nbsp;</p>
-<pre class="brush:java;toolbar:true">/**
+            <pre class="brush:java;toolbar:true">/**
  * 有一个byte值得到一个byte数组
  * @param b byte型值
  * @return 按索引0-&gt;7，低位-&gt;高位
@@ -2158,14 +2159,14 @@ private byte[] myBitSet(short b){
             <p><span
                     style="">在获取参数上，我考虑了两种方式。一种是直接用程序启动参数，在main函数参数列表里的。另一种是给用户提示信息，用户输入文件路径并回车确认输入。在使用第二种方式时我用到的C函数是<span
                     style="color: #000080;">char *fgets(char *s, int n, FILE *stream);</span> 。</span></p>
-<pre class="brush:c;toolbar:true">char input_file[256] = "";    // 定义保存文件路径的变量
+            <pre class="brush:c;toolbar:true">char input_file[256] = "";    // 定义保存文件路径的变量
 
 printf("请输入文件路径：");    // 给出提示信息
 fgets(input_file,256,stdin); // 读取控制台输入</pre>
             <p>&nbsp;</p>
             <p>其中stdin指控制台输入。这里还遇到一个问题，<span style="color: #000080;">input_file</span><span style="color: #000000;">获取的值需要trim操作，而C语言对字符传的操作米有trim函数。无奈，从网上拷了一个漂亮的实现。希望拷走的BODY同样用着愉快。</span>
             </p>
-<pre class="brush:c;toolbar:true">//////////////////////////////////////////////////////
+            <pre class="brush:c;toolbar:true">//////////////////////////////////////////////////////
 char* trim(char* desc,char* src,char* seps)
 {
 char* token=NULL;
@@ -2188,7 +2189,7 @@ char* token=NULL;
             <p>加入输出缓冲后用到的C函数是</p>
             <p><span style="">int fwrite(const void* buf, int&nbsp;size, int count,&nbsp;FILE *stream);</span></p>
             <p>缓冲区的实现分为三个步骤：定义缓冲区数组-&gt;将数据放到缓冲区-&gt;判断缓冲区是否已满（满就输出）-&gt;最后判断缓冲区是否为空（空就输出）。</p>
-<pre class="brush:c;toolbar:true">byte buffer[1024];                           // 缓冲区
+            <pre class="brush:c;toolbar:true">byte buffer[1024];                           // 缓冲区
 int index = 0;                                // 缓冲区下标
 
 ......
@@ -2211,7 +2212,7 @@ if(index != 0) {                             // 判断缓冲区是否为空
             <p>&nbsp;</p>
             <p>对于压缩和解压的算法实现上，我采用最保险的编程，尽量一行代码只操作一个变量。</p>
             <p>&nbsp;</p>
-<pre class="brush:c;toolbar:true">// 压缩
+            <pre class="brush:c;toolbar:true">// 压缩
     int ch,chfollow,tmp,chout=5;
     fputc((ch = fgetc(fpin)), fpout); //第一个数据不变
     long fs = filesize(fpin);  
@@ -2251,7 +2252,7 @@ if(index != 0) {                             // 判断缓冲区是否为空
     	}
     }</pre>
             <p>&nbsp;</p>
-<pre class="brush:c;toolbar:true">// 解压
+            <pre class="brush:c;toolbar:true">// 解压
     int flag,ch,chfollow,tmp,chout=0;
     fputc((ch = fgetc(fpin)), fpout);   // 第一个数据不变
     flag = fgetc(fpin);     // 数据奇偶性
@@ -2299,7 +2300,7 @@ if(index != 0) {                             // 判断缓冲区是否为空
         </div>
         <div class='content'><p>二分搜索有两种常见的实现方法：递归实现、迭代实现。其中递归实现的代码量是最少的（但计算机执行的代码却很多哦）。</p>
             <p>&nbsp;</p>
-<pre class="brush:java;toolbar:true">public static int binarySearch(int a[], int x, int left, int right) {
+            <pre class="brush:java;toolbar:true">public static int binarySearch(int a[], int x, int left, int right) {
     if (left &gt; right) {
         return -1;
     } else {
@@ -2320,7 +2321,7 @@ if(index != 0) {                             // 判断缓冲区是否为空
             <p>&nbsp;</p>
             <p>显然要求2可以说明问题了，但对于正在纠结的人可能说服力不是那么大。那么，就请继续仔细看看代码会如何执行。</p>
             <p>&nbsp;</p>
-<pre class="brush:java;toolbar:true">public static int binarySearch(int a[], int x, int left, int right) {
+            <pre class="brush:java;toolbar:true">public static int binarySearch(int a[], int x, int left, int right) {
     if (left &gt; right) {
         return -1;
     } else {
@@ -2342,7 +2343,7 @@ if(index != 0) {                             // 判断缓冲区是否为空
             <p>&nbsp;</p>
             <p>至此，道理讲明了。作为个人学习，顺便贴上些其它的实现代码。</p>
             <p>&nbsp;</p>
-<pre class="brush:java;toolbar:true">public static int BinarySearch(int[] array, int key)   
+            <pre class="brush:java;toolbar:true">public static int BinarySearch(int[] array, int key)
         {   
             int low = 0;   
             int high = array.Length - 1;   
@@ -2369,7 +2370,7 @@ if(index != 0) {                             // 判断缓冲区是否为空
 
 此代码来自CSDN博客：http://blog.csdn.net/xzjxylophone/archive/2009/10/23/4714326.aspx</pre>
             <p>&nbsp;</p>
-<pre class="brush:java;toolbar:true">public static int BinarySearchIteration(int[] array, int key)   
+            <pre class="brush:java;toolbar:true">public static int BinarySearchIteration(int[] array, int key)
        {   
            int low = 0;   
            int high = array.Length - 1;   
@@ -2425,7 +2426,7 @@ if(index != 0) {                             // 判断缓冲区是否为空
             <p>
                 &nbsp;
             </p>
-<pre class="brush:java;toolbar:true">private List integerList;
+            <pre class="brush:java;toolbar:true">private List integerList;
 
     public static void main(String[] args) throws NoSuchFieldException {
         IntDefaultValueGenerator intDefaultValueGenerator = new IntDefaultValueGenerator();
@@ -2450,7 +2451,7 @@ background: -o-linear-gradient(left top, blue, red);"> listDefaultValueGenerator
                     style="color: #ffffff; background-color: blue;"> intDefaultValueGenerator </span>来说它是一个容器，对于<span
                     style="color: #ffffff; background-color: red;"> root </span>来说它也是一个基本处理单元。那么程序的输出是这样的。
             </p>
-<pre class="brush:java;toolbar:true">GeneratedValue{suc=true, value=[1]}
+            <pre class="brush:java;toolbar:true">GeneratedValue{suc=true, value=[1]}
 
 Process finished with exit code 0</pre>
             <p>
@@ -2535,7 +2536,8 @@ Process finished with exit code 0</pre>
 </div>
 
 <div id="tongji">
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1258160569'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1258160569%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
 </div>
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>关于D3 Timer的学习之路</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script type="text/javascript" src="../js/mobile/mobile-util-prefix.min.js"></script>
 
     <meta name="post-name" content="关于D3 Timer的学习之路">
     <meta name="post-date" content="2016-11-28 ~ 2016-11-28">
@@ -22,7 +23,7 @@
     <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blog_timer.min.css">
 <body>
-<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<!--<script type="text/javascript" src="js/mobile/mobile-util-simple.min.js"></script>-->
 <section class="post-header">
     <span>做技术，爱代码</span>
 </section>
@@ -46,7 +47,9 @@ Timer.prototype = timer.prototype = {
 };
     </code></pre>
 
-    <p class="post-p">D3 Timer中新增一个控制变量『time』，通过检测当前时间是否大于time，执行callback。也就是说，只有当你未来计划的时间走入现在或过去时，计划就变成现实。正事利用这种逻辑，Single Timer可以递归实现Interval的效果。然而，D3 Timer严谨的API需要在Timeout效果中使用stop。</p>
+    <p class="post-p">D3
+        Timer中新增一个控制变量『time』，通过检测当前时间是否大于time，执行callback。也就是说，只有当你未来计划的时间走入现在或过去时，计划就变成现实。正事利用这种逻辑，Single
+        Timer可以递归实现Interval的效果。然而，D3 Timer严谨的API需要在Timeout效果中使用stop。</p>
 
     <p class="post-p title-post-p" data-title="D3 multi Timer：">D3 Timer的构造器如下：</p>
     <pre class="code-border"><code class="code language-js line-numbers line-highlight">
@@ -57,7 +60,8 @@ function Timer() {
 }
     </code></pre>
 
-    <p class="post-p">multi Timer串连在一起，每一帧都会遍历链表，callback的执行时机同single Timer。如果为了实现Timeout效果，Timers应当先按照._time排序，并且控制好遍历头的位置。然而，如果要实现Interval效果，Timers链表应当首尾相连，做成循环链表。</p>
+    <p class="post-p">multi Timer串连在一起，每一帧都会遍历链表，callback的执行时机同single
+        Timer。如果为了实现Timeout效果，Timers应当先按照._time排序，并且控制好遍历头的位置。然而，如果要实现Interval效果，Timers链表应当首尾相连，做成循环链表。</p>
 </section>
 
 <div id="tongji">

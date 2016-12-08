@@ -220,5 +220,4 @@
     //     return '@keyframes bgChanger { ' + frames.join(' ') + ' }';
     // })(20, 80));
 
-
 })(window.top.ES6Promise.Promise, window.top.Router.rootHref);

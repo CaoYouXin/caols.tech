@@ -40,10 +40,11 @@ window.mobileUtil = (function (win, doc) {
         /**
          * 缩放页面
          */
-        fixScreen: function () {
+    fixScreen: function () {
+            // alert(isAndroid + ' ' + isIos + ' ' + win.screen.availWidth);
+
             var metaEl = doc.querySelector('meta[name="viewport"]'),
                 metaCtt = (metaEl ? metaEl.content : '').replace(/\s*/g, '');
-
             var kvs = metaCtt.split(','), data = {};
             for (var i = 0; i < kvs.length; i++) {
                 var kv = kvs[i].split('=');
@@ -52,7 +53,8 @@ window.mobileUtil = (function (win, doc) {
                 }
                 data[kv[0]] = kv[1];
             }
-            this.winWidth = data.width = win.screen.availWidth > 1080 ? win.screen.availWidth : 1080;
+
+            this.winWidth = data.width = win.screen.availWidth > 1080 ? win.screen.availWidth : 800;
 
             if (isMobile) { // 定宽
                 if (isAndroid) {
@@ -66,7 +68,16 @@ window.mobileUtil = (function (win, doc) {
 
                     scale = scale.toFixed(10);
 
-                    data['initial-scale'] = data['maximum-scale'] = data['minimum-scale'] = scale;
+                    data['initial-scale'] = data['maximum-scale'] = data['minimum-scale'] = 1;
+
+                    var _onload = window.onload || function () {
+
+                        };
+                    window.onload = function () {
+                        _onload();
+                        document.body.style.width = data.width + 'px';
+                        document.body.style.zoom = scale;
+                    }
                 }
 
                 metaEl.content = JSON.stringify(data).replace(/\s*/g, '').replace(/[{}"]/g, '').replace(/:/g, '=');

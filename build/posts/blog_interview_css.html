@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>CSS相关问答</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script type="text/javascript" src="../js/mobile/mobile-util-prefix.min.js"></script>
 
     <meta name="post-name" content="CSS相关问答">
     <meta name="post-date" content="2016-7-21 ~ 2016-7-31">
@@ -20,7 +21,7 @@
     <script type="text/javascript" src="../js/pageslider/jsloader.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blog_interview_css.min.css">
 <body>
-<script type="text/javascript" src="../js/mobile/mobile-util-simple.min.js"></script>
+<!--<script type="text/javascript" src="js/mobile/mobile-util-simple.min.js"></script>-->
 <section class="post-header">
     <span>做技术，爱代码</span>
 </section>
@@ -87,7 +88,9 @@
         <li>!important声明的样式优先级最高，如果冲突再进行计算。</li>
         <li>如果优先级相同，则选择最后出现的样式。</li>
         <li>继承得到的样式的优先级最低。</li>
-        <li>Universal selector (*), combinators (+, >, ~, ' ') and negation pseudo-class (:not()) have no effect on specificity. (The selectors declared <em>inside</em> :not() do, however.)</li>
+        <li>Universal selector (*), combinators (+, >, ~, ' ') and negation pseudo-class (:not()) have no effect on
+            specificity. (The selectors declared <em>inside</em> :not() do, however.)
+        </li>
     </ul>
 
     <p class="q">CSS3新增伪类有那些？</p>
@@ -99,7 +102,10 @@
     <p class="a post-p"><a class="ex" href="../../examples/make_it_center.html" target="_blank">直接查看元素</a></p>
 
     <p class="q">display有哪些值？说明他们的作用。</p>
-    <p class="a post-p">none | inline | block | list-item | inline-list-item | inline-block | inline-table | table | table-cell | table-column | table-column-group | table-footer-group | table-header-group | table-row | table-row-group | flex | inline-flex | grid | inline-grid | run-in | ruby | ruby-base | ruby-text | ruby-base-container | ruby-text-container | contents</p>
+    <p class="a post-p">none | inline | block | list-item | inline-list-item | inline-block | inline-table | table |
+        table-cell | table-column | table-column-group | table-footer-group | table-header-group | table-row |
+        table-row-group | flex | inline-flex | grid | inline-grid | run-in | ruby | ruby-base | ruby-text |
+        ruby-base-container | ruby-text-container | contents</p>
     <p class="a post-p">按inline、block可分为两类。按照table、flex、ruby可分为三类。当然还有最新的值揉合inline和block。</p>
     <p class="a post-p">
         <a href="../../examples/display.html" class="ex" target="_blank">list-item和inline-list-item</a>
@@ -149,17 +155,21 @@
         </li>
         <li>动画
             <div class="hidden">
-                <p class="a post-p">transition-property、transition-duration、transition-delay、transition-timing-function</p>
+                <p class="a post-p">
+                    transition-property、transition-duration、transition-delay、transition-timing-function</p>
                 <p class="a post-p">transform: skew、scale、rotate、translate</p>
             </div>
         </li>
     </ul>
-    <p class="a post-p"><a href="http://www.ibm.com/developerworks/cn/web/1202_zhouxiang_css3/" class="ex" target="_blank">外链文章</a></p>
+    <p class="a post-p"><a href="http://www.ibm.com/developerworks/cn/web/1202_zhouxiang_css3/" class="ex"
+                           target="_blank">外链文章</a></p>
 
     <p class="q">请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？</p>
-    <p class="a post-p">弹性盒模型可以用简单的方式满足很多常见的复杂的布局需求。它的优势在于开发人员只是声明布局应该具有的行为，而不需要给出具体的实现方式。浏览器会负责完成实际的布局。该布局模型在主流浏览器中都得到了支持。</p>
+    <p class="a post-p">
+        弹性盒模型可以用简单的方式满足很多常见的复杂的布局需求。它的优势在于开发人员只是声明布局应该具有的行为，而不需要给出具体的实现方式。浏览器会负责完成实际的布局。该布局模型在主流浏览器中都得到了支持。</p>
     <p class="a post-p">应用场景例如图片展示（格子拼图）、柱状图; （个人认为display属性分几大派系, 每一派系都能撑起一片天。）</p>
-    <p class="a post-p"><a href="http://www.ibm.com/developerworks/cn/web/1409_chengfu_css3flexbox/" class="ex" target="_blank">外链文章</a></p>
+    <p class="a post-p"><a href="http://www.ibm.com/developerworks/cn/web/1409_chengfu_css3flexbox/" class="ex"
+                           target="_blank">外链文章</a></p>
 
     <p class="q">用纯CSS创建一个三角形的原理是什么？</p>
     <p class="a post-p">CSS中border分8块, 通过颜色和none隐藏的手段,创建8种方位的三角形。</p>
@@ -173,7 +183,8 @@
 
     <p class="q">li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</p>
     <p class="a post-p">本来不理解这个问题, 经百度, 这是将li设置为内联块元素后出现的问题。实际上, 对所有内联元素布局时都会有这个问题。</p>
-    <p class="a post-p">我们一般写代码都是带缩进的, HTML中多个空格会当做一个空格处理, 因此这是由字体大小导致的。修复时可以讲ul或ol字体大小设置为0px, 但是不要忘了设置li字体大小, 因为font-size在内联元素中是可继承的。</p>
+    <p class="a post-p">我们一般写代码都是带缩进的, HTML中多个空格会当做一个空格处理, 因此这是由字体大小导致的。修复时可以讲ul或ol字体大小设置为0px, 但是不要忘了设置li字体大小,
+        因为font-size在内联元素中是可继承的。</p>
 
     <p class="q">经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</p>
     <ul class="post-l post-drawer-l">
@@ -182,7 +193,8 @@
         <li>在ie6，ie7中元素高度超出自己设置高度。原因是IE8以前的浏览器中会给元素设置默认的行高的高度导致的。解决方案是加上overflow:hidden或设置line-height为更小的高度。</li>
         <li>min-height在IE6下不起作用。解决方案是添加 height:auto !important;height:xxpx;其中xx就是min-height设置的值。</li>
         <li>透明性IE用filter:Alpha(Opacity=60)，而其他主流浏览器用 opacity:0.6;</li>
-        <li>ie6的默认CSS样式，涉及到border的有border-style:inset;border-width:2px;浏览器根据自己的内核解析规则，先解析自身的默认CSS，再解析开发者书写的CSS，达到渲染标签的目的。IE6对INPUT的渲染存在bug，border:none;不被解析，当有border-width或border-color设置的时候才会令IE6去解析border-style:none;。
+        <li>
+            ie6的默认CSS样式，涉及到border的有border-style:inset;border-width:2px;浏览器根据自己的内核解析规则，先解析自身的默认CSS，再解析开发者书写的CSS，达到渲染标签的目的。IE6对INPUT的渲染存在bug，border:none;不被解析，当有border-width或border-color设置的时候才会令IE6去解析border-style:none;。
             <div class="hidden">
                 <p class="a post-p">a(有href属性)标签嵌套下的img标签，在IE下会带有边框。解决办法是加上a img{border:none;}样式。</p>
                 <p class="a post-p">input边框问题。去掉input边框一般用border:none;就可以，但由于IE6在解析input样式时的BUG(优先级问题)，在IE6下无效。</p>
@@ -222,7 +234,8 @@
 
     <p class="q">对BFC规范(块级格式化上下文：block formatting context)的理解？</p>
     <p class="a post-p">简单来说，BFC 就是一种属性，这种属性会影响着元素的定位以及与其兄弟元素之间的相互作用。</p>
-    <p class="a post-p">IE6-7 并不支持 W3C 的 BFC ，而是使用私有属性 hasLayout 。从表现上来说，hasLayout 跟 BFC 很相似。使用 zoom: 1 既可以触发 hasLayout 又不会对元素造成其他影响，相对来说会更为方便。</p>
+    <p class="a post-p">IE6-7 并不支持 W3C 的 BFC ，而是使用私有属性 hasLayout 。从表现上来说，hasLayout 跟 BFC 很相似。使用 zoom: 1 既可以触发 hasLayout
+        又不会对元素造成其他影响，相对来说会更为方便。</p>
     <p class="a post-p">满足下面任一条件的元素，会触发为 BFC ：</p>
     <ul class="post-l">
         <li>浮动元素，float 除 none 以外的值</li>
@@ -249,7 +262,8 @@
     <p class="a post-p">另外, 使用过 CSS 压缩、合并插件。</p>
 
     <p class="q">CSS优化、提高性能的方法有哪些？</p>
-    <p class="a post-p">说到性能, 不得不提开发速度与代码可维护性。关于这些, 就之前的开发实践, 认为应该向semantic ui学习, 即将常用 CSS 功能作合理归类、拆分, 平时多积累, 这样才是写 CSS 的道路。</p>
+    <p class="a post-p">说到性能, 不得不提开发速度与代码可维护性。关于这些, 就之前的开发实践, 认为应该向semantic ui学习, 即将常用 CSS 功能作合理归类、拆分, 平时多积累, 这样才是写 CSS
+        的道路。</p>
 
     <p class="q">浏览器是怎样解析CSS选择器的？</p>
     <p class="a post-p">解析 CSS 选择器离不开 HTML 的特性, ID唯一, class可以应用在多个标签上。所以, 解析过程先从ID开始, 然后从左至右。</p>
@@ -295,7 +309,8 @@
     <p class="a post-p">反锯齿</p>
 
     <p class="q">font-style属性可以让它赋值为“oblique” oblique是什么意思？</p>
-    <p class="a post-p">人工倾斜版本, 另外两个值是normal、italic, 正常版本和斜体版本<a href="../../examples/oblique.html" class="ex" target="_blank">查看代码</a></p>
+    <p class="a post-p">人工倾斜版本, 另外两个值是normal、italic, 正常版本和斜体版本<a href="../../examples/oblique.html" class="ex"
+                                                                 target="_blank">查看代码</a></p>
 
     <p class="q">position:fixed;在android下无效怎么处理？</p>
     <p class="a post-p">没遇到过这个问题哦, 百度了一下, viewport设置好了就OK。</p>
