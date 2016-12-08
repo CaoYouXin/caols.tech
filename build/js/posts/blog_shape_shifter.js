@@ -1,6 +1,1 @@
-;(function (P, rootHref) {
-
-    P.script(document, rootHref + 'build/js/shape_shifter.js');
-    P.script(document, rootHref + 'build/js/back_to_index.js');
-
-})(window.top.ES6Promise.Promise, window.top.Router.rootHref);
+!function(o,i){o.script(document,i+"build/js/shape_shifter.js"),o.script(document,i+"build/js/back_to_index.js")}(window.top.ES6Promise.Promise,window.top.Router.rootHref);

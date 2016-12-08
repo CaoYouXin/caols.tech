@@ -83,9 +83,10 @@ gulp.task('b-html', function () {
 
 gulp.task('b-js', ['b-3d', 'b-pu', 'b-mu', 'b-ps-js'], function () {
     var jsSrc = _devSrc + 'js/';
-    var jsDst = dst + '/js/';
+    var jsDst = dst + 'js/';
 
     gulp.src([jsSrc + '*.js', jsSrc + '*/*.js'], {base: jsSrc})
+        .pipe(uglifyJs())
         .pipe(gulp.dest(jsDst));
 });
 
