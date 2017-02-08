@@ -72,11 +72,9 @@
     if (did) return;
 
     var parsedHref = window.top.parseHref();
-    var rootHref = parsedHref.rootHref;
-    var matched = parsedHref.hrefParseInfo;
-    initJsContext();
+    initJsContext(parsedHref.rootHref, parsedHref.hrefParseInfo);
 
-    function initJsContext() {
+    function initJsContext(rootHref, matched) {
         if (window === window.top) {
 
             var script = document.createElement('script');
@@ -108,7 +106,7 @@
 
                     ]).then(function () {
 
-                        loadPostJs(P);
+                        loadPostJs(P, rootHref);
                     });
 
                 };
@@ -119,11 +117,11 @@
         }
 
         else {
-            loadPostJs(P);
+            loadPostJs(P, rootHref);
         }
     }
 
-    function loadPostJs(P) {
+    function loadPostJs(P, rootHref) {
         var fileName = location.href.toString().match(/build\/(.*)\.htm/)[1];
         var url = rootHref + 'build/js/' + fileName + '.js';
 
