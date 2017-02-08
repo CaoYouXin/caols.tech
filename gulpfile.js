@@ -88,6 +88,23 @@ gulp.task('b-js', ['b-3d', 'b-pu', 'b-mu', 'b-ps-js'], function () {
     gulp.src([jsSrc + '*.js', jsSrc + '*/*.js'], {base: jsSrc})
         .pipe(uglifyJs())
         .pipe(gulp.dest(jsDst));
+
+    gulp.src([
+        _3rdLib + 'promise/es6-promise.js',
+        _3rdLib + 'nanoajax/nanoajax.min.js',
+        __devSrc + 'promise/PromiseUtils.js'
+    ])
+    .pipe(concat('pack/my-promise.min.js'))
+    .pipe(uglifyJs())
+    .pipe(gulp.dest(jsDst));
+
+    gulp.src([
+        __devSrc + 'pageslider/href_parser.js',
+        __devSrc + 'pageslider/jsloader.js'
+    ])
+    .pipe(concat('pack/jsloader.min.js'))
+    .pipe(uglifyJs())
+    .pipe(gulp.dest(jsDst));
 });
 
 gulp.task('b-css', ['b-ps-css', 'b-html', 'posts'], function () {
