@@ -1,11 +1,7 @@
 /**
  * Created by cls on 16/9/14.
  */
-;(function () {
-
-    var domain = 'caols.tech';
-    var isProductEnv = domain === document.domain;
-    var rootHref = isProductEnv ? '/' : '/' + domain + '/';
+;(function (rH) {
 
     var handlers = {}, historyStack = [], skip = null;
 
@@ -34,7 +30,7 @@
     window.onpopstate = ops;
 
     window.Router = {
-        rootHref: rootHref,
+        rootHref: rH,
         go: function (url, cb) {
 
             if (url.match(/.*?:\/\/(.*?)\/.*/)) {
@@ -43,8 +39,8 @@
                 return;
             }
 
-            if (!url.match(new RegExp('^\\' + rootHref))) {
-                url = rootHref + url;
+            if (!url.match(new RegExp('^\\' + rH))) {
+                url = rH + url;
             }
 
             var index = historyStack.indexOf(url);
@@ -96,8 +92,8 @@
                     return;
                 }
 
-                if (url.indexOf(rootHref) === -1) {
-                    urls[i] = rootHref + url;
+                if (url.indexOf(rH) === -1) {
+                    urls[i] = rH + url;
                 }
 
                 historyStack.push(url);
@@ -115,4 +111,4 @@
         }
     };
 
-})();
+})(window.parseHref().rootHref);

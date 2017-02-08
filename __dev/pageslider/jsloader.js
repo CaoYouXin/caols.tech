@@ -3,10 +3,6 @@
  */
 ;(function (P) {
 
-    var domain = 'caols.tech';
-    var isProductEnv = domain === document.domain;
-    var rootHref = isProductEnv ? '/' : '/' + domain + '/';
-
     var notSupported = document.querySelector('meta[name="not-supported"]');
     var did = false;
     if (notSupported) {
@@ -73,23 +69,61 @@
         }
     }
 
-    if (!did && window === window.top) {
+    if (did) return;
 
-        var loc = location.href.toString();
-        var locPre4Reg = isProductEnv ? '\/' : '\/' + domain + '\/';
-        var reg = new RegExp('http:\/\/.*?' + locPre4Reg + '(.*)');
+    var parsedHref = window.top.parseHref();
+    var rootHref = parsedHref.rootHref;
+    var matched = parsedHref.hrefParseInfo;
+    initJsContext();
 
-        var script = document.createElement('script');
-        script.src = rootHref + '3rdLib/store/SimpleStore.js';
-        script.onload = function () {
-            store('url-snapshot', loc.match(reg)[1]);
+    function initJsContext() {
+        if (window === window.top) {
 
-            location.href = rootHref;
-        };
-        document.head.appendChild(script);
+            var script = document.createElement('script');
 
-    } else if (!did) {
+            if (location.href.toString().indexOf('dev') === -1) {
+                script.src = rootHref + '3rdLib/store/SimpleStore.js';
+                script.onload = function () {
+                    store('url-snapshot', matched[2]);
 
+                    location.href = rootHref;
+                };
+                document.head.appendChild(script);
+            }
+
+            else {
+
+                script.src = rootHref + 'build/js/pack/my-promise.min.js';
+                script.onload = function () {
+
+                    var P = window.ES6Promise.Promise;
+
+                    P.all([
+
+                        P.script(document, rootHref + '3rdLib/polyfill/polyfill.js'),
+                        P.script(document, rootHref + '3rdLib/md5/md5.min.js'),
+                        P.script(document, rootHref + '3rdLib/store/SimpleStore.js'),
+                        P.script(document, rootHref + '3rdLib/handlebars/handlebars.min.js'),
+                        P.script(document, rootHref + 'build/js/pageslider/router.min.js')
+
+                    ]).then(function () {
+
+                        loadPostJs(P);
+                    });
+
+                };
+                document.head.appendChild(script);
+
+            }
+
+        }
+
+        else {
+            loadPostJs(P);
+        }
+    }
+
+    function loadPostJs(P) {
         var fileName = location.href.toString().match(/build\/(.*)\.htm/)[1];
         var url = rootHref + 'build/js/' + fileName + '.js';
 
@@ -107,8 +141,6 @@
         ]).then(function () {
             P.script(document, url)
         });
-
-
     }
 
 })((window.top.ES6Promise || {Promise: null}).Promise);
