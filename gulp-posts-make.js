@@ -6,7 +6,7 @@ var through = require('through-gulp');
 module.exports = function (srcBase, dstBase, dstDir) {
 
     var _data = [], data = {}, filename = 'articles.json';
-    
+
     var regExpressions= {
         name: /<meta name="post-name" content="(.*?)".*>/,
         date: /<meta name="post-date" content="(.*)">/,
@@ -36,7 +36,8 @@ module.exports = function (srcBase, dstBase, dstDir) {
                 metaData.url = dstBase + linkRegResult[1];
             }
 
-            Object.keys(regExpressions).forEach(function (key) {
+            var keys = Object.keys(regExpressions);
+            keys.forEach(function (key) {
                 var exp = regExpressions[key];
                 var result = content.match(exp);
                 if (result) {
@@ -44,7 +45,9 @@ module.exports = function (srcBase, dstBase, dstDir) {
                 }
             });
 
-            _data.push(metaData);
+            if (keys.length - Object.keys(metaData).length < 2) {
+                _data.push(metaData);
+            }
         }
 
         //给下一个流
