@@ -38,12 +38,12 @@
 
                 var script = doc.createElement('script');
                 script.onload = function () {
-                    resolve()
+                    resolve();
                 };
                 script.src = url;
                 doc.head.appendChild(script);
             }
-        })
+        });
     };
 
     P.append = function append(element, htmldata) {
