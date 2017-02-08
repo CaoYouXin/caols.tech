@@ -6,11 +6,16 @@ var through = require('through-gulp');
 module.exports = function (srcBase, dstBase, dstDir) {
 
     var _data = [], data = {}, filename = 'articles.json';
+    
+    var regExpressions= {
+        name: /<meta name="post-name" content="(.*?)".*>/,
+        date: /<meta name="post-date" content="(.*)">/,
+        category: /<meta name="post-category" content="(.*)">/,
+        labels: /<meta name="post-label" content="(.*)">/,
+        postCateOrder: /<meta name="post-cate-order" content="(.*)">/
+    };
+
     var linkRegExp = new RegExp(srcBase.replace(/\//g, '\\\/') + '(.*)');
-    var nameRegExp = /<meta name="post-name" content="(.*?)".*>/;
-    var dateRegExp = /<meta name="post-date" content="(.*)">/;
-    var categoryRegExp = /<meta name="post-category" content="(.*)">/;
-    var labelRegExp = /<meta name="post-label" content="(.*)">/;
     var dateParseRegExp = /(.*)-(.*)-(.*) ~ (.*)-(.*)-(.*)/;
 
     return through(function (file, encoding, callback) {
@@ -31,25 +36,13 @@ module.exports = function (srcBase, dstBase, dstDir) {
                 metaData.url = dstBase + linkRegResult[1];
             }
 
-            var nameRegResult = content.match(nameRegExp);
-            if (nameRegResult) {
-                metaData.name = nameRegResult[1];
-            }
-
-            var dateRegResult = content.match(dateRegExp);
-            if (dateRegResult) {
-                metaData.date = dateRegResult[1];
-            }
-
-            var categoryRegResult = content.match(categoryRegExp);
-            if (categoryRegResult) {
-                metaData.category = categoryRegResult[1];
-            }
-
-            var labelRegResult = content.match(labelRegExp);
-            if (labelRegResult) {
-                metaData.labels = labelRegResult[1];
-            }
+            Object.keys(regExpressions).forEach(function (key) {
+                var exp = regExpressions[key];
+                var result = content.match(exp);
+                if (result) {
+                    metaData[key] = result[1];
+                }
+            });
 
             _data.push(metaData);
         }

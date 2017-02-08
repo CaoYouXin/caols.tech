@@ -5,10 +5,26 @@
 
     function processData(data) {
         var _categories = data.categories;
-        var order = ['D3', 'Design Pattern', 'H5', 'Java', 'Personal', 'Web Interview', 'Old'];
+
+        var order = [true];
         var ret = [];
 
-        for (var i = 0, keys = order; i < keys.length; i++) {
+        Object.keys(_categories).forEach(function (key) {
+            var cate = _categories[key];
+
+            var blogsContainOrderInfo = cate.filter(function (c) {
+                return !!c.postCateOrder;
+            });
+
+            if (blogsContainOrderInfo.length) {
+                var postCateOrder = parseInt(blogsContainOrderInfo[0].postCateOrder);
+            }
+
+            order[postCateOrder] = key;
+        });
+
+        for (var i = 1, keys = order; i < keys.length; i++) {
+
             var blogs = _categories[keys[i]];
             var number = (blogs.length % 3 === 0) ? blogs.length / 3 : Math.floor( blogs.length / 3) + 1;
 
@@ -93,6 +109,15 @@
         _timestamp = timestamp;
 
         if (e.target.classList.contains('project-tagline') && e.target.classList.contains('btn')) {
+            e.preventDefault();
+
+            window.top.store.clear();
+            window.top.location.href = rootHref;
+
+            return true;
+        }
+
+        if (e.target.classList.contains('desc')) {
             e.preventDefault();
 
             window.top.store.clear();
