@@ -42,7 +42,7 @@
         // load a image resource
         textureLoader.load(
             // resource URL
-            'http://127.0.0.1:8080/images/earth/2_no_clouds_8k.jpg',
+            'http://image.caols.tech/earth/2_no_clouds_8k.jpg',
             // Function when resource is loaded
             function ( texture ) {
                 // do something with it
