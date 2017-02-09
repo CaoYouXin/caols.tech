@@ -28,10 +28,10 @@
                 // director.Camera.position.z = 100 * Math.sin(angle);
                 // director.Camera.lookAt(director.Scene.position);
 
-                director.Camera.position.x = 100 * Math.cos(-116 / 180 * Math.PI) * Math.cos(40 / 180 * Math.PI);
+                director.Camera.position.x = 100 * Math.cos(angle) * Math.cos(40 / 180 * Math.PI);
                 // director.Camera.position.y = 0;
                 director.Camera.position.y = 100 * Math.sin(40 / 180 * Math.PI);
-                director.Camera.position.z = 100 * Math.sin(-116 / 180 * Math.PI) * Math.cos(40 / 180 * Math.PI);
+                director.Camera.position.z = 100 * Math.sin(angle) * Math.cos(40 / 180 * Math.PI);
                 director.Camera.lookAt(director.Scene.position);
             });
         });
