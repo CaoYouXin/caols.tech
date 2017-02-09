@@ -66,7 +66,7 @@
 
                 var quadrants = [[1,1],[-1,1],[-1,-1],[1,-1]];
                 var points = [[1.3, 0], [.7, .6], [.7, .1], [.1, .1], [.1, .7], [.6, .7], [0, 1.3]];
-                var scale = 2, squareOfRadiusPlus = (radius + 1) * (radius + 1);
+                var scale = .618, squareOfRadiusPlus = (radius + 1) * (radius + 1);
 
                 quadrants.forEach(function (q) {
                     var handler = new THREE.Geometry();
