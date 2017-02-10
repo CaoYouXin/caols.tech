@@ -104,6 +104,7 @@ gulp.task('b-js', ['b-3d', 'b-pu', 'b-mu', 'b-ps-js'], function () {
     ])
     .pipe(concat('pack/jsloader.min.js'))
     .pipe(uglifyJs())
+    .pipe(gulp.dest(jsSrc))
     .pipe(gulp.dest(jsDst));
 });
 
