@@ -219,31 +219,6 @@
     document.addEventListener('click', eventHandler1);
     document.addEventListener('mousemove', eventHandler2);
 
-    var hammer = new window.top.Hammer(document, {
-        direction: window.top.Hammer.DIRECTION_HORIZONTAL
-    });
-    hammer.on('swipe', function (e) {
-        console.log(e);
-
-        var it = e.target;
-        do {
-            if (it.classList.contains('blogs-wrapper')) {
-                createHandler(it.firstElementChild, [
-                    constant(0),
-                    constant(0),
-                    function (currentOffset, step) {
-                        return Math.min(100 - step, currentOffset + step);
-                    },
-                    constant(0),
-                    function (currentOffset, step) {
-                        return Math.max(0, currentOffset - step);
-                    }
-                ])(e.offsetDirection);
-                return;
-            }
-        } while (it = it.parentElement);
-    });
-
     P.all([
         P.getJSON(rootHref + 'build/posts/articles.json'),
         P.ajax(rootHref + 'build/x-handlebars-templates/article_list.html'),
@@ -254,6 +229,33 @@
         var articleListElem = document.getElementById('article_list');
 
         articleListElem.innerHTML = html;
+
+        window.top.Hammer.each(document.querySelectorAll('div.blogs-wrapper.pager'), function (elem) {
+            var hammer = new window.top.Hammer(elem, {
+                direction: window.top.Hammer.DIRECTION_HORIZONTAL
+            });
+            hammer.on('swipe', function (e) {
+                console.log(e);
+
+                var it = e.target;
+                do {
+                    if (it.classList.contains('blogs-wrapper')) {
+                        createHandler(it.firstElementChild, [
+                            constant(0),
+                            constant(0),
+                            function (currentOffset, step) {
+                                return Math.min(100 - step, currentOffset + step);
+                            },
+                            constant(0),
+                            function (currentOffset, step) {
+                                return Math.max(0, currentOffset - step);
+                            }
+                        ])(e.offsetDirection);
+                        return;
+                    }
+                } while (it = it.parentElement);
+            });
+        });
     });
 
     var resume = document.createElement('div');
