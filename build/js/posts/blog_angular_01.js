@@ -1,0 +1,1 @@
+!function(o,t,i,e){o.script(document,t+"build/js/post.js")}(window.top.ES6Promise.Promise,window.top.Router.rootHref,window.top.Router,window.top.PageSlider);
