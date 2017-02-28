@@ -39,6 +39,14 @@
     window.Router.go(!!urlSnapshot ? urlSnapshot : 'build/index_.html', window.PageSlider.go);
 </script>
 
+<!-- features -->
+<script>
+    var control = navigator.control || {};
+    if (control.gesture) {
+        control.gesture(false);
+    }
+</script>
+
 <!-- Hotjar Tracking Code for http://caols.tech/ -->
 <script>
 //     (function(h,o,t,j,a,r){
