@@ -83,6 +83,14 @@ module.exports = function (srcBase, dstBase, dstDir) {
                         if (null !== year && null !== month) {
                             data.dates[year][month].push(metaData);
                         }
+
+                        metaData.lastUpdateTime = new Date(dateParseRegResult[j]
+                                + '-'
+                            + '00'.substr(dateParseRegResult[j + 1].length)
+                            + dateParseRegResult[j + 1]
+                                + '-'
+                            + '00'.substr(dateParseRegResult[j + 2].length)
+                            + dateParseRegResult[j + 2]).getTime();
                     }
                 }
             }
@@ -98,6 +106,14 @@ module.exports = function (srcBase, dstBase, dstDir) {
                 }
 
                 data.categories[metaData.category].push(metaData);
+
+                if (!data.categories[metaData.category].lastUpdateTime) {
+                    data.categories[metaData.category].lastUpdateTime = Number.MIN_VALUE;
+                }
+
+                if (data.categories[metaData.category].lastUpdateTime < metaData.lastUpdateTime) {
+                    data.categories[metaData.category].lastUpdateTime = metaData.lastUpdateTime;
+                }
             }
 
             if (metaData.labels) {

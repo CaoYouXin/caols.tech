@@ -9,18 +9,10 @@
         var order = [true];
         var ret = [];
 
-        Object.keys(_categories).forEach(function (key) {
-            var cate = _categories[key];
-
-            var blogsContainOrderInfo = cate.filter(function (c) {
-                return !!c.postCateOrder;
-            });
-
-            if (blogsContainOrderInfo.length) {
-                var postCateOrder = parseInt(blogsContainOrderInfo[0].postCateOrder);
-            }
-
-            order[postCateOrder] = key;
+        Object.keys(_categories).sort(function (c1, c2) {
+            return _categories[c1].lastUpdateTime - _categories[c2].lastUpdateTime;
+        }).forEach(function (c, i) {
+            order.push(c);
         });
 
         for (var i = 1, keys = order; i < keys.length; i++) {
