@@ -9,11 +9,26 @@
         var order = [true];
         var ret = [];
 
-        Object.keys(_categories).sort(function (c1, c2) {
-            return _categories[c1].lastUpdateTime - _categories[c2].lastUpdateTime;
-        }).forEach(function (c, i) {
+        Object.keys(_categories)
+        .map(function (c) {
+            _categories[c].lastUpdateTime = _categories[c].sort(function (a1, a2) {
+                return a2.lastUpdateTime - a1.lastUpdateTime;
+            }).reduce(function (ac, cv) {
+                if (cv.lastUpdateTime > ac) {
+                    return cv.lastUpdateTime;
+                } else {
+                    return ac;
+                }
+            }, Number.MIN_VALUE);
+            return c;
+        })
+        .sort(function (c1, c2) {
+            return _categories[c2].lastUpdateTime - _categories[c1].lastUpdateTime;
+        }).forEach(function (c) {
             order.push(c);
         });
+
+        console.log('_categories', data.categories);
 
         for (var i = 1, keys = order; i < keys.length; i++) {
 

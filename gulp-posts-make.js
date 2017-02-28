@@ -107,13 +107,13 @@ module.exports = function (srcBase, dstBase, dstDir) {
 
                 data.categories[metaData.category].push(metaData);
 
-                if (!data.categories[metaData.category].lastUpdateTime) {
-                    data.categories[metaData.category].lastUpdateTime = Number.MIN_VALUE;
-                }
-
-                if (data.categories[metaData.category].lastUpdateTime < metaData.lastUpdateTime) {
-                    data.categories[metaData.category].lastUpdateTime = metaData.lastUpdateTime;
-                }
+                // if (!data.categories[metaData.category].lastUpdateTime) {
+                //     data.categories[metaData.category].lastUpdateTime = Number.MIN_VALUE;
+                // }
+                //
+                // if (data.categories[metaData.category].lastUpdateTime < metaData.lastUpdateTime) {
+                //     data.categories[metaData.category].lastUpdateTime = metaData.lastUpdateTime;
+                // }
             }
 
             if (metaData.labels) {
