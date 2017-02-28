@@ -101,6 +101,18 @@
 
     var _timestamp = 0;
 
+    function createHandler(elem, offsetFns) {
+        return function (index) {
+            var columnCount = elem.style.width.match(/(\d+)00/)[1];
+            var currentOffset = (elem.style.transform.match(/(\d+)/) || [0])[0];
+            var step = 100 / columnCount;
+
+            (function (offset) {
+                elem.style.transform = 'translateX(-' + offset + '%)';
+            })(offsetFns[index](currentOffset, step));
+        };
+    }
+
     function eventHandler1(e) {
         var timestamp = new Date().getTime();
         if (Math.abs(_timestamp - timestamp) < 400) {
@@ -128,25 +140,18 @@
 
         if (e.target.classList.contains('blogs-wrapper')) {
 
-            handlerProxy(e, function (index) {
-                var blogs = e.target.firstElementChild;
-                var columnCount = blogs.style.width.match(/\d/)[0];
-                var currentOffset = (blogs.style.transform.match(/(\d+)/) || [0])[0];
-                var step = 100 / columnCount;
-
-                (function (offset) {
-                    blogs.style.transform = 'translateX(-' + offset + '%)';
-                })([
-                    constant(0),
-                    function () {
-                        return Math.max(0, currentOffset - step);
-                    },
-                    function () {
-                        return Math.min(100 - step, currentOffset + step);
-                    },
-                    constant(100 - step)
-                ][index]());
-            }, function () {
+            handlerProxy(e, createHandler(e.target.firstElementChild, [
+                constant(0),
+                function (currentOffset, step) {
+                    return Math.max(0, currentOffset - step);
+                },
+                function (currentOffset, step) {
+                    return Math.min(100 - step, currentOffset + step);
+                },
+                function (currentOffset, step) {
+                    return 100 - step;
+                }
+            ]), function () {
 
             });
 
@@ -206,6 +211,31 @@
     document.addEventListener('touchend', eventHandler1);
     document.addEventListener('click', eventHandler1);
     document.addEventListener('mousemove', eventHandler2);
+
+    var hammer = new window.top.Hammer(document, {
+        direction: window.top.Hammer.DIRECTION_HORIZONTAL
+    });
+    hammer.on('swipe', function (e) {
+        console.log(e);
+
+        var it = e.target;
+        do {
+            if (it.classList.contains('blogs-wrapper')) {
+                createHandler(it.firstElementChild, [
+                    constant(0),
+                    constant(0),
+                    function (currentOffset, step) {
+                        return Math.min(100 - step, currentOffset + step);
+                    },
+                    constant(0),
+                    function (currentOffset, step) {
+                        return Math.max(0, currentOffset - step);
+                    }
+                ])(e.offsetDirection);
+                return;
+            }
+        } while (it = it.parentElement);
+    });
 
     P.all([
         P.getJSON(rootHref + 'build/posts/articles.json'),
