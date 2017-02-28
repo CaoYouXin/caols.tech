@@ -137,7 +137,7 @@
             }),
             P.script(document, rootHref + '3rdLib/polyfill/polyfill.js')
         ]).then(function () {
-            P.script(document, url)
+            P.script(document, url);
         });
     }
 
