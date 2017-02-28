@@ -45,7 +45,7 @@ module.exports = function (srcBase, dstBase, dstDir) {
                 }
             });
 
-            if (keys.length - Object.keys(metaData).length < 2) {
+            if (keys.length + 1 - Object.keys(metaData).length < 2) {
                 _data.push(metaData);
             }
 
