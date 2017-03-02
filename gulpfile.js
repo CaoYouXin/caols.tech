@@ -111,7 +111,7 @@ gulp.task('b-js', ['b-3d', 'b-pu', 'b-mu', 'b-ps-js'], function () {
 gulp.task('b-css', ['b-ps-css', 'b-html', 'posts'], function () {
     var cssSrc = _devSrc + 'css/';
     var cssDst = dst + 'css/';
-    var _3rdLibCssSrc = _3rdLib + '*/*.css';
+    var _3rdLibCssSrc = _3rdLib + '**/*.css';
     var cssmakefiles = dst + '*-cssmakefile.json';
 
     gulp.src([cssSrc + '*.css', cssSrc + '*/*.css', _3rdLibCssSrc, cssmakefiles])
