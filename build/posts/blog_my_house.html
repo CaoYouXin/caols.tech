@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <script type="text/javascript" src="../js/mobile/mobile-util-prefix.min.js"></script>
 
-    <meta name="post-name " content="小家装修">
+    <meta name="post-name" content="小家装修">
     <meta name="post-date" content="2016-9-11 ~ 2016-9-29">
     <meta name="post-category" content="Personal">
     <meta name="post-label" content="Blender 3D, Flex Layout">
@@ -17,7 +17,11 @@
     
     
     
+    <link href="../../3rdLib/jplayer/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css">
 
+    <script type="text/javascript" src="../../3rdLib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../3rdLib/jplayer/jplayer/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="../../3rdLib/jplayer/add-on/jplayer.playlist.min.js"></script>
     <script type="text/javascript" src="../js/pack/jsloader.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/posts/blog_my_house.min.css">
 <body>
@@ -28,6 +32,59 @@
 
 <section class="post-content">
     <div class="images"></div>
+
+    <div id="jp_container_1" class="jp-video jp-video-270p" role="application" aria-label="media player" style="margin: 0 auto;">
+        <div class="jp-type-playlist">
+            <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+            <div class="jp-gui">
+                <div class="jp-video-play">
+                    <button class="jp-video-play-icon" role="button" tabindex="0">play</button>
+                </div>
+                <div class="jp-interface">
+                    <div class="jp-progress">
+                        <div class="jp-seek-bar">
+                            <div class="jp-play-bar"></div>
+                        </div>
+                    </div>
+                    <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                    <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                    <div class="jp-controls-holder">
+                        <div class="jp-controls">
+                            <button class="jp-previous" role="button" tabindex="0">previous</button>
+                            <button class="jp-play" role="button" tabindex="0">play</button>
+                            <button class="jp-next" role="button" tabindex="0">next</button>
+                            <button class="jp-stop" role="button" tabindex="0">stop</button>
+                        </div>
+                        <div class="jp-volume-controls">
+                            <button class="jp-mute" role="button" tabindex="0">mute</button>
+                            <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+                            <div class="jp-volume-bar">
+                                <div class="jp-volume-bar-value"></div>
+                            </div>
+                        </div>
+                        <div class="jp-toggles">
+                            <button class="jp-repeat" role="button" tabindex="0">repeat</button>
+                            <button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+                            <button class="jp-full-screen" role="button" tabindex="0">full screen</button>
+                        </div>
+                    </div>
+                    <div class="jp-details">
+                        <div class="jp-title" aria-label="title">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="jp-playlist">
+                <ul>
+                    <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+            <div class="jp-no-solution">
+                <span>Update Required</span>
+                To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+            </div>
+        </div>
+    </div>
 </section>
 
 <div id="cover"
