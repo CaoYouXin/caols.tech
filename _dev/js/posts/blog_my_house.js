@@ -69,12 +69,12 @@
                 title:"客厅",
                 artist:"Me",
                 free:true,
-                m4v:"../../images/house/VID_20161225_102638_1.mp4"
+                m4v:"irStr(../../images/house/VID_20161225_102638_1.mp4)"
             },
             {
                 title:"卧室",
                 artist:"Me",
-                m4v: "../../images/house/VID_20161225_102638_2.mp4"
+                m4v: "irStr(../../images/house/VID_20161225_102638_2.mp4)"
             }
         ], {
             swfPath: "../../../3rdLib/jplayer/jplayer",
