@@ -1,0 +1,7 @@
+#test.hidden {
+    display: none;
+}
+
+.article-content p {
+    color: #004848;
+}
