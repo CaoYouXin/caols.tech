@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>a</title>
+</head>
+<body>
+<script>
+		window.A = {
+			log: function() {
+				console.log('A');
+			}
+		};
+
+		window.name = 'name';
+		location.hash = 'hash';
+
+		document.domain = 'caols.tech';
+		var iframe = document.createElement('iframe');
+		iframe.src = 'http://profile.caols.tech/b.html';
+		document.body.appendChild(iframe);
+
+		var script = document.createElement('script');
+		script.src = 'http://profile.caols.tech/b.js';
+		document.body.appendChild(script);
+		script.onload = function() {
+			process({a:'a',b:'b'});
+		};
+
+		window.addEventListener("message", receiveMessage, false);
+
+		function receiveMessage(event) {
+			console.log(event);
+
+		  	var origin = event.origin || event.originalEvent.origin;
+		  
+		  	console.log(origin);
+		}
+
+		setTimeout(function() {
+			iframe.contentWindow.postMessage('b.txt', 'http://caols.tech/a.html');
+		}, 2000);
+
+	</script>
+</body>
+</html>
