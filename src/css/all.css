@@ -5,9 +5,6 @@
     margin: 0;
 
     box-sizing: border-box;
-
-    font-family: 'Hiragino Sans GB', 'Comic San MS', '微软雅黑', 'Microsoft Yahei', sans-serif;
-    font-weight: normal;
 }
 
 /* 字体 */
@@ -17,5 +14,7 @@ code {
 
 /* 字号, 不能指定，会破坏Angular版博客壳的字号设定 */
 html {
+    /*font-family: 'Hiragino Sans GB', 'Comic San MS', '微软雅黑', 'Microsoft Yahei', sans-serif;*/
     /*font-size: 10px;*/
+    /*font-weight: normal;*/
 }
