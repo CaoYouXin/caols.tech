@@ -9,6 +9,21 @@ module.exports = function merge(obj, mergeObj, optKey) {
         return Object.prototype.toString.call(obj) === '[object Array]';
     }
 
+    function distinct(array) {
+        var cache = [];
+        return array.reduce(function (p, v) {
+            var stringify = JSON.stringify(v);
+            var isDistinct = cache.reduce(function (pp, vv) {
+                return pp && vv !== stringify;
+            }, true);
+            if (isDistinct) {
+                cache.push(stringify);
+                p.push(v);
+            }
+            return p;
+        }, []);
+    }
+
     for (var keys = Object.keys(mergeObj), k = 0;
          k < keys.length; k++) {
         var key = keys[k];
@@ -19,6 +34,7 @@ module.exports = function merge(obj, mergeObj, optKey) {
                 _m.forEach(function(m) {
                     _o.push(m);
                 });
+                obj[key] = distinct(_o);
             } else if (isObject(_o) && isArray(_m)) {
                 _m.forEach(function(m) {
                     var _key = m[optKey];
@@ -39,6 +55,7 @@ module.exports = function merge(obj, mergeObj, optKey) {
                     m[optKey] = _key;
                     _o.push(m);
                 }
+                obj[key] = distinct(_o);
             }
         } else {
             obj[key] = _m;

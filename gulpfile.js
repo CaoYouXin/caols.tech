@@ -4,11 +4,12 @@ const minifyCss = require('gulp-minify-css');
 const uglifyJs = require('gulp-uglify');
 
 const buildPOST = require('./scripts/build_post');
+const buildCategory = require('./scripts/build_category');
 const buildAPI = require('./scripts/build_api');
 const myMerge = require('./scripts/util_merge');
-const jsMake = require('./scripts/build_js.js');
-const articleMake = require('./scripts/build_article.js');
-const cssMake = require('./scripts/gulp-css-make.js');
+const jsMake = require('./scripts/build_js');
+const contentMake = require('./scripts/build_content');
+const cssMake = require('./scripts/gulp-css-make');
 const imageReplacement = require('./scripts/gulp-images-replacement');
 
 const src = './src/';
@@ -16,6 +17,7 @@ const app = 'app/';
 const css = 'css/';
 const js = 'js/';
 const article = 'article/';
+const category = 'category/';
 const screenshot = 'screenshot/';
 const dist = './dist/';
 const post = 'post/';
@@ -25,15 +27,19 @@ const appMakeFilePath = 'app-makefile.json';
 const articleMakeFilePath = 'article-makefile.json';
 const articleCSSMakeFilePath = 'article-css-makefile.json';
 const articleJSMakeFilePath = 'article-js-makefile.json';
+const categoryMakeFilePath = 'category-makefile.json';
+const categoryCSSMakeFilePath = 'category-css-makefile.json';
+const categoryJSMakeFilePath = 'category-js-makefile.json';
 
 gulp.task('default', ['clean'], function () {
     gulp['start'](['api']);
 });
 
-gulp.task('api', ['screenshot', 'app', 'article'], function () {
+gulp.task('api', ['screenshot', 'app', 'article', 'category'], function () {
     gulp.src([
         dist + post + app + appMakeFilePath,
         dist + post + article + articleMakeFilePath,
+        dist + post + category + categoryMakeFilePath,
         dist + post + screenshot + 'description.json'
     ]).pipe(buildAPI({
         key: 'key_@_key',
@@ -51,9 +57,22 @@ gulp.task('api', ['screenshot', 'app', 'article'], function () {
                     + matched[3] + '":{"posts":["'
                     + p.name + '"],"categories":["'
                     + p.category + '"]}}}}'));
+
+                delete p.name;
             });
 
             return {post: posts, category: _category, index: _index};
+        },
+        buildCATEGORYs: function(categories) {
+            var self = this;
+
+            categories.forEach(function (c) {
+                c[self.key] = c.name;
+
+                delete c.name;
+            });
+
+            return {category: categories};
         },
         screenshot: function (screenshots) {
             for (var keys = Object.keys(screenshots), k = 0;
@@ -143,7 +162,66 @@ gulp.task('article-html', function () {
             dst: 'http://caols.tech/' + post + js,
             filename: articleJSMakeFilePath
         }))
-        .pipe(articleMake())
+        .pipe(contentMake({
+            splitter: /<div class="article-content">|<\/div><i class="splitter"><\/i>/
+        }))
         .pipe(imageReplacement())
         .pipe(gulp.dest(dist + post + article));
+});
+
+gulp.task('category', ['category-js'], function () {
+    // keep empty
+});
+
+gulp.task('category-js', ['category-css'], function () {
+    return gulp.src([
+        src + js + '**',
+        dist + post + category + categoryJSMakeFilePath
+    ]).pipe(jsMake({
+            msg: 'make',
+            expections: []
+        }))
+        .pipe(uglifyJs())
+        .pipe(imageReplacement())
+        .pipe(gulp.dest(dist + post + js));
+});
+
+gulp.task('category-css', ['category-html'], function () {
+     return gulp.src([
+         src + css + '**',
+         dist + post + category + categoryCSSMakeFilePath
+     ]).pipe(cssMake({
+             msg: 'make',
+             expections: []
+         }))
+         .pipe(minifyCss())
+         .pipe(imageReplacement())
+         .pipe(gulp.dest(dist + post + css));
+});
+
+gulp.task('category-html', function () {
+    return gulp.src(src + category + '*.html')
+        .pipe(buildCategory({
+            srcBase: src + category,
+            dstBase: 'http://caols.tech/' + post + category,
+            jsDstBase: 'http://caols.tech/' + post + js,
+            dstFilePath: categoryMakeFilePath
+        }))
+        .pipe(cssMake({
+            msg: 'makefile',
+            base: src + category,
+            dst: 'http://caols.tech/' + post + css,
+            filename: categoryCSSMakeFilePath
+        }))
+        .pipe(jsMake({
+            msg: 'makefile',
+            base: src + category,
+            dst: 'http://caols.tech/' + post + js,
+            filename: categoryJSMakeFilePath
+        }))
+        .pipe(contentMake({
+            splitter: /<div class="category-content">|<\/div><i class="splitter"><\/i>/
+        }))
+        .pipe(imageReplacement())
+        .pipe(gulp.dest(dist + post + category));
 });
