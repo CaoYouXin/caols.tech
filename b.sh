@@ -13,7 +13,7 @@ fi
 version=$(expr ${version} + 1)
 echo ${version} > ${versionCfgFile}
 
-comment="blog data $version"
+comment="blog data v2.0.$version"
 
 gulp \
     && cp -r ./dist/ ./docs/ \
