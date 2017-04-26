@@ -1,0 +1,12 @@
+{
+  "buildPOSTs": [
+    {
+      "url": "http://order.demo.caols.tech/",
+      "name": "Test APP 2",
+      "create": "2017-01-01",
+      "update": "2017-02-02",
+      "category": "App",
+      "type": "App"
+    }
+  ]
+}

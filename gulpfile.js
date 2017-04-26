@@ -40,7 +40,8 @@ gulp.task('api', ['screenshot', 'app', 'article', 'category'], function () {
         dist + post + app + appMakeFilePath,
         dist + post + article + articleMakeFilePath,
         dist + post + category + categoryMakeFilePath,
-        dist + post + screenshot + 'description.json'
+        dist + post + screenshot + 'description.json',
+        src + 'apps.json'
     ]).pipe(buildAPI({
         key: 'key_@_key',
         buildPOSTs: function (posts) {
