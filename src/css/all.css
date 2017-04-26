@@ -8,22 +8,10 @@
 
     font-family: 'Hiragino Sans GB', 'Comic San MS', '微软雅黑', 'Microsoft Yahei', sans-serif;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 /* 字体 */
 code {
     font-family: Monaco, monospace;
-}
-
-/*@media (max-device-width: 800px) {*/
-    /*body {*/
-        /*width: 800px;*/
-        /*filter: blur(10px);*/
-    /*}*/
-/*}*/
-
-/* disqus_thread */
-div.ds-thread {
-   background-color: rgba(255, 255, 255, 0.9);
 }
