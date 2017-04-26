@@ -17,6 +17,7 @@ comment="blog data v2.0.$version"
 
 gulp \
     && cp -r ./dist/ ./docs/ \
-    && git commit -am "$comment"
+    && git commit -am "$comment" \
+    && git push origin master
 
 echo ${comment}
