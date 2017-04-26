@@ -8,10 +8,14 @@
 
     font-family: 'Hiragino Sans GB', 'Comic San MS', '微软雅黑', 'Microsoft Yahei', sans-serif;
     font-weight: normal;
-    font-size: 10px;
 }
 
 /* 字体 */
 code {
     font-family: Monaco, monospace;
+}
+
+/* 字号, 不能指定，会破坏Angular版博客壳的字号设定 */
+html {
+    /*font-size: 10px;*/
 }

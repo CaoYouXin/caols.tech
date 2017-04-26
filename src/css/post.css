@@ -1,13 +1,13 @@
 /* 段落 */
 .post-p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-indent: 2em;
     margin: 1em 0;
 }
 
 .post-p a {
     display: inline-block;
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-indent: 0;
     text-decoration: none;
     border-radius: 0.8em;
@@ -25,7 +25,7 @@
 .titled-post-p:before {
     content: attr(data-title);
 
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 /* 带行标背景的段落 */
@@ -40,7 +40,7 @@ p.q {
     display: block;
     width: 100%;
     height: auto;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     line-height: 2em;
     padding-left: 1em;
     background: #ffeeff;
@@ -79,12 +79,12 @@ ol.post-l, ul.post-l {
 }
 
 ol.post-l > li, ul.post-l > li {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     list-style-position: inside;
 }
 
 ol.post-l p.post-p {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     text-indent: 0;
 }
 
