@@ -381,7 +381,7 @@
 
             <div class="article-content">
                 $END$
-            </div>
+            </div><i class="splitter"></i>
 
             <div class="article-footer">
                 <br>
@@ -479,7 +479,7 @@
         var lastHeight = elm.offsetHeight, newHeight;
         (function run() {
             newHeight = elm.offsetHeight;
-            if (lastHeight != newHeight)
+            if (lastHeight !== newHeight)
                 callback(newHeight);
             lastHeight = newHeight;
 

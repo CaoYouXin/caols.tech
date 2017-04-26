@@ -29,7 +29,7 @@ function jsDefault(src, dst) {
 }
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('b-js', 'b-css', 'cdn-upload', 'b-others1', 'b-others2', 'b-others3');
+    gulp['start']('b-js', 'b-css', 'cdn-upload', 'b-others1', 'b-others2', 'b-others3');
 });
 
 gulp.task('b-ps-js', function() {
