@@ -1,1 +1,1 @@
-{"blog_abilities.min.js":["d3/d3.v3.min.js","d3/RadarChart.js","blog_abilities.js"]}
+{"abilities.min.js":["d3/d3.v3.min.js","d3/RadarChart.js","blog_abilities.js"],"games.min.js":["games.js"]}

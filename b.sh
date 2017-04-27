@@ -11,7 +11,6 @@ else
 fi
 
 version=$(expr ${version} + 1)
-echo ${version} > ${versionCfgFile}
 
 comment="blog data v2.0.$version"
 
@@ -33,3 +32,4 @@ cp -r ./images/ ../images/ \
 cd ../caols.tech/
 
 echo ${comment}
+echo ${version} > ${versionCfgFile}

@@ -1,0 +1,168 @@
+<link rel="stylesheet" type="text/css" href="http://caols.tech/post/css/games.min.css">
+
+                <div id="games" class="bfc">
+                    <ul class="gallery">
+                        <li class="card"
+                            data-url="http://y3.ifengimg.com/dee5ac7c19652025/2015/0513/rdn_5552c9f156deb.jpg">
+                            <div class="content">巫师3</div>
+                        </li>
+                        <li class="card"
+                            data-url="http://www.wallcoo.com/game/devil-may-cry-4/wallpapers/1280x1024/devil-may-cry-4-wallpaper-wp20080215_1.jpg">
+                            <div class="content">鬼泣4</div>
+                        </li>
+                        <li class="card" data-url="http://a1.att.hudong.com/60/99/20300001213040130348990431437.jpg">
+                            <div class="content">暗黑血统</div>
+                        </li>
+                        <li class="card"
+                            data-url="http://image2.sina.com.cn/gm/downgames/image/pcgames/2005-11-04/U1245P115T29D95019F569DT20051104092042.jpg">
+                            <div class="content">波斯王子</div>
+                        </li>
+                        <li class="card" data-url="http://img.golue.com/pic/1112/27024229966.jpg">
+                            <div class="content">龙腾世纪</div>
+                        </li>
+                        <li class="card" data-url="http://image.diva8.com/soft/gamepic/post-358353-1154694025.jpg">
+                            <div class="content">地牢围攻</div>
+                        </li>
+                        <li class="card" data-url="http://image.caols.tech/games/psu.jpeg">
+                            <div class="content">Apache Helicopter</div>
+                        </li>
+                        <li class="card" data-url="http://image.caols.tech/games/psu-2.jpeg">
+                            <div class="content">极品飞车6</div>
+                        </li>
+                        <li class="card" data-url="http://image.caols.tech/games/psu-3.jpeg">
+                            <div class="content">无双大蛇</div>
+                        </li>
+                        <li class="card" data-url="http://image.caols.tech/games/psu-4.jpeg">
+                            <div class="content">鬼武者3</div>
+                        </li>
+                    </ul>
+                </div>
+
+                
+
+            </div>
+            <i class="splitter"></i>
+
+            <div class="article-footer">
+                <br>
+                <br>
+                <hr>
+                <div class="category box">
+                    <i></i>
+                    <span>“请求头”</span>
+                </div>
+                <div class="like box">
+                    <i></i>
+                    <span>90</span>
+                </div>
+                <br>
+                <br>
+                <p class="former-article" data-rel="上一篇: "><a href="#">深入理解计算机网络2</a></p>
+                <p class="latter-article" data-rel="下一篇: "><a href="#">深入理解计算机网络4</a></p>
+                <br>
+                <hr>
+                <br>
+                <p class="top5" data-rel="TOP 5:"></p>
+                <ol>
+                    <li><a href="#">深入理解计算机网络1</a></li>
+                    <li><a href="#">深入理解计算机网络3</a></li>
+                    <li><a href="#">深入理解计算机网络5</a></li>
+                    <li><a href="#">深入理解计算机网络6</a></li>
+                    <li><a href="#">深入理解计算机网络7</a></li>
+                </ol>
+                <br>
+                <hr>
+                <br>
+                <div id="reply" class="reply">
+                    <div class="title"><span>awesome</span>发布评论...</div>
+                    <textarea placeholder="输入评论..."></textarea>
+                    <div class="publish-btn">发布</div>
+                </div>
+                <br>
+                <ol class="comments" reversed>
+                    <li>
+                        <span>Coffee</span>
+                        <ul class="comments-of-comment">
+                            <li>Suger</li>
+                            <li>Spoon</li>
+                            <li>Cup</li>
+                        </ul>
+                    </li>
+                    <li><span>Tea</span></li>
+                    <li><span>Milk</span></li>
+                </ol>
+                <br>
+            </div>
+        </div>
+        <div class="footer">
+            人在劳作，天在看！@2017
+        </div>
+    </div>
+</section>
+
+<!-- menu -->
+<script>
+    var menuBtnELem = document.querySelector('.banner > .menu-btn');
+    var menuElem = document.querySelector('.menu');
+    var banner1Elem = document.querySelector('.banner');
+    var banner2Elem = document.querySelector('.left-banner');
+
+    function replaceMenu() {
+        menuElem.classList.add(window.innerWidth > window.innerHeight ? 'left' : 'right');
+    }
+
+    replaceMenu();
+
+    function menuClickHandler() {
+        if (menuElem.classList.contains('left') || menuElem.classList.contains('right')) {
+            menuElem.classList.remove('left');
+            menuElem.classList.remove('right');
+            banner1Elem.classList.add('solid');
+            banner2Elem.classList.add('solid');
+        } else {
+            replaceMenu();
+            banner1Elem.classList.remove('solid');
+            banner2Elem.classList.remove('solid');
+        }
+    }
+
+    menuBtnELem.addEventListener('click', menuClickHandler);
+
+    document.addEventListener('beforeunload', function () {
+        menuBtnELem.removeEventListener('click', menuClickHandler);
+    });
+</script>
+
+<!-- footer -->
+<script>
+    function onElementHeightChange(elm, callback) {
+        var lastHeight = elm.offsetHeight, newHeight;
+        (function run() {
+            newHeight = elm.offsetHeight;
+            if (lastHeight != newHeight)
+                callback(newHeight);
+            lastHeight = newHeight;
+
+            if (elm.onElementHeightChangeTimer)
+                clearTimeout(elm.onElementHeightChangeTimer);
+
+            elm.onElementHeightChangeTimer = setTimeout(run, 200);
+        })();
+    }
+
+    var footerElem = document.querySelector('.footer');
+    function resetFooter(height) {
+        console.log(height, window.innerHeight);
+        if (height > window.innerHeight - 100) {
+            footerElem.classList.remove('fixed');
+        } else {
+            footerElem.classList.add('fixed');
+        }
+    }
+
+    var bodyWrapperElem = document.querySelector('.body-wrapper');
+    onElementHeightChange(bodyWrapperElem, resetFooter);
+    resetFooter(bodyWrapperElem.offsetHeight);
+</script>
+<script type="text/javascript" src="http://caols.tech/post/js/games.min.js"></script></body>
+</html>

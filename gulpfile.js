@@ -45,7 +45,7 @@ gulp.task('api', ['screenshot', 'app', 'article', 'category'], function () {
     ]).pipe(buildAPI({
         key: 'key_@_key',
         buildPOSTs: function (posts) {
-            var self = this, _category = {}, _index = {}, dateReg = /^(.*?)-(.*?)-(.*?)$/;
+            var self = this, _category = {}, _index = {}, dateReg = /^(.*?)\/(.*?)\/(.*?)$/;
 
             posts.forEach(function (p) {
                 p[self.key] = p.name;
