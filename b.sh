@@ -18,6 +18,7 @@ comment="blog data v2.0.$version"
 gulp \
     && rm -rf ./docs/ \
     && git checkout -- docs/CNAME \
+    && git checkout -- docs/404.html \
     && cp -r ./dist/ ./docs/ \
     && git add --all \
     && git commit -m "$comment" \

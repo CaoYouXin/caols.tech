@@ -19,8 +19,8 @@
     }
 
     function draw(el, title, data, maxSpi) {
-        var maxSpi = maxSpi || 5,
-            margin = {top: 100, right: 100, bottom: 100, left: 100},
+        maxSpi = maxSpi || 5;
+        var margin = {top: 100, right: 100, bottom: 100, left: 100},
             width = Math.min(700, document.querySelector('.post-content').offsetWidth - 10) - margin.left - margin.right,
             height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
