@@ -21,4 +21,10 @@ gulp \
     && git commit -m "$comment" \
     && git push origin master
 
+cp -r ./images/ ../images/ \
+    && cd ../images/ \
+    && git add --all \
+    && git commit -m "$comment" \
+    && git push origin master
+
 echo ${comment}
