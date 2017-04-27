@@ -36,7 +36,7 @@
             color: color
         };
         //Call function to draw the Radar chart
-        RadarChart(el, data, radarChartOptions);
+        global.RadarChart(el, data, radarChartOptions);
 
         var svg = d3.select(el + ' > svg');
 
