@@ -4,7 +4,7 @@ versionCfgFile="version.cfg"
 
 if [ -e ${versionCfgFile} ]; then
 	version=$(cat ${versionCfgFile})
-	echo ${version}
+	echo last version is ${version}
 else
 	version=0
 	echo ${versionCfgFile} file not exits
@@ -26,5 +26,7 @@ cp -r ./images/ ../images/ \
     && git add --all \
     && git commit -m "$comment" \
     && git push origin master
+
+cd ../caols.tech/
 
 echo ${comment}
