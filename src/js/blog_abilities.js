@@ -18,7 +18,7 @@
     function draw(el, title, data, maxSpi) {
         maxSpi = maxSpi || 5;
         var margin = {top: 100, right: 100, bottom: 100, left: 100},
-            width = Math.min(700, document.querySelector('.post-content').offsetWidth - 10) - margin.left - margin.right,
+            width = Math.min(700, document.querySelector('.article-content').offsetWidth - 10) - margin.left - margin.right,
             height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
         var color = d3.scale.ordinal()
