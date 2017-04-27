@@ -19,6 +19,7 @@ gulp \
     && git checkout -- docs/CNAME \
     && git checkout -- docs/404.html \
     && cp -r ./dist/ ./docs/ \
+    && echo ${version} > ${versionCfgFile} \
     && git add --all \
     && git commit -m "$comment" \
     && git push origin master
@@ -32,4 +33,3 @@ cp -r ./images/ ../images/ \
 cd ../caols.tech/
 
 echo ${comment}
-echo ${version} > ${versionCfgFile}
