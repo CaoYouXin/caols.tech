@@ -186,42 +186,42 @@
         </thead>
         <tbody>
         <tr>
-            <td>http://www.a.com/a.js<br>http://www.a.com/b.js</td>
+            <td>http://www.a.com/e.js<br>http://www.a.com/b.js</td>
             <td>同一域名下</td>
             <td>允许</td>
         </tr>
         <tr>
-            <td>http://www.a.com/lab/a.js<br>http://www.a.com/script/b.js</td>
+            <td>http://www.a.com/lab/e.js<br>http://www.a.com/script/b.js</td>
             <td>同域名下不同文件夹</td>
             <td>允许</td>
         </tr>
         <tr>
-            <td>http://www.a.com:8080/a.js<br>http://www.a.com/b.js</td>
+            <td>http://www.a.com:8080/e.js<br>http://www.a.com/b.js</td>
             <td>同一域名，不同端口</td>
             <td>不允许</td>
         </tr>
         <tr>
-            <td>http://www.a.com/a.js<br>https://www.a.com/b.js</td>
+            <td>http://www.a.com/e.js<br>https://www.a.com/b.js</td>
             <td>同一域名，不同协议</td>
             <td>不允许</td>
         </tr>
         <tr>
-            <td>http://www.a.com/a.js<br>http://123.123.123.123/b.js</td>
+            <td>http://www.a.com/e.js<br>http://123.123.123.123/b.js</td>
             <td>域名和域名对应IP</td>
             <td>不允许</td>
         </tr>
         <tr>
-            <td>http://www.a.com/a.js<br>http://script.a.com/b.js</td>
+            <td>http://www.a.com/e.js<br>http://script.a.com/b.js</td>
             <td>主域相同，子域不同</td>
             <td>不允许</td>
         </tr>
         <tr>
-            <td>http://www.a.com/a.js<br>http://a.com/b.js</td>
+            <td>http://www.a.com/e.js<br>http://a.com/b.js</td>
             <td>主域相同，不同二级域名（同上）</td>
             <td>不允许（cookie neither）</td>
         </tr>
         <tr>
-            <td>http://www.a.com/a.js<br>http://www.b.com/b.js</td>
+            <td>http://www.a.com/e.js<br>http://www.b.com/b.js</td>
             <td>不同域名</td>
             <td>不允许</td>
         </tr>
