@@ -168,7 +168,7 @@ gulp.task('article-html', function () {
             filename: articleJSMakeFilePath
         }))
         .pipe(contentMake({
-            splitter: /<div class="article-content">|<\/div>.*?<i class="splitter"><\/i>/
+            splitter: /<div class="article-content">|<\/div>[\n\t ]*?<i class="splitter"><\/i>/m
         }))
         .pipe(imageReplacement())
         .pipe(gulp.dest(dist + post + article));
@@ -226,7 +226,7 @@ gulp.task('category-html', function () {
             filename: categoryJSMakeFilePath
         }))
         .pipe(contentMake({
-            splitter: /<div class="category-content">|<\/div>.*?<i class="splitter"><\/i>/
+            splitter: /<div class="category-content">|<\/div>[\n\t ]*?<i class="splitter"><\/i>/
         }))
         .pipe(imageReplacement())
         .pipe(gulp.dest(dist + post + category));
