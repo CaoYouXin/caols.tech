@@ -128,9 +128,9 @@ gulp.task('article-js', ['article-css'], function () {
             msg: 'make',
             expections: []
         }))
-        .pipe(uglifyJs())
         .pipe(imageReplacement())
         .pipe(templateReplacement())
+        .pipe(uglifyJs())
         .pipe(gulp.dest(dist + post + js));
 });
 
@@ -142,8 +142,8 @@ gulp.task('article-css', ['article-html'], function () {
              msg: 'make',
              expections: []
          }))
-         .pipe(minifyCss())
          .pipe(imageReplacement())
+         .pipe(minifyCss())
          .pipe(gulp.dest(dist + post + css));
 });
 
@@ -186,9 +186,9 @@ gulp.task('category-js', ['category-css'], function () {
             msg: 'make',
             expections: []
         }))
-        .pipe(uglifyJs())
         .pipe(imageReplacement())
         .pipe(templateReplacement())
+        .pipe(uglifyJs())
         .pipe(gulp.dest(dist + post + js));
 });
 
@@ -200,8 +200,8 @@ gulp.task('category-css', ['category-html'], function () {
              msg: 'make',
              expections: []
          }))
-         .pipe(minifyCss())
          .pipe(imageReplacement())
+         .pipe(minifyCss())
          .pipe(gulp.dest(dist + post + css));
 });
 
