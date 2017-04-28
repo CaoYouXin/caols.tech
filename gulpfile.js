@@ -130,6 +130,7 @@ gulp.task('article-js', ['article-css'], function () {
         }))
         .pipe(uglifyJs())
         .pipe(imageReplacement())
+        .pipe(templateReplacement())
         .pipe(gulp.dest(dist + post + js));
 });
 
@@ -170,7 +171,6 @@ gulp.task('article-html', function () {
             splitter: /<div class="article-content">|<\/div>.*?<i class="splitter"><\/i>/
         }))
         .pipe(imageReplacement())
-        .pipe(templateReplacement())
         .pipe(gulp.dest(dist + post + article));
 });
 
@@ -188,6 +188,7 @@ gulp.task('category-js', ['category-css'], function () {
         }))
         .pipe(uglifyJs())
         .pipe(imageReplacement())
+        .pipe(templateReplacement())
         .pipe(gulp.dest(dist + post + js));
 });
 
@@ -228,7 +229,6 @@ gulp.task('category-html', function () {
             splitter: /<div class="category-content">|<\/div>.*?<i class="splitter"><\/i>/
         }))
         .pipe(imageReplacement())
-        .pipe(templateReplacement())
         .pipe(gulp.dest(dist + post + category));
 });
 
