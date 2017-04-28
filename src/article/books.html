@@ -6,11 +6,11 @@
 
     <meta name="post-type" content="Article">
     <meta name="post-release" content="True">
-    <meta name="post-name" content="游戏列表">
+    <meta name="post-name" content="读书列表">
     <meta name="post-category" content="生活纪实">
-    <meta name="post-create" content="2016/10/20">
+    <meta name="post-create" content="2016/9/25">
     <meta name="post-update" content="2017/4/27">
-    <meta name="post-brief" content="本人玩过的单机游戏无数，有正版有盗版，但是依然绝不触碰网游...">
+    <meta name="post-brief" content="大多读技术书籍，也会涉及一些古医书和儒释道相关书籍...">
 
     <!-- banner menu -->
     <style>
@@ -352,8 +352,12 @@
     </style>
 
     <!-- content css -->
+    <link rel="stylesheet" type="text/css" href="../css/normalize/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/highlight/default.css">
     <link rel="stylesheet" type="text/css" href="../css/all.css">
-    <link rel="stylesheet" type="text/css" href="../css/game-list.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-code.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-table.css">
+    <link rel="stylesheet" type="text/css" href="../css/book-list.css">
 </head>
 <body>
 <section class="menu-bar">
@@ -370,7 +374,7 @@
     <div class="body-wrapper">
         <div class="body">
             <div class="article-header">
-                <h1>“HTTP请求头部包括一系列的“请求头”和它们所对应的值，指出允许客户端向服务器传递请求的附加信息以及客户端自身的信息</h1>
+                <h1>读书列表</h1>
                 <hr>
                 <div class="category box">
                     <i></i>
@@ -392,45 +396,41 @@
 
             <div class="article-content">
 
-                <div id="games" class="bfc">
-                    <ul class="gallery">
-                        <li class="card"
-                            data-url="http://y3.ifengimg.com/dee5ac7c19652025/2015/0513/rdn_5552c9f156deb.jpg">
-                            <div class="content">巫师3</div>
+                <div class="btns">
+                    <span class="btn"
+                        onclick="handlers.btnClicked(0);">表格</span><span class="btn active"
+                        onclick="handlers.btnClicked(1);">代码</span><span class="btn"
+                        onclick="handlers.btnClicked(2);">我最爱</span></div>
+                <div class="list-box">
+                    <ul class="book-list-show">
+                        <li>
+                            <table id="table">
+                                <thead>
+                                <tr>
+                                    <th>书名</th>
+                                    <th>作者</th>
+                                    <th>分类</th>
+                                    <th>出版时间</th>
+                                    <th>出版社</th>
+                                    <th>说明</th>
+                                    <th>状态</th>
+                                    <th>封面</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </li>
-                        <li class="card"
-                            data-url="http://www.wallcoo.com/game/devil-may-cry-4/wallpapers/1280x1024/devil-may-cry-4-wallpaper-wp20080215_1.jpg">
-                            <div class="content">鬼泣4</div>
+                        <li>
+                            <pre class="code-border"><code id="code" class="json"></code></pre>
                         </li>
-                        <li class="card" data-url="http://a1.att.hudong.com/60/99/20300001213040130348990431437.jpg">
-                            <div class="content">暗黑血统</div>
-                        </li>
-                        <li class="card"
-                            data-url="http://image2.sina.com.cn/gm/downgames/image/pcgames/2005-11-04/U1245P115T29D95019F569DT20051104092042.jpg">
-                            <div class="content">波斯王子</div>
-                        </li>
-                        <li class="card" data-url="http://img.golue.com/pic/1112/27024229966.jpg">
-                            <div class="content">龙腾世纪</div>
-                        </li>
-                        <li class="card" data-url="http://image.diva8.com/soft/gamepic/post-358353-1154694025.jpg">
-                            <div class="content">地牢围攻</div>
-                        </li>
-                        <li class="card" data-url="../../images/games/psu.jpeg">
-                            <div class="content">Apache Helicopter</div>
-                        </li>
-                        <li class="card" data-url="../../images/games/psu-2.jpeg">
-                            <div class="content">极品飞车6</div>
-                        </li>
-                        <li class="card" data-url="../../images/games/psu-3.jpeg">
-                            <div class="content">无双大蛇</div>
-                        </li>
-                        <li class="card" data-url="../../images/games/psu-4.jpeg">
-                            <div class="content">鬼武者3</div>
-                        </li>
+                        <li id="favorite"></li>
                     </ul>
                 </div>
 
-                <script type="text/javascript" src="../js/games.js"></script>
+                <script type="text/javascript" src="../js/pack/P.min.js"></script>
+                <script type="text/javascript" src="../js/handlebars/handlebars.min.js"></script>
+                <script type="text/javascript" src="../js/highlight/highlight.pack.js"></script>
+                <script type="text/javascript" src="../js/books.js"></script>
 
             </div><i class="splitter"></i>
 

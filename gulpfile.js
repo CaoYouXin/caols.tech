@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const clean = require('gulp-clean');
 const minifyCss = require('gulp-minify-css');
 const uglifyJs = require('gulp-uglify');
+const concat = require('gulp-concat');
 
 const buildPOST = require('./scripts/build_post');
 const buildCategory = require('./scripts/build_category');
@@ -11,6 +12,7 @@ const jsMake = require('./scripts/build_js');
 const contentMake = require('./scripts/build_content');
 const cssMake = require('./scripts/gulp-css-make');
 const imageReplacement = require('./scripts/gulp-images-replacement');
+const templateReplacement = require('./scripts/build_template_replacement');
 
 const src = './src/';
 const app = 'app/';
@@ -18,6 +20,7 @@ const css = 'css/';
 const js = 'js/';
 const article = 'article/';
 const category = 'category/';
+const template = 'x-handlebars-templates/';
 const screenshot = 'screenshot/';
 const dist = './dist/';
 const post = 'post/';
@@ -35,7 +38,7 @@ gulp.task('default', ['clean'], function () {
     gulp['start'](['api']);
 });
 
-gulp.task('api', ['screenshot', 'app', 'article', 'category'], function () {
+gulp.task('api', ['screenshot', 'app', 'article', 'category', 'template'], function () {
     gulp.src([
         dist + post + app + appMakeFilePath,
         dist + post + article + articleMakeFilePath,
@@ -164,9 +167,10 @@ gulp.task('article-html', function () {
             filename: articleJSMakeFilePath
         }))
         .pipe(contentMake({
-            splitter: /<div class="article-content">|<\/div><i class="splitter"><\/i>/
+            splitter: /<div class="article-content">|<\/div>.*?<i class="splitter"><\/i>/
         }))
         .pipe(imageReplacement())
+        .pipe(templateReplacement())
         .pipe(gulp.dest(dist + post + article));
 });
 
@@ -221,8 +225,24 @@ gulp.task('category-html', function () {
             filename: categoryJSMakeFilePath
         }))
         .pipe(contentMake({
-            splitter: /<div class="category-content">|<\/div><i class="splitter"><\/i>/
+            splitter: /<div class="category-content">|<\/div>.*?<i class="splitter"><\/i>/
         }))
         .pipe(imageReplacement())
+        .pipe(templateReplacement())
         .pipe(gulp.dest(dist + post + category));
+});
+
+gulp.task('template', function () {
+    gulp.src(src + template)
+        .pipe(gulp.dest(dist + post + template));
+});
+
+gulp.task('js-pack', function() {
+    gulp.src([
+        './3rdLib/promise/es6-promise.js',
+        './3rdLib/nanoajax/nanoajax.min.js',
+        './__dev/promise/PromiseUtils.js'
+    ]).pipe(concat('pack/P.min.js'))
+        .pipe(uglifyJs())
+        .pipe(gulp.dest(src + js));
 });

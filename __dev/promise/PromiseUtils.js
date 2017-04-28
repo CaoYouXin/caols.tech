@@ -1,7 +1,9 @@
 /**
  * Created by cls on 16/9/19.
  */
-;(function (P, A) {
+;(function (global, P, A) {
+
+    global.P = P;
 
     P.getJSON = function (url) {
         return new P(function (resolve) {
@@ -55,4 +57,8 @@
         }
     };
 
-})(window.ES6Promise.Promise, window.nanoajax);
+    P.template = function(str) {
+        return str;
+    }
+
+})(window, window.ES6Promise.Promise, window.nanoajax);
