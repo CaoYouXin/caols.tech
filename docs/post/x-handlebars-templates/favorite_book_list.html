@@ -111,8 +111,8 @@
 </style>
 {{#each this}}
 <div class="book-box" style="background-color: {{bgColor}};background-image: url('{{cover_url}}');">
-    <span class="show-full-cover" style="color: {{color}};background-color: {{bgColor}};">+</span>
-    <div class="book-content" style="background-color: {{bgColor}};" data-state="{{state}}">
+    <span class="show-full-cover" style="color: {{color}};background-color: {{bgColor}};" onclick="handlers.bookCornerClicked({{@index}})">+</span>
+    <div class="book-content" style="background-color: {{bgColor}};" data-state="{{state}}" onclick="handlers.bookContentClicked({{@index}})">
         <div class="name" style="color: {{color}};" data-title="书名: ">{{name}}</div>
         <div class="author" style="color: {{color}};" data-title="作者: ">{{author}}</div>
         <div class="category" style="color: {{color}};" data-title="分类: ">{{category}}</div>

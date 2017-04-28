@@ -35,6 +35,16 @@
         }
     };
 
+    g.handlers.bookCornerClicked = function (index) {
+        var elem = document.querySelector('.book-box:nth-child(' + (index + 2) + ') > .book-content');
+        elem.classList.toggle('hidden');
+        document.querySelector('.book-box:nth-child(' + (index + 2) + ') > .show-full-cover').innerHTML = elem.classList.contains('hidden') ? '-' : '+';
+    };
+
+    g.handlers.bookContentClicked = function (index) {
+        document.querySelector('.book-box:nth-child(' + (index + 2) + ') > .book-content').classList.toggle('active');
+    };
+
     P.all([
         P.ajax(P.template('http://localhost:8080/caols.tech/src/x-handlebars-templates/books.json')),
         P.ajax(P.template('http://localhost:8080/caols.tech/src/x-handlebars-templates/favorite_book_list.html'))
