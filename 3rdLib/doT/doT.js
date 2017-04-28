@@ -38,7 +38,7 @@
             // false表示，不替换本身就是&nbsp;中的&；true表示进行无脑替换
             doNotSkipEncoded: false
         },
-        template: undefined, //fn, compile template
+        misc: undefined, //fn, compile misc
         compile: undefined  //fn, for express
     }, _globals;
 
@@ -119,7 +119,7 @@
         return code.replace(/\\('|\\)/g, "$1").replace(/[\r\t\n]/g, " ");
     }
 
-    doT.template = function (tmpl, c, def) {
+    doT.misc = function (tmpl, c, def) {
         c = c || doT.templateSettings;
         var cse = c.append ? startend.append : startend.split, needhtmlencode, sid = 0, indv,
             str = (c.use || c.define) ? resolveDefs(c, tmpl, def || {}) : tmpl;
@@ -182,12 +182,12 @@
             console.log(str);
             return new Function(c.varname, str);
         } catch (e) {
-            if (typeof console !== "undefined") console.log("Could not create a template function: " + str);
+            if (typeof console !== "undefined") console.log("Could not create a misc function: " + str);
             throw e;
         }
     };
 
     doT.compile = function (tmpl, def) {
-        return doT.template(tmpl, null, def);
+        return doT.misc(tmpl, null, def);
     };
 }());

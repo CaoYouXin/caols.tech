@@ -46,8 +46,8 @@
     };
 
     P.all([
-        P.ajax(P.template('http://localhost:8080/caols.tech/src/x-handlebars-templates/books.json')),
-        P.ajax(P.template('http://localhost:8080/caols.tech/src/x-handlebars-templates/favorite_book_list.html'))
+        P.ajax(P.misc('http://localhost:8080/caols.tech/src/misc/json/books.json')),
+        P.ajax(P.misc('http://localhost:8080/caols.tech/src/misc/x-handlebars-templates/favorite_book_list.html'))
     ]).then(function (values) {
         var codeElem = document.getElementById('code');
         P.append(codeElem, highlight.highlightAuto(values[0]).value);

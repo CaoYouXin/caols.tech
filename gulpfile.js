@@ -12,7 +12,7 @@ const jsMake = require('./scripts/build_js');
 const contentMake = require('./scripts/build_content');
 const cssMake = require('./scripts/gulp-css-make');
 const imageReplacement = require('./scripts/gulp-images-replacement');
-const templateReplacement = require('./scripts/build_template_replacement');
+const templateReplacement = require('./scripts/build_misc_replacement');
 
 const src = './src/';
 const app = 'app/';
@@ -20,7 +20,7 @@ const css = 'css/';
 const js = 'js/';
 const article = 'article/';
 const category = 'category/';
-const template = 'x-handlebars-templates/';
+const misc = 'misc/';
 const screenshot = 'screenshot/';
 const dist = './dist/';
 const post = 'post/';
@@ -38,7 +38,7 @@ gulp.task('default', ['clean'], function () {
     gulp['start'](['api']);
 });
 
-gulp.task('api', ['screenshot', 'app', 'article', 'category', 'template'], function () {
+gulp.task('api', ['screenshot', 'app', 'article', 'category', 'misc'], function () {
     gulp.src([
         dist + post + app + appMakeFilePath,
         dist + post + article + articleMakeFilePath,
@@ -232,9 +232,10 @@ gulp.task('category-html', function () {
         .pipe(gulp.dest(dist + post + category));
 });
 
-gulp.task('template', function () {
-    gulp.src(src + template + '/**')
-        .pipe(gulp.dest(dist + post + template));
+gulp.task('misc', function () {
+    gulp.src(src + misc + '/**')
+        .pipe(imageReplacement())
+        .pipe(gulp.dest(dist + post + misc));
 });
 
 gulp.task('js-pack', function() {

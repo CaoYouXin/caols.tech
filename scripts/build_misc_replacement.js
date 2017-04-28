@@ -5,7 +5,7 @@ const through = require('through-gulp');
 
 module.exports = function () {
 
-    const trStrRegExp = /P\.template\((['|"]?).*?x-handlebars-templates\/(.*?)(['|"]?)\)/g;
+    const trStrRegExp = /P\.misc\((['|"]?).*?misc\/(.*?)(['|"]?)\)/g;
 
     return through(function (file, encoding, callback) {
 
@@ -18,7 +18,7 @@ module.exports = function () {
 
             var contents = file.contents.toString();
             file.contents = new Buffer(contents.replace(trStrRegExp, function ($0, $1, $2, $3) {
-                return $1 + 'http://caols.tech/post/x-handlebars-templates/' + $2 + $3;
+                return $1 + 'http://caols.tech/post/misc/' + $2 + $3;
             }));
 
         }

@@ -57,7 +57,7 @@
         }
     };
 
-    P.template = function(str) {
+    P.misc = function(str) {
         return str;
     }
 
