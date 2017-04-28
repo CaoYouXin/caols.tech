@@ -233,7 +233,7 @@ gulp.task('category-html', function () {
 });
 
 gulp.task('template', function () {
-    gulp.src(src + template)
+    gulp.src(src + template + '/**')
         .pipe(gulp.dest(dist + post + template));
 });
 

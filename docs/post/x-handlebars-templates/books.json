@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Java编程思想",
+    "author": "埃克尔;译:陈昊鹏,饶若楠",
+    "cover_url": "http://image.caols.tech/cover-not-found.png",
+    "category": "Java工具书",
+    "publish_time": "2005",
+    "publish_org": "机械工业出版社",
+    "introduction": "大学时期接触到的第二本Java宝典，全班统一购买的。虽然思想上没有太多感触，但是的确认识一些初学者不知道的API。",
+    "state": "记忆已沾灰"
+  },
+  {
+    "name": "设计模式之禅",
+    "author": "大神趣味总结",
+    "cover_url": "http://image.caols.tech/cover-not-found.png",
+    "category": "边磕瓜子边看的技术书",
+    "publish_time": "2010",
+    "publish_org": "碁峰資訊",
+    "introduction": "这是一本好书，看到最后已经将设计模式融入血脉之中。虽然文邹邹的说不出来，但是模式是什么，是自然而然的东西。读书让人明智，就是这个道理。",
+    "state": "记忆已沾灰"
+  },
+  {
+    "name": "Java 8 Recipes; Expert's voice in Java",
+    "author": "Carl Dea, Mark Beaty, Freddy Guime, John OConner, Josh Juneau",
+    "cover_url": "http://image.caols.tech/books/java8-recipes.jpeg",
+    "category": "当时紧跟时代的工具书",
+    "publish_time": "2014",
+    "publish_org": "Apress",
+    "introduction": "我做过最有趣的事是在线指导两个在校大学生，通过一些免费的屏幕分享、远程会议的软件陪他们度过了大半个学期，这本书也就作为一本语言地道且易懂的原版工具书走入了我的列表。",
+    "state": "读到一半转了前端"
+  },
+  {
+    "name": "How Tomcat Works: A Guide to Developing Your Own Java Servlet Container;Brainly Software",
+    "author": "Budi Kurniawan, Paul Deck",
+    "cover_url": "http://image.caols.tech/books/how-tomcat-works.jpeg",
+    "category": "揭开技术神秘面纱的技术书",
+    "publish_time": "2004",
+    "publish_org": "BrainySoftware.com",
+    "introduction": "Tomcat是Java写的Web Server，对于Java Coder来说非常重要。一直都在用的软件，有朝一日能看懂本质，对自身技术来说无疑是质的飞跃。",
+    "state": "记忆已沾灰"
+  },
+  {
+    "name": "游戏开发中的人工智能",
+    "author": "Seemann, Glenn·泽",
+    "cover_url": "http://image.caols.tech/cover-not-found.png",
+    "category": "高级工具书",
+    "publish_time": "2006",
+    "publish_org": "东南大学出版社",
+    "introduction": "这是做毕设时遇到的，可以说是一类书。重点学习了遗传算法和神经网络算法。有趣的是当时整天没课，跑去新校区图书馆借书，然后陪着女友上课，有幸在大学里旁听了航空航天的课程（虽然听不懂，因为我从大二开始是没大学物理基础的）",
+    "state": "已读"
+  },
+  {
+    "name": "程序员的数学",
+    "author": "结城浩（Hiroshi Yuki）;译:管 杰",
+    "cover_url": "http://image.caols.tech/books/coder-math.jpg",
+    "category": "培养兴趣的丛书",
+    "publish_time": "2012-10",
+    "publish_org": "人民邮电出版社",
+    "introduction": "还记得在上离散数学之前就把这本书的前半部分读了一些，到了开课的时候，离散似乎没那么重要了（刚上大学的时候还是保留了「笨鸟先飞」的品质的），当然啦……最后学业平平。",
+    "state": "在读"
+  },
+  {
+    "name": "宇宙之书：从托勒密、爱因斯坦到多重宇宙",
+    "author": "【英】约翰·D.巴罗（John D.Barrow）",
+    "cover_url": "http://image.caols.tech/books/universe.jpg",
+    "category": "科普读物",
+    "publish_time": "2013-03-01",
+    "publish_org": "北京图灵文化发展有限公司",
+    "introduction": "应该说我对宇宙的神秘非常向往，书中系统介绍了西方世界对宇宙的认识史。",
+    "state": "在读"
+  },
+  {
+    "name": "黄帝内经家用说明书",
+    "author": "徐文兵  梁冬",
+    "cover_url": "http://image.caols.tech/books/huang-di-nei-jing-1.jpg",
+    "category": "养身读物",
+    "publish_time": "2009-08-01",
+    "publish_org": "北京凤凰联动图书发行有限公司",
+    "introduction": "黄帝内经是一本医书，我看过最搞笑的说法是「黄帝内经是皇帝才看的书」。这本书不是黄帝内经原文，所写内容不过涵盖原文的第一章，不过已是收益匪浅。",
+    "state": "已读"
+  },
+  {
+    "name": "《黄帝内经》养生大道",
+    "author": "张其成",
+    "cover_url": "http://image.caols.tech/books/huang-di-nei-jing-2.jpg",
+    "category": "养身读物",
+    "publish_time": "未知",
+    "publish_org": "北京阳光秀美图书有限责任公司",
+    "introduction": "养生的目的是「精满气足神旺」，用情志治愈情伤，用心药打败心病，在生命的不同阶段，养生有着不同的侧重点。",
+    "state": "在读"
+  },
+  {
+    "name": "中华道家修炼学",
+    "author": "诚阳·田 (道教)",
+    "cover_url": "http://image.caols.tech/cover-not-found.png",
+    "category": "养身读物",
+    "publish_time": "1999",
+    "publish_org": "宗教文化出版社",
+    "introduction": "道家修炼学一书记载着详细着道家修炼的法门，其中白话文部分仅是入门，作者选录的文言文原文则是历史上真实存在的丹书。所以说，孙悟空的创作或许是讽刺官僚阶级，但是孙悟空的身手却不一定不存在。",
+    "state": "已读"
+  },
+  {
+    "name": "仙学详述",
+    "author": "田诚阳",
+    "cover_url": "http://image.caols.tech/cover-not-found.png",
+    "category": "养身读物",
+    "publish_time": "1999",
+    "publish_org": "宗教文化出版社",
+    "introduction": "百度上搜索陈撄宁，显示「现代的太上老君」。通过这本书，可以认识到陈老君。",
+    "state": "在读"
+  },
+  {
+    "name": "一用就灵治病特效穴: 10分钟快速祛病",
+    "author": "孙呈祥",
+    "cover_url": "http://image.caols.tech/books/xue-wei-1.jpeg",
+    "category": "养身读物",
+    "publish_time": "2014",
+    "publish_org": "XinXueTang",
+    "introduction": "简单易懂的认穴知识。",
+    "state": "在读"
+  },
+  {
+    "name": "我的美女老师",
+    "author": "黑夜de白羊",
+    "cover_url": "http://image.caols.tech/books/wo-de-mei-nv-lao-shi.jpg",
+    "category": "小说",
+    "publish_time": "已完结（2013年2月20日）",
+    "publish_org": "17K小说网",
+    "introduction": "看过的唯一一本小说，决定不再看任何小说。",
+    "state": "已读"
+  }
+]

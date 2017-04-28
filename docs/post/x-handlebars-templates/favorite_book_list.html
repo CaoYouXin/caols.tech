@@ -1,0 +1,124 @@
+<style>
+    .book-box {
+        display: block;
+        float: left;
+
+        font-size: 1rem;
+
+        width: 30em;
+        height: 42em;
+
+        margin: 1em;
+
+        align-items: flex-end;
+
+        background-position: top;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .book-box > .show-full-cover {
+        float: left;
+        font-size: 1rem;
+        padding: 0.25em 0.5em;
+        border-bottom-right-radius: 1em;
+        cursor: pointer;
+    }
+
+    @media (max-device-width: 800px) {
+        .book-box > .show-full-cover {
+            font-size: 3rem;
+        }
+    }
+
+    .book-box > .book-content {
+        font-size: 1rem;
+
+        width: 30em;
+        height: 18em;
+
+        display: block;
+
+        margin-top: 24em;
+
+        cursor: pointer;
+
+        transition: all 1s;
+    }
+
+    .book-box > .book-content.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .book-box > .book-content.active {
+        height: 30em;
+        margin-top: 12em;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .book-box > .book-content:before {
+        content: attr(data-state);
+
+        position: relative;
+        bottom: 1em;
+        left: 1em;
+
+        font-size: 1rem;
+        line-height: 2em;
+
+        display: block;
+        float: left;
+
+        height: 2em;
+        padding: 0 1em;
+
+        color: #f5f2f0;
+        background-color: rgba(0 ,0, 0, 0.8);
+        border-radius: 1em;
+
+        transition: bottom 1s;
+    }
+
+    .book-box > .book-content.active:before {
+        bottom: 0;
+    }
+
+    .book-content > div {
+        font-size: 1.3rem;
+        width: 23em;
+        padding: 0 0.641em;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .book-content.active > div {
+        white-space: normal;
+    }
+
+    .book-content > div:before {
+        content: attr(data-title);
+        font-size: 1.3rem;
+    }
+
+    .book-content > div.name {
+        clear: both;
+    }
+</style>
+{{#each this}}
+<div class="book-box" style="background-color: {{bgColor}};background-image: url('{{cover_url}}');">
+    <span class="show-full-cover" style="color: {{color}};background-color: {{bgColor}};">+</span>
+    <div class="book-content" style="background-color: {{bgColor}};" data-state="{{state}}">
+        <div class="name" style="color: {{color}};" data-title="书名: ">{{name}}</div>
+        <div class="author" style="color: {{color}};" data-title="作者: ">{{author}}</div>
+        <div class="category" style="color: {{color}};" data-title="分类: ">{{category}}</div>
+        <div class="pub-time" style="color: {{color}};" data-title="出版时间: ">{{publish_time}}</div>
+        <div class="pub-org" style="color: {{color}};" data-title="出版组织: ">{{publish_org}}</div>
+        <div class="introduction" style="color: {{color}};" data-title="说明: ">{{introduction}}</div>
+    </div>
+</div>
+{{/each}}
