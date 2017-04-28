@@ -39,11 +39,7 @@
         P.ajax(P.template('http://localhost:8080/caols.tech/src/x-handlebars-templates/books.json')),
         P.ajax(P.template('http://localhost:8080/caols.tech/src/x-handlebars-templates/favorite_book_list.html'))
     ]).then(function (values) {
-        console.log(1);
         var codeElem = document.getElementById('code');
-        // codeElem.innerHTML = highlight.highlightAuto(values[0]).value;
-        console.log(2);
-        console.log(highlight.highlightAuto(values[0]));
         P.append(codeElem, highlight.highlightAuto(values[0]).value);
 
         var tableBody = document.querySelector('#table > tbody');
