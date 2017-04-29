@@ -2,17 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Post</title>
+    <title>Category</title>
 
-    <meta name="post-type" content="Article">
-    <meta name="post-release" content="True">
-    <meta name="post-name" content="每个人的生存环境">
-    <meta name="post-category" content="感悟">
-    <meta name="post-create" content="2017/4/29">
-    <meta name="post-update" content="2017/4/29">
-    <meta name="post-brief" content="我们每个人的生存环境，不就是地球表面么？！！">
+    <meta name="category-release" content="True">
+    <meta name="category-name" content="感悟">
+    <meta name="category-create" content="2017/4/29">
+    <meta name="category-update" content="2017/4/29">
 
-    <!-- banner menu -->
+    <!-- menu -->
     <style>
         body {
             background: url("../assets/index_bg.gif") repeat;
@@ -168,11 +165,7 @@
             content: attr(data-rel);
         }
 
-        .top5 + ol > li {
-            cursor: pointer;
-        }
-
-        .top5 + ol, .comments {
+        .top5 + ol {
             list-style-position: inside;
 
             font-family: "Source Code Pro", monospace;
@@ -189,6 +182,8 @@
             margin-top: 10px;
 
             border-radius: 3px;
+
+            cursor: default;
         }
 
         .box:before {
@@ -250,109 +245,204 @@
         }
     </style>
 
-    <!-- reply comment -->
+    <!-- list -->
     <style>
-        .reply {
-            width: 740px;
-            height: 75px;
-
-            margin-top: 10px;
-            margin-left: 10px;
-
-            border-radius: 5px;
-            box-shadow: 0 0 10px cyan;
-
+        .category-list1, .category-list2 {
             overflow: hidden;
+        }
 
-            transition: height 1s ease-in-out;
+        .category-list1 > ul, .category-list2 > ul {
+            list-style: none;
+        }
+
+        .category-list1 > ul > li {
+            display: block;
+            float: left;
+
+            background-color: #eeebbc;
+
+            width: 370px;
+            height: 210px;
+
+            margin-top: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .category-list1 > ul > li:nth-child(1),
+        .category-list1 > ul > li:nth-child(2) {
+            margin-top: 0;
+        }
+
+        .category-list1 > ul > li:nth-child(2n + 1) {
+            margin-left: 0;
+        }
+
+        .category-list1 > ul > li:nth-child(2n) {
+            margin-right: 0;
+        }
+
+        .category-list1 > ul > li > p {
+            padding: 10px;
+
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .category-list2 > ul > li:hover {
+            background-color: rgb(240, 240, 240);
+        }
+    </style>
+
+    <!-- pager -->
+    <style>
+        .pager {
+            overflow: hidden;
+            margin: 5px 0;
+
+            /*box-shadow: 0 0 5px #caffc5;*/
+        }
+
+        .pager-controls, .pager-controls + p,
+        .page-pre, .page-post {
+            display: block;
+            float: left;
+        }
+
+        .page-pre, .page-post {
+            padding: 0 10px;
+
+            color: #111111;
+
+            line-height: 30px;
+            border-radius: 15px;
+
+            cursor: pointer;
+        }
+
+        .pager-controls + p {
+            line-height: 30px;
+
+            margin-left: 3em;
+        }
+
+        .page-pre {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+
+            background-color: #cac5ff;
+        }
+
+        .page-pre:hover {
+            background-color: #b7b2eb;
+
+            box-shadow: 0 0 3px #b6ebb1;
+        }
+
+        .page-post {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+            background-color: #caffc5;
+        }
+
+        .page-post:hover {
+            background-color: #b6ebb1;
+
+            box-shadow: 0 0 3px #b7b2eb;
+        }
+
+        .pager-select {
+            display: block;
+            float: right;
+
+            width: 136px;
+            height: 30px;
+
+            border-radius: 2px;
+
+            border: solid 1px #fab4a8;
 
             font-size: 0;
         }
 
-        .reply > * {
-            font-family: Monaco, "Lucida Console", monospace;
-            font-size: 20px;
-
-            width: 730px;
-            height: 30px;
-
-            margin-top: 5px;
-            margin-left: 5px;
-
-            line-height: 30px;
+        .pager-select.focused {
+            box-shadow: 0 0 3px salmon;
         }
 
-        .reply > .title {
-            text-align: center;
-
-            color: white;
-            background-color: cyan;
-        }
-
-        .reply > .title > span:before {
-            content: '『';
-        }
-
-        .reply > .title > span:after {
-            content: '』';
-        }
-
-        .reply > textarea {
+        .pager-select > input {
             outline: none;
-            resize: none;
 
+            width: 100px;
+            line-height: 26px;
+
+            margin-top: 1px;
+            margin-left: 2px;
+
+            font-size: 18px;
+        }
+
+        .pager-select > span {
+            display: inline-block;
+
+            width: 30px;
+            text-align: center;
             line-height: 28px;
 
-            border: dashed 1px cyan;
-
-            background-color: transparent;
-        }
-
-        .reply > .publish-btn {
-            text-align: center;
+            font-size: 18px;
 
             cursor: pointer;
-
-            color: white;
-            background-image: linear-gradient(0deg, #07fff2 0%, #43fdff 50%, cyan 100%);
         }
 
-        .reply > .publish-btn:hover {
-            background-image: linear-gradient(0deg, #05faf0 0%, #41fafa 50%, #00fafa 100%);
+        .pager-select > ul {
+            display: none;
+            list-style: none;
+
+            margin-top: 20px;
+
+            position: absolute;
+            z-index: 1;
+
+            font-size: 16px;
+
+            background-color: rgba(24, 24, 240, 0.6);
         }
 
-        .reply.focused {
-            height: 230px;
+        .pager-select > ul.show {
+            display: block;
         }
 
-        .reply > textarea.focused {
-            height: 150px;
-        }
+        .pager-select > ul:before {
+            content: '';
 
-        .comments > li {
-            border: dashed 1px cyan;
-            background-image: radial-gradient(800px at 0 0, white 0%, transparent 100%);
-        }
+            display: block;
+            width: 0;
+            height: 0;
 
-        .comments > li + li {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+
+            border: solid 10px transparent;
+            border-bottom-color: rgba(24, 24, 240, 0.6);
             border-top: none;
         }
 
-        .comments .comments-of-comment {
-            list-style: none;
+        .pager-select > ul > li {
+            width: 100px;
 
-            margin: 10px;
+            color: white;
 
-            background-color: rgb(248, 248, 248);
+            cursor: default;
         }
 
-        .comments .comments-of-comment > li + li {
-            border-top: dashed 1px cyan;
+        .pager-select > ul > li:hover {
+            background-color: rgba(24, 24, 240, 0.9);
         }
     </style>
 
     <!-- content css -->
-    <link rel="stylesheet" type="text/css" href="../css/living_env.css">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/post.css">
 </head>
 <body>
 <section class="menu-bar">
@@ -368,13 +458,9 @@
 <section class="body-sec">
     <div class="body-wrapper">
         <div class="body">
-            <div class="article-header">
-                <h1>每个人的生存环境</h1>
+            <div class="category-header">
+                <h1>Demo</h1>
                 <hr>
-                <div class="category box">
-                    <i></i>
-                    <span>“请求头”</span>
-                </div>
                 <div class="like box">
                     <i></i>
                     <span>90</span>
@@ -385,42 +471,96 @@
                 <p class="update-time" data-rel="最后更新时间: ">2017-02-02</p>
                 <br>
                 <hr>
-                <br>
-                <br>
             </div>
+            <br>
+            <br>
 
-            <div class="article-content">
+            <div class="category-content">
 
-                <p class="background" style="border-bottom: 1px dashed #f4f1ef; vertical-align: bottom; line-height: 13px;">
-                    <strong style="display: inline-block; margin-top: calc(200px - 13px); font-size: 13px; font-weight: bolder; color: #f5f2f0;">人</strong>
-                </p>
-                <p class="background">
-                    <strong style="display: inline-block; width: 50px; height: 50px; background-color: #000; border-radius: 50%;"></strong>
-                </p>
+                <p class="post-p titled-post-p" data-title="悟">到的，跟想到的有什么不同呢？悟到的，很经典。至少是自认为……</p>
 
-                <script type="text/javascript" src="../js/living_env.js"></script>
+                <script type="text/javascript" src="../js/great_thoughts_realized.js"></script>
 
             </div>
             <i class="splitter"></i>
 
-            <div class="article-footer">
-                <br>
-                <br>
-                <hr>
-                <div class="category box">
-                    <i></i>
-                    <span>“请求头”</span>
+            <br>
+            <br>
+            <hr>
+            <br>
+            <div class="pager">
+                <div class="category-pager-controls">
+                    <div class="page-pre">上一页</div>
+                    <div class="page-post">下一页</div>
                 </div>
+                <p>第 <span>1</span> 页; 共 <span>3</span> 页</p>
+                <div class="pager-select">
+                    <input type="text" pattern="\d+|无限" value="5" min="1">
+                    <span>▽</span>
+                    <ul>
+                        <li>5</li>
+                        <li>10</li>
+                        <li>30</li>
+                        <li>50</li>
+                        <li>无限</li>
+                        <li>关闭</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="category-list1">
+                <ul>
+                    <li><p>title1</p></li>
+                    <li><p>title2</p></li>
+                    <li><p>title3</p></li>
+                    <li><p>title4</p></li>
+                    <li><p>title5</p></li>
+                </ul>
+            </div>
+
+            <div class="category-list2">
+                <ul>
+                    <li><h1>title1</h1>
+                        <p>brief1</p></li>
+                    <li><h1>title2</h1>
+                        <p>brief2</p></li>
+                    <li><h1>title3</h1>
+                        <p>brief3</p></li>
+                    <li><h1>title4</h1>
+                        <p>brief4</p></li>
+                    <li><h1>title5</h1>
+                        <p>brief5</p></li>
+                </ul>
+            </div>
+
+            <div class="pager">
+                <div class="category-pager-controls">
+                    <div class="page-pre">上一页</div>
+                    <div class="page-post">下一页</div>
+                </div>
+                <p>第 <span>1</span> 页; 共 <span>3</span> 页</p>
+                <div class="pager-select">
+                    <input type="text" pattern="\d+|无限" value="5" min="1">
+                    <span>▽</span>
+                    <ul>
+                        <li>5</li>
+                        <li>10</li>
+                        <li>30</li>
+                        <li>50</li>
+                        <li>无限</li>
+                        <li>关闭</li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+
+            <div class="category-footer">
+                <hr>
                 <div class="like box">
                     <i></i>
                     <span>90</span>
                 </div>
                 <br>
-                <br>
-                <p class="former-article" data-rel="上一篇: "><a href="#">深入理解计算机网络2</a></p>
-                <p class="latter-article" data-rel="下一篇: "><a href="#">深入理解计算机网络4</a></p>
-                <br>
-                <hr>
                 <br>
                 <p class="top5" data-rel="TOP 5:"></p>
                 <ol>
@@ -429,27 +569,6 @@
                     <li><a href="#">深入理解计算机网络5</a></li>
                     <li><a href="#">深入理解计算机网络6</a></li>
                     <li><a href="#">深入理解计算机网络7</a></li>
-                </ol>
-                <br>
-                <hr>
-                <br>
-                <div id="reply" class="reply">
-                    <div class="title"><span>awesome</span>发布评论...</div>
-                    <textarea placeholder="输入评论..."></textarea>
-                    <div class="publish-btn">发布</div>
-                </div>
-                <br>
-                <ol class="comments" reversed>
-                    <li>
-                        <span>Coffee</span>
-                        <ul class="comments-of-comment">
-                            <li>Suger</li>
-                            <li>Spoon</li>
-                            <li>Cup</li>
-                        </ul>
-                    </li>
-                    <li><span>Tea</span></li>
-                    <li><span>Milk</span></li>
                 </ol>
                 <br>
             </div>
