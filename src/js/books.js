@@ -45,6 +45,10 @@
         document.querySelector('.book-box:nth-child(' + (index + 2) + ') > .book-content').classList.toggle('active');
     };
 
+    g.handlers.unload = function () {
+        clearTimeout(timeout);
+    };
+
     // P.all([
     //     P.ajax(P.misc('http://localhost:8080/caols.tech/src/misc/json/books.json')),
     //     P.ajax(P.misc('http://localhost:8080/caols.tech/src/misc/x-handlebars-templates/favorite_book_list.html'))
