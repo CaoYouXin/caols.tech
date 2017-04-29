@@ -10,14 +10,37 @@
             isMobile = isAndroid || isIos;  // 粗略的判断
 
         if (isMobile) {
-            document.body.style.display = 'block';
+            window.onload = function() {
+                document.body.style.display = 'block';
+            };
         } else {
             location.href = 'http://migawheel.caols.tech';
         }
     </script>
+    <style>
+        body {
+            display: none;
+            font-size: 2rem;
+            padding: 1em;
+            text-indent: 2em;
+            background-color: rgba(0, 0, 0, 0.28);
+            text-shadow: 0 0 2px red;
+            color: white;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            font-size: 1.6rem;
+            color: cadetblue;
+            background: blanchedalmond;
+        }
+    </style>
 </head>
-<body style="display: none;">
+<body>
 目前，本博客不支持移动端。论原因，既有页面根本没做，也有由于内容特殊性产生的接口层次的约束。所以，在后端系统做成之前，不会支持移动端。
+<br>
+<br>
 <button onclick="location.href = '404.html';">了解</button>
 </body>
 </html>
