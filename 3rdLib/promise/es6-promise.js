@@ -951,7 +951,7 @@
     } else if (typeof module !== 'undefined' && module['exports']) {
         module['exports'] = lib$es6$promise$umd$$ES6Promise;
     } else if (typeof this !== 'undefined') {
-        this['ES6Promise'] = lib$es6$promise$umd$$ES6Promise;
+        this['CAOLS$TECH$ES6Promise'] = lib$es6$promise$umd$$ES6Promise;
     }
 
     // lib$es6$promise$polyfill$$default();
