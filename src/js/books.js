@@ -55,7 +55,7 @@
     ]).then(function (values) {
         var codeElem = document.getElementById('code');
         // codeElem.innerHTML = highlight.highlightAuto("{}").value;
-        P.append(codeElem, highlight.highlightAuto("{}").value);
+        P.append(codeElem, highlight.highlightAuto(values[0]).value);
 
         var tableBody = document.querySelector('#table > tbody');
         var data = JSON.parse(values[0]);
