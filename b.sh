@@ -17,6 +17,7 @@ comment="blog data v2.0.$version"
 gulp \
     && rm -rf ./docs/ \
     && git checkout -- docs/CNAME \
+    && git checkout -- docs/index.html \
     && git checkout -- docs/404.html \
     && cp -r ./dist/ ./docs/ \
     && echo ${version} > ${versionCfgFile} \
