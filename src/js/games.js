@@ -71,6 +71,7 @@
         }
     });
 
+    global.handlers = global.handlers || {};
     global.handlers.unload = function () {
         clearTimeout(timeout);
     };
