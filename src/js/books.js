@@ -54,7 +54,8 @@
     //     P.ajax(P.misc('http://localhost:8080/caols.tech/src/misc/x-handlebars-templates/favorite_book_list.html'))
     // ]).then(function (values) {
         var codeElem = document.getElementById('code');
-        P.append(codeElem, highlight.highlightAuto("{}").value);
+        codeElem.innerHTML = highlight.highlightAuto("{}").value;
+        // P.append(codeElem, highlight.highlightAuto("{}").value);
 
         // var tableBody = document.querySelector('#table > tbody');
         // var data = JSON.parse(values[0]);
