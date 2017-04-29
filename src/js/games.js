@@ -71,4 +71,8 @@
         }
     });
 
+    global.handlers.unload = function () {
+        clearTimeout(timeout);
+    };
+
 })(window);
