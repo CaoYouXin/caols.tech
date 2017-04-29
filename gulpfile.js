@@ -34,7 +34,7 @@ const categoryMakeFilePath = 'category-makefile.json';
 const categoryCSSMakeFilePath = 'category-css-makefile.json';
 const categoryJSMakeFilePath = 'category-js-makefile.json';
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', ['clean', 'js-pack'], function () {
     gulp['start'](['api']);
 });
 
