@@ -61,4 +61,4 @@
         return str;
     }
 
-})(window, window['CAOLS$TECH$ES6Promise'].Promise, window['nanoajax']);
+})(window, window['ES6Promise'].Promise, window['nanoajax']);
