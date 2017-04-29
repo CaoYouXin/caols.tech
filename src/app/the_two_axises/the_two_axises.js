@@ -110,6 +110,7 @@
             });
 
             setLocation(pivot, 116, 40);
+            console.log(pivot);
         },
         // Function called when download progresses
         function ( xhr ) {
