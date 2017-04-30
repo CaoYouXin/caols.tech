@@ -426,9 +426,8 @@ public static void main(String[] args) throws NoSuchFieldException {
 
     ChainedDefaultValueGenerator4Context root = new ChainedDefaultValueGenerator4Context();
     root.add(listDefaultValueGenerator);
-    root.add(intDefaultValueGenerator);
 
-    Field integerList = Main.class.getDeclaredField(&amp;quot;integerList&amp;quot;);
+    Field integerList = Main.class.getDeclaredField("integerList");
     root.set(new Context(integerList.getType(), integerList.getGenericType()));
 
     System.out.println(root.generate());
