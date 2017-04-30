@@ -1,0 +1,58 @@
+<link rel="stylesheet" type="text/css" href="http://caols.tech/post/css/java_object_values.min.css">
+
+                <p class="post-p titled-post-p" data-title="项目背景：">
+                    录接口数据。当时的原材料是Java源代码，产出是RAP文档。在可预见的未来，Controller代码中接收一个VO，返回一个VO。OK，就是这两个对象，我先把它们序列化成JSON，然后在RAP中导入。
+                </p>
+                <p class="post-p">
+                    过程中发现需要填各种数据类型的默认值。我们都知道，任何复杂的对象都是由基本数据类型构成的。所以，这个程序理想状态比较简单，只需要将VO的所有域中是基本数据类型的直接填值，其它类型递归处理。
+                </p>
+                <p class="post-p">
+                    但是，问题来了。数据集合类型中的域不是那么简单，size不能随意填，另外范性也需要特殊关照。所以，数据集合类型也扩充进来。
+                </p>
+                <p class="post-p">
+                    接着，问题又来了。我的小伙伴写的个别VO没那么单纯。所以也成了我的特殊关照类型。我当时的内心是这样的：
+                </p>
+                <pre class="code-border"><code class="javascript">console.log(&#39;照这样下去，不会马上就……&#39;);</code></pre>
+                <p class="post-p">
+                    于是，我想到了开闭原则：只要对扩展是开放的就好了。
+                </p>
+                <p class="post-p">
+                    <a target="_blank"
+                       href="http://git.oschina.net/caoyouxin/myjava/tree/master/yactools7/src/com/toonly/defaultvalues?dir=1&filepath=yactools7%2Fsrc%2Fcom%2Ftoonly%2Fdefaultvalues&oid=ac60d17cf1ff59dc36535550544800005f8f6e58&sha=af823c076bbed682cf2ca35747017f07d92a5680"
+                       rel="nofollow">源代码地址</a>
+                </p>
+                <pre class="code-border"><code class="java">
+private List integerList;
+
+public static void main(String[] args) throws NoSuchFieldException {
+    IntDefaultValueGenerator intDefaultValueGenerator = new IntDefaultValueGenerator();
+
+    ListDefaultValueGenerator listDefaultValueGenerator = new ListDefaultValueGenerator();
+    listDefaultValueGenerator.add(intDefaultValueGenerator);
+
+    ChainedDefaultValueGenerator4Context root = new ChainedDefaultValueGenerator4Context();
+    root.add(listDefaultValueGenerator);
+    root.add(intDefaultValueGenerator);
+
+    Field integerList = Main.class.getDeclaredField(&amp;quot;integerList&amp;quot;);
+    root.set(new Context(integerList.getType(), integerList.getGenericType()));
+
+    System.out.println(root.generate());
+}
+                </code></pre>
+                <p class="post-p titled-post-p" data-title="简单的描述这份代码：">
+                    <span style="color: #ffffff; background-color: blue;opacity: 0.68;">&nbsp;intDefaultValueGenerator&nbsp;</span>是一个基本处理单元，<span
+                        style="color: white; opacity: 0.68; background: -moz-linear-gradient(left top, blue, red);    background: -webkit-linear-gradient(left top, blue, red);    background: -o-linear-gradient(left top, blue, red);">&nbsp;listDefaultValueGenerator&nbsp;</span>有着双重身份，对于<span
+                        style="color: #ffffff; opacity: 0.68; background-color: blue;">&nbsp;intDefaultValueGenerator&nbsp;</span>来说它是一个容器，对于<span
+                        style="color: #ffffff; opacity: 0.68; background-color: red;">&nbsp;root&nbsp;</span>来说它也是一个基本处理单元。那么程序的输出是这样的。
+                </p>
+                <pre class="code-border"><code class="bash">
+GeneratedValue{suc=true, value=[1]}
+
+Process finished with exit code 0
+                </code></pre>
+
+                
+                
+
+            

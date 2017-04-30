@@ -44,10 +44,6 @@ p.q {
     line-height: 2em;
     padding-left: 1em;
     background: linear-gradient(90deg, #eeebbc 0, #eeddee 5%, #eeebec 100%);
-
-    overflow: hidden;
-    text-wrap: none;
-    text-overflow: ellipsis;
 }
 
 p.a {
