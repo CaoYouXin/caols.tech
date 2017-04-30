@@ -1,0 +1,207 @@
+<link rel="stylesheet" type="text/css" href="http://caols.tech/post/css/design_pattern_of_javascript.min.css">
+
+                <p class="q">singleton</p>
+                <p class="a post-p">实现单一实例的常用方法是创建全局唯一变量。为了保证唯一，常用命名空间区分。利用私有函数作为实例构造器，可以实现延迟加载。</p>
+                <pre class="code-border"><code class="javascript">
+function singletonFactory() {
+    var obj = null;
+    return function() {
+        if (obj == null) {
+            obj = {}; // 创建实例
+        }
+        return obj;
+    };
+}
+                </code></pre>
+                <br>
+
+                <p class="q">chain</p>
+                <p class="a post-p">链式调用。对于本身没有返回值的返回this，对于有返回值的可以通过传入回调函数使用返回值。</p>
+                <pre class="code-border"><code class="javascript">
+function setter(obj) {
+    return this.obj = obj, this;
+}
+                </code></pre>
+                <br>
+
+                <p class="q">factory</p>
+                <p class="a post-p">延迟加载的实现与单例延迟加载相同。工厂模式的作用是抽取公共代码，满足不同场景。</p>
+                <p class="a post-p">参考singletonFactory。</p>
+
+                <p class="q">bridge</p>
+                <p class="a post-p">此桥单向通行，不知桥的那头还有桥否。</p>
+                <pre class="code-border"><code class="javascript">
+function bridge(params) {
+    callSth(params.a, params.b);
+}
+
+function bridge(a, b) {
+    callSth(add(a, b));
+}
+                </code></pre>
+                <br>
+
+                <p class="q">composite</p>
+                <p class="a post-p">树状结构型设计模式。不适用table。</p>
+                <pre class="code-border"><code class="javascript">
+function entity(isLeaf) {
+    this.isLeaf = isLeaf;
+    this.entities = [];
+}
+
+entity.prototype.add = function(entity) {
+    this.entities.push(entity);
+}
+
+entity.prototype.do = function() {
+    if (this.isLeaf) {
+        // do sth;
+    } else {
+        for (var i = 0; i < this.entities.length; i++) {
+            this.entities[i].do();
+        }
+    }
+}
+                </code></pre>
+                <br>
+
+                <p class="q">facade</p>
+                <p class="a post-p">例如ES6中import,export。消除差异。</p>
+                <p class="a post-p">例如ES6中import,export。</p>
+
+                <p class="q">adapter</p>
+                <p class="a post-p">整合旧框架</p>
+                <pre class="code-border"><code class="javascript">
+function fn1(params) {
+    // use params;
+}
+
+function fn2(a, b) {
+    // use a, b;
+}
+
+function fn1Adapter(a, b) {
+    fn1({a:a,b:b});
+}
+
+fn2 = fn1Adapter;
+                </code></pre>
+                <br>
+
+                <p class="q">decoration</p>
+                <p class="a post-p">比继承更优，自由组合。例如Java中最常见的输入输出模块。</p>
+                <pre class="code-border"><code class="javascript">
+function shopDecorator(shop) {
+    this.shop = shop;
+}
+
+shopDecorator.prototype.open = function() {
+    this.shop.open();
+};
+
+shopDecorator.prototype.close = function() {
+    this.shop.close();
+};
+                </code></pre>
+                <br>
+
+                <p class="q">flyweight</p>
+                <p class="a post-p">创建型模式，节省内存。</p>
+                <pre class="code-border"><code class="javascript">
+function flyweight() {
+    this.a = 'a';
+    this.b = 'b';
+}
+
+flyweight.prototype.setA = function(a) {
+    this.a = a;
+    return this;
+};
+
+flyweight.prototype.setB = function(b) {
+    this.b = b;
+    return this;
+};
+                </code></pre>
+                <br>
+
+                <p class="q">proxy</p>
+                <p class="a post-p">与装饰模式类似，实现相同的接口。但是，实际工作的代码是本体的代码。</p>
+                <pre class="code-border"><code class="javascript">
+function proxy(remote) {
+    this.remote = remote;
+}
+
+proxy.prototype.remoteMethod = function(a) {
+    return this.remote.remoteMethod(a);
+};
+                </code></pre>
+                <br>
+
+                <p class="q">observer</p>
+                <p class="a post-p">用数组保存一列观察者，当相应事件发生的时候，一次性依次fire。</p>
+                <pre class="code-border"><code class="javascript">
+function observer() {
+    this.handlers = [];
+}
+
+observer.prototype.registerHandler = function(handler) {
+    this.handlers.push(handler);
+};
+
+observer.prototype.fireEvent = function(event) {
+    for (var i = 0; i < this.handlers.length; i++) {
+        this.handlers[i](event);
+    }
+};
+                </code></pre>
+                <br>
+
+                <p class="q">command</p>
+                <p class="a post-p">封装一套指令，就像我一直以来觉得高大上的linux shell。</p>
+                <pre class="code-border"><code class="javascript">
+function doOneThing() {
+    // one;
+}
+
+function doAnotherThing() {
+    // another;
+}
+
+// command
+function doThingsInOrder() {
+    doOneThing();
+    doAnotherThing();
+}
+                </code></pre>
+                <br>
+
+                <p class="q">chain-of-responsibility</p>
+                <p class="a post-p">连接一系列实现同一接口的类。可以通过AOP实现。</p>
+                <pre class="code-border"><code class="javascript">
+function fn() {
+    // func;
+}
+
+Function.prototype.before = function(beforeFn) {
+    var self = this;
+    return function() {
+        beforeFn.apply(self, arguments);
+        self.apply(self, arguments);
+    };
+};
+
+Function.prototype.after = function(afterFn) {
+    var self = this;
+    return function() {
+        self.apply(self, arguments);
+        afterFn.apply(self, arguments);
+    };
+};
+                </code></pre>
+                <br>
+
+                
+                
+
+            

@@ -43,21 +43,11 @@ p.q {
     font-size: 1.3rem;
     line-height: 2em;
     padding-left: 1em;
-    background: #ffeeff;
-}
+    background: linear-gradient(90deg, #eeebbc 0, #eeddee 5%, #eeebec 100%);
 
-p.q:before {
-    content: '';
-
-    background: linear-gradient(90deg, #eeebbc 0, #eeddee 100%);
-
-    font-size: 1rem;
-
-    display: block;
-    float: left;
-
-    width: 2em;
-    height: 100%;
+    overflow: hidden;
+    text-wrap: none;
+    text-overflow: ellipsis;
 }
 
 p.a {
