@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css" href="http://caols.tech/post/css/angularJS_injector.min.css">
+
+                <p class="post-p titled-post-p" data-title="实现方法："></p>
+                <ol class="post-l">
+                    <li>利用正则表达式取参数名字</li>
+                    <li>创建参数对象</li>
+                    <li>Function.prototype.apply</li>
+                </ol>
+
+                <pre class="code-border"><code class="javascript">
+var ARROW_ARG = /^\(([^\(]+?)\)=>/;
+var FN_ARGS = /^[^\(]*\(\s*([^\)]*)\)/m;
+
+function extractArgs(fn) {
+  var fnText = stringifyFn(fn).replace(STRIP_COMMENTS, ''),
+      args = fnText.match(ARROW_ARG) || fnText.match(FN_ARGS);
+  return args;
+}
+                </code></pre>
+
+                <p class="post-p">创建参数对象的方式，使用InternalInjector类，缓存和工厂结合。</p>
+
+                
+                
+
+            

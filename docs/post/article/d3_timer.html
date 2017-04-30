@@ -1,0 +1,40 @@
+<link rel="stylesheet" type="text/css" href="http://caols.tech/post/css/d3_timer.min.css">
+
+                <p class="post-p titled-post-p" data-title="传统方法：">传统方法有两个可以调用的函数：</p>
+                <pre class="code-border"><code class="javascript">
+var timeoutID = window.setTimeout(func[, delay, param1, param2, ...]);
+
+var intervalID = window.setInterval(func, delay[, param1, param2, ...]);
+                </code></pre>
+
+                <p class="post-p titled-post-p" data-title="D3 solo Timer：">D3 Timer模块提供如下两个API：</p>
+                <pre class="code-border"><code class="javascript">
+Timer.prototype = timer.prototype = {
+  constructor: Timer,
+  restart: function(callback, delay, time) {
+  },
+  stop: function() {
+  }
+};
+                </code></pre>
+
+                <p class="post-p">D3
+                    Timer中新增一个控制变量『time』，通过检测当前时间是否大于time，执行callback。也就是说，只有当你未来计划的时间走入现在或过去时，计划就变成现实。正事利用这种逻辑，Single
+                    Timer可以递归实现Interval的效果。然而，D3 Timer严谨的API需要在Timeout效果中使用stop。</p>
+
+                <p class="post-p title-post-p" data-title="D3 multi Timer：">D3 Timer的构造器如下：</p>
+                <pre class="code-border"><code class="javascript">
+function Timer() {
+  this._call =
+  this._time =
+  this._next = null;
+}
+                </code></pre>
+
+                <p class="post-p">multi Timer串连在一起，每一帧都会遍历链表，callback的执行时机同single
+                    Timer。如果为了实现Timeout效果，Timers应当先按照._time排序，并且控制好遍历头的位置。然而，如果要实现Interval效果，Timers链表应当首尾相连，做成循环链表。</p>
+
+                
+                
+
+            

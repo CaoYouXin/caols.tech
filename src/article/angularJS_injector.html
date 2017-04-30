@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+
+    <meta name="post-type" content="Article">
+    <meta name="post-release" content="True">
+    <meta name="post-name" content="AngularJS Injector">
+    <meta name="post-category" content="学习笔记">
+    <meta name="post-create" content="2016/11/28">
+    <meta name="post-update" content="2016/11/28">
+    <meta name="post-brief" content="Google的神奇在于，竟然能将依赖注入的概念引入到Javascript开发中...">
+
+    <!-- banner menu -->
+    <style>
+        body {
+            background: url("../assets/index_bg.gif") repeat;
+        }
+
+        .banner, .left-banner, .menu {
+            position: fixed;
+
+            background-color: rgba(249, 249, 249, 0.2);
+
+            transition: background-color, 1s ease-in-out .7s;
+        }
+
+        .banner {
+            z-index: 10001;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100px;
+        }
+
+        .left-banner {
+            z-index: 10000;
+
+            top: 100px;
+            left: 0;
+
+            width: 100px;
+            height: calc(100% - 100px);
+        }
+
+        .banner.solid, .left-banner.solid {
+            background-color: rgb(249, 249, 249);
+        }
+
+        .menu {
+            z-index: 10000;
+
+            top: 100px;
+            left: 100px;
+
+            width: calc(100% - 100px);
+            height: calc(100% - 100px);
+
+            transform-origin: 0 0 0;
+            transition: transform 1s ease-in-out .2s,
+            background-color, 1s ease-in-out .7s;
+
+            background-color: rgb(249, 249, 249);
+        }
+
+        .menu.left {
+            background-color: transparent;
+
+            transform: rotateZ(0.25turn);
+        }
+
+        .menu.right {
+            background-color: transparent;
+
+            transform: rotateZ(-0.25turn);
+        }
+
+        .banner > .menu-btn {
+            display: block;
+
+            width: 114px;
+            height: 114px;
+
+            border-radius: 50%;
+
+            background-image: radial-gradient(100px at 50% 50%, #3366CC 0%, #3366CC 30%, black 70%);
+
+            line-height: 114px;
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: color 1s ease-in-out;
+        }
+
+        .banner > .menu-btn:hover {
+            color: white;
+
+            background-image: radial-gradient(80px at 50% 50%, #3366CC 0%, #3366CC 30%, black 70%);
+        }
+    </style>
+
+    <!-- wrapper -->
+    <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .body-wrapper {
+            position: absolute;
+
+            top: 100px;
+            left: 100px;
+
+            width: calc(100% - 100px);
+        }
+
+        .body {
+            display: block;
+
+            width: 800px;
+
+            margin: 0 auto;
+            padding: 20px;
+
+            background-color: rgb(249, 249, 249);
+        }
+
+        .footer {
+            display: block;
+
+            width: 100%;
+            height: 50px;
+
+            background-color: rgba(249, 249, 249, 0.2);
+
+            line-height: 50px;
+            text-align: center;
+
+            color: goldenrod;
+        }
+
+        .footer.fixed {
+            position: fixed;
+
+            bottom: 0;
+            left: 100px;
+
+            width: calc(100% - 100px);
+        }
+
+        hr {
+            width: 100%;
+            border-bottom: solid 1px #DDDDDD;
+        }
+
+        p[data-rel] {
+            text-indent: 0;
+        }
+
+        p[data-rel]:before {
+            content: attr(data-rel);
+        }
+
+        .top5 + ol > li {
+            cursor: pointer;
+        }
+
+        .top5 + ol, .comments {
+            list-style-position: inside;
+
+            font-family: "Source Code Pro", monospace;
+        }
+    </style>
+
+    <!-- box -->
+    <style>
+        .box {
+            display: inline-block;
+
+            height: 36px;
+
+            margin-top: 10px;
+
+            border-radius: 3px;
+        }
+
+        .box:before {
+            content: '';
+            display: inline-block;
+
+            width: 0;
+            height: 100%;
+
+            vertical-align: middle;
+        }
+
+        .box > * {
+            display: inline-block;
+
+            vertical-align: middle;
+        }
+
+        .box > i {
+            width: 25px;
+            height: 25px;
+        }
+
+        .box > span {
+            line-height: 30px;
+
+            margin-left: 5px;
+            padding: 0 10px;
+        }
+
+        .category.box {
+            border: solid 1px cornflowerblue;
+            box-shadow: 0 0 5px cornflowerblue;
+        }
+
+        .like.box {
+            border: solid 1px indianred;
+            box-shadow: 0 0 5px indianred;
+        }
+
+        .category.box > i {
+            background: url("../assets/c.png") no-repeat;
+            background-size: 100%;
+        }
+
+        .like.box > i {
+            background: url("../assets/like.png") no-repeat;
+            background-size: 100%;
+        }
+
+        .category.box > span {
+            color: cornflowerblue;
+            border-left: solid 1px cornflowerblue;
+        }
+
+        .like.box > span {
+            color: indianred;
+            border-left: solid 1px indianred;
+        }
+    </style>
+
+    <!-- reply comment -->
+    <style>
+        .reply {
+            width: 740px;
+            height: 75px;
+
+            margin-top: 10px;
+            margin-left: 10px;
+
+            border-radius: 5px;
+            box-shadow: 0 0 10px cyan;
+
+            overflow: hidden;
+
+            transition: height 1s ease-in-out;
+
+            font-size: 0;
+        }
+
+        .reply > * {
+            font-family: Monaco, "Lucida Console", monospace;
+            font-size: 20px;
+
+            width: 730px;
+            height: 30px;
+
+            margin-top: 5px;
+            margin-left: 5px;
+
+            line-height: 30px;
+        }
+
+        .reply > .title {
+            text-align: center;
+
+            color: white;
+            background-color: cyan;
+        }
+
+        .reply > .title > span:before {
+            content: '『';
+        }
+
+        .reply > .title > span:after {
+            content: '』';
+        }
+
+        .reply > textarea {
+            outline: none;
+            resize: none;
+
+            line-height: 28px;
+
+            border: dashed 1px cyan;
+
+            background-color: transparent;
+        }
+
+        .reply > .publish-btn {
+            text-align: center;
+
+            cursor: pointer;
+
+            color: white;
+            background-image: linear-gradient(0deg, #07fff2 0%, #43fdff 50%, cyan 100%);
+        }
+
+        .reply > .publish-btn:hover {
+            background-image: linear-gradient(0deg, #05faf0 0%, #41fafa 50%, #00fafa 100%);
+        }
+
+        .reply.focused {
+            height: 230px;
+        }
+
+        .reply > textarea.focused {
+            height: 150px;
+        }
+
+        .comments > li {
+            border: dashed 1px cyan;
+            background-image: radial-gradient(800px at 0 0, white 0%, transparent 100%);
+        }
+
+        .comments > li + li {
+            border-top: none;
+        }
+
+        .comments .comments-of-comment {
+            list-style: none;
+
+            margin: 10px;
+
+            background-color: rgb(248, 248, 248);
+        }
+
+        .comments .comments-of-comment > li + li {
+            border-top: dashed 1px cyan;
+        }
+    </style>
+
+    <!-- content css -->
+    <link rel="stylesheet" type="text/css" href="../css/highlight/default.css">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/post.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-code.css">
+</head>
+<body>
+<section class="menu-bar">
+    <div class="banner">
+        <div class="menu-btn">MENU</div>
+    </div>
+    <div class="left-banner"></div>
+    <div class="menu">
+
+    </div>
+</section>
+
+<section class="body-sec">
+    <div class="body-wrapper">
+        <div class="body">
+            <div class="article-header">
+                <h1>AngularJS Injector</h1>
+                <hr>
+                <div class="category box">
+                    <i></i>
+                    <span>“请求头”</span>
+                </div>
+                <div class="like box">
+                    <i></i>
+                    <span>90</span>
+                </div>
+                <br>
+                <br>
+                <p class="create-time" data-rel="创建时间: ">2017-01-01</p>
+                <p class="update-time" data-rel="最后更新时间: ">2017-02-02</p>
+                <br>
+                <hr>
+                <br>
+                <br>
+            </div>
+
+            <div class="article-content">
+
+                <p class="post-p titled-post-p" data-title="实现方法："></p>
+                <ol class="post-l">
+                    <li>利用正则表达式取参数名字</li>
+                    <li>创建参数对象</li>
+                    <li>Function.prototype.apply</li>
+                </ol>
+
+                <pre class="code-border"><code class="javascript">
+var ARROW_ARG = /^\(([^\(]+?)\)=>/;
+var FN_ARGS = /^[^\(]*\(\s*([^\)]*)\)/m;
+
+function extractArgs(fn) {
+  var fnText = stringifyFn(fn).replace(STRIP_COMMENTS, ''),
+      args = fnText.match(ARROW_ARG) || fnText.match(FN_ARGS);
+  return args;
+}
+                </code></pre>
+
+                <p class="post-p">创建参数对象的方式，使用InternalInjector类，缓存和工厂结合。</p>
+
+                <script type="text/javascript" src="../js/highlight/highlight.pack.js"></script>
+                <script type="text/javascript" src="../js/highlight/initHighlightingOnLoad.js"></script>
+
+            </div>
+            <i class="splitter"></i>
+
+            <div class="article-footer">
+                <br>
+                <br>
+                <hr>
+                <div class="category box">
+                    <i></i>
+                    <span>“请求头”</span>
+                </div>
+                <div class="like box">
+                    <i></i>
+                    <span>90</span>
+                </div>
+                <br>
+                <br>
+                <p class="former-article" data-rel="上一篇: "><a href="#">深入理解计算机网络2</a></p>
+                <p class="latter-article" data-rel="下一篇: "><a href="#">深入理解计算机网络4</a></p>
+                <br>
+                <hr>
+                <br>
+                <p class="top5" data-rel="TOP 5:"></p>
+                <ol>
+                    <li><a href="#">深入理解计算机网络1</a></li>
+                    <li><a href="#">深入理解计算机网络3</a></li>
+                    <li><a href="#">深入理解计算机网络5</a></li>
+                    <li><a href="#">深入理解计算机网络6</a></li>
+                    <li><a href="#">深入理解计算机网络7</a></li>
+                </ol>
+                <br>
+                <hr>
+                <br>
+                <div id="reply" class="reply">
+                    <div class="title"><span>awesome</span>发布评论...</div>
+                    <textarea placeholder="输入评论..."></textarea>
+                    <div class="publish-btn">发布</div>
+                </div>
+                <br>
+                <ol class="comments" reversed>
+                    <li>
+                        <span>Coffee</span>
+                        <ul class="comments-of-comment">
+                            <li>Suger</li>
+                            <li>Spoon</li>
+                            <li>Cup</li>
+                        </ul>
+                    </li>
+                    <li><span>Tea</span></li>
+                    <li><span>Milk</span></li>
+                </ol>
+                <br>
+            </div>
+        </div>
+        <div class="footer">
+            人在劳作，天在看！@2017
+        </div>
+    </div>
+</section>
+
+<!-- menu -->
+<script>
+    var menuBtnELem = document.querySelector('.banner > .menu-btn');
+    var menuElem = document.querySelector('.menu');
+    var banner1Elem = document.querySelector('.banner');
+    var banner2Elem = document.querySelector('.left-banner');
+
+    function replaceMenu() {
+        menuElem.classList.add(window.innerWidth > window.innerHeight ? 'left' : 'right');
+    }
+
+    replaceMenu();
+
+    function menuClickHandler() {
+        if (menuElem.classList.contains('left') || menuElem.classList.contains('right')) {
+            menuElem.classList.remove('left');
+            menuElem.classList.remove('right');
+            banner1Elem.classList.add('solid');
+            banner2Elem.classList.add('solid');
+        } else {
+            replaceMenu();
+            banner1Elem.classList.remove('solid');
+            banner2Elem.classList.remove('solid');
+        }
+    }
+
+    menuBtnELem.addEventListener('click', menuClickHandler);
+
+    document.addEventListener('beforeunload', function () {
+        menuBtnELem.removeEventListener('click', menuClickHandler);
+    });
+</script>
+
+<!-- footer -->
+<script>
+    function onElementHeightChange(elm, callback) {
+        var lastHeight = elm.offsetHeight, newHeight;
+        (function run() {
+            newHeight = elm.offsetHeight;
+            if (lastHeight != newHeight)
+                callback(newHeight);
+            lastHeight = newHeight;
+
+            if (elm.onElementHeightChangeTimer)
+                clearTimeout(elm.onElementHeightChangeTimer);
+
+            elm.onElementHeightChangeTimer = setTimeout(run, 200);
+        })();
+    }
+
+    var footerElem = document.querySelector('.footer');
+    function resetFooter(height) {
+        console.log(height, window.innerHeight);
+        if (height > window.innerHeight - 100) {
+            footerElem.classList.remove('fixed');
+        } else {
+            footerElem.classList.add('fixed');
+        }
+    }
+
+    var bodyWrapperElem = document.querySelector('.body-wrapper');
+    onElementHeightChange(bodyWrapperElem, resetFooter);
+    resetFooter(bodyWrapperElem.offsetHeight);
+</script>
+</body>
+</html>
