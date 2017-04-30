@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>品子布局</title>
+    <style>
+        #demo1 {
+            overflow: hidden;
+        }
+
+        #demo1 > div, #demo2 > div {
+            height: 200px;
+        }
+
+        #demo1 > div:nth-of-type(1), #demo2 > div:nth-of-type(1) {
+            background-color: #f00;
+        }
+
+        #demo1 > div:nth-of-type(2), #demo2 > div:nth-of-type(2) {
+            background-color: #0f0;
+        }
+
+        #demo1 > div:nth-of-type(3), #demo2 > div:nth-of-type(3) {
+            background-color: #00f;
+        }
+
+        br {
+            border-top: 1px solid #000;
+            clear: both;
+        }
+
+        #demo1 > div.top {
+            width: 100%;
+        }
+
+        #demo1 > div.left {
+            width: 20%;
+            float: left;
+        }
+
+        #demo1 > div.right {
+            width: 80%;
+            float: right;
+        }
+
+        #demo2 {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        #demo2 > div.flexbox:nth-of-type(1) {
+            width: 100%;
+        }
+
+        #demo2 > div.flexbox:nth-of-type(2) {
+            width: 80%;
+        }
+
+        #demo2 > div.flexbox:nth-of-type(3) {
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+<div id="demo1">
+    <div class="top"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+<br>
+<div id="demo2">
+    <div class="flexbox"></div>
+    <div class="flexbox"></div>
+    <div class="flexbox"></div>
+</div>
+
+<script>
+    console.log(document.body.childNodes);
+    var childNodes = document.body.childNodes, appends = [];
+    for (var i = 0; i < childNodes.length; i++) {
+
+        var childNode = childNodes[i];
+
+        if (childNode.tagName === 'DIV') {
+            console.log(childNode.offsetTop, childNode.offsetLeft, childNode.offsetWidth, childNode.offsetHeight);
+
+            var div = document.createElement('DIV');
+            div.innerHTML = '@' + childNode.id;
+            div.style.zIndex = 1;
+            div.style.textAlign = 'center';
+            div.style.position = 'absolute';
+            div.style.fontSize = '56px';
+            div.style.lineHeight = childNode.offsetHeight + 'px';
+            div.style.top = childNode.offsetTop + 'px';
+            div.style.left = childNode.offsetLeft + 'px';
+            div.style.width = childNode.offsetWidth + 'px';
+            div.style.height = childNode.offsetHeight + 'px';
+            div.style.background = 'rgba(0, 0, 0, 0.3)';
+            div.style.color = '#fff';
+
+            appends.push(div);
+        }
+    }
+
+    for (var j = 0; j < appends.length; j++) {
+        document.body.appendChild(appends[j]);
+    }
+</script>
+</body>
+</html>

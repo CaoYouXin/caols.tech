@@ -5,6 +5,7 @@ const through = require('through-gulp');
 
 module.exports = function () {
 
+    const hrefRegExp = /href=('|").*?misc\/(.*)('|")/g;
     const trStrRegExp = /P\.misc\((['|"]?).*?misc\/(.*?)(['|"]?)\)/g;
 
     return through(function (file, encoding, callback) {
@@ -17,7 +18,9 @@ module.exports = function () {
         if (file.isBuffer()) {
 
             var contents = file.contents.toString();
-            file.contents = new Buffer(contents.replace(trStrRegExp, function ($0, $1, $2, $3) {
+            file.contents = new Buffer(contents.replace(hrefRegExp, function ($0, $1, $2, $3) {
+                return 'href=' + $1 + 'http://caols.tech/post/misc/' + $2 + $3;
+            }).replace(trStrRegExp, function ($0, $1, $2, $3) {
                 return $1 + 'http://caols.tech/post/misc/' + $2 + $3;
             }));
 

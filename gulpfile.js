@@ -12,7 +12,7 @@ const jsMake = require('./scripts/build_js');
 const contentMake = require('./scripts/build_content');
 const cssMake = require('./scripts/gulp-css-make');
 const imageReplacement = require('./scripts/gulp-images-replacement');
-const templateReplacement = require('./scripts/build_misc_replacement');
+const miscReplacement = require('./scripts/build_misc_replacement');
 
 const src = './src/';
 const app = 'app/';
@@ -129,7 +129,7 @@ gulp.task('article-js', ['article-css'], function () {
             expections: []
         }))
         .pipe(imageReplacement())
-        .pipe(templateReplacement())
+        .pipe(miscReplacement())
         .pipe(uglifyJs())
         .pipe(gulp.dest(dist + post + js));
 });
@@ -171,6 +171,7 @@ gulp.task('article-html', function () {
             splitter: /<div class="article-content">|<\/div>[\n\t ]*?<i class="splitter"><\/i>/m
         }))
         .pipe(imageReplacement())
+        .pipe(miscReplacement())
         .pipe(gulp.dest(dist + post + article));
 });
 
@@ -187,7 +188,7 @@ gulp.task('category-js', ['category-css'], function () {
             expections: []
         }))
         .pipe(imageReplacement())
-        .pipe(templateReplacement())
+        .pipe(miscReplacement())
         .pipe(uglifyJs())
         .pipe(gulp.dest(dist + post + js));
 });
@@ -229,6 +230,7 @@ gulp.task('category-html', function () {
             splitter: /<div class="category-content">|<\/div>[\n\t ]*?<i class="splitter"><\/i>/
         }))
         .pipe(imageReplacement())
+        .pipe(miscReplacement())
         .pipe(gulp.dest(dist + post + category));
 });
 
