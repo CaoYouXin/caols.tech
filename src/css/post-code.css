@@ -7,11 +7,18 @@
 
     font-size: 12px;
 
-    padding: 10px;
     margin: 10px 0;
+    padding: 5px 10px;
+
     border-radius: 5px;
     border: solid 5px #000000;
-    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
 
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.75);
+    background-image: radial-gradient(circle 500px at 30% 30%, #f0f0f0 0%, #ffffff 90%, #f9f9f9 100%);
+    
     overflow: auto;
+}
+
+.code-border > code {
+    background-color: transparent;
 }
