@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+
+    <meta name="post-type" content="Article">
+    <meta name="post-release" content="True">
+    <meta name="post-name" content="分析2016年1月宕机日志">
+    <meta name="post-category" content="知识总结">
+    <meta name="post-create" content="2016/3/19">
+    <meta name="post-update" content="2016/3/31">
+    <meta name="post-brief" content="在养爱车工作渐入佳境的时期，被委任做服务器接口缓存功能，结果却是无来由的宕机...">
+
+    <!-- banner menu -->
+    <style>
+        body {
+            background: url("../assets/index_bg.gif") repeat;
+        }
+
+        .banner, .left-banner, .menu {
+            position: fixed;
+
+            background-color: rgba(249, 249, 249, 0.2);
+
+            transition: background-color, 1s ease-in-out .7s;
+        }
+
+        .banner {
+            z-index: 10001;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100px;
+        }
+
+        .left-banner {
+            z-index: 10000;
+
+            top: 100px;
+            left: 0;
+
+            width: 100px;
+            height: calc(100% - 100px);
+        }
+
+        .banner.solid, .left-banner.solid {
+            background-color: rgb(249, 249, 249);
+        }
+
+        .menu {
+            z-index: 10000;
+
+            top: 100px;
+            left: 100px;
+
+            width: calc(100% - 100px);
+            height: calc(100% - 100px);
+
+            transform-origin: 0 0 0;
+            transition: transform 1s ease-in-out .2s,
+            background-color, 1s ease-in-out .7s;
+
+            background-color: rgb(249, 249, 249);
+        }
+
+        .menu.left {
+            background-color: transparent;
+
+            transform: rotateZ(0.25turn);
+        }
+
+        .menu.right {
+            background-color: transparent;
+
+            transform: rotateZ(-0.25turn);
+        }
+
+        .banner > .menu-btn {
+            display: block;
+
+            width: 114px;
+            height: 114px;
+
+            border-radius: 50%;
+
+            background-image: radial-gradient(100px at 50% 50%, #3366CC 0%, #3366CC 30%, black 70%);
+
+            line-height: 114px;
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: color 1s ease-in-out;
+        }
+
+        .banner > .menu-btn:hover {
+            color: white;
+
+            background-image: radial-gradient(80px at 50% 50%, #3366CC 0%, #3366CC 30%, black 70%);
+        }
+    </style>
+
+    <!-- wrapper -->
+    <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .body-wrapper {
+            position: absolute;
+
+            top: 100px;
+            left: 100px;
+
+            width: calc(100% - 100px);
+        }
+
+        .body {
+            display: block;
+
+            width: 800px;
+
+            margin: 0 auto;
+            padding: 20px;
+
+            background-color: rgb(249, 249, 249);
+        }
+
+        .footer {
+            display: block;
+
+            width: 100%;
+            height: 50px;
+
+            background-color: rgba(249, 249, 249, 0.2);
+
+            line-height: 50px;
+            text-align: center;
+
+            color: goldenrod;
+        }
+
+        .footer.fixed {
+            position: fixed;
+
+            bottom: 0;
+            left: 100px;
+
+            width: calc(100% - 100px);
+        }
+
+        hr {
+            width: 100%;
+            border-bottom: solid 1px #DDDDDD;
+        }
+
+        p[data-rel] {
+            text-indent: 0;
+        }
+
+        p[data-rel]:before {
+            content: attr(data-rel);
+        }
+
+        .top5 + ol > li {
+            cursor: pointer;
+        }
+
+        .top5 + ol, .comments {
+            list-style-position: inside;
+
+            font-family: "Source Code Pro", monospace;
+        }
+    </style>
+
+    <!-- box -->
+    <style>
+        .box {
+            display: inline-block;
+
+            height: 36px;
+
+            margin-top: 10px;
+
+            border-radius: 3px;
+        }
+
+        .box:before {
+            content: '';
+            display: inline-block;
+
+            width: 0;
+            height: 100%;
+
+            vertical-align: middle;
+        }
+
+        .box > * {
+            display: inline-block;
+
+            vertical-align: middle;
+        }
+
+        .box > i {
+            width: 25px;
+            height: 25px;
+        }
+
+        .box > span {
+            line-height: 30px;
+
+            margin-left: 5px;
+            padding: 0 10px;
+        }
+
+        .category.box {
+            border: solid 1px cornflowerblue;
+            box-shadow: 0 0 5px cornflowerblue;
+        }
+
+        .like.box {
+            border: solid 1px indianred;
+            box-shadow: 0 0 5px indianred;
+        }
+
+        .category.box > i {
+            background: url("../assets/c.png") no-repeat;
+            background-size: 100%;
+        }
+
+        .like.box > i {
+            background: url("../assets/like.png") no-repeat;
+            background-size: 100%;
+        }
+
+        .category.box > span {
+            color: cornflowerblue;
+            border-left: solid 1px cornflowerblue;
+        }
+
+        .like.box > span {
+            color: indianred;
+            border-left: solid 1px indianred;
+        }
+    </style>
+
+    <!-- reply comment -->
+    <style>
+        .reply {
+            width: 740px;
+            height: 75px;
+
+            margin-top: 10px;
+            margin-left: 10px;
+
+            border-radius: 5px;
+            box-shadow: 0 0 10px cyan;
+
+            overflow: hidden;
+
+            transition: height 1s ease-in-out;
+
+            font-size: 0;
+        }
+
+        .reply > * {
+            font-family: Monaco, "Lucida Console", monospace;
+            font-size: 20px;
+
+            width: 730px;
+            height: 30px;
+
+            margin-top: 5px;
+            margin-left: 5px;
+
+            line-height: 30px;
+        }
+
+        .reply > .title {
+            text-align: center;
+
+            color: white;
+            background-color: cyan;
+        }
+
+        .reply > .title > span:before {
+            content: '『';
+        }
+
+        .reply > .title > span:after {
+            content: '』';
+        }
+
+        .reply > textarea {
+            outline: none;
+            resize: none;
+
+            line-height: 28px;
+
+            border: dashed 1px cyan;
+
+            background-color: transparent;
+        }
+
+        .reply > .publish-btn {
+            text-align: center;
+
+            cursor: pointer;
+
+            color: white;
+            background-image: linear-gradient(0deg, #07fff2 0%, #43fdff 50%, cyan 100%);
+        }
+
+        .reply > .publish-btn:hover {
+            background-image: linear-gradient(0deg, #05faf0 0%, #41fafa 50%, #00fafa 100%);
+        }
+
+        .reply.focused {
+            height: 230px;
+        }
+
+        .reply > textarea.focused {
+            height: 150px;
+        }
+
+        .comments > li {
+            border: dashed 1px cyan;
+            background-image: radial-gradient(800px at 0 0, white 0%, transparent 100%);
+        }
+
+        .comments > li + li {
+            border-top: none;
+        }
+
+        .comments .comments-of-comment {
+            list-style: none;
+
+            margin: 10px;
+
+            background-color: rgb(248, 248, 248);
+        }
+
+        .comments .comments-of-comment > li + li {
+            border-top: dashed 1px cyan;
+        }
+    </style>
+
+    <!-- content css -->
+    <link rel="stylesheet" type="text/css" href="../css/highlight/default.css">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/post.css">
+    <link rel="stylesheet" type="text/css" href="../css/post-code.css">
+</head>
+<body>
+<section class="menu-bar">
+    <div class="banner">
+        <div class="menu-btn">MENU</div>
+    </div>
+    <div class="left-banner"></div>
+    <div class="menu">
+
+    </div>
+</section>
+
+<section class="body-sec">
+    <div class="body-wrapper">
+        <div class="body">
+            <div class="article-header">
+                <h1>分析2016年1月宕机日志</h1>
+                <hr>
+                <div class="category box">
+                    <i></i>
+                    <span>“请求头”</span>
+                </div>
+                <div class="like box">
+                    <i></i>
+                    <span>90</span>
+                </div>
+                <br>
+                <br>
+                <p class="create-time" data-rel="创建时间: ">2017-01-01</p>
+                <p class="update-time" data-rel="最后更新时间: ">2017-02-02</p>
+                <br>
+                <hr>
+                <br>
+                <br>
+            </div>
+
+            <div class="article-content">
+
+                <p class="post-p titled-post-p" data-title="项目背景: ">加入缓存模块后, 发生宕机, 分析tomcat日志.</p>
+                <p class="post-p">以下为1月9号宕机前后日志分析资料：搜索关键字［原因］</p>
+                <pre class="code-border"><code class="bash">
+2016-01-09 15:58:04.865 [http-bio-8180-exec-94] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:android;app_name:yangaiche_client;client_version:4.2.1
+
+开始计时:2016-01-09 15:50:00
+结束计时:2016-01-09 16:12:28
+线程数:158
+旧线程数:19
+阻塞线程数:[141, 109, 60, 16, 0]
+程序停止时间:2016-01-09 16:01:26
+
+Process finished with exit code 0
+                </code></pre>
+
+                <p class="post-p">
+                    分析宕机主要原因: 根据重启前十多分钟的日志，经过按照线程名分组，截取相应时间段的日志，并打印每条线程最后7行日志。
+                </p>
+                <p class="post-p">
+                    处理后的日志中发现当时短短十多分钟里新创建的线程剧增，这可能是由于大量新链接打入的原因；这些新线程所打印的最后一行日志大多数为AppVersionCheckInterceptor打印，说明这些处理并没有执行逻辑代码，甚至并没有走到RequestParamInterceptor中；至于redis的切面，由于没有看到[process]***的日志，所以这批被新建的线程并没有走到redis
+                    aspect。
+                </p>
+                <p class="post-p">
+                    旧线程的判断基于排除上述的新建线程，日志行数2行以上的线程，从日志情况看，当时也处于阻塞状态。这应该是受到了大量新建线程争夺CPU资源导致。
+                </p>
+                <p class="post-p">
+                    阻塞线程的判断基于距离程序停止时间1到5分钟以上没有日志的标准，结合当时的线程数，这一判断标准是接近科学的。程序停止时间是一个估计时间，该时间到16点12分并没有任何日志。
+                </p>
+                <p class="post-p">
+                    基于jmeter的压测并没有响应时间以及人对界面的感知，不能确定当服务器压到190多线程时候的会不会已经出现大量延迟了。（压力测试这块确实不是我的强项……所以要完美复现当时的状况以我现在的能力很难办到）
+                </p>
+
+                <pre class="code-border"><code class="bash">
+2016-01-09 15:49:29.259 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [process] : webPushServlet
+2016-01-09 15:49:59.268 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [POST] annotation : null
+2016-01-09 15:49:59.269 [http-bio-8180-exec-4] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [POST] did some expires : 30007ms.
+
+开始计时:2016-01-09 15:40:00
+结束计时:2016-01-09 15:50:00
+
+startStop线程:
+
+线程数:18
+旧线程数:18
+阻塞线程数:[3, 0, 0, 0, 0]
+程序停止时间:2016-01-09 15:49:59
+
+Process finished with exit code 0
+
+2016-01-09 16:12:29.840 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+
+开始计时:2016-01-09 16:01:27
+结束计时:2016-01-09 16:12:29
+线程数:1
+
+Process finished with exit code 0
+                </code></pre>
+
+                <p class="post-p">分析宕机原因2: 程序首次重启时间2016-01-09 16:12:29.840。此时间为Spring的InitialBean打印。</p>
+
+                <pre class="code-border"><code class="bash">
+2016-01-09 16:47:12.811 [http-bio-8180-exec-5] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:android;app_name:yangaiche_community;client_version:2.3.0
+
+开始计时:2016-01-09 16:12:29
+结束计时:2016-01-09 16:47:12
+
+startStop线程:
+2016-01-09 16:12:29.840 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+2016-01-09 16:21:57.146 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+2016-01-09 16:36:07.971 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+2016-01-09 16:45:24.847 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+2016-01-09 16:47:12.549 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+
+线程数:6
+旧线程数:1
+阻塞线程数:[0, 0, 0, 0, 0]
+程序停止时间:2016-01-09 16:47:12
+
+Process finished with exit code 0
+                </code></pre>
+
+                <p class="post-p">
+                    分析宕机原因3: 此间，程序共重启了五次，前四次均重启失败。每次启动，redis初始化检测都是通过的。
+                </p>
+
+                <pre class="code-border"><code class="bash">
+2016-01-09 16:59:41.516 [http-bio-8180-exec-3] INFO  org.reststackteam.reststack.handlers.RequestParamInterceptor - 【request-parameters-info:】127.0.0.1 /v2/api/store/ware/detail.json GET {"ware_id":["15"]}
+2016-01-09 16:59:56.754 [http-bio-8180-exec-3] INFO  org.reststackteam.reststack.handlers.AppVersionCheckInterceptor - request version >> device_type:appstore_ios;app_name:yangaiche;client_version:4.2.3
+
+开始计时:2016-01-09 16:47:12
+结束计时:2016-01-09 17:00:00
+
+startStop线程:
+2016-01-09 16:47:12.549 [localhost-startStop-1] INFO  org.reststackteam.reststack.advisors.RedisAdvisor - [INIT] redis connected, auto start using redis system.
+
+线程数:12
+旧线程数:11
+
+Process finished with exit code 0
+                </code></pre>
+
+                <p class="post-p">
+                    分析宕机原因4: 这里有一根线程是短信推送线程。线程数正常。启动时，redis检测正常。
+                </p>
+
+                <p class="post-p titled-post-p" data-title="结论：">最有可能的就是遭受了DDos攻击。</p>
+
+                <p class="post-p">
+                    <a target="_blank"
+                       href="http://git.oschina.net/caoyouxin/myjava/blob/master/yactools/src/com/toonly/loganalysis/Main.java?dir=0&filepath=yactools%2Fsrc%2Fcom%2Ftoonly%2Floganalysis%2FMain.java&oid=c69a78fad176ebf1554f7b8b3c4f7beb19e9d8ae&sha=4c8e463f32b57cf46d516a68af82a1a80cc4d268">源代码地址</a>
+                </p>
+
+                <script type="text/javascript" src="../js/highlight/highlight.pack.js"></script>
+                <script type="text/javascript" src="../js/highlight/initHighlightingOnLoad.js"></script>
+
+            </div>
+            <i class="splitter"></i>
+
+            <div class="article-footer">
+                <br>
+                <br>
+                <hr>
+                <div class="category box">
+                    <i></i>
+                    <span>“请求头”</span>
+                </div>
+                <div class="like box">
+                    <i></i>
+                    <span>90</span>
+                </div>
+                <br>
+                <br>
+                <p class="former-article" data-rel="上一篇: "><a href="#">深入理解计算机网络2</a></p>
+                <p class="latter-article" data-rel="下一篇: "><a href="#">深入理解计算机网络4</a></p>
+                <br>
+                <hr>
+                <br>
+                <p class="top5" data-rel="TOP 5:"></p>
+                <ol>
+                    <li><a href="#">深入理解计算机网络1</a></li>
+                    <li><a href="#">深入理解计算机网络3</a></li>
+                    <li><a href="#">深入理解计算机网络5</a></li>
+                    <li><a href="#">深入理解计算机网络6</a></li>
+                    <li><a href="#">深入理解计算机网络7</a></li>
+                </ol>
+                <br>
+                <hr>
+                <br>
+                <div id="reply" class="reply">
+                    <div class="title"><span>awesome</span>发布评论...</div>
+                    <textarea placeholder="输入评论..."></textarea>
+                    <div class="publish-btn">发布</div>
+                </div>
+                <br>
+                <ol class="comments" reversed>
+                    <li>
+                        <span>Coffee</span>
+                        <ul class="comments-of-comment">
+                            <li>Suger</li>
+                            <li>Spoon</li>
+                            <li>Cup</li>
+                        </ul>
+                    </li>
+                    <li><span>Tea</span></li>
+                    <li><span>Milk</span></li>
+                </ol>
+                <br>
+            </div>
+        </div>
+        <div class="footer">
+            人在劳作，天在看！@2017
+        </div>
+    </div>
+</section>
+
+<!-- menu -->
+<script>
+    var menuBtnELem = document.querySelector('.banner > .menu-btn');
+    var menuElem = document.querySelector('.menu');
+    var banner1Elem = document.querySelector('.banner');
+    var banner2Elem = document.querySelector('.left-banner');
+
+    function replaceMenu() {
+        menuElem.classList.add(window.innerWidth > window.innerHeight ? 'left' : 'right');
+    }
+
+    replaceMenu();
+
+    function menuClickHandler() {
+        if (menuElem.classList.contains('left') || menuElem.classList.contains('right')) {
+            menuElem.classList.remove('left');
+            menuElem.classList.remove('right');
+            banner1Elem.classList.add('solid');
+            banner2Elem.classList.add('solid');
+        } else {
+            replaceMenu();
+            banner1Elem.classList.remove('solid');
+            banner2Elem.classList.remove('solid');
+        }
+    }
+
+    menuBtnELem.addEventListener('click', menuClickHandler);
+
+    document.addEventListener('beforeunload', function () {
+        menuBtnELem.removeEventListener('click', menuClickHandler);
+    });
+</script>
+
+<!-- footer -->
+<script>
+    function onElementHeightChange(elm, callback) {
+        var lastHeight = elm.offsetHeight, newHeight;
+        (function run() {
+            newHeight = elm.offsetHeight;
+            if (lastHeight != newHeight)
+                callback(newHeight);
+            lastHeight = newHeight;
+
+            if (elm.onElementHeightChangeTimer)
+                clearTimeout(elm.onElementHeightChangeTimer);
+
+            elm.onElementHeightChangeTimer = setTimeout(run, 200);
+        })();
+    }
+
+    var footerElem = document.querySelector('.footer');
+    function resetFooter(height) {
+        console.log(height, window.innerHeight);
+        if (height > window.innerHeight - 100) {
+            footerElem.classList.remove('fixed');
+        } else {
+            footerElem.classList.add('fixed');
+        }
+    }
+
+    var bodyWrapperElem = document.querySelector('.body-wrapper');
+    onElementHeightChange(bodyWrapperElem, resetFooter);
+    resetFooter(bodyWrapperElem.offsetHeight);
+</script>
+</body>
+</html>
