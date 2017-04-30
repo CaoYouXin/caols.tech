@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="http://caols.tech/post/css/h5_size_adaption.min.css">
+
+                <p class="post-p titled-post-p" data-title="项目背景: ">适应各种手机屏幕尺寸的H5页面.</p>
+                <p class="post-p">1. 解析&lt;meta name="viewport" content="width=750, user-scalable=no"&gt;</p>
+                <p class="post-p">2. 针对不同平台做不同的处理</p>
+                <pre class="code-border"><code class="javascript">
+if (isAndroid) {
+    var medium_dpi = data.width / win.screen.availWidth * window.devicePixelRatio * 160;
+
+    medium_dpi = medium_dpi.toFixed(2);
+
+    data['target-densitydpi'] = medium_dpi;
+} else {
+    var scale = win.screen.availWidth / data.width;
+
+    scale = scale.toFixed(2);
+
+    data['initial-scale'] = data['maximum-scale'] = data['minimum-scale'] = scale;
+}
+                </code></pre>
+                <p class="post-p">3. PageSlide中的问题, iframe设置方式采用body上加zoom属性</p>
+                <pre class="code-border"><code class="javascript">
+if (data.width !== pData.width) {
+    document.body.style.zoom = pData.width / data.width;
+}
+                </code></pre>
+
+                
+                
+
+            
