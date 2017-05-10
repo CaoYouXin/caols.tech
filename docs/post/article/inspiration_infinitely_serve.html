@@ -1,0 +1,17 @@
+<link rel="stylesheet" type="text/css" href="http://caols.tech/post/css/inspiration_infinitely_serve.min.css">
+
+                <p class="post-p titled-post-p" data-title="Infinitely Serve">: 通过将细化过后的API分别启动单独服务器提供服务，而根服务器总是处于服务状态来达到不间断服务的目的。也就是说，端口一直开着，而某个业务的新增、更改或者删除不影响整体服务状态，从而彻底改变过去发布版本时整个服务器程序重启的状况。</p>
+
+                <p class="post-p">从业务结构上看，可以把整个服务器程序分为四部分: Server, Service, Pre Processor, Post Processor。目前，我正在做的尝试是基于httpCore组件依次实现这四部分。其中，涉及一些自定义的约束。例如：Pre Processor需要从Service中获取哪些数据，而返回的数据又对Service造成哪些影响。另外，Server接收来自Service的动态注册信息。之后，Server的行为就像是一个代理。</p>
+
+                <p class="post-p">最近，突然发觉一件事。既然是代理，那么为何不用Nginx做这层代理呢？而且Nginx配置文件可以通过『nginx -s reload』命令动态更新，完全符合预期。</p>
+
+                <p class="post-p titled-post-p" data-title="为什么">Pre/Post Processor很重要？这里有一个很重要的思想就是『减少重复代码』，也有人叫『不要重复发明轮子』。比如: 很多Service需要用户验证，而如果每个Service都做这一层操作的话，将会使同一功能的代码分布在很多Service服务器里，这时如果对用户验证的逻辑做一点小小的修改都将会是令人头疼的。当然，如果架构中采用别的技术，比如优秀的打包技术，完全有可能从另一个层面解决这种问题。</p>
+
+                <p class="post-p">以上讲到的一种情况是：Pre/Post Processor同时服务多个Service而带来的便利。接下来考虑到的一种情况是，Processor做为一种临时的存在，只服务特定的时期，过期下架。如果将Service升级再降级似乎从常理上考虑有些问题，况且如果期间Service中fixed一些问题，将不是一次单纯的降级。</p>
+
+                <p class="post-p titled-post-p" data-title="总">结一下的说: Infinitely Serve将会提供很多便利，而这种便利是来自程序架构层面的。</p>
+
+                
+
+            
