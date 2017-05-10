@@ -7,6 +7,13 @@
       "update": "2017/1/6",
       "category": "Demo",
       "type": "App"
+    }, {
+      "url": "http://store.demo.caols.tech/",
+      "name": "手机商城Demo",
+      "create": "2017/4/28",
+      "update": "2017/5/10",
+      "category": "Demo",
+      "type": "App"
     }
   ]
 }
