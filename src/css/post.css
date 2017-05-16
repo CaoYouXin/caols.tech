@@ -56,6 +56,10 @@ p.a {
 }
 
 /* 列表 */
+ul, ol {
+    font-family: "Source Code Pro", monospace;
+}
+
 ol.post-l {
     list-style-type: decimal;
 }
