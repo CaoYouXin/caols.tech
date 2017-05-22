@@ -13,6 +13,7 @@ const contentMake = require('./scripts/build_content');
 const cssMake = require('./scripts/gulp-css-make');
 const imageReplacement = require('./scripts/gulp-images-replacement');
 const miscReplacement = require('./scripts/build_misc_replacement');
+const persistence = require('./scripts/build_persistence');
 
 const src = './src/';
 const app = 'app/';
@@ -33,9 +34,18 @@ const articleJSMakeFilePath = 'article-js-makefile.json';
 const categoryMakeFilePath = 'category-makefile.json';
 const categoryCSSMakeFilePath = 'category-css-makefile.json';
 const categoryJSMakeFilePath = 'category-js-makefile.json';
+const postJsonPath = 'post.json';
+const categoryJsonPath = 'category.json';
 
 gulp.task('default', ['clean', 'js-pack'], function () {
     gulp['start'](['api']);
+});
+
+gulp.task('persistence', ['api'], function () {
+    gulp.src([
+        dist + api + postJsonPath,
+        dist + api + categoryJsonPath
+    ]).pipe(persistence());
 });
 
 gulp.task('api', ['screenshot', 'app', 'article', 'category', 'misc'], function () {
@@ -89,8 +99,8 @@ gulp.task('api', ['screenshot', 'app', 'article', 'category', 'misc'], function 
             return {post: screenshots};
         },
         dstFilePath: {
-            post: 'post.json',
-            category: 'category.json',
+            post: postJsonPath,
+            category: categoryJsonPath,
             index: 'date_index.json'
         }
     })).pipe(gulp.dest(dist + api));
